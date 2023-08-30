@@ -1,5 +1,7 @@
 Mini online e shop app {developing}
 
+[Icon]{client\assets\icon.svg}
+
 "proxy":"localhost:3000"
 
 "setup-production": "npm run install-client && npm run build-client && npm install",
