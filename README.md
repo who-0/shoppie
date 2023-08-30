@@ -1,6 +1,6 @@
 Mini online e shop app {developing}
 
-[Icon]{client\assets\icon.svg}
+![Icon](client\assets\icon.svg)
 
 "proxy":"localhost:3000"
 
