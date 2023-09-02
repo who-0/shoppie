@@ -1,12 +1,4 @@
 Mini online e shop app {developing}
 
-![Icon](client\assets\icon.svg)
-
-"proxy":"localhost:3000"
-
-"setup-production": "npm run install-client && npm run build-client && npm install",
-"install-client": "cd client && npm install",
-"build-client": "cd client && npm run build",
-"server": "nodemon server.js --ignore client",
-"client": "npm start --prefix client",
-"start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+![icon](https://github.com/who-0/shoppie/assets/56252622/37ddb905-8ab7-46a6-9634-c440873e58c4)
+![logo](https://github.com/who-0/shoppie/assets/56252622/03c31e34-1968-400c-8ec7-cb0d44a89003)
