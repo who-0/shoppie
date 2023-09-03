@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import BTN from "./styles.component";
 
-console.log("BTN", BTN);
-
 const getButton = (type) => {
-  return Object.keys(BTN).find((key) => {
-    console.log("key", BTN[key] === type);
-    return BTN[key] === type;
-  });
+  switch (type) {
+    case "nav":
+      return BTN.nav;
+    case "shop":
+      return BTN.shop;
+    case "login":
+      return BTN.login;
+    default:
+      return;
+  }
 };
 
 const Button = ({ title, type, action }) => {
@@ -15,9 +19,9 @@ const Button = ({ title, type, action }) => {
   const click = () => {
     navigate(action);
   };
-  console.log("type", type);
+
   const Btn = getButton(type);
-  console.log("btn", Btn);
+  console.log("Btn", Btn);
   return <Btn onClick={click}>{title}</Btn>;
 };
 export default Button;

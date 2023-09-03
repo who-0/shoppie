@@ -18,7 +18,7 @@ import {
   AdminUsers,
   AdminShareLayout,
 } from "./pages/admin";
-
+import "./index.scss";
 const App = () => {
   return (
     <BrowserRouter>

@@ -24,7 +24,7 @@ const login = styled(NavBtn)`
 `;
 
 const BTN = {
-  NavBtn,
+  nav: NavBtn,
   shop,
   login,
 };

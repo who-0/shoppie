@@ -8,9 +8,9 @@ const Navigation = () => {
       <Nav>
         <Logo />
         <div className="btn-container">
-          <Button className="btn" title="home" type="NavBtn" action="/" />
-          <Button className="btn" title="shop" type="shop" action="/shop" />
-          <Button className="btn" title="login" type="login" action="/login" />
+          <Button className="btn" title="home" type="nav" action="/" />
+          <Button className="btn" title="shop" type="nav" action="/shop" />
+          <Button className="btn" title="login" type="nav" action="/login" />
         </div>
       </Nav>
       <Outlet />

@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
-const LogoContainer = styled.div`
+const LogoContainer = styled(Link)`
   width: 280px;
   height: 50px;
 

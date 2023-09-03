@@ -3,7 +3,7 @@ import LogoContainer from "./styles.component";
 
 const Logo = () => {
   return (
-    <LogoContainer>
+    <LogoContainer to="/">
       <Shoppie className="logo" />
     </LogoContainer>
   );
