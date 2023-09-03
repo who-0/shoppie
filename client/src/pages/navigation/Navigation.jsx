@@ -1,8 +1,13 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Logo, Button } from "../../components";
 import Nav from "./Navigation.styles";
+import { useContext } from "react";
+// import { useAppContext } from "../../contexts/StylesContext";
 
 const Navigation = () => {
+  // const { color, route } = useAppContext();
+
+  // document.body.style.backgroundColor = color;
   return (
     <>
       <Nav>
