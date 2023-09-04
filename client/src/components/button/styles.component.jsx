@@ -3,6 +3,9 @@ import styled from "styled-components";
 const NavBtn = styled.button`
   width: 100px;
   height: 37px;
+  border: none;
+  outline: none;
+  margin: auto 5px;
   color: #424141;
   border-radius: 5px;
   text-transform: uppercase;

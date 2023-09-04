@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import BTN from "./styles.component";
 import React, { useContext } from "react";
-import { Context } from "../../contexts/StylesContext";
+import { Context } from "../../contexts/AppContexts";
 
 const getButton = (type) => {
   switch (type) {
@@ -16,12 +16,12 @@ const getButton = (type) => {
   }
 };
 
-const Button = ({ title, type, action }) => {
+const Button = ({ title, type, path }) => {
   const navigate = useNavigate();
-  const { color, route } = useContext(Context);
-  console.log(color, route);
+  const { changeLogo } = useContext(Context);
   const click = () => {
-    navigate(action);
+    navigate(path);
+    changeLogo(path);
   };
 
   const Btn = getButton(type);
