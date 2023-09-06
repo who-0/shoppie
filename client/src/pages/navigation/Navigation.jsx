@@ -9,7 +9,8 @@ const Navs = [
   { id: 3, name: "login", path: "/login" },
 ];
 const Navigation = () => {
-  const { changeColor, logo } = useContext(Context);
+  const { changeColor, logo, home_active, shop_active, login_active } =
+    useContext(Context);
   return (
     <>
       <Nav>
@@ -19,16 +20,19 @@ const Navigation = () => {
             name={Navs[0].name}
             path={Navs[0].path}
             changeColor={changeColor}
+            active={home_active}
           />
           <NavLink
             name={Navs[1].name}
             path={Navs[1].path}
             changeColor={changeColor}
+            active={shop_active}
           />
           <NavLink
             name={Navs[2].name}
             path={Navs[2].path}
             changeColor={changeColor}
+            active={login_active}
           />
         </div>
       </Nav>

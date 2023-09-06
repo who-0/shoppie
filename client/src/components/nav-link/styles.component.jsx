@@ -2,8 +2,8 @@ import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 
 const Navlink = styled(Link)`
-  background-color: white;
-  color: #424141;
+  background-color: ${(props) => (props.isactive ? props.color : "white")};
+  color: ${(props) => (props.isactive ? "white" : "#424141")};
   text-decoration: none;
   text-transform: uppercase;
   font-size: 1rem;
@@ -17,8 +17,7 @@ const Navlink = styled(Link)`
   align-items: center;
   margin: auto 5px;
 
-  &:hover,
-  &:active {
+  &:hover {
     background-color: ${(props) => props.color};
     color: white;
   }
