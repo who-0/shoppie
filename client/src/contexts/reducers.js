@@ -1,11 +1,11 @@
 const reducer = (state, action) => {
   switch (action.type) {
     case "/":
-      return { logo: "Logo1" };
+      return { logo: "logo_1", color: "#F7FDB6" };
     case "/shop":
-      return { logo: "Logo2" };
+      return { color: "#A4D792", logo: "logo_2" };
     case "/login":
-      return { logo: "Logo3" };
+      return { color: "#70A1D7", logo: "logo_3" };
     default:
       return state;
   }

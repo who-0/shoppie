@@ -1,10 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../../contexts/AppContexts";
+import "./styles.components";
+
 const body = document.body;
 
 const Home = () => {
+  const { color, changeColor } = useContext(Context);
+
   useEffect(() => {
-    body.style.background = "#F7FDB6";
-  }, []);
+    if (color !== "#F7FDB6") {
+      changeColor("/");
+    } else {
+      body.style.background = color;
+    }
+  }, [color]);
 
   return <div>This is a Home Page.</div>;
 };

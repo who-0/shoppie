@@ -1,4 +1,4 @@
 import Logo from "./logo/Logo.component";
-import Button from "./button/Button.component";
+import NavLink from "./nav-link/Navlink";
 
-export { Logo, Button };
+export { Logo, NavLink };

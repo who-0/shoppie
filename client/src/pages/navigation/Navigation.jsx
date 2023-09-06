@@ -1,16 +1,35 @@
 import { Outlet } from "react-router-dom";
-import { Logo, Button } from "../../components";
+import { Logo, NavLink } from "../../components";
 import Nav from "./Navigation.styles";
-
+import { useContext } from "react";
+import { Context } from "../../contexts/AppContexts";
+const Navs = [
+  { id: 1, name: "home", path: "/" },
+  { id: 2, name: "shop", path: "/shop" },
+  { id: 3, name: "login", path: "/login" },
+];
 const Navigation = () => {
+  const { changeColor, logo } = useContext(Context);
   return (
     <>
       <Nav>
-        <Logo />
+        <Logo name={logo} />
         <div className="btn-container">
-          <Button className="btn" title="home" type="nav" path="/" />
-          <Button className="btn" title="shop" type="nav" path="/shop" />
-          <Button className="btn" title="login" type="nav" path="/login" />
+          <NavLink
+            name={Navs[0].name}
+            path={Navs[0].path}
+            changeColor={changeColor}
+          />
+          <NavLink
+            name={Navs[1].name}
+            path={Navs[1].path}
+            changeColor={changeColor}
+          />
+          <NavLink
+            name={Navs[2].name}
+            path={Navs[2].path}
+            changeColor={changeColor}
+          />
         </div>
       </Nav>
       <Outlet />

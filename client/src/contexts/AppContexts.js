@@ -1,10 +1,15 @@
 import { useReducer, createContext } from "react";
+import { Navigate } from "react-router-dom";
 import reducer from "./reducers";
 
 const Context = createContext();
 
 const initialState = {
-  logo: "Logo1",
+  color: "#F7FDB6",
+  logo: "logo_1",
+  home_active: true,
+  shop_active: false,
+  login_active: false,
 };
 
 // const reducer = (state, action) => {
@@ -23,10 +28,12 @@ const initialState = {
 const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const changeLogo = (path) => dispatch({ type: path });
+  const changeColor = (path) => {
+    dispatch({ type: path });
+  };
 
   return (
-    <Context.Provider value={{ ...state, changeLogo }}>
+    <Context.Provider value={{ ...state, changeColor }}>
       {children}
     </Context.Provider>
   );
