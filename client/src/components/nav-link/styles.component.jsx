@@ -1,9 +1,10 @@
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import styles from "../../styles";
 
 const Navlink = styled(Link)`
   background-color: ${(props) => (props.isactive ? props.color : "white")};
-  color: ${(props) => (props.isactive ? "white" : "#424141")};
+  color: ${(props) => (props.isactive ? "white" : styles.color.nav_color)};
   text-decoration: none;
   text-transform: uppercase;
   font-size: 1rem;

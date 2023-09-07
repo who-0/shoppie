@@ -1,10 +1,11 @@
+import styles from "../styles";
 const reducer = (state, action) => {
   switch (action.type) {
     case "/":
       return {
         ...state,
         logo: "logo_1",
-        color: "#F7FDB6",
+        color: styles.color.home_color,
         home_active: true,
         shop_active: false,
         login_active: false,
@@ -12,7 +13,7 @@ const reducer = (state, action) => {
     case "/shop":
       return {
         ...state,
-        color: "#A4D792",
+        color: styles.color.shop_color,
         logo: "logo_2",
         home_active: false,
         shop_active: true,
@@ -21,7 +22,7 @@ const reducer = (state, action) => {
     case "/login":
       return {
         ...state,
-        color: "#70A1D7",
+        color: styles.color.login_color,
         logo: "logo_3",
         home_active: false,
         shop_active: false,

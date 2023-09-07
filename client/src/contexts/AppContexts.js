@@ -1,5 +1,5 @@
 import { useReducer, createContext } from "react";
-import { Navigate } from "react-router-dom";
+
 import reducer from "./reducers";
 
 const Context = createContext();

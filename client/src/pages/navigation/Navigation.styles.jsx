@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import styles from "../../styles";
 
 const Nav = styled.div`
-  background-color: #424141;
+  background-color: ${styles.color.nav_color};
   border-radius: 10px;
   margin: 10px 5px;
   display: flex;

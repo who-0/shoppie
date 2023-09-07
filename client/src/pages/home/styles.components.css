@@ -9,7 +9,7 @@
 }
 
 .content_conatiner_cs {
-  color: black;
+  color: #424141;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-weight: 900;
@@ -21,7 +21,7 @@
   align-items: center;
   margin: 1%;
 
-  text-shadow: -31px 67px 17px rgb(55, 55, 55);
+  /* text-shadow: -31px 67px 17px rgb(55, 55, 55); */
   font-family: "Bodoni Moda", serif;
 }
 
