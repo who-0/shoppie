@@ -98,17 +98,138 @@ const ImageContainer = styled.div`
     z-index: 3;
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1025px) {
     .circle_1_cs {
       width: 400px;
       height: 400px;
-      left: 290px;
+      left: 260px;
+    }
+    .circle_2_cs {
+      top: 117px;
+      left: 234px;
+      width: 70px;
+      height: 70px;
+      animation: circle2 2.2s alternate infinite ease-in;
+    }
+
+    @keyframes circle2 {
+      to {
+        top: 82px;
+        left: 254px;
+      }
+      from {
+        top: 117px;
+        left: 234px;
+      }
+    }
+
+    .circle_3_cs {
+      top: -228px;
+      left: 231px;
+      width: 50px;
+      height: 50px;
+      animation: circle3 2.5s alternate infinite ease-in;
+    }
+
+    @keyframes circle3 {
+      to {
+        top: -203px;
+        left: 274px;
+      }
+      from {
+        top: -228px;
+        left: 231px;
+      }
     }
     .img_bag_cs,
     .img_glass_cs,
     .img_hat_cs,
     .img_shoe_cs {
-      width: 20px;
+      width: 150px;
+    }
+    .img_bag_cs {
+      top: -72px;
+      left: 340px;
+    }
+    .img_glass_cs {
+      top: -255px;
+      left: 459px;
+    }
+    .img_hat_cs {
+      top: -117px;
+      left: 463px;
+    }
+    .img_shoe_cs {
+      top: -212px;
+      left: 341px;
+    }
+  }
+
+  @media screen and (max-width: 769px) {
+    .circle_1_cs {
+      width: 370px;
+      height: 370px;
+      top: -182px;
+      left: 101px;
+    }
+    .circle_2_cs {
+      top: 145px;
+      left: 47px;
+      width: 65px;
+      height: 65px;
+      animation: circle2 2.2s alternate infinite ease-in;
+    }
+
+    @keyframes circle2 {
+      to {
+        top: 108px;
+        left: 97px;
+      }
+      from {
+        top: 145px;
+        left: 47px;
+      }
+    }
+
+    .circle_3_cs {
+      top: -195px;
+      left: 109px;
+      width: 45px;
+      height: 45px;
+      animation: circle3 2.5s alternate infinite ease-in;
+    }
+
+    @keyframes circle3 {
+      to {
+        top: -180px;
+        left: 128px;
+      }
+      from {
+        top: -195px;
+        left: 109px;
+      }
+    }
+    .img_bag_cs,
+    .img_glass_cs,
+    .img_hat_cs,
+    .img_shoe_cs {
+      width: 150px;
+    }
+    .img_bag_cs {
+      top: -72px;
+      left: 164px;
+    }
+    .img_glass_cs {
+      top: -227px;
+      left: 261px;
+    }
+    .img_hat_cs {
+      top: -101px;
+      left: 281px;
+    }
+    .img_shoe_cs {
+      top: -194px;
+      left: 149px;
     }
   }
 `;

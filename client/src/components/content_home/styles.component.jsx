@@ -102,11 +102,28 @@ const ContentContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: 1024px) {
-    width: 40%;
+  @media screen and (max-width: 1025px) {
+    width: 45%;
     font-size: 1.1rem;
     .content_btn_cs {
       font-size: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 769px) {
+    width: 50%;
+    font-size: 1rem;
+    .content_btn_cs {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (max-width: 426px) {
+    width: 100%;
+    font-size: 0.6rem;
+    text-align: center;
+    .content_btn_cs {
+      font-size: 1.2rem;
     }
   }
 `;
