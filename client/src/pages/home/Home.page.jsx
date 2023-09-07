@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../../contexts/AppContexts";
-import { ReactComponent as Shoe } from "../../assets/shoe.svg";
-import "./styles.components.css";
+
+import Content from "../../components/content_home/Content.component";
+import Images from "../../components/img_home/Images.component";
+import Container from "./styles.components";
 
 const body = document.body;
-
 const Home = () => {
   const { color, changeColor } = useContext(Context);
 
@@ -18,15 +19,10 @@ const Home = () => {
   }, [color]);
 
   return (
-    <div className="container_cs">
-      <div className="content_conatiner_cs">
-        <h1>Life is</h1>
-        <div className="content_ani_cs">Eazy</div>
-      </div>
-      <div className="image-container_cs">
-        <Shoe />
-      </div>
-    </div>
+    <Container>
+      <Content />
+      <Images />
+    </Container>
   );
 };
 export default Home;

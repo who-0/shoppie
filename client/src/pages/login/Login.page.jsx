@@ -13,7 +13,10 @@ const Login = () => {
       body.style.background = color;
     }
     body.style.background = color;
+
+    // eslint-disable-next-line
   }, [color]);
-  return <div>This is Login Page.</div>;
+
+  return <div className="container"></div>;
 };
 export default Login;
