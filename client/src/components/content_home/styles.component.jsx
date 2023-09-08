@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 const ContentContainer = styled.div`
-  color: #424141;
+  color: #f79f79;
   font-family: "MuseoModerno", cursive;
   font-weight: 900;
   font-size: 1.5rem;
@@ -15,7 +15,7 @@ const ContentContainer = styled.div`
 
   .content_btn_cs {
     text-decoration: none;
-    background-color: #d9aa77;
+    background-color: #f79f79;
     font-size: 2.5rem;
     color: #424141;
     display: flex;
@@ -125,6 +125,17 @@ const ContentContainer = styled.div`
 
     .content_btn_cs {
       font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (max-width: 376px) {
+    width: 80%;
+    font-size: 0.69rem;
+    text-align: center;
+
+    .content_btn_cs {
+      width: 80%;
+      align-self: center;
     }
   }
 `;

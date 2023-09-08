@@ -9,6 +9,7 @@ const reducer = (state, action) => {
         home_active: true,
         shop_active: false,
         login_active: false,
+        menu_open: false,
       };
     case "/shop":
       return {
@@ -18,6 +19,7 @@ const reducer = (state, action) => {
         home_active: false,
         shop_active: true,
         login_active: false,
+        menu_open: false,
       };
     case "/login":
       return {
@@ -27,6 +29,7 @@ const reducer = (state, action) => {
         home_active: false,
         shop_active: false,
         login_active: true,
+        menu_open: false,
       };
     case "open_menu":
       return { ...state, menu_open: !state.menu_open };

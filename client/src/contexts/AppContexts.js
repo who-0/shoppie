@@ -5,7 +5,7 @@ import reducer from "./reducers";
 const Context = createContext();
 
 const initialState = {
-  color: "#F7FDB6",
+  color: "#f7d08a",
   logo: "logo_1",
   home_active: true,
   shop_active: false,
@@ -33,7 +33,6 @@ const Provider = ({ children }) => {
     dispatch({ type: path });
   };
   const menuOpen = () => {
-    console.log("hi");
     dispatch({ type: "open_menu" });
   };
 

@@ -10,7 +10,7 @@ const Home = () => {
   const { color, changeColor } = useContext(Context);
 
   useEffect(() => {
-    if (color !== "#F7FDB6") {
+    if (color !== "#f7d08a") {
       changeColor("/");
     } else {
       body.style.background = color;

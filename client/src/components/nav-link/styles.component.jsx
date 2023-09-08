@@ -25,10 +25,20 @@ const Navlink = styled(Link)`
 
   @media screen and (max-width: 426px) {
     width: 399px;
-    margin: 5px 0;
+    height: 50px;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    margin: 7px 0;
     border-radius: 50px;
-    border: 1px solid;
-    border-color: ${(props) => (props.isactive ? null : props.color)};
+    border: ${(props) =>
+      props.isactive ? "none" : `1px solid ${props.color}`};
+    box-shadow: ${(props) => (props.isactive ? "0px 3px 6px gray" : "none")};
+  }
+  @media screen and (max-width: 376px) {
+    width: 350px;
+  }
+  @media screen and (max-width: 321px) {
+    width: 295px;
   }
 `;
 

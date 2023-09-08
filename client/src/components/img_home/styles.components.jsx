@@ -8,7 +8,7 @@ const ImageContainer = styled.div`
   .circle_2_cs,
   .circle_3_cs {
     position: absolute;
-    background-color: #d9aa77;
+    background-color: #f79f79;
     border-radius: 100%;
     z-index: 1;
   }
@@ -232,6 +232,7 @@ const ImageContainer = styled.div`
       left: 149px;
     }
   }
+
   @media screen and (max-width: 426px) {
     margin-bottom: 70%;
     .circle_1_cs {
@@ -298,6 +299,143 @@ const ImageContainer = styled.div`
     .img_shoe_cs {
       top: -70px;
       left: 117px;
+    }
+  }
+  @media screen and (max-width: 376px) {
+    margin-bottom: 80%;
+    .circle_1_cs {
+      width: 260px;
+      height: 260px;
+      top: -1px;
+      left: 65px;
+    }
+    .circle_2_cs {
+      top: 228px;
+      left: 38px;
+      width: 45px;
+      height: 45px;
+      animation: circle2 2.2s alternate infinite ease-in;
+    }
+
+    @keyframes circle2 {
+      to {
+        top: 211px;
+        left: 81px;
+      }
+      from {
+        top: 228px;
+        left: 38px;
+      }
+    }
+
+    .circle_3_cs {
+      top: -23px;
+      left: 295px;
+      width: 25px;
+      height: 25px;
+      animation: circle3 2.5s alternate infinite ease-in;
+    }
+
+    @keyframes circle3 {
+      to {
+        top: 6px;
+        left: 270px;
+      }
+      from {
+        top: -23px;
+        left: 295px;
+      }
+    }
+    .img_bag_cs,
+    .img_glass_cs,
+    .img_hat_cs,
+    .img_shoe_cs {
+      width: 100px;
+    }
+    .img_bag_cs {
+      top: 45px;
+      left: 108px;
+    }
+    .img_glass_cs {
+      top: -65px;
+      left: 191px;
+    }
+    .img_hat_cs {
+      top: 45px;
+      left: 188px;
+    }
+    .img_shoe_cs {
+      top: -50px;
+      left: 107px;
+    }
+  }
+
+  @media screen and (max-width: 321px) {
+    margin-bottom: 88%;
+    .circle_1_cs {
+      width: 230px;
+      height: 230px;
+      top: -1px;
+      left: 46px;
+    }
+    .circle_2_cs {
+      top: 228px;
+      left: 38px;
+      width: 45px;
+      height: 45px;
+      animation: circle2 2.2s alternate infinite ease-in;
+    }
+
+    @keyframes circle2 {
+      to {
+        top: 211px;
+        left: 81px;
+      }
+      from {
+        top: 228px;
+        left: 38px;
+      }
+    }
+
+    .circle_3_cs {
+      top: -23px;
+      left: 256px;
+      width: 25px;
+      height: 25px;
+      animation: circle3 2.5s alternate infinite ease-in;
+    }
+
+    @keyframes circle3 {
+      to {
+        top: 0px;
+        left: 200px;
+      }
+      from {
+        top: -23px;
+        left: 256px;
+      }
+    }
+    .img_bag_cs,
+    .img_glass_cs,
+    .img_hat_cs,
+    .img_shoe_cs {
+      width: 100px;
+    }
+    .img_bag_cs {
+      top: 35px;
+      left: 75px;
+    }
+    .img_glass_cs {
+      top: -65px;
+      left: 141px;
+    }
+    .img_hat_cs {
+      top: 35px;
+      left: 138px;
+    }
+    .img_shoe_cs {
+      top: -50px;
+      left: 70px;
     }
   }
 `;
