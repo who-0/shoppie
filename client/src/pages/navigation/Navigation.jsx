@@ -3,19 +3,27 @@ import { Logo, NavLink } from "../../components";
 import Nav from "./Navigation.styles";
 import { useContext } from "react";
 import { Context } from "../../contexts/AppContexts";
+import { VscListSelection } from "react-icons/vsc";
 const Navs = [
   { id: 1, name: "home", path: "/" },
   { id: 2, name: "shop", path: "/shop" },
   { id: 3, name: "login", path: "/login" },
 ];
 const Navigation = () => {
-  const { changeColor, logo, home_active, shop_active, login_active } =
-    useContext(Context);
+  const {
+    changeColor,
+    logo,
+    home_active,
+    shop_active,
+    login_active,
+    menu_open,
+    menuOpen,
+  } = useContext(Context);
   return (
     <>
       <Nav>
         <Logo name={logo} />
-        <div className="btn-container">
+        <div className={`btn-container ${menu_open ? "show" : null}`}>
           <NavLink
             name={Navs[0].name}
             path={Navs[0].path}
@@ -35,6 +43,9 @@ const Navigation = () => {
             active={login_active}
           />
         </div>
+        <button className="menu_icon_container" onClick={menuOpen}>
+          <VscListSelection />
+        </button>
       </Nav>
       <Outlet />
     </>

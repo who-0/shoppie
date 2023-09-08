@@ -119,9 +119,10 @@ const ContentContainer = styled.div`
   }
 
   @media screen and (max-width: 426px) {
-    width: 100%;
+    /* width: auto; */
     font-size: 0.6rem;
     text-align: center;
+
     .content_btn_cs {
       font-size: 1.2rem;
     }

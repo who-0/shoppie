@@ -28,6 +28,8 @@ const reducer = (state, action) => {
         shop_active: false,
         login_active: true,
       };
+    case "open_menu":
+      return { ...state, menu_open: !state.menu_open };
     default:
       return state;
   }

@@ -10,6 +10,7 @@ const initialState = {
   home_active: true,
   shop_active: false,
   login_active: false,
+  menu_open: false,
 };
 
 // const reducer = (state, action) => {
@@ -31,9 +32,13 @@ const Provider = ({ children }) => {
   const changeColor = (path) => {
     dispatch({ type: path });
   };
+  const menuOpen = () => {
+    console.log("hi");
+    dispatch({ type: "open_menu" });
+  };
 
   return (
-    <Context.Provider value={{ ...state, changeColor }}>
+    <Context.Provider value={{ ...state, changeColor, menuOpen }}>
       {children}
     </Context.Provider>
   );

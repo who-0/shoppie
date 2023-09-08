@@ -232,6 +232,74 @@ const ImageContainer = styled.div`
       left: 149px;
     }
   }
+  @media screen and (max-width: 426px) {
+    margin-bottom: 70%;
+    .circle_1_cs {
+      width: 290px;
+      height: 290px;
+      top: -30px;
+      left: 76px;
+    }
+    .circle_2_cs {
+      top: 228px;
+      left: 38px;
+      width: 55px;
+      height: 55px;
+      animation: circle2 2.2s alternate infinite ease-in;
+    }
+
+    @keyframes circle2 {
+      to {
+        top: 211px;
+        left: 81px;
+      }
+      from {
+        top: 228px;
+        left: 38px;
+      }
+    }
+
+    .circle_3_cs {
+      top: -23px;
+      left: 354px;
+      width: 35px;
+      height: 35px;
+      animation: circle3 2.5s alternate infinite ease-in;
+    }
+
+    @keyframes circle3 {
+      to {
+        top: 6px;
+        left: 334px;
+      }
+      from {
+        top: -23px;
+        left: 354px;
+      }
+    }
+    .img_bag_cs,
+    .img_glass_cs,
+    .img_hat_cs,
+    .img_shoe_cs {
+      width: 120px;
+    }
+    .img_bag_cs {
+      top: 38px;
+      left: 108px;
+    }
+    .img_glass_cs {
+      top: -79px;
+      left: 203px;
+    }
+    .img_hat_cs {
+      top: 35px;
+      left: 188px;
+    }
+    .img_shoe_cs {
+      top: -70px;
+      left: 117px;
+    }
+  }
 `;
 
 export default ImageContainer;

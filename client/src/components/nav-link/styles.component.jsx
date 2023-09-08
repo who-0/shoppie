@@ -22,6 +22,14 @@ const Navlink = styled(Link)`
     background-color: ${(props) => props.color};
     color: white;
   }
+
+  @media screen and (max-width: 426px) {
+    width: 399px;
+    margin: 5px 0;
+    border-radius: 50px;
+    border: 1px solid;
+    border-color: ${(props) => (props.isactive ? null : props.color)};
+  }
 `;
 
 export default Navlink;
