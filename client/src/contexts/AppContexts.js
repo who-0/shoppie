@@ -5,7 +5,7 @@ import reducer from "./reducers";
 const Context = createContext();
 
 const initialState = {
-  color: "#f7d08a",
+  color: "#727d71",
   logo: "logo_1",
   home_active: true,
   shop_active: false,

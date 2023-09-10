@@ -8,7 +8,7 @@ const ImageContainer = styled.div`
   .circle_2_cs,
   .circle_3_cs {
     position: absolute;
-    background-color: #f79f79;
+    background-color: #abc4ab;
     border-radius: 100%;
     z-index: 1;
   }

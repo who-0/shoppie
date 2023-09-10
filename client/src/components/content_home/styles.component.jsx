@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 const ContentContainer = styled.div`
-  color: #f79f79;
+  color: white;
   font-family: "MuseoModerno", cursive;
   font-weight: 900;
   font-size: 1.5rem;
@@ -15,8 +15,9 @@ const ContentContainer = styled.div`
 
   .content_btn_cs {
     text-decoration: none;
-    background-color: #f79f79;
-    font-size: 2.5rem;
+    background-color: #abc4ab;
+    width: 80%;
+    /* font-size: 2.5rem; */
     color: #424141;
     display: flex;
     justify-content: center;
@@ -29,7 +30,7 @@ const ContentContainer = styled.div`
     transition: all 0.2s;
 
     &:hover {
-      background-color: #eea04e;
+      background-color: #9fd49f;
     }
     &:after {
       content: "";
@@ -42,7 +43,7 @@ const ContentContainer = styled.div`
     }
 
     &:hover::after {
-      border: 2px solid #fc8c14;
+      border: 2px solid #9fd49f;
       transform: scale(1);
       animation: content_btn 0.5s infinite ease-out;
     }
@@ -75,7 +76,7 @@ const ContentContainer = styled.div`
     }
 
     &:hover::before {
-      border: 2px solid #fc8c14;
+      border: 2px solid #9fd49f;
       transform: scale(1);
       animation: content_btn 1s infinite ease-in;
     }
@@ -106,7 +107,8 @@ const ContentContainer = styled.div`
     width: 45%;
     font-size: 1.1rem;
     .content_btn_cs {
-      font-size: 2rem;
+      width: 80%;
+      /* font-size: 2rem; */
     }
   }
 
@@ -114,7 +116,7 @@ const ContentContainer = styled.div`
     width: 50%;
     font-size: 1rem;
     .content_btn_cs {
-      font-size: 1.2rem;
+      width: 85%;
     }
   }
 
@@ -124,7 +126,7 @@ const ContentContainer = styled.div`
     text-align: center;
 
     .content_btn_cs {
-      font-size: 1.2rem;
+      width: 90%;
     }
   }
 

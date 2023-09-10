@@ -31,6 +31,16 @@ const reducer = (state, action) => {
         login_active: true,
         menu_open: false,
       };
+    case "/signup":
+      return {
+        ...state,
+        color: styles.color.login_color,
+        logo: "logo_3",
+        home_active: false,
+        shop_active: false,
+        login_active: true,
+        menu_open: false,
+      };
     case "open_menu":
       return { ...state, menu_open: !state.menu_open };
     default:

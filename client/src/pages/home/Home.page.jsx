@@ -3,14 +3,14 @@ import { Context } from "../../contexts/AppContexts";
 
 import Content from "../../components/content_home/Content.component";
 import Images from "../../components/img_home/Images.component";
-import Container from "./styles.components";
+import Container from "./styles.page";
 
 const body = document.body;
 const Home = () => {
   const { color, changeColor } = useContext(Context);
 
   useEffect(() => {
-    if (color !== "#f7d08a") {
+    if (color !== "#727d71") {
       changeColor("/");
     } else {
       body.style.background = color;
