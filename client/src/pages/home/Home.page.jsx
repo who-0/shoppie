@@ -1,16 +1,17 @@
 import React, { useContext, useEffect } from "react";
-import { Context } from "../../contexts/AppContexts";
+import { Context } from "contexts/AppContexts";
 
-import Content from "../../components/content_home/Content.component";
-import Images from "../../components/img_home/Images.component";
+import { Content, Images } from "components";
+
 import Container from "./styles.page";
+import colors from "colors";
 
 const body = document.body;
 const Home = () => {
   const { color, changeColor } = useContext(Context);
 
   useEffect(() => {
-    if (color !== "#727d71") {
+    if (color !== colors.home_color) {
       changeColor("/");
     } else {
       body.style.background = color;

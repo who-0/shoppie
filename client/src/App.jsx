@@ -2,14 +2,13 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   Home,
-  Login,
+  Auth,
   Orders,
   Profile,
   Shop,
-  Signup,
   ProtectedPage,
   Navigation,
-} from "./pages";
+} from "pages";
 
 import {
   AdminDashboard,
@@ -17,19 +16,18 @@ import {
   AdminProducts,
   AdminUsers,
   AdminShareLayout,
-} from "./pages/admin";
-// import "./index.scss";
+} from "pages/admin";
+
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
+          <Route path="auth" element={<Auth />} />
           <Route path="orders" element={<Orders />} />
           <Route path="shop" element={<Shop />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="signup" element={<Signup />} />
           <Route
             path="admin"
             element={

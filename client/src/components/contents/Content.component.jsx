@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ReactComponent as BtnLogo } from "../../assets/btn_logo.svg";
+import { BtnLogo } from "assets";
 import ContentContainer from "./styles.component.jsx";
 
 const Content = () => {

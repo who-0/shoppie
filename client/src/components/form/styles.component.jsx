@@ -1,15 +1,17 @@
 import styled from "styled-components";
+import colors from "colors";
 
-const FormCustom = styled.form`
+const Wrapper = styled.form`
   width: 40%;
-  height: 40%;
+  height: ${(props) => (props.signup ? "55%" : "40%")};
   margin: 3% 0 10% 0;
-  background-color: #04395e;
+  background-color: ${colors.nav_color};
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border-radius: 2vmax;
+  transition: all 0.2s;
 
   form {
     display: flex;
@@ -37,6 +39,7 @@ const FormCustom = styled.form`
 
   .signup_link {
     text-decoration: none;
+    text-transform: capitalize;
     color: #70a1d7;
   }
 
@@ -60,4 +63,4 @@ const FormCustom = styled.form`
   }
 `;
 
-export default FormCustom;
+export default Wrapper;

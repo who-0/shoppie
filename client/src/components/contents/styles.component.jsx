@@ -1,3 +1,4 @@
+import colors from "colors";
 import { styled } from "styled-components";
 
 const ContentContainer = styled.div`
@@ -15,10 +16,9 @@ const ContentContainer = styled.div`
 
   .content_btn_cs {
     text-decoration: none;
-    background-color: #abc4ab;
+    background-color: ${colors.content_btn};
     width: 80%;
     /* font-size: 2.5rem; */
-    color: #424141;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ const ContentContainer = styled.div`
     transition: all 0.2s;
 
     &:hover {
-      background-color: #9fd49f;
+      background-color: ${colors.content_btn_hover};
     }
     &:after {
       content: "";
@@ -43,7 +43,7 @@ const ContentContainer = styled.div`
     }
 
     &:hover::after {
-      border: 2px solid #9fd49f;
+      border: 2px solid ${colors.content_btn_hover};
       transform: scale(1);
       animation: content_btn 0.5s infinite ease-out;
     }
@@ -76,7 +76,7 @@ const ContentContainer = styled.div`
     }
 
     &:hover::before {
-      border: 2px solid #9fd49f;
+      border: 2px solid ${colors.content_btn_hover};
       transform: scale(1);
       animation: content_btn 1s infinite ease-in;
     }

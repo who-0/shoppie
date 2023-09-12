@@ -1,14 +1,14 @@
 import { Outlet } from "react-router-dom";
-import { Logo, NavLink } from "../../components";
+import { Logo, NavLink } from "components";
 import Nav from "./Navigation.styles";
 import { useContext } from "react";
-import { Context } from "../../contexts/AppContexts";
-import MenuIcon from "../../components/menu_icon/MenuIcon.component";
+import { Context } from "contexts/AppContexts";
+import { MenuIcon } from "components";
 
 const Navs = [
   { id: 1, name: "home", path: "/" },
   { id: 2, name: "shop", path: "/shop" },
-  { id: 3, name: "login", path: "/login" },
+  { id: 3, name: "login", path: "/auth" },
 ];
 const Navigation = () => {
   const {
@@ -16,7 +16,7 @@ const Navigation = () => {
     logo,
     home_active,
     shop_active,
-    login_active,
+    auth_active,
     menu_open,
   } = useContext(Context);
   return (
@@ -40,7 +40,7 @@ const Navigation = () => {
             name={Navs[2].name}
             path={Navs[2].path}
             changeColor={changeColor}
-            active={login_active}
+            active={auth_active}
           />
         </div>
         <MenuIcon />

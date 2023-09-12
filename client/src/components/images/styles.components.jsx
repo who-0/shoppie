@@ -1,3 +1,4 @@
+import colors from "colors";
 import { styled } from "styled-components";
 
 const ImageContainer = styled.div`
@@ -8,7 +9,7 @@ const ImageContainer = styled.div`
   .circle_2_cs,
   .circle_3_cs {
     position: absolute;
-    background-color: #abc4ab;
+    background-color: ${colors.content_btn};
     border-radius: 100%;
     z-index: 1;
   }

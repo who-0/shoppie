@@ -1,16 +1,16 @@
 import { styled } from "styled-components";
-
+import colors from "colors";
 const Btn = styled.button`
   font-size: 1.3rem;
   padding: 5px 25px;
   border: none;
   outline: none;
-  color: #003249;
+  color: ${colors.btn_color};
   transition: all 0.2s;
   text-transform: capitalize;
 
   &:hover {
-    background-color: #0d47a1;
+    background-color: ${colors.login_color};
     color: white;
   }
 `;

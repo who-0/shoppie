@@ -1,7 +1,4 @@
-import { ReactComponent as Shoe } from "../../assets/shoe.svg";
-import { ReactComponent as Glass } from "../../assets/glass.svg";
-import { ReactComponent as Hat } from "../../assets/hat.svg";
-import { ReactComponent as Bag } from "../../assets/side_bag_pack.svg";
+import { Shoe, Glass, Hat, Bag } from "assets";
 import ImageContainer from "./styles.components";
 
 const Images = () => {

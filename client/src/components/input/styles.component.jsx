@@ -9,9 +9,19 @@ const InputCS = styled.input`
   outline: none;
   padding-left: 10px;
   transition: all 0.3s;
+  animation: inputani 0.6s alternate ease-in 1;
 
   &:focus {
     box-shadow: 1px 10px 5px black;
+  }
+
+  @keyframes inputani {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @media screen and (max-width: 1025px) {

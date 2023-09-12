@@ -1,25 +1,28 @@
 import { useContext, useEffect, useState } from "react";
-import { Context } from "../../contexts/AppContexts";
+import { Context } from "contexts/AppContexts";
 
 import LoginCS from "./styles.page";
 
-import Form from "../../components/form/Form.component";
+import { Form } from "components";
+import colors from "colors";
 
 const body = document.body;
 
 const defaultState = {
   email: "",
   password: "",
+  uname: "",
+  cpassword: "",
 };
 
-const Login = () => {
-  const { color, changeColor } = useContext(Context);
+const Auth = () => {
+  const { color, changeColor, submitAuth } = useContext(Context);
 
   const [formField, setFormField] = useState(defaultState);
 
   useEffect(() => {
-    if (color !== "#70A1D7") {
-      changeColor("/login");
+    if (color !== colors.login_color) {
+      changeColor("/auth");
     } else {
       body.style.background = color;
     }
@@ -28,7 +31,8 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    console.log(formField);
+    submitAuth(formField);
   };
 
   const handleChange = (e) => {
@@ -47,4 +51,4 @@ const Login = () => {
     </LoginCS>
   );
 };
-export default Login;
+export default Auth;
