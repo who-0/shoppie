@@ -1,18 +1,24 @@
 import express from "express";
-import authRouter from "./routes/auth.router.js";
+import morgan from "morgan";
+import "express-async-errors";
+
+import { authRouter } from "./routes/index.js";
+import {
+  errorHandlerMiddleware,
+  notFoundMiddleware,
+} from "./middlewares/index.js";
+
 const app = express();
 
+//!Function
 app.use(express.json());
+app.use(morgan("tiny"));
 
 //!Routes
-app.use("/api/v1", authRouter);
+app.use("/api/v1/auth", authRouter);
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
-app.get("/*", (req, res) => {
-  res.status(404).json({ error: "Page Not Found" });
-});
+//!middleware
+app.use(errorHandlerMiddleware);
+app.use(notFoundMiddleware);
 
 export default app;

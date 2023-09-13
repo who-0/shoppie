@@ -1,11 +1,8 @@
 import express from "express";
-
+import { signupController,loginController } from "../controllers/index.js";
 const authRouter = express.Router();
 
-authRouter.post("/auth", (req, res) => {
-  const { email, password } = req.body;
-  console.log(req.body);
-  res.status(200).send("data recieve successful!");
-});
+authRouter.route("/signup").post(signupController);
+authRouter.route("/login").post(loginController);
 
 export default authRouter;

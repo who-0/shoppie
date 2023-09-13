@@ -12,6 +12,7 @@ const LoginCS = styled.div`
   .title {
     font-family: "Anton", sans-serif;
     font-size: 4rem;
+    text-transform: capitalize;
     color: ${colors.login_header_color};
   }
 `;

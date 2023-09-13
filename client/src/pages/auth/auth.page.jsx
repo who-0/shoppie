@@ -16,7 +16,8 @@ const defaultState = {
 };
 
 const Auth = () => {
-  const { color, changeColor, submitAuth } = useContext(Context);
+  const { color, changeColor, submitAuth, signup, displayAlert } =
+    useContext(Context);
 
   const [formField, setFormField] = useState(defaultState);
 
@@ -31,8 +32,16 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formField);
-    submitAuth(formField);
+    const { password, cpassword, email, uname } = formField;
+    if (!email || !uname || !password || !cpassword)
+      return displayAlert("please all input required!");
+    if (signup) {
+      if (password !== cpassword)
+        return displayAlert("password doesn't match. please try again.");
+      submitAuth({ uname, email, password });
+    } else {
+      submitAuth({ email, password });
+    }
   };
 
   const handleChange = (e) => {
@@ -42,7 +51,7 @@ const Auth = () => {
 
   return (
     <LoginCS>
-      <h2 className="title">Login</h2>
+      <h2 className="title">{signup ? "signup" : "login"}</h2>
       <Form
         handleSubmit={handleSubmit}
         handleChange={handleChange}

@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom";
 import { Logo, NavLink } from "components";
-import Nav from "./Navigation.styles";
 import { useContext } from "react";
 import { Context } from "contexts/AppContexts";
 import { MenuIcon } from "components";
+import Nav from "./Navigation.styles";
+
+import { HOME, SHOP, AUTH } from "contexts/actions";
 
 const Navs = [
-  { id: 1, name: "home", path: "/" },
-  { id: 2, name: "shop", path: "/shop" },
-  { id: 3, name: "login", path: "/auth" },
+  { id: 1, name: "home", action: HOME },
+  { id: 2, name: "shop", action: SHOP },
+  { id: 3, name: "login", action: AUTH },
 ];
 const Navigation = () => {
   const {
@@ -26,21 +28,24 @@ const Navigation = () => {
         <div className={`btn-container ${menu_open ? "show" : null}`}>
           <NavLink
             name={Navs[0].name}
-            path={Navs[0].path}
+            action={Navs[0].path}
             changeColor={changeColor}
             active={home_active}
+            path="/"
           />
           <NavLink
             name={Navs[1].name}
-            path={Navs[1].path}
+            action={Navs[1].path}
             changeColor={changeColor}
             active={shop_active}
+            path="/shop"
           />
           <NavLink
             name={Navs[2].name}
-            path={Navs[2].path}
+            action={Navs[2].path}
             changeColor={changeColor}
             active={auth_active}
+            path="/auth"
           />
         </div>
         <MenuIcon />

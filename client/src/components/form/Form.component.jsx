@@ -4,13 +4,15 @@ import Input from "../input/Input.component";
 import Wrapper from "./styles.component";
 import { useContext } from "react";
 import { Context } from "contexts/AppContexts";
+import Alert from "components/alert/Alert.component";
 
 const Form = ({ handleSubmit, handleChange, formField }) => {
-  const { signUpUser, signup } = useContext(Context);
+  const { signUpUser, signup, alert, alert_msg } = useContext(Context);
   const { email, password, uname, cpassword } = formField;
 
   return (
     <Wrapper signup={+signup} onSubmit={handleSubmit}>
+      {alert && <Alert msg={alert_msg} />}
       {signup && (
         <Input
           type="text"
@@ -45,7 +47,7 @@ const Form = ({ handleSubmit, handleChange, formField }) => {
       )}
       <div className="btn_container">
         <Button type="button" name="google" />
-        <Button type="submit" name="login" />
+        <Button type="submit" name={`${signup ? "signup" : "login"}`} />
       </div>
 
       <p>

@@ -7,6 +7,8 @@ const colors = {
   btn_color: "#003249",
   content_btn: "#abc4ab",
   content_btn_hover: "#9fd49f",
+  alert_error_color: "#ff1d1d",
+  alert_error_bg_color: "#f38585",
 };
 
 export default colors;

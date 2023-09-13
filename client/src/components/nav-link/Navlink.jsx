@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import Navlink from "./styles.component";
 import { Context } from "contexts/AppContexts";
-const NavLink = ({ name, path, changeColor, active }) => {
+const NavLink = ({ name, action, changeColor, active, path }) => {
   const { color } = useContext(Context);
   return (
     <Navlink
       to={path}
-      onClick={() => changeColor(path)}
+      onClick={() => changeColor(action)}
       color={color}
       isactive={+active} //+ sign is solve the error false non boolean value
     >

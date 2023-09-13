@@ -3,7 +3,7 @@ import colors from "colors";
 
 const Wrapper = styled.form`
   width: 40%;
-  height: ${(props) => (props.signup ? "55%" : "40%")};
+  height: ${(props) => (props.signup ? "65%" : "40%")};
   margin: 3% 0 10% 0;
   background-color: ${colors.nav_color};
   display: flex;

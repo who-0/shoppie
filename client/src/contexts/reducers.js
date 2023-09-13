@@ -1,7 +1,17 @@
 import colors from "colors";
+import {
+  HOME,
+  SHOP,
+  AUTH,
+  USER_SIGNUP,
+  OPEN_MENU,
+  SUBMIT_AUTH,
+  DISPLAY_ERROR,
+  CLEAR_ERROR,
+} from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
-    case "/":
+    case HOME:
       return {
         ...state,
         logo: "logo_1",
@@ -11,7 +21,7 @@ const reducer = (state, action) => {
         auth_active: false,
         menu_open: false,
       };
-    case "/shop":
+    case SHOP:
       return {
         ...state,
         color: colors.shop_color,
@@ -21,7 +31,7 @@ const reducer = (state, action) => {
         auth_active: false,
         menu_open: false,
       };
-    case "/auth":
+    case AUTH:
       return {
         ...state,
         color: colors.login_color,
@@ -31,12 +41,16 @@ const reducer = (state, action) => {
         auth_active: true,
         menu_open: false,
       };
-    case "user_signup":
+    case USER_SIGNUP:
       return { ...state, signup: !state.signup };
-    case "open_menu":
+    case OPEN_MENU:
       return { ...state, menu_open: !state.menu_open };
-    case "submit_auth":
+    case SUBMIT_AUTH:
       return { ...state, loading: true };
+    case DISPLAY_ERROR:
+      return { ...state, alert: true, alert_msg: action.payload };
+    case CLEAR_ERROR:
+      return { ...state, alert: false };
     default:
       return state;
   }
