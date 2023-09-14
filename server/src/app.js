@@ -1,13 +1,13 @@
-import "express-async-errors";
-import express from "express";
-import morgan from "morgan";
-import cookie from "cookie-parser";
-import helmet from "helmet";
-import { authRouter } from "./routes/index.js";
-import {
+require("express-async-errors");
+const express = require("express");
+const morgan = require("morgan");
+const cookie = require("cookie-parser");
+const helmet = require("helmet");
+const { authRouter } = require("./routes");
+const {
   errorHandlerMiddleware,
   notFoundMiddleware,
-} from "./middlewares/index.js";
+} = require("./middlewares/index.js");
 
 const app = express();
 
@@ -26,4 +26,4 @@ app.use("/api/v1/auth", authRouter);
 app.use(errorHandlerMiddleware);
 app.use(notFoundMiddleware);
 
-export default app;
+module.exports = app;

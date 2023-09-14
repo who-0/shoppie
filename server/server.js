@@ -1,16 +1,15 @@
-import { config } from "dotenv";
-config();
-import http from "http";
-import app from "./src/app.js";
-import { connectDB, dbDisconnect } from "./src/config/db.js";
+require("dotenv").config();
+const http = require("http");
+const app = require("./src/app");
+const { connectDB, dbDisconnect } = require("./src/config/db");
 
 const PORT = process.env.PORT || 5000;
-const url = process.env.MONGO_URL;
+
 const server = http.createServer(app);
 
 (async () => {
   try {
-    await connectDB(url);
+    await connectDB();
     server.listen(PORT, () => {
       console.log(`Listening on port ${PORT}`);
     });

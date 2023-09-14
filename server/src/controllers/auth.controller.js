@@ -1,7 +1,7 @@
-import { StatusCodes } from "http-status-codes";
-import { User } from "../models/index.js";
-import { BadRequestError, UnAuthenticatedError } from "../errors/index.js";
-import attachCookie from "../utils/attachCookie.js";
+const { StatusCodes } = require("http-status-codes");
+const { User } = require("../models");
+const { BadRequestError, UnAuthenticatedError } = require("../errors");
+const attachCookie = require("../utils/attachCookie");
 
 const signupController = async (req, res) => {
   const { email, password, uname } = req.body;
@@ -49,4 +49,4 @@ const loginController = async (req, res) => {
   res.status(StatusCodes.OK).json({ user, token });
 };
 
-export { signupController, loginController };
+module.exports = { signupController, loginController };

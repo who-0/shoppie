@@ -1,4 +1,4 @@
-import errorHandlerMiddleware from "./errorHandler.js";
-import notFoundMiddleware from "./notFound.js";
+const errorHandlerMiddleware = require("./errorHandler");
+const notFoundMiddleware = require("./notFound");
 
-export { errorHandlerMiddleware, notFoundMiddleware };
+module.exports = { errorHandlerMiddleware, notFoundMiddleware };

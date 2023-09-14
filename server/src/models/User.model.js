@@ -1,9 +1,7 @@
-import { config } from "dotenv";
-config();
-import mongoose from "mongoose";
-import validator from "validator";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+const mongoose = require("mongoose");
+const validator = require("validator");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 const key = process.env.SECRET_KEY;
 
@@ -56,4 +54,4 @@ UserSchema.methods.comparePassword = async function (userPassword) {
   return isMatch;
 };
 
-export default mongoose.model("User", UserSchema);
+module.exports = mongoose.model("User", UserSchema);

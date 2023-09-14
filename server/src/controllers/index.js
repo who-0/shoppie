@@ -1,3 +1,3 @@
-import { signupController, loginController } from "./auth.controller.js";
+const { signupController, loginController } = require("./auth.controller");
 
-export { signupController, loginController };
+module.exports = { signupController, loginController };

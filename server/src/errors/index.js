@@ -1,3 +1,3 @@
-import BadRequestError from "./badRequestError.js";
-import UnAuthenticatedError from "./unAuthenticated.js";
-export { BadRequestError, UnAuthenticatedError };
+const BadRequestError = require("./badRequestError");
+const UnAuthenticatedError = require("./unAuthenticated");
+module.exports = { BadRequestError, UnAuthenticatedError };
