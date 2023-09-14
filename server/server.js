@@ -6,10 +6,9 @@ import { connectDB, dbDisconnect } from "./src/config/db.js";
 
 const PORT = process.env.PORT || 5000;
 const url = process.env.MONGO_URL;
-
 const server = http.createServer(app);
 
-const start = async () => {
+(async () => {
   try {
     await connectDB(url);
     server.listen(PORT, () => {
@@ -19,5 +18,4 @@ const start = async () => {
     dbDisconnect();
     console.log(error);
   }
-};
-start();
+})();

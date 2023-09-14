@@ -1,6 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import { User } from "../models/index.js";
 import { BadRequestError, UnAuthenticatedError } from "../errors/index.js";
+import attachCookie from "../utils/attachCookie.js";
 
 const signupController = async (req, res) => {
   const { email, password, uname } = req.body;
@@ -16,8 +17,10 @@ const signupController = async (req, res) => {
   }
 
   const user = await User.create({ email, password, name: uname });
+  const token = user.createJWT();
+  attachCookie({ res, token });
 
-  res.status(StatusCodes.OK).json(user);
+  res.status(StatusCodes.OK).json({ user, token });
 };
 
 const loginController = async (req, res) => {
@@ -27,13 +30,23 @@ const loginController = async (req, res) => {
     throw new BadRequestError("Please Provide All Values");
   }
 
-  const user = await User.findOne({ email }).select("+password");
-
+  const user = await User.findOne({ email })
+    .select("+password")
+    .select("+role");
   if (!user) {
     throw new UnAuthenticatedError("Invalid Credentials");
   }
 
-  res.status(StatusCodes.OK).json(user);
+  const isPasswordCorrect = await user.comparePassword(password);
+  if (!isPasswordCorrect) {
+    throw new UnAuthenticatedError("Invalid Password");
+  }
+
+  user.password = undefined;
+  const token = user.createJWT();
+  attachCookie({ res, token });
+
+  res.status(StatusCodes.OK).json({ user, token });
 };
 
 export { signupController, loginController };
