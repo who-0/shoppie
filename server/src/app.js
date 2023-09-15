@@ -15,9 +15,9 @@ if (process.env.NODE_ENV !== "productions") {
   app.use(morgan("dev"));
 }
 //!Function
+app.use(helmet());
 app.use(express.json());
 app.use(cookie());
-app.use(helmet());
 
 //!Routes
 app.use("/api/v1/auth", authRouter);

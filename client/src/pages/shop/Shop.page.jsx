@@ -1,6 +1,8 @@
 import { useContext, useEffect } from "react";
 import { Context } from "contexts/AppContexts";
 import colors from "colors";
+import { SHOP } from "contexts/actions";
+
 
 const body = document.body;
 
@@ -9,7 +11,7 @@ const Shop = () => {
 
   useEffect(() => {
     if (color !== colors.shop_color) {
-      changeColor("/shop");
+      changeColor(SHOP);
     } else {
       body.style.background = color;
     }

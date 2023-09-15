@@ -7,12 +7,12 @@ import { Context } from "contexts/AppContexts";
 import Alert from "components/alert/Alert.component";
 
 const Form = ({ handleSubmit, handleChange, formField }) => {
-  const { signUpUser, signup, alert, alert_msg } = useContext(Context);
+  const { signUpUser, signup, alert } = useContext(Context);
   const { email, password, uname, cpassword } = formField;
 
   return (
     <Wrapper signup={+signup} onSubmit={handleSubmit}>
-      {alert && <Alert msg={alert_msg} />}
+      {alert && <Alert />}
       {signup && (
         <Input
           type="text"
@@ -42,7 +42,7 @@ const Form = ({ handleSubmit, handleChange, formField }) => {
           name="cpassword"
           value={cpassword}
           handleChange={handleChange}
-          text="Password"
+          text="Confirme Password"
         />
       )}
       <div className="btn_container">

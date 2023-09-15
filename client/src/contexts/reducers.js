@@ -3,14 +3,26 @@ import {
   HOME,
   SHOP,
   AUTH,
+  PROFILE,
   USER_SIGNUP,
   OPEN_MENU,
-  SUBMIT_AUTH,
   DISPLAY_ERROR,
   CLEAR_ERROR,
+  SUBMIT_AUTH_SUCCESS,
+  SUBMIT_AUTH_START,
+  SUBMIT_AUTH_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
+    case DISPLAY_ERROR:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload,
+        alert_type: "error",
+      };
+    case CLEAR_ERROR:
+      return { ...state, alert: false, alert_msg: "", alert_type: "" };
     case HOME:
       return {
         ...state,
@@ -19,7 +31,11 @@ const reducer = (state, action) => {
         home_active: true,
         shop_active: false,
         auth_active: false,
+        profile_active: false,
         menu_open: false,
+        alert: false,
+        alert_msg: "",
+        alert_type: "",
       };
     case SHOP:
       return {
@@ -29,7 +45,11 @@ const reducer = (state, action) => {
         home_active: false,
         shop_active: true,
         auth_active: false,
+        profile_active: false,
         menu_open: false,
+        alert: false,
+        alert_msg: "",
+        alert_type: "",
       };
     case AUTH:
       return {
@@ -39,18 +59,49 @@ const reducer = (state, action) => {
         home_active: false,
         shop_active: false,
         auth_active: true,
+        profile_active: false,
         menu_open: false,
+        alert: false,
+        alert_msg: "",
+        alert_type: "",
+      };
+    case PROFILE:
+      return {
+        ...state,
+        color: colors.login_color,
+        logo: "logo_3",
+        home_active: false,
+        shop_active: false,
+        auth_active: false,
+        profile_active: true,
+        menu_open: false,
+        alert: false,
+        alert_msg: "",
+        alert_type: "",
       };
     case USER_SIGNUP:
       return { ...state, signup: !state.signup };
     case OPEN_MENU:
       return { ...state, menu_open: !state.menu_open };
-    case SUBMIT_AUTH:
+    case SUBMIT_AUTH_START:
       return { ...state, loading: true };
-    case DISPLAY_ERROR:
-      return { ...state, alert: true, alert_msg: action.payload };
-    case CLEAR_ERROR:
-      return { ...state, alert: false };
+    case SUBMIT_AUTH_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        token: action.payload.token,
+        userId: action.payload.id,
+        alert: true,
+        alert_type: "success",
+        alert_msg: action.payload.success,
+      };
+    case SUBMIT_AUTH_ERROR:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload.msg,
+        alert_type: "error",
+      };
     default:
       return state;
   }

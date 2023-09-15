@@ -9,6 +9,8 @@ const colors = {
   content_btn_hover: "#9fd49f",
   alert_error_color: "#ff1d1d",
   alert_error_bg_color: "#f38585",
+  alert_success_color: "#14db43",
+  alert_success_bg_color: "#8cf5a9",
 };
 
 export default colors;

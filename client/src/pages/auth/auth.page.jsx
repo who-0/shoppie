@@ -1,10 +1,10 @@
+import colors from "colors";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "contexts/AppContexts";
-
-import LoginCS from "./styles.page";
-
+import { useNavigate } from "react-router-dom";
 import { Form } from "components";
-import colors from "colors";
+import LoginCS from "./styles.page";
+import { AUTH } from "contexts/actions";
 
 const body = document.body;
 
@@ -16,28 +16,34 @@ const defaultState = {
 };
 
 const Auth = () => {
-  const { color, changeColor, submitAuth, signup, displayAlert } =
+  const { color, changeColor, submitAuth, signup, displayAlert, userId } =
     useContext(Context);
-
   const [formField, setFormField] = useState(defaultState);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (color !== colors.login_color) {
-      changeColor("/auth");
+      changeColor(AUTH);
     } else {
       body.style.background = color;
     }
+    if (userId) {
+      setTimeout(() => {
+        navigate("/shop");
+      }, 3000);
+    }
     // eslint-disable-next-line
-  }, [color]);
+  }, [color, userId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { password, cpassword, email, uname } = formField;
-    if (!email || !uname || !password || !cpassword)
-      return displayAlert("please all input required!");
+    if (!email || !password) return displayAlert("please all input required!");
     if (signup) {
-      if (password !== cpassword)
+      if (password !== cpassword) {
         return displayAlert("password doesn't match. please try again.");
+      } else if (!uname) {
+        return displayAlert("Username is require.");
+      }
       submitAuth({ uname, email, password });
     } else {
       submitAuth({ email, password });

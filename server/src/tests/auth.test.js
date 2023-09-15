@@ -15,6 +15,50 @@ describe("TEST Auth API", () => {
     await dbDisconnect();
   });
 
+  describe("Test POST Signup /auth/signup", () => {
+    const testSignup = {
+      uname: "test",
+      email: "test@gmail.com",
+      password: "test123",
+    };
+    const testSignupNoEmail = {
+      uname: "test",
+      password: "test123",
+    };
+
+    it("Signup test user should return 200", async () => {
+      const response = await request(app)
+        .post("/api/v1/auth/signup")
+        .send(testSignup)
+        .expect("Content-Type", /json/);
+
+      const requestEmail = testSignup.email;
+      const responseEmail = response.body.user.email;
+      expect(response.statusCode).toBe(StatusCodes.OK);
+      expect(responseEmail).toBe(requestEmail);
+    });
+
+    it(`Error Signup with no value should return ${StatusCodes.BAD_REQUEST}`, async () => {
+      const response = await request(app)
+        .post("/api/v1/auth/signup")
+        .send(testSignupNoEmail)
+        .expect("Content-Type", /json/);
+
+      expect(response.statusCode).toBe(StatusCodes.BAD_REQUEST);
+      expect(response.body.msg).toBe("Please Provide All Values");
+    });
+
+    it(`Error Signup with Exist email should return ${StatusCodes.BAD_REQUEST}`, async () => {
+      const response = await request(app)
+        .post("/api/v1/auth/signup")
+        .send(testSignup)
+        .expect("Content-Type", /json/);
+
+      expect(response.statusCode).toBe(StatusCodes.BAD_REQUEST);
+      expect(response.body.msg).toBe("Email already in user");
+    });
+  });
+
   describe("Test POST Login /auth/login", () => {
     const testLogin = {
       email: "test@gmail.com",
@@ -24,12 +68,12 @@ describe("TEST Auth API", () => {
       password: "kmd123",
     };
     const testNotExistEmail = {
-      email: "daddychill@gmail.com",
+      email: "test123@gmail.com",
       password: "test123",
     };
     const testWrongPassword = {
       email: "test@gmail.com",
-      password: "oasjdo",
+      password: "123test",
     };
 
     it("Login test user should return 200", async () => {
@@ -71,50 +115,6 @@ describe("TEST Auth API", () => {
         .expect(StatusCodes.UNAUTHORIZED);
 
       expect(response.body.msg).toBe("Invalid Password");
-    });
-  });
-
-  describe("Test POST Signup /auth/signup", () => {
-    const testSignup = {
-      uname: "paing sett kyaw",
-      email: "paingsettkyaw12345@gmail.com",
-      password: "paingsettkyaw",
-    };
-    const testSignupNoEmail = {
-      uname: "paing sett kyaw",
-      password: "paingsettkyaw",
-    };
-
-    it("Signup test user should return 200", async () => {
-      const response = await request(app)
-        .post("/api/v1/auth/signup")
-        .send(testSignup)
-        .expect("Content-Type", /json/);
-
-      const requestEmail = testSignup.email;
-      const responseEmail = response.body.user.email;
-      expect(response.statusCode).toBe(StatusCodes.OK);
-      expect(responseEmail).toBe(requestEmail);
-    });
-
-    it(`Error Signup with no value should return ${StatusCodes.BAD_REQUEST}`, async () => {
-      const response = await request(app)
-        .post("/api/v1/auth/signup")
-        .send(testSignupNoEmail)
-        .expect("Content-Type", /json/);
-
-      expect(response.statusCode).toBe(StatusCodes.BAD_REQUEST);
-      expect(response.body.msg).toBe("Please Provide All Values");
-    });
-
-    it(`Error Signup with Exist email should return ${StatusCodes.BAD_REQUEST}`, async () => {
-      const response = await request(app)
-        .post("/api/v1/auth/signup")
-        .send(testSignup)
-        .expect("Content-Type", /json/);
-
-      expect(response.statusCode).toBe(StatusCodes.BAD_REQUEST);
-      expect(response.body.msg).toBe("Email already in user");
     });
   });
 });
