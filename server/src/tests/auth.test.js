@@ -32,7 +32,7 @@ describe("TEST Auth API", () => {
       password: "oasjdo",
     };
 
-    it("login test user should return 200", async () => {
+    it("Login test user should return 200", async () => {
       const response = await request(app)
         .post("/api/v1/auth/login")
         .send(testLogin)
@@ -43,34 +43,78 @@ describe("TEST Auth API", () => {
       expect(requrestEmail).toBe(responseEmail);
     });
 
-    // it(`Error login with no Email should return ${StatusCodes.BAD_REQUEST}`, async () => {
-    //   const response = await request(app)
-    //     .post("/api/v1/auth/login")
-    //     .send(testNoEmail)
-    //     .expect("Content-Type", /json/)
-    //     .expect(StatusCodes.BAD_REQUEST);
+    it(`Error login with no Email should return ${StatusCodes.BAD_REQUEST}`, async () => {
+      const response = await request(app)
+        .post("/api/v1/auth/login")
+        .send(testNoEmail)
+        .expect("Content-Type", /json/)
+        .expect(StatusCodes.BAD_REQUEST);
 
-    //   expect(response.body.msg).toBe("Please Provide All Values");
-    // });
+      expect(response.body.msg).toBe("Please Provide All Values");
+    });
 
-    // it(`Error login with wrong Email should return ${StatusCodes.UNAUTHORIZED}`, async () => {
-    //   const response = await request(app)
-    //     .post("/api/v1/auth/login")
-    //     .send(testNotExistEmail)
-    //     .expect("Content-Type", /json/)
-    //     .expect(StatusCodes.UNAUTHORIZED);
+    it(`Error login with wrong Email should return ${StatusCodes.UNAUTHORIZED}`, async () => {
+      const response = await request(app)
+        .post("/api/v1/auth/login")
+        .send(testNotExistEmail)
+        .expect("Content-Type", /json/)
+        .expect(StatusCodes.UNAUTHORIZED);
 
-    //   expect(response.body.msg).toBe("Invalid Credentials");
-    // });
+      expect(response.body.msg).toBe("Invalid Credentials");
+    });
 
-    // it(`Error login with wrong Password should return ${StatusCodes.UNAUTHORIZED}`, async () => {
-    //   const response = await request(app)
-    //     .post("/api/v1/auth/login")
-    //     .send(testWrongPassword)
-    //     .expect("Content-Type", /json/)
-    //     .expect(StatusCodes.UNAUTHORIZED);
+    it(`Error login with wrong Password should return ${StatusCodes.UNAUTHORIZED}`, async () => {
+      const response = await request(app)
+        .post("/api/v1/auth/login")
+        .send(testWrongPassword)
+        .expect("Content-Type", /json/)
+        .expect(StatusCodes.UNAUTHORIZED);
 
-    //   expect(response.body.msg).toBe("Invalid Password");
-    // });
+      expect(response.body.msg).toBe("Invalid Password");
+    });
+  });
+
+  describe("Test POST Signup /auth/signup", () => {
+    const testSignup = {
+      uname: "paing sett kyaw",
+      email: "paingsettkyaw12345@gmail.com",
+      password: "paingsettkyaw",
+    };
+    const testSignupNoEmail = {
+      uname: "paing sett kyaw",
+      password: "paingsettkyaw",
+    };
+
+    it("Signup test user should return 200", async () => {
+      const response = await request(app)
+        .post("/api/v1/auth/signup")
+        .send(testSignup)
+        .expect("Content-Type", /json/);
+
+      const requestEmail = testSignup.email;
+      const responseEmail = response.body.user.email;
+      expect(response.statusCode).toBe(StatusCodes.OK);
+      expect(responseEmail).toBe(requestEmail);
+    });
+
+    it(`Error Signup with no value should return ${StatusCodes.BAD_REQUEST}`, async () => {
+      const response = await request(app)
+        .post("/api/v1/auth/signup")
+        .send(testSignupNoEmail)
+        .expect("Content-Type", /json/);
+
+      expect(response.statusCode).toBe(StatusCodes.BAD_REQUEST);
+      expect(response.body.msg).toBe("Please Provide All Values");
+    });
+
+    it(`Error Signup with Exist email should return ${StatusCodes.BAD_REQUEST}`, async () => {
+      const response = await request(app)
+        .post("/api/v1/auth/signup")
+        .send(testSignup)
+        .expect("Content-Type", /json/);
+
+      expect(response.statusCode).toBe(StatusCodes.BAD_REQUEST);
+      expect(response.body.msg).toBe("Email already in user");
+    });
   });
 });

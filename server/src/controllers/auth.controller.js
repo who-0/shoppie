@@ -13,7 +13,7 @@ const signupController = async (req, res) => {
   const userExist = await User.findOne({ email });
 
   if (userExist) {
-    throw new BadRequestError("Email already in user. ");
+    throw new BadRequestError("Email already in user");
   }
 
   const user = await User.create({ email, password, name: uname });
