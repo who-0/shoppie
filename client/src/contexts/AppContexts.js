@@ -25,7 +25,7 @@ const initialState = {
   alert: false,
   alert_msg: "",
   alert_type: "",
-  userId: "",
+  userId: null,
   tokne: "",
 };
 const Context = createContext();

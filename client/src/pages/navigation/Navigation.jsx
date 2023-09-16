@@ -24,6 +24,7 @@ const Navigation = () => {
     profile_active,
     menu_open,
   } = useContext(Context);
+  console.log(userId);
   return (
     <>
       <Nav>

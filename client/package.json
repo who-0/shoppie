@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(axios)/)",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,5 +44,13 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:4000"
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(axios)/)"
+    ]
+  },
+  "proxy": "http://localhost:4000",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }

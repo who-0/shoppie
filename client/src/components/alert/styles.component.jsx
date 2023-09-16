@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 
   ${(props) => {
-    switch (props.alert_type) {
+    switch (props.$alert_type) {
       case "success":
         return css`
           color: ${colors.alert_success_color};
