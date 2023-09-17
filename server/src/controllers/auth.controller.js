@@ -18,8 +18,7 @@ const signupController = async (req, res) => {
   const user = await User.create({ email, password, name: uname });
   const token = user.createJWT();
   attachCookie({ res, token });
-  console.log(user._id);
-  res.status(StatusCodes.OK).json({ id: user._id, token });
+  res.status(StatusCodes.OK).json({ user, token });
 };
 
 const loginController = async (req, res) => {
@@ -45,7 +44,7 @@ const loginController = async (req, res) => {
   const token = user.createJWT();
   attachCookie({ res, token });
 
-  res.status(StatusCodes.OK).json({ id: user._id, token });
+  res.status(StatusCodes.OK).json({ user, token });
 };
 
 module.exports = { signupController, loginController };

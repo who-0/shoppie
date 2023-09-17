@@ -5,7 +5,9 @@ import ContentContainer from "./styles.component.jsx";
 const Content = () => {
   return (
     <ContentContainer>
-      <h1>Make every purchase a delightful experience with</h1>
+      <h1 data-testid="text-content">
+        Make every purchase a delightful experience with
+      </h1>
       <Link className="content_btn_cs" to="/shop">
         <BtnLogo className="btn_logo" />
       </Link>

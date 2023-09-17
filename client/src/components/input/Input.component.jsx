@@ -9,6 +9,7 @@ const Input = ({ type, name, value, handleChange, text }) => {
       placeholder={text}
       value={value}
       onChange={handleChange}
+      data-testid="input"
     />
   );
 };

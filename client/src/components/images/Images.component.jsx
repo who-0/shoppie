@@ -7,10 +7,10 @@ const Images = () => {
       <span className="circle_1_cs"></span>
       <span className="circle_2_cs"></span>
       <span className="circle_3_cs"></span>
-      <Shoe className="img_shoe_cs" />
-      <Hat className="img_hat_cs" />
-      <Glass className="img_glass_cs" />
-      <Bag className="img_bag_cs" />
+      <Shoe data-testid="svg-img" className="img_shoe_cs" />
+      <Hat data-testid="svg-img" className="img_hat_cs" />
+      <Glass data-testid="svg-img" className="img_glass_cs" />
+      <Bag data-testid="svg-img" className="img_bag_cs" />
     </ImageContainer>
   );
 };
