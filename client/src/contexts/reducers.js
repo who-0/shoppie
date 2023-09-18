@@ -90,7 +90,7 @@ const reducer = (state, action) => {
         ...state,
         loading: false,
         token: action.payload.token,
-        userId: action.payload.id,
+        user: action.payload.user,
         alert: true,
         alert_type: "success",
         alert_msg: action.payload.success,

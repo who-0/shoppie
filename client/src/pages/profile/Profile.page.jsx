@@ -5,7 +5,8 @@ import { PROFILE } from "contexts/actions";
 
 const body = document.body;
 const Profile = () => {
-  const { color, changeColor } = useContext(Context);
+  const { color, changeColor, user } = useContext(Context);
+
   useEffect(() => {
     if (color !== colors.login_color) {
       changeColor(PROFILE);
@@ -14,6 +15,6 @@ const Profile = () => {
     }
     // eslint-disable-next-line
   }, [color]);
-  return <div>This is Profile Page.</div>;
+  return <div>{user._id}</div>;
 };
 export default Profile;

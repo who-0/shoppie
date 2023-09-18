@@ -11,6 +11,9 @@ import {
   CLEAR_ERROR,
 } from "./actions";
 
+const data = localStorage.getItem("user");
+const user = JSON.parse(data);
+
 const initialState = {
   color: "",
   loading: false,
@@ -25,8 +28,8 @@ const initialState = {
   alert: false,
   alert_msg: "",
   alert_type: "",
-  userId: null,
-  tokne: "",
+  user: user || "",
+  token: null,
 };
 const Context = createContext();
 
@@ -51,8 +54,9 @@ const Provider = ({ children }) => {
     try {
       const authEndPoint = state.signup ? "signup" : "login";
       const response = await API.post(`/auth/${authEndPoint}`, data);
-      const { id, token } = response.data;
-      localStorage.setItem("userId", id);
+      const { user, token } = response.data;
+
+      localStorage.setItem("user", JSON.stringify(user));
       let alertMsg;
       if (authEndPoint === "signup") {
         alertMsg = "User Created! Redirecting...";
@@ -61,7 +65,7 @@ const Provider = ({ children }) => {
       }
       dispatch({
         type: SUBMIT_AUTH_SUCCESS,
-        payload: { token, id, success: alertMsg },
+        payload: { token, user, success: alertMsg },
       });
     } catch (error) {
       dispatch({
@@ -73,18 +77,14 @@ const Provider = ({ children }) => {
   };
 
   const displayAlert = (msg) => {
-    console.log("alert start");
     dispatch({ type: DISPLAY_ERROR, payload: msg });
     clearAlert();
-    console.log("alert end");
   };
 
   const clearAlert = () => {
-    console.log("clear start");
     setTimeout(() => {
       dispatch({ type: CLEAR_ERROR });
-    }, 3000);
-    console.log("clear end");
+    }, 2000);
   };
 
   return (

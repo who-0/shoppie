@@ -16,7 +16,7 @@ const defaultState = {
 };
 
 const Auth = () => {
-  const { color, changeColor, submitAuth, signup, displayAlert, userId } =
+  const { color, changeColor, submitAuth, signup, displayAlert, user } =
     useContext(Context);
   const [formField, setFormField] = useState(defaultState);
   const navigate = useNavigate();
@@ -26,13 +26,13 @@ const Auth = () => {
     } else {
       body.style.background = color;
     }
-    if (userId) {
+    if (user) {
       setTimeout(() => {
         navigate("/shop");
       }, 3000);
     }
     // eslint-disable-next-line
-  }, [color, userId]);
+  }, [color, user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

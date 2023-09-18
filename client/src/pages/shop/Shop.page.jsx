@@ -3,7 +3,6 @@ import { Context } from "contexts/AppContexts";
 import colors from "colors";
 import { SHOP } from "contexts/actions";
 
-
 const body = document.body;
 
 const Shop = () => {

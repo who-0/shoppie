@@ -8,6 +8,7 @@ import {
   Shop,
   ProtectedPage,
   Navigation,
+  PageShareLayout,
 } from "pages";
 
 import {
@@ -25,9 +26,18 @@ const App = () => {
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />
           <Route path="auth" element={<Auth />} />
-          <Route path="orders" element={<Orders />} />
           <Route path="shop" element={<Shop />} />
-          <Route path="profile" element={<Profile />} />
+          <Route
+            path="user"
+            element={
+              <ProtectedPage>
+                <PageShareLayout />
+              </ProtectedPage>
+            }
+          >
+            <Route path="profile" element={<Profile />} />
+            <Route path="orders" element={<Orders />} />
+          </Route>
           <Route
             path="admin"
             element={

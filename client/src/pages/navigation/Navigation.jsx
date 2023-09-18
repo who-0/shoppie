@@ -15,7 +15,7 @@ const Navs = [
 ];
 const Navigation = () => {
   const {
-    userId,
+    user,
     changeColor,
     logo,
     home_active,
@@ -43,13 +43,13 @@ const Navigation = () => {
             active={shop_active}
             path="/shop"
           />
-          {userId ? (
+          {user ? (
             <NavLink
               name={Navs[3].name}
               action={Navs[3].action}
               changeColor={changeColor}
               active={profile_active}
-              path="/profile"
+              path="/user/profile"
             />
           ) : (
             <NavLink
