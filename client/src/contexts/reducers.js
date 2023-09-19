@@ -11,7 +11,10 @@ import {
   SUBMIT_AUTH_SUCCESS,
   SUBMIT_AUTH_START,
   SUBMIT_AUTH_ERROR,
-  LOADING,
+  UPDATE_PROFILE,
+  CANCEL_UPDATE_PROFILE,
+  LOGOUT_USER_START,
+  LOGOUT_USER_SUCCESS,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -102,6 +105,22 @@ const reducer = (state, action) => {
         alert: true,
         alert_msg: action.payload.msg,
         alert_type: "error",
+      };
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        isEdited: true,
+      };
+    case CANCEL_UPDATE_PROFILE:
+      return {
+        ...state,
+        isEdited: false,
+      };
+    case LOGOUT_USER_SUCCESS:
+      return {
+        ...state,
+        token: null,
+        user: null,
       };
     default:
       return state;

@@ -26,7 +26,6 @@ const Navigation = () => {
     menu_open,
   } = useContext(Context);
 
-
   return (
     <>
       <Nav>
@@ -53,6 +52,7 @@ const Navigation = () => {
               changeColor={changeColor}
               active={profile_active}
               path="/user/profile"
+              profile="profile"
             />
           ) : (
             <NavLink

@@ -1,9 +1,19 @@
-.user_container {
+.user {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5%;
+  /* background-color: red; */
+}
+.user_container {
+  width: 90%;
+  height: 60%;
+  background-color: #424141;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  /* background-color: red; */
+  border-radius: 10px;
 }
 
 .user_img {
@@ -17,27 +27,51 @@
   align-items: center;
 }
 
-form {
+.user_container form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-
-form > input {
+.user_container form > input {
   height: 40px;
   margin: 10px 0px;
-  background-color: white;
+  background-color: transparent;
   border: none;
   outline: none;
+  border-bottom: 1px solid white;
   padding-left: 10px;
   font-size: 1.5rem;
   letter-spacing: 1.5px;
   cursor: pointer;
+  color: white;
 }
 
-input::placeholder{
-  color: black;
-  
+.user_container form input:first-child {
+  text-transform: capitalize;
+}
+
+.user_container form input::placeholder {
+  color: white;
+}
+
+.user_container .btn_container {
+  margin-top: 20%;
+}
+.user_container .btn_container .btn {
+  padding: 7px 25px;
+  font-size: 1.3rem;
+  margin: 0 10px;
+  border: none;
+  border-radius: 50px;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: white;
+}
+.user_container .btn_container .btn1 {
+  background: #f24949;
+}
+.user_container .btn_container .btn2 {
+  background-color: #70a1d7;
 }

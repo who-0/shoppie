@@ -3,7 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cookie = require("cookie-parser");
 const helmet = require("helmet");
-const { authRouter } = require("./routes");
+const { authRouter, userRouter } = require("./routes");
 const {
   errorHandlerMiddleware,
   notFoundMiddleware,
@@ -21,6 +21,7 @@ app.use(cookie());
 
 //!Routes
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", userRouter);
 
 //!middleware
 app.use(errorHandlerMiddleware);

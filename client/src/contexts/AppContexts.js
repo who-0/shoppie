@@ -9,8 +9,13 @@ import {
   SUBMIT_AUTH_ERROR,
   DISPLAY_ERROR,
   CLEAR_ERROR,
-  LOADING,
+  UPDATE_PROFILE,
+  CANCEL_UPDATE_PROFILE,
+  LOGOUT_USER_START,
+  LOGOUT_USER_SUCCESS,
+  LOGOUT_USER_ERROR,
 } from "./actions";
+import { Navigate } from "react-router-dom";
 
 const data = localStorage.getItem("user");
 const user = JSON.parse(data);
@@ -31,6 +36,7 @@ const initialState = {
   alert_type: "",
   user: user || "",
   token: null,
+  isEdited: false,
 };
 const Context = createContext();
 
@@ -88,6 +94,19 @@ const Provider = ({ children }) => {
     }, 2000);
   };
 
+  const editeProfile = () => {
+    dispatch({ type: UPDATE_PROFILE });
+  };
+  const cancelEditeProfile = () => {
+    dispatch({ type: CANCEL_UPDATE_PROFILE });
+  };
+
+  const logoutUser = () => {
+    dispatch({ type: LOGOUT_USER_SUCCESS });
+
+    localStorage.removeItem("user");
+  };
+
   return (
     <Context.Provider
       value={{
@@ -97,6 +116,9 @@ const Provider = ({ children }) => {
         signUpUser,
         submitAuth,
         displayAlert,
+        editeProfile,
+        cancelEditeProfile,
+        logoutUser,
       }}
     >
       {children}
