@@ -7,6 +7,7 @@ const { authRouter, userRouter } = require("./routes");
 const {
   errorHandlerMiddleware,
   notFoundMiddleware,
+  checkAuth,
 } = require("./middlewares/index.js");
 
 const app = express();
@@ -21,7 +22,7 @@ app.use(cookie());
 
 //!Routes
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/user", userRouter);
+app.use("/api/v1/", checkAuth, userRouter);
 
 //!middleware
 app.use(errorHandlerMiddleware);

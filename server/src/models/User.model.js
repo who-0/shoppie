@@ -38,10 +38,15 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.pre("save", async function () {
+  console.log("USER", this.isModified("password"));
   if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
+// UserSchema.pre("findOneAndUpdate", async function () {
+//   console.log("this is update");
+//   console.log(this.isModified("password"));
+// });
 
 UserSchema.methods.createJWT = function () {
   return jwt.sign({ userId: this._id, email: this.email }, key, {
