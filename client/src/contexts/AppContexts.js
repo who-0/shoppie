@@ -9,6 +9,7 @@ import {
   SUBMIT_AUTH_ERROR,
   DISPLAY_ERROR,
   CLEAR_ERROR,
+  LOADING,
 } from "./actions";
 
 const data = localStorage.getItem("user");

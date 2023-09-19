@@ -11,6 +11,7 @@ import {
   SUBMIT_AUTH_SUCCESS,
   SUBMIT_AUTH_START,
   SUBMIT_AUTH_ERROR,
+  LOADING,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {

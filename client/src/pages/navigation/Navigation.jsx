@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { Logo, NavLink } from "components";
-import { useContext } from "react";
+import { Loader, Logo, NavLink } from "components";
+import { useContext, useEffect } from "react";
 import { Context } from "contexts/AppContexts";
 import { MenuIcon } from "components";
 import Nav from "./Navigation.styles";
@@ -13,6 +13,7 @@ const Navs = [
   { id: 3, name: "login", action: AUTH },
   { id: 4, name: "profile", action: PROFILE },
 ];
+
 const Navigation = () => {
   const {
     user,
@@ -24,6 +25,8 @@ const Navigation = () => {
     profile_active,
     menu_open,
   } = useContext(Context);
+
+
   return (
     <>
       <Nav>

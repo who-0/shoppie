@@ -9,3 +9,4 @@ export const SUBMIT_AUTH_SUCCESS = "SUBMIT_AUTH_SUCCESS";
 export const SUBMIT_AUTH_ERROR = "SUBMIT_AUTH_ERROR";
 export const DISPLAY_ERROR = "DISPLAY_ERROR";
 export const CLEAR_ERROR = "CLEAR_ERROR";
+export const LOADING = "LOADING";
