@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .user_img {
@@ -17,14 +17,27 @@
   align-items: center;
 }
 
-.user_info {
+form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.user_info > input {
-  height: 5rem;
+
+form > input {
+  height: 40px;
   margin: 10px 0px;
+  background-color: white;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+
+input::placeholder{
+  color: black;
+  
 }
