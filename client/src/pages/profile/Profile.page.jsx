@@ -22,9 +22,9 @@ const Profile = () => {
         <Usericon width={180} height={180} stroke="red" />
       </div>
       <div className="user_info">
-        <input type="text" placeholder={user.name} />
-        <input type="email" placeholder={user.email} />
-        <input type="password" placeholder={user.password} />
+        <input type="text" placeholder={user.name} disabled={false} />
+        <input type="email" placeholder={user.email} disabled={false} />
+        <input type="password" placeholder={user.password} disabled={false} />
       </div>
     </div>
   );
