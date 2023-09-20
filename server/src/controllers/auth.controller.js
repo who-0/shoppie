@@ -4,8 +4,8 @@ const { BadRequestError, UnAuthenticatedError } = require("../errors");
 const attachCookie = require("../utils/attachCookie");
 
 const signupController = async (req, res) => {
-  const { email, password, uname } = req.body;
-  if (!email || !password || !uname) {
+  const { email, password, name } = req.body;
+  if (!email || !password || !name) {
     throw new BadRequestError("Please Provide All Values");
   }
 
@@ -15,10 +15,14 @@ const signupController = async (req, res) => {
     throw new BadRequestError("Email already in user");
   }
 
-  const user = await User.create({ email, password, name: uname });
-  const token = user.createJWT();
-  attachCookie({ res, token });
-  res.status(StatusCodes.OK).json({ user, token });
+  try {
+    const user = await User.create({ email, password, name: name });
+    const token = user.createJWT();
+    attachCookie({ res, token });
+    return res.status(StatusCodes.OK).json({ user, token });
+  } catch (error) {
+    return res.status(StatusCodes.OK).json({ msg: error.message });
+  }
 };
 
 const loginController = async (req, res) => {

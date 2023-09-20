@@ -2,10 +2,10 @@
 
 exports[`Test <Home /> render snapshot Home page 1`] = `
 <div
-  className="sc-pqitP jHfLDB"
+  className="sc-jrkPcm iLtLKU"
 >
   <div
-    className="sc-grXZZQ haNzlO"
+    className="sc-dkjKgF dEHQnd"
   >
     <h1
       data-testid="text-content"

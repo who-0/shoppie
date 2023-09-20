@@ -14,6 +14,9 @@ import {
   LOGOUT_USER_START,
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_ERROR,
+  UPDATE_USER_START,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from "./actions";
 import { Navigate } from "react-router-dom";
 
@@ -103,8 +106,35 @@ const Provider = ({ children }) => {
 
   const logoutUser = () => {
     dispatch({ type: LOGOUT_USER_SUCCESS });
-
     localStorage.removeItem("user");
+  };
+
+  const updateUser = async (user) => {
+    dispatch({ type: UPDATE_USER_START });
+    let updatedInfo;
+    if (user.password) {
+      updatedInfo = user;
+    } else {
+      const { password, ...info } = user;
+      updatedInfo = info;
+    }
+
+    try {
+      const response = await API.patch("/user", {
+        ...updatedInfo,
+        _id: state.user._id,
+      });
+      await localStorage.setItem("user", JSON.stringify(response.data));
+      dispatch({
+        type: UPDATE_USER_SUCCESS,
+        payload: { data: response.data, msg: "Update Successful!" },
+      });
+
+      clearAlert();
+    } catch (error) {
+      dispatch({ type: UPDATE_USER_ERROR });
+      console.log(error);
+    }
   };
 
   return (
@@ -119,6 +149,7 @@ const Provider = ({ children }) => {
         editeProfile,
         cancelEditeProfile,
         logoutUser,
+        updateUser,
       }}
     >
       {children}

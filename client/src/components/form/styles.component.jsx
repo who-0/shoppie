@@ -5,6 +5,7 @@ const Wrapper = styled.form`
   width: 40%;
   height: ${(props) => (props.$signup ? "65%" : "40%")};
   margin: 3% 0 10% 0;
+  padding: 0 5%;
   background-color: ${colors.nav_color};
   display: flex;
   justify-content: center;
@@ -26,8 +27,9 @@ const Wrapper = styled.form`
     width: 100%;
     /* background-color: red; */
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 5%;
   }
 
   p {
@@ -49,11 +51,18 @@ const Wrapper = styled.form`
 
   @media screen and (max-width: 769px) {
     width: 70%;
+    .btn_container {
+      padding: 0 10%;
+      /* justify-content: space-evenly; */
+    }
   }
   @media screen and (max-width: 426px) {
     width: 95%;
     margin: 3% 0 30% 0;
-
+    .btn_container {
+      padding: 0 5%;
+      /* justify-content: space-evenly; */
+    }
     .title {
       font-size: 3.5rem;
     }

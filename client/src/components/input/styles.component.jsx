@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 const InputCS = styled.input`
-  width: 60%;
+  width: 90%;
   height: 40px;
   font-size: 1rem;
   margin: 2% auto;
@@ -25,14 +25,14 @@ const InputCS = styled.input`
   }
 
   @media screen and (max-width: 1025px) {
-    width: 62%;
+    width: 90%;
   }
 
   @media screen and (max-width: 769px) {
-    width: 60%;
+    width: 80%;
   }
   @media screen and (max-width: 426px) {
-    width: 80%;
+    width: 90%;
   }
 `;
 

@@ -2,7 +2,7 @@
 
 exports[`Test Auth Paget snapshot Auth Page 1`] = `
 <div
-  className="sc-jrkPcm hRpcyE"
+  className="sc-kDnyCx hxvPrS"
 >
   <h2
     className="title"
@@ -10,11 +10,11 @@ exports[`Test Auth Paget snapshot Auth Page 1`] = `
     login
   </h2>
   <form
-    className="sc-hLclGa gcKGdP"
+    className="sc-eDnVMP kBChBG"
     onSubmit={[Function]}
   >
     <input
-      className="sc-dkjKgF klRrzA"
+      className="sc-hLclGa ibtEtG"
       data-testid="input"
       id="email"
       name="email"
@@ -24,7 +24,7 @@ exports[`Test Auth Paget snapshot Auth Page 1`] = `
       value=""
     />
     <input
-      className="sc-dkjKgF klRrzA"
+      className="sc-hLclGa ibtEtG"
       data-testid="input"
       id="password"
       name="password"
@@ -37,13 +37,13 @@ exports[`Test Auth Paget snapshot Auth Page 1`] = `
       className="btn_container"
     >
       <button
-        className="sc-bcPKhP dFDPgo"
+        className="sc-grXZZQ cQedkq"
         type="button"
       >
         google
       </button>
       <button
-        className="sc-bcPKhP dFDPgo"
+        className="sc-grXZZQ cQedkq"
         type="submit"
       >
         login

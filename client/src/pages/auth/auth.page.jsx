@@ -11,7 +11,7 @@ const body = document.body;
 const defaultState = {
   email: "",
   password: "",
-  uname: "",
+  name: "",
   cpassword: "",
 };
 
@@ -36,15 +36,15 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { password, cpassword, email, uname } = formField;
+    const { password, cpassword, email, name } = formField;
     if (!email || !password) return displayAlert("please all input required!");
     if (signup) {
       if (password !== cpassword) {
         return displayAlert("password doesn't match. please try again.");
-      } else if (!uname) {
+      } else if (!name) {
         return displayAlert("Username is require.");
       }
-      submitAuth({ uname, email, password });
+      submitAuth({ name, email, password });
     } else {
       submitAuth({ email, password });
     }

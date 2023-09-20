@@ -17,12 +17,12 @@ describe("TEST Auth API", () => {
 
   describe("Test POST Signup /auth/signup", () => {
     const testSignup = {
-      uname: "test",
+      name: "test",
       email: "test@gmail.com",
       password: "test123",
     };
     const testSignupNoEmail = {
-      uname: "test",
+      name: "test",
       password: "test123",
     };
 

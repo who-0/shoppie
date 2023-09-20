@@ -15,6 +15,9 @@ import {
   CANCEL_UPDATE_PROFILE,
   LOGOUT_USER_START,
   LOGOUT_USER_SUCCESS,
+  UPDATE_USER_START,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -121,6 +124,21 @@ const reducer = (state, action) => {
         ...state,
         token: null,
         user: null,
+      };
+    case UPDATE_USER_START:
+      return {
+        ...state,
+        loading: true,
+      };
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        alert: true,
+        alert_msg: action.payload.msg,
+        alert_type: "success",
+        user: action.payload.data,
+        isEdited: false,
       };
     default:
       return state;

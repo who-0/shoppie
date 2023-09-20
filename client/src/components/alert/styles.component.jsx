@@ -1,7 +1,8 @@
 import colors from "colors";
 import { css, styled } from "styled-components";
 const Wrapper = styled.div`
-  width: 80%;
+  //! change value ui for auth and profile
+  width: 100%;
   text-align: center;
   padding: 5px 0px;
   border-radius: 5px;

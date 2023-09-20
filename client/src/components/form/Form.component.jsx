@@ -8,15 +8,15 @@ import Alert from "components/alert/Alert.component";
 
 const Form = ({ handleSubmit, handleChange, formField }) => {
   const { signUpUser, signup, alert } = useContext(Context);
-  const { email, password, uname, cpassword } = formField;
+  const { email, password, name, cpassword } = formField;
   return (
     <Wrapper $signup={+signup} onSubmit={handleSubmit}>
       {alert && <Alert />}
       {signup && (
         <Input
           type="text"
-          name="uname"
-          value={uname}
+          name="name"
+          value={name}
           handleChange={handleChange}
           text="Username"
         />

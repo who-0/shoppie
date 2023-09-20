@@ -18,6 +18,7 @@ const Profile = () => {
     editeProfile,
     cancelEditeProfile,
     logoutUser,
+    updateUser,
   } = useContext(Context);
 
   const defaultValue = {
@@ -38,10 +39,17 @@ const Profile = () => {
     }
     // eslint-disable-next-line
   }, [color]);
-  // const logoutUser = async () => {
-  // await localStorage.removeItem("user");
-  // Navigate("/");
-  // };
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+
+    setFormField({ ...formfield, [name]: value });
+  };
+
+  const changeUserInfo = () => {
+    updateUser(formfield);
+  };
+
   return (
     <div className="user">
       <div className="user_container">
@@ -51,10 +59,29 @@ const Profile = () => {
         <div className="user_info">
           {alert && <Alert />}
           <form>
-            <input type="text" value={name} disabled={!isEdited} />
-            <input type="email" value={email} disabled={!isEdited} />
+            <input
+              type="text"
+              value={name}
+              name="name"
+              disabled={!isEdited}
+              onChange={changeHandler}
+            />
+            <input
+              type="email"
+              value={email}
+              name="email"
+              disabled={!isEdited}
+              onChange={changeHandler}
+            />
             {isEdited && (
-              <input type="password" value={password} disabled={!isEdited} />
+              <input
+                type="password"
+                value={password}
+                name="password"
+                disabled={!isEdited}
+                onChange={changeHandler}
+                placeholder="New Password"
+              />
             )}
             <div className="btn_container">
               {isEdited ? (
@@ -66,7 +93,11 @@ const Profile = () => {
                   >
                     cancel
                   </button>
-                  <button type="button" className="btn2 btn">
+                  <button
+                    type="button"
+                    className="btn2 btn"
+                    onClick={changeUserInfo}
+                  >
                     submit
                   </button>
                 </>

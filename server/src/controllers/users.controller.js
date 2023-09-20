@@ -2,22 +2,22 @@ const { User } = require("../models");
 const checkPermissions = require("../utils/checkPermission");
 
 const updateUserController = async (req, res) => {
-  const { uname, email, password, _id } = req.body;
+  const { name, email, password, _id } = req.body;
   const { userId } = req.user;
 
-  //Check user id equal or not from req.body and token
-
+  //?Check user id equal or not from req.body and token
   checkPermissions(_id, userId);
-
   try {
     const updatedUser = await User.findOneAndUpdate(
       { _id },
-      { email, name: uname, password },
+      { email, name, password },
       { new: true, runValidators: true }
-    );
-
+    )
+      .select("+role")
+      .select("-__v");
     return res.status(200).json(updatedUser);
   } catch (error) {
+    console.log(error);
     return res.status(500).josn({ msg: error.message });
   }
 };
