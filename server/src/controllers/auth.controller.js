@@ -9,8 +9,8 @@ const signupController = async (req, res) => {
     throw new BadRequestError("Please Provide All Values");
   }
 
+  //Find user alrady or not with email.
   const userExist = await User.findOne({ email });
-
   if (userExist) {
     throw new BadRequestError("Email already in user");
   }
