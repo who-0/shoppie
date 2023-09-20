@@ -6,6 +6,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "jest",
+    "test-auth": "jest auth.test.js",
+    "test-user": "jest users.test.js",
     "test-watch": "jest --watch"
   },
   "keywords": [],

@@ -38,25 +38,30 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.pre("save", async function () {
-  console.log("USER", this.isModified("password"));
   if (!this.isModified("password")) return;
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
+  this.password = await encryptPassword(this.password);
 });
-// UserSchema.pre("findOneAndUpdate", async function () {
-//   console.log("this is update");
-//   console.log(this.isModified("password"));
-// });
+UserSchema.pre("findOneAndUpdate", async function () {
+  const password = this._update.password;
+  if (!password) return;
+  this._update.password = await encryptPassword(password);
+});
 
 UserSchema.methods.createJWT = function () {
   return jwt.sign({ userId: this._id, email: this.email }, key, {
-    expiresIn: "5m",
+    expiresIn: "1d",
   });
 };
 
 UserSchema.methods.comparePassword = async function (userPassword) {
   const isMatch = await bcrypt.compare(userPassword, this.password);
   return isMatch;
+};
+
+const encryptPassword = async (pwd) => {
+  const salt = await bcrypt.genSalt(10);
+  const cryptedPassword = await bcrypt.hash(pwd, salt);
+  return cryptedPassword;
 };
 
 module.exports = mongoose.model("User", UserSchema);
