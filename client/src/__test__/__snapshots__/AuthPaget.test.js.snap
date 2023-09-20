@@ -10,11 +10,11 @@ exports[`Test Auth Paget snapshot Auth Page 1`] = `
     login
   </h2>
   <form
-    className="sc-eDnVMP kBChBG"
+    className="sc-eDnVMP eOcIxj"
     onSubmit={[Function]}
   >
     <input
-      className="sc-hLclGa ibtEtG"
+      className="sc-hLclGa jGbDtf"
       data-testid="input"
       id="email"
       name="email"
@@ -24,7 +24,7 @@ exports[`Test Auth Paget snapshot Auth Page 1`] = `
       value=""
     />
     <input
-      className="sc-hLclGa ibtEtG"
+      className="sc-hLclGa jGbDtf"
       data-testid="input"
       id="password"
       name="password"
