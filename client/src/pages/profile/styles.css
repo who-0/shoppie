@@ -19,6 +19,7 @@
 .user_img {
   width: 250px;
   height: 250px;
+  padding: 4%;
   border-radius: 50%;
   background-color: white;
 
@@ -27,18 +28,18 @@
   align-items: center;
 }
 
-.user_icon {
-  width: 100px;
-  height: 100;
+#user_icon {
+  width: 100%;
+  height: 100%;
 }
-.user_container form {
+.user_info form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.user_container form > input {
+.user_info form > input {
   height: 40px;
   margin: 10px 0px;
   background-color: transparent;
@@ -52,18 +53,18 @@
   color: white;
 }
 
-.user_container form input:first-child {
+.user_info form input:first-child {
   text-transform: capitalize;
 }
 
-.user_container form input::placeholder {
+.user_infoform input::placeholder {
   color: white;
 }
 
-.user_container .btn_container {
+.user_info .btn_container {
   margin-top: 20%;
 }
-.user_container .btn_container .btn {
+.user_info .btn_container .btn {
   padding: 7px 25px;
   font-size: 1.3rem;
   margin: 0 10px;
@@ -73,12 +74,45 @@
   font-weight: bold;
   color: white;
 }
-.user_container .btn_container .btn1 {
+.user_info .btn_container .btn1 {
   background: #f24949;
 }
-.user_container .btn_container .btn2 {
+.user_info .btn_container .btn2 {
   background-color: #70a1d7;
 }
 
 @media screen and (max-width: 769px) {
+  .user_img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+
+@media screen and (max-width: 426px) {
+  
+  .user_container {
+    flex-direction: column;
+    height: 85%;
+    margin-bottom: 15%;
+  }
+  .user_img {
+    width: 150px;
+    height: 150px;
+  }
+  .user_info form > input{
+    text-align: center;
+    font-size: 1.2rem;
+
+  }
+}
+
+
+@media screen and (max-width: 321px) {
+  .user_container {
+  width: 95%;
+  }
+  .user_info form > input{
+    width: 90%;
+  }
 }
