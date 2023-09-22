@@ -27,6 +27,10 @@
   align-items: center;
 }
 
+.user_icon {
+  width: 100px;
+  height: 100;
+}
 .user_container form {
   display: flex;
   justify-content: center;
@@ -74,4 +78,7 @@
 }
 .user_container .btn_container .btn2 {
   background-color: #70a1d7;
+}
+
+@media screen and (max-width: 769px) {
 }

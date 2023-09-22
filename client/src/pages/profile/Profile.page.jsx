@@ -54,7 +54,7 @@ const Profile = () => {
     <div className="user">
       <div className="user_container">
         <div className="user_img">
-          <Usericon width={180} height={180} />
+          <Usericon id="user_icon" />
         </div>
         <div className="user_info">
           {alert && <Alert />}
