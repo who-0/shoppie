@@ -51,4 +51,9 @@ const loginController = async (req, res) => {
   res.status(StatusCodes.OK).json({ user, token });
 };
 
-module.exports = { signupController, loginController };
+const GoogleController = (req, res) => {
+  console.log("successful login with google");
+  return res.redirect("/");
+};
+
+module.exports = { signupController, loginController, GoogleController };

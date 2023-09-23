@@ -15,6 +15,16 @@ const IconProfile = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  @media screen and (max-width: 769px) {
+    width: 200px;
+    height: 200px;
+  }
+
+  @media screen and (max-width: 769px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 export default IconProfile;

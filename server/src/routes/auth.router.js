@@ -1,8 +1,24 @@
 const express = require("express");
-const { signupController, loginController } = require("../controllers");
+const passport = require("passport");
+const {
+  signupController,
+  loginController,
+  GoogleController,
+} = require("../controllers");
 const authRouter = express.Router();
 
 authRouter.route("/signup").post(signupController);
 authRouter.route("/login").post(loginController);
+
+//?Google Auth
+authRouter
+  .route("/google")
+  .get(passport.authenticate("google", { scope: ["profile", "email"] }));
+
+authRouter
+  .route("/google/callback")
+  .get(
+    passport.authenticate("google", { failureRedirect: "/error" } ),GoogleController
+  );
 
 module.exports = authRouter;
