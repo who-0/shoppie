@@ -1,6 +1,6 @@
 import InputCS from "./styles.component";
 
-const Input = ({ type, name, value, handleChange, text }) => {
+const Input = ({ type, name, value, handleChange, text, type }) => {
   return (
     <InputCS
       type={type}
@@ -10,6 +10,7 @@ const Input = ({ type, name, value, handleChange, text }) => {
       value={value}
       onChange={handleChange}
       data-testid="input"
+      $type
     />
   );
 };

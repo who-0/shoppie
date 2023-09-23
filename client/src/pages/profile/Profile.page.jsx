@@ -4,7 +4,7 @@ import { Context } from "contexts/AppContexts";
 import { PROFILE } from "contexts/actions";
 import "./styles.css";
 import { Usericon } from "assets";
-import { Input, Alert } from "components";
+import { Input, Alert, ProfileIcon } from "components";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -53,9 +53,7 @@ const Profile = () => {
   return (
     <div className="user">
       <div className="user_container">
-        <div className="user_img">
-          <Usericon id="user_icon" />
-        </div>
+        <ProfileIcon />
         <div className="user_info">
           {alert && <Alert />}
           <form>
