@@ -13,11 +13,9 @@ import {
   SUBMIT_AUTH_ERROR,
   UPDATE_PROFILE,
   CANCEL_UPDATE_PROFILE,
-  LOGOUT_USER_START,
   LOGOUT_USER_SUCCESS,
   UPDATE_USER_START,
   UPDATE_USER_SUCCESS,
-  UPDATE_USER_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {

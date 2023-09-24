@@ -3,10 +3,9 @@ import { useContext, useEffect } from "react";
 import { Context } from "contexts/AppContexts";
 import { PROFILE } from "contexts/actions";
 import "./styles.css";
-import { Usericon } from "assets";
-import { Input, Alert, ProfileIcon } from "components";
+import {  Alert, ProfileIcon } from "components";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+
 
 const body = document.body;
 const Profile = () => {

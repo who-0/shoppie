@@ -88,9 +88,7 @@
   }
 }
 
-
 @media screen and (max-width: 426px) {
-  
   .user_container {
     flex-direction: column;
     height: 85%;
@@ -100,19 +98,17 @@
     width: 150px;
     height: 150px;
   }
-  .user_info form > input{
+  .user_info form > input {
     text-align: center;
     font-size: 1.2rem;
-
   }
 }
 
-
 @media screen and (max-width: 321px) {
   .user_container {
-  width: 95%;
+    width: 95%;
   }
-  .user_info form > input{
+  .user_info form > input {
     width: 90%;
   }
 }

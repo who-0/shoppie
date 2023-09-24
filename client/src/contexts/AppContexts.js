@@ -11,14 +11,11 @@ import {
   CLEAR_ERROR,
   UPDATE_PROFILE,
   CANCEL_UPDATE_PROFILE,
-  LOGOUT_USER_START,
   LOGOUT_USER_SUCCESS,
-  LOGOUT_USER_ERROR,
   UPDATE_USER_START,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
 } from "./actions";
-import { Navigate } from "react-router-dom";
 
 const data = localStorage.getItem("user");
 const user = JSON.parse(data);

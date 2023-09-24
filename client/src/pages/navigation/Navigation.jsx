@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { Loader, Logo, NavLink } from "components";
-import { useContext, useEffect } from "react";
+import { Logo, NavLink } from "components";
+import { useContext } from "react";
 import { Context } from "contexts/AppContexts";
 import { MenuIcon } from "components";
 import Nav from "./Navigation.styles";
