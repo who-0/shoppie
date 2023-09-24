@@ -4,6 +4,10 @@
   "description": "mini online shop app",
   "main": "index.js",
   "scripts": {
+    "start-server": "npm start --prefix server",
+    "test-server": "npm test --prefix server",
+    "start-client": "npm start --prefix client",
+    "test-client": "npm test --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "DaDDy",

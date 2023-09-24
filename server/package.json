@@ -1,7 +1,7 @@
 {
-  "name": "jobify",
+  "name": "shoppie",
   "version": "1.0.0",
-  "description": "Project in Action - [Jobify](https://www.jobify.live/)",
+  "description": "Project in Action - []()",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
