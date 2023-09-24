@@ -6,7 +6,6 @@ import Profile from "./profile/Profile.page";
 import ProtectedPage from "./ProtectedPage";
 import Shop from "./shop/Shop.page";
 import PageShareLayout from "./PageShareLayout";
-
 export {
   Home,
   Auth,

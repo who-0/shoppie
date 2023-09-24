@@ -50,4 +50,19 @@ const Wrapper = styled.form`
       background-color: #70a1d7;
     }
   }
+
+  @media screen and (max-width: 426px) {
+    input {
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (max-width: 321px) {
+    input {
+      width: 90%;
+    }
+  }
 `;
+
+export default Wrapper;

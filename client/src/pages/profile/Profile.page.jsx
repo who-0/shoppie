@@ -2,10 +2,10 @@ import colors from "colors";
 import { useContext, useEffect } from "react";
 import { Context } from "contexts/AppContexts";
 import { PROFILE } from "contexts/actions";
-import "./styles.css";
-import {  Alert, ProfileIcon } from "components";
+import "./styles.page.jsx";
+import { Alert, ProfileForm, ProfileIcon } from "components";
 import { useState } from "react";
-
+import Wrapper from "./styles.page.jsx";
 
 const body = document.body;
 const Profile = () => {
@@ -28,8 +28,6 @@ const Profile = () => {
 
   const [formfield, setFormField] = useState(defaultValue);
 
-  const { name, email, password } = formfield;
-
   useEffect(() => {
     if (color !== colors.login_color) {
       changeColor(PROFILE);
@@ -50,77 +48,23 @@ const Profile = () => {
   };
 
   return (
-    <div className="user">
+    <Wrapper>
       <div className="user_container">
         <ProfileIcon />
         <div className="user_info">
           {alert && <Alert />}
-          <form>
-            <input
-              type="text"
-              value={name}
-              name="name"
-              disabled={!isEdited}
-              onChange={changeHandler}
-            />
-            <input
-              type="email"
-              value={email}
-              name="email"
-              disabled={!isEdited}
-              onChange={changeHandler}
-            />
-            {isEdited && (
-              <input
-                type="password"
-                value={password}
-                name="password"
-                disabled={!isEdited}
-                onChange={changeHandler}
-                placeholder="New Password"
-              />
-            )}
-            <div className="btn_container">
-              {isEdited ? (
-                <>
-                  <button
-                    type="button"
-                    className="btn1 btn"
-                    onClick={cancelEditeProfile}
-                  >
-                    cancel
-                  </button>
-                  <button
-                    type="button"
-                    className="btn2 btn"
-                    onClick={changeUserInfo}
-                  >
-                    submit
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    type="button"
-                    className="btn1 btn"
-                    onClick={logoutUser}
-                  >
-                    logout
-                  </button>
-                  <button
-                    type="button"
-                    className="btn2 btn"
-                    onClick={editeProfile}
-                  >
-                    update
-                  </button>
-                </>
-              )}
-            </div>
-          </form>
+          <ProfileForm
+            formField={formfield}
+            isEdited={isEdited}
+            changeHandler={changeHandler}
+            cancelEditeProfile={cancelEditeProfile}
+            changeUserInfo={changeUserInfo}
+            logoutUser={logoutUser}
+            editeProfile={editeProfile}
+          />
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 export default Profile;

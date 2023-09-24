@@ -8,6 +8,7 @@ import Loader from "./loading/Loader.component";
 import Logo from "./logo/Logo.component";
 import MenuIcon from "./menuIcon/MenuIcon.component";
 import NavLink from "./nav-link/Navlink";
+import ProfileForm from "./profile-form/ProfileForm.component";
 import ProfileIcon from "./profile-icon/ProfileIcon.component";
 
 export {
@@ -22,4 +23,5 @@ export {
   Loader,
   Alert,
   ProfileIcon,
+  ProfileForm,
 };

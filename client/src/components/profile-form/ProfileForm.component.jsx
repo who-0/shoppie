@@ -1,4 +1,5 @@
 import React from "react";
+import Wrapper from "./styles.components";
 
 const ProfileForm = ({
   formField,
@@ -11,7 +12,7 @@ const ProfileForm = ({
 }) => {
   const { name, email, password } = formField;
   return (
-    <form>
+    <Wrapper>
       <input
         type="text"
         value={name}
@@ -61,7 +62,7 @@ const ProfileForm = ({
           </>
         )}
       </div>
-    </form>
+    </Wrapper>
   );
 };
 
