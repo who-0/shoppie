@@ -16,7 +16,7 @@ const Wrapper = styled.form`
     padding-left: 10px;
     font-size: 1.5rem;
     letter-spacing: 1.5px;
-    cursor: pointer;
+    cursor: ${(props) => (props.disabled ? "pointer" : "")};
     color: white;
 
     &:first-child {

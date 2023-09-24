@@ -5,6 +5,8 @@ const { StatusCodes } = require("http-status-codes");
 const app = require("../app");
 const { connectDB, dbDisconnect } = require("../config/db");
 const url = process.env.MONGO_URL;
+const no = Math.floor(Math.random() * 1000);
+
 describe("TEST User API", () => {
   beforeAll(async () => {
     await connectDB(url);
@@ -17,12 +19,12 @@ describe("TEST User API", () => {
   describe("TEST Update User data", () => {
     const url = "/api/v1/user";
     const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTBhZWNmOGZjNTEwNWNjOGY4MmNhNzIiLCJlbWFpbCI6InRlc3QxQGdtYWlsLmNvbSIsImlhdCI6MTY5NTQxMjQzNywiZXhwIjoxNjk1NDk4ODM3fQ.xmIJZa0qhPMLtX2q_VrBxhh4H5BnHOFRWiX4LBmhaHo";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTBhZWNmOGZjNTEwNWNjOGY4MmNhNzIiLCJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImlhdCI6MTY5NTU1MTc2MywiZXhwIjoxNzI2MzEwMTYzfQ.v7NJoF590A6643Sd6wPE8QKYGpV7p2C7UWYtZwgGF84";
     const testUserWithPassword = {
       _id: "650aecf8fc5105cc8f82ca72",
       name: "test2",
       email: "test2@gmail.com",
-      password: "test12345",
+      password: `test${no}`,
     };
     const testUserWithoutPassword = {
       _id: "650aecf8fc5105cc8f82ca72",

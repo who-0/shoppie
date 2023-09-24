@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { Context } from "contexts/AppContexts";
 import colors from "colors";
 import { SHOP } from "contexts/actions";
-
+import "./styles.scss";
 const body = document.body;
 
 const Shop = () => {

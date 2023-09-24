@@ -4,6 +4,7 @@ const secret = process.env.SECRET_KEY;
 
 const checkAuth = (req, res, next) => {
   const { token } = req.cookies;
+  console.log(token);
 
   if (!token) {
     throw new UnAuthenticatedError("Authentication Invalid");

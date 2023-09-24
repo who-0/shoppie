@@ -49,7 +49,7 @@ UserSchema.pre("findOneAndUpdate", async function () {
 
 UserSchema.methods.createJWT = function () {
   return jwt.sign({ userId: this._id, email: this.email }, key, {
-    expiresIn: "1d",
+    expiresIn: "356d",
   });
 };
 

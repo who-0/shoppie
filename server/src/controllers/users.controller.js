@@ -4,7 +4,7 @@ const checkPermissions = require("../utils/checkPermission");
 const updateUserController = async (req, res) => {
   const { name, email, password, _id } = req.body;
   const { userId } = req.user;
-
+  console.log(_id, userId);
   //?Check user id equal or not from req.body and token
   checkPermissions(_id, userId);
   try {
