@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Form } from "components";
 import LoginCS from "./styles.page";
 import { AUTH } from "contexts/actions";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const body = document.body;
 
@@ -58,11 +59,13 @@ const Auth = () => {
   return (
     <LoginCS>
       <h2 className="title">{signup ? "signup" : "login"}</h2>
-      <Form
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        formField={formField}
-      />
+      
+        <Form
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
+          formField={formField}
+        />
+     
     </LoginCS>
   );
 };

@@ -2,6 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 const { User } = require("../models");
 const { BadRequestError, UnAuthenticatedError } = require("../errors");
 const attachCookie = require("../utils/attachCookie");
+const path = require("path");
 
 const signupController = async (req, res) => {
   const { email, password, name } = req.body;
@@ -52,8 +53,12 @@ const loginController = async (req, res) => {
 };
 
 const GoogleController = (req, res) => {
-  console.log("successful login with google");
-  return res.redirect("/");
+  const user = req.user;
+  if (!user) {
+    throw new UnAuthenticatedError("Invalid Credentials");
+  }
+  const token = user.createJWT();
+  res.status(StatusCodes.OK).json({ user, token });
 };
 
 module.exports = { signupController, loginController, GoogleController };

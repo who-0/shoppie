@@ -29,12 +29,10 @@ const GoogleAuth = (passport) => {
             done(null, user);
           } else {
             user = await User.create(newUser);
-            console.log("user", user);
             done(null, user);
           }
         } catch (error) {
           console.error(error);
-          res.redirect("/error");
         }
       }
     )

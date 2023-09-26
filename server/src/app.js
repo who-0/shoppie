@@ -2,8 +2,10 @@ require("express-async-errors");
 const express = require("express");
 const morgan = require("morgan");
 const cookie = require("cookie-parser");
+const cors = require("cors");
 const helmet = require("helmet");
 const passport = require("passport");
+const session = require("express-session");
 const path = require("path");
 const api = require("./routes");
 const {
@@ -19,9 +21,25 @@ if (process.env.NODE_ENV !== "productions") {
 }
 
 //!Function
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,POST,PATCH",
+    credentials: true,
+  })
+);
 app.use(helmet());
 app.use(express.json());
 app.use(cookie());
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: true,
+    secret: process.env.SECRET_KEY,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 //!Oauth
 GoogleAuth(passport);

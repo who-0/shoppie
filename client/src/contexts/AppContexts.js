@@ -1,6 +1,7 @@
 import { useReducer, createContext } from "react";
 import reducer from "./reducers";
 import axios from "axios";
+import { useGoogleLogin } from "@react-oauth/google";
 import {
   USER_SIGNUP,
   OPEN_MENU,
@@ -83,6 +84,17 @@ const Provider = ({ children }) => {
     }
   };
 
+  const googleAuth = useGoogleLogin({
+    onSuccess: async (response) => {
+      console.log("response", response);
+      const userInfo = await API.get("/auth/google", {
+        headers: { Authorization: `Bearer ${response.access_token}` },
+      });
+      console.log(userInfo);
+    },
+    onError: (error) => console.log(error),
+  });
+
   const displayAlert = (msg) => {
     dispatch({ type: DISPLAY_ERROR, payload: msg });
     clearAlert();
@@ -147,6 +159,7 @@ const Provider = ({ children }) => {
         cancelEditeProfile,
         logoutUser,
         updateUser,
+        googleAuth,
       }}
     >
       {children}
