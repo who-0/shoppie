@@ -54,6 +54,7 @@ const loginController = async (req, res) => {
 
 const GoogleController = (req, res) => {
   const user = req.user;
+  console.log(user);
   if (!user) {
     throw new UnAuthenticatedError("Invalid Credentials");
   }

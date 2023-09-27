@@ -1,7 +1,7 @@
 import { useReducer, createContext } from "react";
 import reducer from "./reducers";
 import axios from "axios";
-import { useGoogleLogin } from "@react-oauth/google";
+
 import {
   USER_SIGNUP,
   OPEN_MENU,
@@ -84,16 +84,31 @@ const Provider = ({ children }) => {
     }
   };
 
-  const googleAuth = useGoogleLogin({
-    onSuccess: async (response) => {
-      console.log("response", response);
-      const userInfo = await API.get("/auth/google", {
-        headers: { Authorization: `Bearer ${response.access_token}` },
-      });
-      console.log(userInfo);
-    },
-    onError: (error) => console.log(error),
-  });
+  // const googleAuth = useGoogleLogin({
+  //   onSuccess: async (response) => {
+  //     console.log("response", response);
+  //     const userInfo = await API.get("/auth/google", {
+  //       headers: { Authorization: `Bearer ${response.access_token}` },
+  //     });
+  //     console.log(userInfo);
+  //   },
+  //   onError: (error) => console.log(error),
+  // });
+
+  const googleAuth = () => {
+    window.open(`http://localhost:4000/api/v1/auth/google`, "_self");
+  };
+
+  const userGoogle = async () => {
+    const response = await API.get("/auth/success");
+    console.log(response);
+    const { user, token } = response.data;
+    localStorage.setItem("user", JSON.stringify(user));
+    dispatch({
+      type: SUBMIT_AUTH_SUCCESS,
+      payload: { token, user, success: "Successful Login" },
+    });
+  };
 
   const displayAlert = (msg) => {
     dispatch({ type: DISPLAY_ERROR, payload: msg });
@@ -160,6 +175,7 @@ const Provider = ({ children }) => {
         logoutUser,
         updateUser,
         googleAuth,
+        userGoogle,
       }}
     >
       {children}

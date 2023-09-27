@@ -6,7 +6,7 @@ import "./styles.scss";
 const body = document.body;
 
 const Shop = () => {
-  const { color, changeColor } = useContext(Context);
+  const { color, changeColor, userGoogle } = useContext(Context);
 
   useEffect(() => {
     if (color !== colors.shop_color) {
@@ -14,6 +14,7 @@ const Shop = () => {
     } else {
       body.style.background = color;
     }
+    // userGoogle();
     // eslint-disable-next-line
   }, [color]);
   return <div>This is Shop Page.</div>;

@@ -5,17 +5,14 @@ import Wrapper from "./styles.component";
 import { useContext } from "react";
 import { Context } from "contexts/AppContexts";
 import Alert from "components/alert/Alert.component";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const Form = ({ handleSubmit, handleChange, formField }) => {
-  const { signUpUser, signup, alert } = useContext(Context);
+  const { signUpUser, signup, alert, googleAuth } = useContext(Context);
   const { email, password, name, cpassword } = formField;
-  const googleAuth = () => {
-    window.open(`http://localhost:4000/auth/google`, "_self");
-  };
-  // const google = () => {
-  //   googleAuth();
+  // const googleAuth = () => {
+  //   window.open(`http://localhost:4000/api/v1/auth/google`, "_self");
   // };
+
   return (
     <Wrapper $signup={+signup} onSubmit={handleSubmit}>
       {alert && <Alert />}
@@ -53,7 +50,7 @@ const Form = ({ handleSubmit, handleChange, formField }) => {
       )}
       <div className="btn_container">
         {/* <Button type="button" name="google" func={google} /> */}
-        <Button type="submit" name="google" func={googleAuth} />
+        <Button type="button" name="google" func={googleAuth} />
         <Button type="submit" name={`${signup ? "signup" : "login"}`} />
       </div>
 
