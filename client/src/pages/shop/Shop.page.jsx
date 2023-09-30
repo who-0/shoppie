@@ -6,7 +6,7 @@ import "./styles.scss";
 const body = document.body;
 
 const Shop = () => {
-  const { color, changeColor, userGoogle } = useContext(Context);
+  const { color, changeColor, products, getAllProducts } = useContext(Context);
 
   useEffect(() => {
     if (color !== colors.shop_color) {
@@ -14,9 +14,15 @@ const Shop = () => {
     } else {
       body.style.background = color;
     }
-    // userGoogle();
+    getAllProducts();
     // eslint-disable-next-line
   }, [color]);
-  return <div>This is Shop Page.</div>;
+  return (
+    <div>
+      {products.products.foreach((product) => {
+        return <div>{product.title}</div>;
+      })}
+    </div>
+  );
 };
 export default Shop;

@@ -16,6 +16,9 @@ import {
   LOGOUT_USER_SUCCESS,
   UPDATE_USER_START,
   UPDATE_USER_SUCCESS,
+  GET_ALL_PRODUCTS_SUCCESS,
+  GET_ALL_PRODUCTS_START,
+  GET_ALL_PRODUCTS_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -138,6 +141,10 @@ const reducer = (state, action) => {
         user: action.payload.data,
         isEdited: false,
       };
+    case GET_ALL_PRODUCTS_START:
+      return { ...state, loading: true };
+    case GET_ALL_PRODUCTS_SUCCESS:
+      return { ...state, products: action.payload.data };
     default:
       return state;
   }

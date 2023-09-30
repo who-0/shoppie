@@ -16,6 +16,9 @@ import {
   UPDATE_USER_START,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  GET_ALL_PRODUCTS_START,
+  GET_ALL_PRODUCTS_SUCCESS,
+  GET_ALL_PRODUCTS_ERROR,
 } from "./actions";
 
 const data = localStorage.getItem("user");
@@ -38,6 +41,7 @@ const initialState = {
   user: user || "",
   token: null,
   isEdited: false,
+  products: [],
 };
 const Context = createContext();
 
@@ -161,6 +165,19 @@ const Provider = ({ children }) => {
     }
   };
 
+  const getAllProducts = async () => {
+    dispatch({ type: GET_ALL_PRODUCTS_START });
+    try {
+      const response = await API.get("/products");
+      const data = response.data;
+      console.log(data);
+      dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, payload: { data } });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: GET_ALL_PRODUCTS_ERROR, payload: error.message });
+    }
+  };
+
   return (
     <Context.Provider
       value={{
@@ -176,6 +193,7 @@ const Provider = ({ children }) => {
         updateUser,
         googleAuth,
         userGoogle,
+        getAllProducts,
       }}
     >
       {children}
