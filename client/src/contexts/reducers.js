@@ -19,6 +19,12 @@ import {
   GET_ALL_PRODUCTS_SUCCESS,
   GET_ALL_PRODUCTS_START,
   GET_ALL_PRODUCTS_ERROR,
+  SEARCH_PRODUCT_START,
+  SEARCH_PRODUCT_SUCCESS,
+  SEARCH_PRODUCT_ERROR,
+  GET_PRODUCT_INFO_START,
+  GET_PRODUCT_INFO_SUCCESS,
+  GET_PRODUCT_INFO_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -144,7 +150,36 @@ const reducer = (state, action) => {
     case GET_ALL_PRODUCTS_START:
       return { ...state, loading: true };
     case GET_ALL_PRODUCTS_SUCCESS:
-      return { ...state, products: action.payload.data };
+      return { ...state, products: action.payload, loading: false };
+    case GET_ALL_PRODUCTS_ERROR:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload.msg,
+        alert_type: "danger",
+      };
+    case SEARCH_PRODUCT_START:
+      return { ...state, loading: true };
+    case SEARCH_PRODUCT_SUCCESS:
+      return { ...state, products: action.payload, loading: false };
+    case SEARCH_PRODUCT_ERROR:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload.msg,
+        alert_type: "danger",
+      };
+    case GET_PRODUCT_INFO_START:
+      return { ...state, loading: true };
+    case GET_PRODUCT_INFO_SUCCESS:
+      return { ...state, showProduct: true, loading: false };
+    case GET_PRODUCT_INFO_ERROR:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload.msg,
+        alert_type: "danger",
+      };
     default:
       return state;
   }

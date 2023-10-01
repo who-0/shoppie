@@ -14,7 +14,7 @@ const getAllProducts = async (req, res) => {
     }
   } else {
     try {
-      const response = await axios.get(`${API}?limit=20`);
+      const response = await axios.get(`${API}?limit=50`);
       const data = await response.data;
       res.status(200).json(data);
     } catch (error) {
@@ -30,6 +30,7 @@ const getProductById = async (req, res) => {
   try {
     const response = await axios.get(`${API}/${id}`);
     const data = await response.data;
+    console.log(data);
     res.status(200).json(data);
   } catch (error) {
     console.log(error.message);

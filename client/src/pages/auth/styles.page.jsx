@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const LoginCS = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 89vh;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -5,6 +5,19 @@ $home-color: #f7fdb6;
   margin: 0;
   padding: 0;
 }
-body {
-  overflow: hidden;
+// body {
+//   // overflow: hidden;
+// }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgb(133, 133, 133);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(122, 230, 122);
+  border-radius: 50px;
 }

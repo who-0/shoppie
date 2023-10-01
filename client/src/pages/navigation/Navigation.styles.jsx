@@ -9,6 +9,8 @@ const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   z-index: 10;
+  position: sticky;
+  top: 10px;
 
   .btn-container {
     display: flex;

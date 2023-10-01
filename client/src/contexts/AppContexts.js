@@ -19,6 +19,12 @@ import {
   GET_ALL_PRODUCTS_START,
   GET_ALL_PRODUCTS_SUCCESS,
   GET_ALL_PRODUCTS_ERROR,
+  SEARCH_PRODUCT_START,
+  SEARCH_PRODUCT_SUCCESS,
+  SEARCH_PRODUCT_ERROR,
+  GET_PRODUCT_INFO_START,
+  GET_PRODUCT_INFO_SUCCESS,
+  GET_PRODUCT_INFO_ERROR,
 } from "./actions";
 
 const data = localStorage.getItem("user");
@@ -42,6 +48,7 @@ const initialState = {
   token: null,
   isEdited: false,
   products: [],
+  showProduct: false,
 };
 const Context = createContext();
 
@@ -169,12 +176,39 @@ const Provider = ({ children }) => {
     dispatch({ type: GET_ALL_PRODUCTS_START });
     try {
       const response = await API.get("/products");
-      const data = response.data;
-      console.log(data);
-      dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, payload: { data } });
+      const { products } = response.data;
+      dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, payload: products });
     } catch (error) {
       console.log(error);
       dispatch({ type: GET_ALL_PRODUCTS_ERROR, payload: error.message });
+    }
+  };
+
+  const searchProduct = async (name) => {
+    dispatch({ type: SEARCH_PRODUCT_START });
+    try {
+      const response = await API.get(`/products?name=${name}`);
+      const { products } = response.data;
+      dispatch({ type: SEARCH_PRODUCT_SUCCESS, payload: products });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: SEARCH_PRODUCT_ERROR, payload: { msg: error.message } });
+    }
+  };
+
+  const showProductInfo = async (id) => {
+    dispatch({ type: GET_PRODUCT_INFO_START });
+    try {
+      const response = await API.get(`/products/${id}`);
+      const { data } = response;
+      console.log(data);
+      dispatch({ type: GET_PRODUCT_INFO_SUCCESS, payload: data });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: GET_PRODUCT_INFO_ERROR,
+        payload: { msg: error.message },
+      });
     }
   };
 
@@ -194,6 +228,8 @@ const Provider = ({ children }) => {
         googleAuth,
         userGoogle,
         getAllProducts,
+        searchProduct,
+        showProductInfo,
       }}
     >
       {children}
