@@ -16,6 +16,7 @@ const Shop = () => {
     searchProduct,
     showProduct,
     getAllCategories,
+    caterogires
   } = useContext(Context);
 
   useEffect(() => {
@@ -24,8 +25,8 @@ const Shop = () => {
     } else {
       body.style.background = color;
     }
-
-    getAllCategories();
+    getAllProducts();
+    // getAllCategories();
     // eslint-disable-next-line
   }, [color]);
 

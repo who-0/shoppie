@@ -207,7 +207,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         loading: false,
-        caterogires: action.payload,
+        categories: action.payload,
       };
     case GET_ALL_CATEGORIES_ERROR:
       return {
