@@ -25,6 +25,13 @@ import {
   GET_PRODUCT_INFO_START,
   GET_PRODUCT_INFO_SUCCESS,
   GET_PRODUCT_INFO_ERROR,
+  CLOSE_PRODUCT_INFO,
+  GET_ALL_CATEGORIES_START,
+  GET_ALL_CATEGORIES_SUCCESS,
+  GET_ALL_CATEGORIES_ERROR,
+  GET_CATEGORY_START,
+  GET_CATEGORY_SUCCESS,
+  GET_CATEGORY_ERROR,
 } from "./actions";
 
 const data = localStorage.getItem("user");
@@ -49,6 +56,9 @@ const initialState = {
   isEdited: false,
   products: [],
   showProduct: false,
+  singleProduct: null,
+  caterogires: [],
+  // product_detail_open: false,
 };
 const Context = createContext();
 
@@ -201,7 +211,6 @@ const Provider = ({ children }) => {
     try {
       const response = await API.get(`/products/${id}`);
       const { data } = response;
-      console.log(data);
       dispatch({ type: GET_PRODUCT_INFO_SUCCESS, payload: data });
     } catch (error) {
       console.log(error);
@@ -209,6 +218,35 @@ const Provider = ({ children }) => {
         type: GET_PRODUCT_INFO_ERROR,
         payload: { msg: error.message },
       });
+    }
+  };
+
+  const closeProductInfo = (_) => dispatch({ type: CLOSE_PRODUCT_INFO });
+
+  const getAllCategories = async () => {
+    dispatch({ type: GET_ALL_CATEGORIES_START });
+    try {
+      const response = await API.get("/products/categories");
+      const data = response.data;
+      dispatch({ type: GET_ALL_CATEGORIES_SUCCESS, payload: data });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: GET_ALL_CATEGORIES_ERROR,
+        payload: { msg: error.message },
+      });
+    }
+  };
+
+  const getCategoryByName = async (name) => {
+    dispatch({ type: GET_CATEGORY_START });
+    try {
+      const response = await API.get(`/categories/${name}`);
+      const data = response.data;
+      dispatch({ type: GET_CATEGORY_SUCCESS, payload: data });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: GET_CATEGORY_ERROR, payload: { msg: error.message } });
     }
   };
 
@@ -230,6 +268,9 @@ const Provider = ({ children }) => {
         getAllProducts,
         searchProduct,
         showProductInfo,
+        closeProductInfo,
+        getAllCategories,
+        getCategoryByName,
       }}
     >
       {children}

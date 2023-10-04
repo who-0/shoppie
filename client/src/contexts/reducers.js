@@ -25,6 +25,13 @@ import {
   GET_PRODUCT_INFO_START,
   GET_PRODUCT_INFO_SUCCESS,
   GET_PRODUCT_INFO_ERROR,
+  CLOSE_PRODUCT_INFO,
+  GET_ALL_CATEGORIES_START,
+  GET_ALL_CATEGORIES_SUCCESS,
+  GET_ALL_CATEGORIES_ERROR,
+  GET_CATEGORY_START,
+  GET_CATEGORY_SUCCESS,
+  GET_CATEGORY_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -172,8 +179,54 @@ const reducer = (state, action) => {
     case GET_PRODUCT_INFO_START:
       return { ...state, loading: true };
     case GET_PRODUCT_INFO_SUCCESS:
-      return { ...state, showProduct: true, loading: false };
+      return {
+        ...state,
+        showProduct: true,
+        loading: false,
+        singleProduct: action.payload,
+      };
     case GET_PRODUCT_INFO_ERROR:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload.msg,
+        alert_type: "danger",
+      };
+    case CLOSE_PRODUCT_INFO:
+      return {
+        ...state,
+        showProduct: false,
+        singleProduct: null,
+      };
+    case GET_ALL_CATEGORIES_START:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_ALL_CATEGORIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        caterogires: action.payload,
+      };
+    case GET_ALL_CATEGORIES_ERROR:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload.msg,
+        alert_type: "danger",
+      };
+    case GET_CATEGORY_START:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+    case GET_CATEGORY_ERROR:
       return {
         ...state,
         alert: true,

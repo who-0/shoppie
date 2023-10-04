@@ -6,6 +6,7 @@ import { useContext } from "react";
 const ProductCard = ({ product }) => {
   const { showProductInfo } = useContext(Context);
   const showInfo = () => {
+    console.log("click showinfi");
     showProductInfo(product.id);
   };
   return (

@@ -30,7 +30,6 @@ const getProductById = async (req, res) => {
   try {
     const response = await axios.get(`${API}/${id}`);
     const data = await response.data;
-    console.log(data);
     res.status(200).json(data);
   } catch (error) {
     console.log(error.message);
