@@ -23,7 +23,7 @@ const Wrapper = styled.form`
   .search_icon {
     font-size: 1.4rem;
     position: absolute;
-    right: 31%;
+    right: 43%;
     line-height: 10px;
     border: none;
     background-color: transparent;

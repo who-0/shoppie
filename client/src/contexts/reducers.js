@@ -225,6 +225,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         loading: false,
+        products: action.payload,
       };
     case GET_CATEGORY_ERROR:
       return {

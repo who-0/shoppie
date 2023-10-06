@@ -2,7 +2,7 @@ const axios = require("axios");
 const API = process.env.PRODUCTS_API;
 
 const getAllProducts = async (req, res) => {
-  const name = req.query.name;
+  const { name, limit, skip } = req.query;
   if (name) {
     try {
       const response = await axios.get(`${API}/search?q=${name}`);
@@ -14,7 +14,7 @@ const getAllProducts = async (req, res) => {
     }
   } else {
     try {
-      const response = await axios.get(`${API}?limit=50`);
+      const response = await axios.get(`${API}?limit=${limit}&skip=${skip}`);
       const data = await response.data;
       res.status(200).json(data);
     } catch (error) {

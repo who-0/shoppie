@@ -1,7 +1,8 @@
 import { TfiSearch } from "react-icons/tfi";
 import Wrapper from "./styles.component";
+import Filter from "components/product-filter/Filter.component";
 
-const Search = ({ handleChange, handleSubmit, productName }) => {
+const Search = ({ handleChange, handleSubmit, productName, caterogires }) => {
   return (
     <Wrapper onSubmit={handleSubmit}>
       <input
@@ -15,6 +16,7 @@ const Search = ({ handleChange, handleSubmit, productName }) => {
       <button type="submit" className="search_icon">
         <TfiSearch />
       </button>
+      <Filter caterogires={caterogires} />
     </Wrapper>
   );
 };

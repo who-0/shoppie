@@ -16,7 +16,7 @@ const Shop = () => {
     searchProduct,
     showProduct,
     getAllCategories,
-    caterogires
+    categories,
   } = useContext(Context);
 
   useEffect(() => {
@@ -26,9 +26,13 @@ const Shop = () => {
       body.style.background = color;
     }
     getAllProducts();
-    // getAllCategories();
     // eslint-disable-next-line
   }, [color]);
+
+  // useEffect(() => {
+  //   getAllProducts();
+  //   getAllCategories();
+  // });
 
   const handleChange = (e) => {
     setProductName(e.target.value);
@@ -49,6 +53,7 @@ const Shop = () => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         productName={productName}
+        caterogires={categories}
       />
       <ProductsContainer products={products} />
       {showProduct && <ProductDetail />}

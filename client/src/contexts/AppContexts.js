@@ -58,6 +58,7 @@ const initialState = {
   showProduct: false,
   singleProduct: null,
   categories: [],
+  page: 1,
   // product_detail_open: false,
 };
 const Context = createContext();
@@ -185,8 +186,10 @@ const Provider = ({ children }) => {
   const getAllProducts = async () => {
     dispatch({ type: GET_ALL_PRODUCTS_START });
     try {
-      const response = await API.get("/products");
-      const { products } = response.data;
+      const response = await API.get("/products?limit=20&skip=0");
+      const { products, skip, limit } = response.data;
+      console.log(skip, limit);
+      await getAllCategories();
       dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, payload: products });
     } catch (error) {
       console.log(error);
@@ -239,17 +242,17 @@ const Provider = ({ children }) => {
   };
 
   const getCategoryByName = async (name) => {
-
+    dispatch({ type: GET_CATEGORY_START });
     try {
-      const response = await API.get(`/categories/laptop`);
-      const data = response.data;
-      // return data;
-      console.log(data)
+      const response = await API.get(`/products/categories/${name}`);
+      const { products } = response.data;
+
+      dispatch({ type: GET_CATEGORY_SUCCESS, payload: products });
     } catch (error) {
       console.log(error);
+      dispatch({ type: GET_CATEGORY_ERROR, payload: { msg: error.message } });
     }
   };
-  // getCategoryByName()
 
   return (
     <Context.Provider
