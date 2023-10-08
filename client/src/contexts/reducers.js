@@ -32,6 +32,10 @@ import {
   GET_CATEGORY_START,
   GET_CATEGORY_SUCCESS,
   GET_CATEGORY_ERROR,
+  CHANGE_PAGE,
+  CHANGE_SHOW_IMAGE,
+  ADD_TO_CART,
+  IS_CART_OPEN,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -157,7 +161,15 @@ const reducer = (state, action) => {
     case GET_ALL_PRODUCTS_START:
       return { ...state, loading: true };
     case GET_ALL_PRODUCTS_SUCCESS:
-      return { ...state, products: action.payload, loading: false };
+      const { products, limit, skip, total } = action.payload;
+      return {
+        ...state,
+        products: products,
+        limit,
+        skip,
+        total,
+        loading: false,
+      };
     case GET_ALL_PRODUCTS_ERROR:
       return {
         ...state,
@@ -184,6 +196,7 @@ const reducer = (state, action) => {
         showProduct: true,
         loading: false,
         singleProduct: action.payload,
+        showImage: action.payload.images[0],
       };
     case GET_PRODUCT_INFO_ERROR:
       return {
@@ -234,6 +247,22 @@ const reducer = (state, action) => {
         alert_msg: action.payload.msg,
         alert_type: "danger",
       };
+    case CHANGE_PAGE:
+      return {
+        ...state,
+        acitvePage: action.payload.number,
+        skip: action.payload.changeSkip,
+      };
+    case CHANGE_SHOW_IMAGE:
+      return {
+        ...state,
+        showImage: action.payload,
+      };
+    case ADD_TO_CART:
+      return { ...state, cartItem: action.payload };
+    case IS_CART_OPEN:
+      console.log(!state.isCartOpen);
+      return { ...state, isCartOpen: !state.isCartOpen };
     default:
       return state;
   }

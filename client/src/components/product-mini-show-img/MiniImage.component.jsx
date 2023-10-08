@@ -1,17 +1,17 @@
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import Wrapper from "./styles.component";
-
-const MiniImage = ({ images }) => {
+const MiniImage = ({ images, showImage, changeShowImage }) => {
   return (
     <Wrapper>
-      <BiChevronLeft className="previous_btn img_btn" />
-
-      <img src={images[0]} alt="" className="active" />
-      <img src={images[1]} alt="" />
-      <img src={images[2]} alt="" />
-      <img src={images[3]} alt="" />
-
-      <BiChevronRight className="next_btn img_btn" />
+      {images.map((img) => (
+        <img
+          src={img}
+          alt="img"
+          key={img}
+          className={img === showImage ? "active" : null}
+          onClick={() => changeShowImage(img)}
+        />
+      ))}
     </Wrapper>
   );
 };

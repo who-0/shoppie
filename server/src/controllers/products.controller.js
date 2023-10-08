@@ -50,11 +50,9 @@ const getAllCategories = async (req, res) => {
 
 const getCategoryByName = async (req, res) => {
   const name = req.params.name;
-  console.log(name);
   try {
     const response = await axios.get(`${API}/category/${name}`);
     const data = await response.data;
-    console.log(data);
     res.status(200).json(data);
   } catch (error) {
     console.log(error);

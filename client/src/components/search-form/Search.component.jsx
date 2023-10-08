@@ -1,8 +1,18 @@
 import { TfiSearch } from "react-icons/tfi";
 import Wrapper from "./styles.component";
 import Filter from "components/product-filter/Filter.component";
+import CartIcon from "components/cart-icon/CartIcon.component";
+import CartInfo from "components/cart-info/CartInfo.component";
 
-const Search = ({ handleChange, handleSubmit, productName, caterogires }) => {
+const Search = ({
+  handleChange,
+  handleSubmit,
+  productName,
+  caterogires,
+  user,
+  isCartOpen,
+}) => {
+  console.log(isCartOpen);
   return (
     <Wrapper onSubmit={handleSubmit}>
       <input
@@ -17,6 +27,8 @@ const Search = ({ handleChange, handleSubmit, productName, caterogires }) => {
         <TfiSearch />
       </button>
       <Filter caterogires={caterogires} />
+      {user && <CartIcon />}
+      {isCartOpen && <CartInfo />}
     </Wrapper>
   );
 };

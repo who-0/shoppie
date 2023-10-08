@@ -9,14 +9,16 @@ const body = document.body;
 const Shop = () => {
   const [productName, setProductName] = useState("");
   const {
+    user,
     color,
     changeColor,
     products,
     getAllProducts,
     searchProduct,
     showProduct,
-    getAllCategories,
     categories,
+    skip,
+    isCartOpen,
   } = useContext(Context);
 
   useEffect(() => {
@@ -27,12 +29,7 @@ const Shop = () => {
     }
     getAllProducts();
     // eslint-disable-next-line
-  }, [color]);
-
-  // useEffect(() => {
-  //   getAllProducts();
-  //   getAllCategories();
-  // });
+  }, [color, skip]);
 
   const handleChange = (e) => {
     setProductName(e.target.value);
@@ -54,6 +51,8 @@ const Shop = () => {
         handleSubmit={handleSubmit}
         productName={productName}
         caterogires={categories}
+        user={user}
+        isCartOpen={isCartOpen}
       />
       <ProductsContainer products={products} />
       {showProduct && <ProductDetail />}

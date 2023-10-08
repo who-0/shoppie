@@ -8,7 +8,7 @@ const Nav = styled.div`
   margin: 10px 5px;
   display: flex;
   justify-content: space-between;
-  z-index: 10;
+  z-index: 99;
   position: sticky;
   top: 10px;
 

@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 const ProductInfo = ({ singleProduct }) => {
   const { title, description, price } = singleProduct;
-  const { closeProductInfo } = useContext(Context);
+  const { closeProductInfo, addToCart } = useContext(Context);
   return (
     <Wrapper>
       <h1>{title}</h1>
@@ -13,7 +13,7 @@ const ProductInfo = ({ singleProduct }) => {
       <h3>
         Price: <span>$ {price}</span>{" "}
       </h3>
-      <button>add to cart</button>
+      <button onClick={() => addToCart(singleProduct)}>add to cart</button>
       <FiX className="close_btn" onClick={closeProductInfo} />
     </Wrapper>
   );

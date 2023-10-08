@@ -3,7 +3,7 @@ import Wrapper from "./styles.component";
 export const ShowImage = ({ imgaes }) => {
   return (
     <Wrapper>
-      <img src={imgaes[0]} alt="" />
+      <img src={imgaes} alt={imgaes} />
     </Wrapper>
   );
 };

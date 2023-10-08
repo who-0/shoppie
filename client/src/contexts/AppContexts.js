@@ -32,9 +32,15 @@ import {
   GET_CATEGORY_START,
   GET_CATEGORY_SUCCESS,
   GET_CATEGORY_ERROR,
+  CHANGE_PAGE,
+  CHANGE_SHOW_IMAGE,
+  ADD_TO_CART,
+  IS_CART_OPEN,
 } from "./actions";
 
 const data = localStorage.getItem("user");
+const dataCart = localStorage.getItem("cart");
+const item = JSON.parse(dataCart);
 const user = JSON.parse(data);
 
 const initialState = {
@@ -56,10 +62,15 @@ const initialState = {
   isEdited: false,
   products: [],
   showProduct: false,
+  showImage: null,
   singleProduct: null,
   categories: [],
-  page: 1,
-  // product_detail_open: false,
+  total: 0,
+  skip: 0,
+  limit: 20,
+  acitvePage: 1,
+  cartItem: item || [],
+  isCartOpen: false,
 };
 const Context = createContext();
 
@@ -186,11 +197,15 @@ const Provider = ({ children }) => {
   const getAllProducts = async () => {
     dispatch({ type: GET_ALL_PRODUCTS_START });
     try {
-      const response = await API.get("/products?limit=20&skip=0");
-      const { products, skip, limit } = response.data;
-      console.log(skip, limit);
+      const response = await API.get(
+        `/products?limit=${state.limit}&skip=${state.skip}`
+      );
+      const { products, skip, limit, total } = response.data;
       await getAllCategories();
-      dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, payload: products });
+      dispatch({
+        type: GET_ALL_PRODUCTS_SUCCESS,
+        payload: { products, skip, limit, total },
+      });
     } catch (error) {
       console.log(error);
       dispatch({ type: GET_ALL_PRODUCTS_ERROR, payload: error.message });
@@ -254,6 +269,25 @@ const Provider = ({ children }) => {
     }
   };
 
+  const changePage = (number) => {
+    const changeSkip = state.limit * number - state.limit;
+    dispatch({ type: CHANGE_PAGE, payload: { number, changeSkip } });
+  };
+
+  const changeShowImage = (img) => {
+    dispatch({ type: CHANGE_SHOW_IMAGE, payload: img });
+  };
+
+  const addToCart = (item) => {
+    state.cartItem.push(item);
+    localStorage.setItem("cart", JSON.stringify(state.cartItem));
+    dispatch({ type: ADD_TO_CART, payload: state.cartItem });
+  };
+
+  const CartOpenorNot = () => {
+    dispatch({ type: IS_CART_OPEN });
+  };
+
   return (
     <Context.Provider
       value={{
@@ -275,6 +309,10 @@ const Provider = ({ children }) => {
         closeProductInfo,
         getAllCategories,
         getCategoryByName,
+        changePage,
+        changeShowImage,
+        addToCart,
+        CartOpenorNot,
       }}
     >
       {children}

@@ -5,13 +5,17 @@ import { Context } from "contexts/AppContexts";
 import { useContext } from "react";
 
 const ImageContainer = () => {
-  const { singleProduct } = useContext(Context);
+  const { singleProduct, showImage, changeShowImage } = useContext(Context);
   const { images } = singleProduct;
 
   return (
     <Wrapper>
-      <ShowImage imgaes={images} />
-      <MiniImage images={images} />
+      <ShowImage imgaes={showImage} />
+      <MiniImage
+        images={images}
+        showImage={showImage}
+        changeShowImage={changeShowImage}
+      />
     </Wrapper>
   );
 };
