@@ -36,6 +36,8 @@ import {
   CHANGE_SHOW_IMAGE,
   ADD_TO_CART,
   IS_CART_OPEN,
+  ADD_QUANTITY,
+  REMOVE_QUANTITY,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -189,7 +191,7 @@ const reducer = (state, action) => {
         alert_type: "danger",
       };
     case GET_PRODUCT_INFO_START:
-      return { ...state, loading: true };
+      return { ...state, loading: true, isCartOpen: false };
     case GET_PRODUCT_INFO_SUCCESS:
       return {
         ...state,
@@ -252,6 +254,7 @@ const reducer = (state, action) => {
         ...state,
         acitvePage: action.payload.number,
         skip: action.payload.changeSkip,
+        isCartOpen: false,
       };
     case CHANGE_SHOW_IMAGE:
       return {
@@ -259,10 +262,13 @@ const reducer = (state, action) => {
         showImage: action.payload,
       };
     case ADD_TO_CART:
-      return { ...state, cartItem: action.payload };
+      return { ...state, isCartOpen: false, cartItem: action.payload };
     case IS_CART_OPEN:
-      console.log(!state.isCartOpen);
       return { ...state, isCartOpen: !state.isCartOpen };
+    case ADD_QUANTITY:
+      return { ...state, cartItem: action.payload };
+    case REMOVE_QUANTITY:
+      return { ...state, cartItem: action.payload };
     default:
       return state;
   }

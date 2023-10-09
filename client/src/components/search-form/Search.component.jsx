@@ -11,8 +11,8 @@ const Search = ({
   caterogires,
   user,
   isCartOpen,
+  cartItem,
 }) => {
-  console.log(isCartOpen);
   return (
     <Wrapper onSubmit={handleSubmit}>
       <input
@@ -28,7 +28,7 @@ const Search = ({
       </button>
       <Filter caterogires={caterogires} />
       {user && <CartIcon />}
-      {isCartOpen && <CartInfo />}
+      {isCartOpen && <CartInfo cartItem={cartItem} />}
     </Wrapper>
   );
 };

@@ -29,6 +29,16 @@ const Wrapper = styled.div`
     border: none;
     background-color: #356ec2;
     color: white;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #5290eb;
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: lightgreen;
+    }
   }
 
   h3 {

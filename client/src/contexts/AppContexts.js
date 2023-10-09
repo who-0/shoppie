@@ -36,6 +36,8 @@ import {
   CHANGE_SHOW_IMAGE,
   ADD_TO_CART,
   IS_CART_OPEN,
+  ADD_QUANTITY,
+  REMOVE_QUANTITY,
 } from "./actions";
 
 const data = localStorage.getItem("user");
@@ -279,13 +281,43 @@ const Provider = ({ children }) => {
   };
 
   const addToCart = (item) => {
-    state.cartItem.push(item);
+    // if (!state.user) Navigate("/auth");
+    const newData = { ...item, quantity: 1 };
+    state.cartItem.push(newData);
     localStorage.setItem("cart", JSON.stringify(state.cartItem));
     dispatch({ type: ADD_TO_CART, payload: state.cartItem });
   };
 
   const CartOpenorNot = () => {
     dispatch({ type: IS_CART_OPEN });
+  };
+
+  // const handleQuantity = (id, action) => {
+  //   switch (action) {
+  //     case "next":
+  //       addOrRemoveQuantity(id, action);
+  //       break;
+  //     case "prev":
+  //       addOrRemoveQuantity(id, action);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
+
+  const handleQuantity = (id, action) => {
+    const foundData = state.cartItem.findIndex((item) => item.id === id);
+    if (action === "next") {
+      state.cartItem[foundData].quantity += 1;
+      dispatch({ type: ADD_QUANTITY, payload: state.cartItem });
+    } else if (action === "prev") {
+      state.cartItem[foundData].quantity -= 1;
+      if (state.cartItem[foundData].quantity === 0) {
+        state.cartItem = state.cartItem.filter((item) => item.id !== id);
+      }
+      dispatch({ type: REMOVE_QUANTITY, payload: state.cartItem });
+    }
+    localStorage.setItem("cart", JSON.stringify([...state.cartItem]));
   };
 
   return (
@@ -313,6 +345,7 @@ const Provider = ({ children }) => {
         changeShowImage,
         addToCart,
         CartOpenorNot,
+        handleQuantity,
       }}
     >
       {children}

@@ -35,3 +35,5 @@ export const CHANGE_PAGE = "CHANGE_PAGE";
 export const CHANGE_SHOW_IMAGE = "CHANGE_SHOW_IMAGE";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const IS_CART_OPEN = "IS_CART_OPEN";
+export const ADD_QUANTITY = "ADD_QUANTITY";
+export const REMOVE_QUANTITY = "REMOVE_QUANTITY";

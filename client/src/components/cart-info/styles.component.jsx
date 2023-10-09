@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   background-color: white;
   z-index: 10;
   width: 25%;
-  height: 250px;
+  height: 270px;
   border-radius: 5px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 10px;
@@ -18,10 +18,8 @@ const Wrapper = styled.div`
   h1 {
     font-size: 1.5rem;
     text-transform: capitalize;
-    margin-bottom: 10px;
   }
   .order_info {
-    /* background-color: black; */
     width: 100%;
     height: 100%;
     overflow-y: scroll;
@@ -31,22 +29,25 @@ const Wrapper = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-
-      /* .left {
-        margin-left: 50px;
-      }
-
-      .right {
-        margin-right: 50px;
-      } */
-    }
-    p {
-      overflow: hidden;
     }
   }
 
   button {
+    margin: 0 20px;
     margin-top: 10px;
+    font-size: 1.1rem;
+    background-color: lightgreen;
+    color: white;
+    text-transform: capitalize;
+    padding: 5px 0;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #5fcf5f;
+      cursor: pointer;
+    }
   }
 `;
 

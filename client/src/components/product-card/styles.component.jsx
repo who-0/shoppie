@@ -6,6 +6,10 @@ const Wrapper = styled.div`
   background: rgba(56, 104, 39, 37%);
   border-radius: 8px;
 
+  &:hover {
+    border: 2px solid #26ed5e;
+  }
+
   img {
     width: 200px;
     height: 200px;
@@ -31,6 +35,12 @@ const Wrapper = styled.div`
       padding: 5px 15px;
       border-radius: 50px;
       background-color: #356ec2;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: #6b94d1;
+        cursor: pointer;
+      }
     }
   }
 `;
