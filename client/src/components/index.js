@@ -1,5 +1,6 @@
 import Alert from "./alert/Alert.component";
 import Btn from "./btn/styles.component";
+import CartProduct from "./cart-products/CartProduct.component";
 import Content from "./contents/Content.component";
 import Form from "./form/Form.component";
 import Images from "./images/Images.component";
@@ -32,4 +33,5 @@ export {
   Search,
   ProductsContainer,
   ProductDetail,
+  CartProduct,
 };

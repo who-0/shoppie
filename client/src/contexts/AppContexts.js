@@ -84,6 +84,7 @@ const Provider = ({ children }) => {
   const changeColor = (action) => {
     dispatch({ type: action });
   };
+
   const menuOpen = () => {
     dispatch({ type: OPEN_MENU });
   };
@@ -164,8 +165,9 @@ const Provider = ({ children }) => {
   };
 
   const logoutUser = () => {
-    dispatch({ type: LOGOUT_USER_SUCCESS });
     localStorage.removeItem("user");
+    localStorage.removeItem("cart");
+    dispatch({ type: LOGOUT_USER_SUCCESS });
   };
 
   const updateUser = async (user) => {
@@ -291,19 +293,6 @@ const Provider = ({ children }) => {
   const CartOpenorNot = () => {
     dispatch({ type: IS_CART_OPEN });
   };
-
-  // const handleQuantity = (id, action) => {
-  //   switch (action) {
-  //     case "next":
-  //       addOrRemoveQuantity(id, action);
-  //       break;
-  //     case "prev":
-  //       addOrRemoveQuantity(id, action);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
 
   const handleQuantity = (id, action) => {
     const foundData = state.cartItem.findIndex((item) => item.id === id);

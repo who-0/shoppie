@@ -17,7 +17,7 @@ const Navlink = styled(Link)`
   justify-content: center;
   align-items: center;
   margin: auto 5px;
-
+  user-select: none;
   &:hover {
     background-color: ${(props) => props.color};
     color: white;

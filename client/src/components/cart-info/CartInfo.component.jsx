@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import Wrapper from "./styles.component";
 import CartProduct from "components/cart-products/CartProduct.component";
 import { Context } from "contexts/AppContexts";
+import { useNavigate } from "react-router-dom";
 
 const CartInfo = () => {
   const { cartItem, handleQuantity } = useContext(Context);
+  const navigation = useNavigate();
   return (
     <Wrapper>
       <h1>your orders</h1>
@@ -17,10 +19,11 @@ const CartInfo = () => {
             price={item.price}
             quantity={item.quantity}
             handleQuantity={handleQuantity}
+            styleType="shop"
           />
         ))}
       </div>
-      <button>check orders</button>
+      <button onClick={() => navigation("/user/orders")}>check orders</button>
     </Wrapper>
   );
 };

@@ -15,6 +15,7 @@ const Wrapper = styled.div`
     border: 1px solid white;
     background-color: rgba(56, 104, 39, 37%);
     transition: all 0.2s;
+    cursor: pointer;
 
     &:hover {
       background-color: white;

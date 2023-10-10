@@ -144,6 +144,8 @@ const reducer = (state, action) => {
         ...state,
         token: null,
         user: null,
+        isCartOpen: false,
+        cartItem: [],
       };
     case UPDATE_USER_START:
       return {
