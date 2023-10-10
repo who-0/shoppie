@@ -45,6 +45,7 @@ const Orders = () => {
           );
         })}
         <div className="total_price">
+          <button type="button">Order</button>
           <h3>total price </h3>
           <p>$ {totalPrice}</p>
         </div>

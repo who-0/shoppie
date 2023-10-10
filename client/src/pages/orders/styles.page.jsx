@@ -53,6 +53,17 @@ const Wrapper = styled.div`
         text-transform: capitalize;
         margin-right: 10px;
       }
+
+      button {
+        font-size: 1.5rem;
+        padding: 5px 20px;
+        border-radius: 50px;
+        border: none;
+        margin-right: 50px;
+        background-color: #1dde3d;
+        color: white;
+        cursor: pointer;
+      }
     }
   }
 `;
