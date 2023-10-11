@@ -73,6 +73,7 @@ const initialState = {
   acitvePage: 1,
   cartItem: item || [],
   isCartOpen: false,
+  order: true,
 };
 const Context = createContext();
 
@@ -308,6 +309,8 @@ const Provider = ({ children }) => {
     }
     localStorage.setItem("cart", JSON.stringify([...state.cartItem]));
   };
+
+  const clickOrder = () => {};
 
   return (
     <Context.Provider
