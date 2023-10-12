@@ -18,7 +18,10 @@ const OrderFrom = ({ user }) => {
   return (
     <Wrapper>
       <form onSubmit={handleSubmit}>
-        <h1>Your Contact Info</h1>
+        <h1>Check Your Contact Info</h1>
+        {phone.length === 0 && (
+          <span style={{ color: "red" }}>Please Provide a Phone Number</span>
+        )}
         <label htmlFor="name" className="name">
           name
         </label>

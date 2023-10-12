@@ -21,12 +21,12 @@ const Orders = () => {
 
   return (
     <Wrapper>
-      {/* <OrderContainer
+      <OrderContainer
         cartItem={cartItem}
         totalPrice={totalPrice}
         handleQuantity={handleQuantity}
-      /> */}
-      {true && <OrderFrom user={user} />}
+      />
+      {order && <OrderFrom user={user} />}
     </Wrapper>
   );
 };

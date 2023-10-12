@@ -5,5 +5,6 @@ const Wrapper = styled.div`
   height: 89vh;
   padding: 20px;
   overflow: auto;
+  position: relative;
 `;
 export default Wrapper;

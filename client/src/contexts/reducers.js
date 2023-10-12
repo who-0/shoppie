@@ -38,6 +38,7 @@ import {
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
+  CHECK_INFO,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -271,6 +272,8 @@ const reducer = (state, action) => {
       return { ...state, cartItem: action.payload };
     case REMOVE_QUANTITY:
       return { ...state, cartItem: action.payload };
+    case CHECK_INFO:
+      return { ...state, order: !state.order };
     default:
       return state;
   }

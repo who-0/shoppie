@@ -38,6 +38,7 @@ import {
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
+  CHECK_INFO
 } from "./actions";
 
 const data = localStorage.getItem("user");
@@ -310,7 +311,9 @@ const Provider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify([...state.cartItem]));
   };
 
-  const clickOrder = () => {};
+  const checkInfo = () => {
+    dispatch({type:CHECK_INFO})
+  };
 
   return (
     <Context.Provider
@@ -338,6 +341,7 @@ const Provider = ({ children }) => {
         addToCart,
         CartOpenorNot,
         handleQuantity,
+        checkInfo
       }}
     >
       {children}

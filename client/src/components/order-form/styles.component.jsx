@@ -1,8 +1,10 @@
 import { styled } from "styled-components";
 
 const Wrapper = styled.div`
-  width: 100%;
+  width: 98%;
   height: 100%;
+  position: absolute;
+  top: 0;
 
   display: flex;
   justify-content: center;
@@ -18,9 +20,9 @@ const Wrapper = styled.div`
     width: 40%;
     /* height: 40%; */
     padding: 20px;
+    box-shadow: 11px 6px 20px 2px #00000099;
 
     h1 {
-      align-self: self-start;
       margin: 5%;
     }
 
