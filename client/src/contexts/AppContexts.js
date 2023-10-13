@@ -38,7 +38,10 @@ import {
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
-  CHECK_INFO
+  CHECK_INFO,
+  ORDER_START,
+  ORDER_SUCCESS,
+  ORDER_ERROR,
 } from "./actions";
 
 const data = localStorage.getItem("user");
@@ -74,7 +77,8 @@ const initialState = {
   acitvePage: 1,
   cartItem: item || [],
   isCartOpen: false,
-  order: true,
+  order: false,
+  totalPrice: 0,
 };
 const Context = createContext();
 
@@ -286,10 +290,13 @@ const Provider = ({ children }) => {
 
   const addToCart = (item) => {
     // if (!state.user) Navigate("/auth");
-    const newData = { ...item, quantity: 1 };
-    state.cartItem.push(newData);
-    localStorage.setItem("cart", JSON.stringify(state.cartItem));
-    dispatch({ type: ADD_TO_CART, payload: state.cartItem });
+    const notFoundData = handleQuantity(item.id, "next");
+    if (notFoundData) {
+      const newData = { ...item, quantity: 1 };
+      state.cartItem.push(newData);
+      localStorage.setItem("cart", JSON.stringify(state.cartItem));
+      dispatch({ type: ADD_TO_CART, payload: state.cartItem });
+    }
   };
 
   const CartOpenorNot = () => {
@@ -298,6 +305,8 @@ const Provider = ({ children }) => {
 
   const handleQuantity = (id, action) => {
     const foundData = state.cartItem.findIndex((item) => item.id === id);
+
+    if (isNaN(foundData) || foundData < 0) return true;
     if (action === "next") {
       state.cartItem[foundData].quantity += 1;
       dispatch({ type: ADD_QUANTITY, payload: state.cartItem });
@@ -307,13 +316,29 @@ const Provider = ({ children }) => {
         state.cartItem = state.cartItem.filter((item) => item.id !== id);
       }
       dispatch({ type: REMOVE_QUANTITY, payload: state.cartItem });
-    }
+    } else return;
     localStorage.setItem("cart", JSON.stringify([...state.cartItem]));
   };
 
-  const checkInfo = () => {
-    dispatch({type:CHECK_INFO})
+  const checkInfo = (totalCost = 0) =>
+    dispatch({ type: CHECK_INFO, payload: totalCost });
+
+  const confirmeOrder = async (orderItems, totalPrice) => {
+    let userOrder = [];
+    dispatch({ type: ORDER_START });
+    orderItems.forEach((item) => {
+      const { id, title, price, quantity } = item;
+      userOrder.push({ id, title, price, quantity });
+    });
+    const response = await API.post("/order", {
+      userOrder,
+      totalPrice,
+    });
+
+    console.log(response);
   };
+
+  const updatePhone = async (phone) => await updateUser({ phone });
 
   return (
     <Context.Provider
@@ -341,7 +366,9 @@ const Provider = ({ children }) => {
         addToCart,
         CartOpenorNot,
         handleQuantity,
-        checkInfo
+        checkInfo,
+        confirmeOrder,
+        updatePhone,
       }}
     >
       {children}

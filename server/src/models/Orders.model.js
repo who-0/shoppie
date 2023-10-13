@@ -13,9 +13,12 @@ const OrderSchema = new mongoose.Schema(
           require: true,
           default: 1,
         },
-        totalPrice: {
+        singlePrice: {
           type: Number,
           require: true,
+        },
+        title: {
+          type: String,
         },
       },
     ],
@@ -23,6 +26,10 @@ const OrderSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "User",
       required: [true, "Order must be related to a user"],
+    },
+    totalPrice: {
+      type: Number,
+      require: [true, "Total price is required"],
     },
   },
   { timestamps: true }

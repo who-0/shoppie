@@ -35,6 +35,7 @@ import {
   CHANGE_PAGE,
   CHANGE_SHOW_IMAGE,
   ADD_TO_CART,
+  UPDATE_TOTAL_PRICE,
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
@@ -273,7 +274,7 @@ const reducer = (state, action) => {
     case REMOVE_QUANTITY:
       return { ...state, cartItem: action.payload };
     case CHECK_INFO:
-      return { ...state, order: !state.order };
+      return { ...state, order: !state.order, totalPrice: action.payload };
     default:
       return state;
   }

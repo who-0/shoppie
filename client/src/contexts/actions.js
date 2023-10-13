@@ -38,3 +38,6 @@ export const IS_CART_OPEN = "IS_CART_OPEN";
 export const ADD_QUANTITY = "ADD_QUANTITY";
 export const REMOVE_QUANTITY = "REMOVE_QUANTITY";
 export const CHECK_INFO = "CHECK_INFO";
+export const ORDER_START = "ORDER_START";
+export const ORDER_SUCCESS = "ORDER_SUCCESS";
+export const ORDER_ERROR = "ORDER_ERROR";

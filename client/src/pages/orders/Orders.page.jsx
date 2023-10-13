@@ -7,9 +7,19 @@ import { SHOP } from "contexts/actions";
 const body = document.body;
 
 const Orders = () => {
-  const { cartItem, handleQuantity, changeColor, color, order, user } =
-    useContext(Context);
-  let totalPrice = 0;
+  const {
+    cartItem,
+    handleQuantity,
+    changeColor,
+    color,
+    order,
+    user,
+    checkInfo,
+    confirmeOrder,
+    updatePhone,
+    totalPrice,
+  } = useContext(Context);
+  let costPrice = 0;
 
   useEffect(() => {
     if (colors !== colors.shop_color) {
@@ -23,10 +33,20 @@ const Orders = () => {
     <Wrapper>
       <OrderContainer
         cartItem={cartItem}
-        totalPrice={totalPrice}
+        costPrice={costPrice}
         handleQuantity={handleQuantity}
+        checkInfo={checkInfo}
       />
-      {order && <OrderFrom user={user} />}
+      {order && (
+        <OrderFrom
+          user={user}
+          checkInfo={checkInfo}
+          confirmeOrder={confirmeOrder}
+          cartItem={cartItem}
+          totalPrice={totalPrice}
+          updatePhone={updatePhone}
+        />
+      )}
     </Wrapper>
   );
 };

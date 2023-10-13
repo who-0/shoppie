@@ -1,18 +1,28 @@
 import { useState } from "react";
 import Wrapper from "./styles.component";
 
-const OrderFrom = ({ user }) => {
+const OrderFrom = ({
+  user,
+  checkInfo,
+  confirmeOrder,
+  cartItem,
+  updatePhone,
+  totalPrice,
+}) => {
   const { name, email } = user;
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState(user.phone || "");
 
   const handleChange = (e) => {
     if (isNaN(e.target.value)) return;
     setPhone(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Order From", phone);
+    if (user.phone !== phone) {
+      updatePhone(phone);
+    }
+    await confirmeOrder(cartItem, totalPrice);
   };
 
   return (
@@ -46,7 +56,7 @@ const OrderFrom = ({ user }) => {
           maxLength="10"
         />
         <div className="order_btn">
-          <button type="button" className="btn">
+          <button type="button" className="btn" onClick={checkInfo}>
             cancel
           </button>
           <button type="submit" className="btn">

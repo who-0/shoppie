@@ -2,7 +2,7 @@ const { User } = require("../models");
 const checkPermissions = require("../utils/checkPermission");
 
 const updateUserController = async (req, res) => {
-  const { name, email, password, _id } = req.body;
+  const { name, email, password, _id, phone } = req.body;
   const { userId } = req.user;
   console.log(_id, userId);
   //?Check user id equal or not from req.body and token
@@ -10,7 +10,7 @@ const updateUserController = async (req, res) => {
   try {
     const updatedUser = await User.findOneAndUpdate(
       { _id },
-      { email, name, password },
+      { email, name, password, phone },
       { new: true, runValidators: true }
     )
       .select("+role")
