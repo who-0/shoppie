@@ -4,7 +4,6 @@ import colors from "colors";
 import { SHOP } from "contexts/actions";
 import { ProductsContainer, Search, ProductDetail } from "components";
 import Wrapper from "./styles.page.jsx";
-import { Orders } from "pages/index.js";
 const body = document.body;
 
 const Shop = () => {

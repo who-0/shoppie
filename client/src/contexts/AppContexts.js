@@ -326,16 +326,27 @@ const Provider = ({ children }) => {
   const confirmeOrder = async (orderItems, totalPrice) => {
     let userOrder = [];
     dispatch({ type: ORDER_START });
-    orderItems.forEach((item) => {
-      const { id, title, price, quantity } = item;
-      userOrder.push({ id, title, price, quantity });
-    });
-    const response = await API.post("/order", {
-      userOrder,
-      totalPrice,
-    });
-
-    console.log(response);
+    try {
+      orderItems.forEach((item) => {
+        const { id, title, price, quantity } = item;
+        userOrder.push({ id, title, price, quantity });
+      });
+      await API.post("/order", {
+        userOrder,
+        totalPrice,
+        userId: state.user._id,
+      });
+      dispatch({
+        type: ORDER_SUCCESS,
+        payload:
+          "Your Order is Successfully.Please wait contact from seller to you.",
+      });
+      localStorage.removeItem("cart");
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: ORDER_ERROR, payload: { msg: error.message } });
+    }
+    // console.log(response.data);
   };
 
   const updatePhone = async (phone) => await updateUser({ phone });

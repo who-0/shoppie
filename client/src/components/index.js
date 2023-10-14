@@ -11,6 +11,7 @@ import MenuIcon from "./menuIcon/MenuIcon.component";
 import NavLink from "./nav-link/Navlink";
 import OrderContainer from "./order-container/OrderContainer.component";
 import OrderFrom from "./order-form/OrderForm.component";
+import OrderHistory from "./order-history/OrderHistory.component";
 import ProductCard from "./product-card/ProductCard.component";
 import ProductDetail from "./product-detail/ProductDetail.component";
 import ProductsContainer from "./products-container/ProductsContainer.component";
@@ -38,4 +39,5 @@ export {
   CartProduct,
   OrderContainer,
   OrderFrom,
+  OrderHistory,
 };

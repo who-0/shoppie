@@ -1,10 +1,11 @@
 import { styled } from "styled-components";
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 89vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 5%;
+
   .user_container {
     width: 90%;
     height: 60%;

@@ -1,4 +1,4 @@
-import { OrderContainer, OrderFrom } from "components";
+import { OrderContainer, OrderFrom, OrderHistory } from "components";
 import { Context } from "contexts/AppContexts";
 import { useContext, useEffect } from "react";
 import Wrapper from "./styles.page";
@@ -37,6 +37,7 @@ const Orders = () => {
         handleQuantity={handleQuantity}
         checkInfo={checkInfo}
       />
+      <OrderHistory />
       {order && (
         <OrderFrom
           user={user}

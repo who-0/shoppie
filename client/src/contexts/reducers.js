@@ -35,11 +35,13 @@ import {
   CHANGE_PAGE,
   CHANGE_SHOW_IMAGE,
   ADD_TO_CART,
-  UPDATE_TOTAL_PRICE,
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
   CHECK_INFO,
+  ORDER_START,
+  ORDER_SUCCESS,
+  ORDER_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -275,6 +277,25 @@ const reducer = (state, action) => {
       return { ...state, cartItem: action.payload };
     case CHECK_INFO:
       return { ...state, order: !state.order, totalPrice: action.payload };
+    case ORDER_START:
+      return { ...state, loading: true };
+    case ORDER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        order: false,
+        cartItem: [],
+        alert: true,
+        alert_msg: action.payload,
+        alert_type: "success",
+      };
+    case ORDER_ERROR:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload.msg,
+        alert_type: "danger",
+      };
     default:
       return state;
   }
