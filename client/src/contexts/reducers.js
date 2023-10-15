@@ -42,6 +42,9 @@ import {
   ORDER_START,
   ORDER_SUCCESS,
   ORDER_ERROR,
+  GET_ALL_USER_ORDERS_START,
+  GET_ALL_USER_ORDERS_SUCCESS,
+  GET_ALL_USER_ORDERS_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -276,7 +279,12 @@ const reducer = (state, action) => {
     case REMOVE_QUANTITY:
       return { ...state, cartItem: action.payload };
     case CHECK_INFO:
-      return { ...state, order: !state.order, totalPrice: action.payload };
+
+      return {
+        ...state,
+        order: !state.order,
+        totalPrice: action.payload,
+      };
     case ORDER_START:
       return { ...state, loading: true };
     case ORDER_SUCCESS:
@@ -284,12 +292,31 @@ const reducer = (state, action) => {
         ...state,
         loading: false,
         order: false,
+        orderHistoryStart: true,
         cartItem: [],
         alert: true,
         alert_msg: action.payload,
         alert_type: "success",
       };
     case ORDER_ERROR:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload.msg,
+        alert_type: "danger",
+      };
+    case GET_ALL_USER_ORDERS_START:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_ALL_USER_ORDERS_SUCCESS:
+      return {
+        ...state,
+        userOrders: action.payload,
+        loading: false,
+      };
+    case GET_ALL_USER_ORDERS_ERROR:
       return {
         ...state,
         alert: true,

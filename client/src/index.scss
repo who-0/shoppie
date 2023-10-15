@@ -5,9 +5,9 @@ $home-color: #f7fdb6;
   margin: 0;
   padding: 0;
 }
-// body {
-//   // overflow: hidden;
-// }
+body {
+  scroll-behavior: smooth;
+}
 
 ::-webkit-scrollbar {
   width: 5px;

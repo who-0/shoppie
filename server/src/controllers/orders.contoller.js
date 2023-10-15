@@ -1,5 +1,4 @@
 const { Order } = require("../models");
-const moment = require("moment");
 const checkPermissions = require("../utils/checkPermission");
 
 const postOrder = async (req, res) => {
@@ -29,15 +28,16 @@ const postOrder = async (req, res) => {
 };
 
 const getAllOrder = async (req, res) => {
-  const userOrder = await Order.find({ orderBy: req.user.userId });
-  console.log(userOrder);
-  userOrder.forEach((order) => {
-    console.log("order products", order.orderProducts);
-    console.log("order totalPrice", order.totalPrice);
-    console.log("order create time", order.createdAt);
-    const date = moment(order.createdAt).calendar();
-    console.log(date);
-  });
+  try {
+    const userOrders = await Order.find(
+      { orderBy: req.user.userId },
+      { __v: 0, orderBy: 0, updatedAt: 0 }
+    ).sort("-createdAt");
+    res.status(200).json(userOrders);
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({ msg: error.message });
+  }
 };
 
 module.exports = { postOrder, getAllOrder };

@@ -56,6 +56,10 @@ const Wrapper = styled.div`
       background-color: #1dde3d;
       color: white;
       cursor: pointer;
+
+      &:hover {
+        background: #15ad2e;
+      }
     }
   }
 `;

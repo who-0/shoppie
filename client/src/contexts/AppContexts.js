@@ -42,6 +42,9 @@ import {
   ORDER_START,
   ORDER_SUCCESS,
   ORDER_ERROR,
+  GET_ALL_USER_ORDERS_START,
+  GET_ALL_USER_ORDERS_SUCCESS,
+  GET_ALL_USER_ORDERS_ERROR,
 } from "./actions";
 
 const data = localStorage.getItem("user");
@@ -79,6 +82,8 @@ const initialState = {
   isCartOpen: false,
   order: false,
   totalPrice: 0,
+  orderHistoryStart: false,
+  userOrders: [],
 };
 const Context = createContext();
 
@@ -351,6 +356,20 @@ const Provider = ({ children }) => {
 
   const updatePhone = async (phone) => await updateUser({ phone });
 
+  const getAllUserOrders = async () => {
+    dispatch({ type: GET_ALL_USER_ORDERS_START });
+    try {
+      const response = await API.get("/order");
+      dispatch({ type: GET_ALL_USER_ORDERS_SUCCESS, payload: response.data });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: GET_ALL_USER_ORDERS_ERROR,
+        payload: { msg: error.message },
+      });
+    }
+  };
+
   return (
     <Context.Provider
       value={{
@@ -380,6 +399,7 @@ const Provider = ({ children }) => {
         checkInfo,
         confirmeOrder,
         updatePhone,
+        getAllUserOrders,
       }}
     >
       {children}

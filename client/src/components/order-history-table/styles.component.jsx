@@ -4,6 +4,7 @@ const Wrapper = styled.table`
   width: 100%;
   /* background-color: green; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 2% 0;
 
   .order_header {
     text-align: center;
@@ -17,13 +18,37 @@ const Wrapper = styled.table`
     }
   }
 
-  tbody > tr td {
-    background-color: red;
-    text-align: center;
-    font-size: 1.2rem;
-    text-transform: capitalize;
+  tbody {
+    tr {
+      transition: all 0.2s;
+      td {
+        text-align: center;
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        padding: 5px 0;
 
-    padding: 5px 0;
+        .title {
+          text-align: start;
+          padding-left: 3%;
+        }
+      }
+
+      &:hover {
+        color: white;
+        background-color: #52d17a;
+      }
+    }
+  }
+
+  tfoot {
+    .totalprice {
+      color: white;
+      font-size: 1.4rem;
+      text-align: end;
+      padding: 1% 3.5%;
+      text-transform: capitalize;
+      background-color: #52d17a;
+    }
   }
 `;
 
