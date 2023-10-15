@@ -27,6 +27,12 @@ const postOrder = async (req, res) => {
   }
 };
 
-const getAllOrder = (req, res) => {};
+const getAllOrder = async (req, res) => {
+  const { userId } = req.body;
+  console.log(req.body);
+  // checkPermissions(userId, req.user.userId);
+  // const userOrder = await Order.findById({ orderBy: userId });
+  // console.log(userOrder);
+};
 
-module.exports = postOrder;
+module.exports = { postOrder, getAllOrder };
