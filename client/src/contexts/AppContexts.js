@@ -110,7 +110,6 @@ const Provider = ({ children }) => {
       const authEndPoint = state.signup ? "signup" : "login";
       const response = await API.post(`/auth/${authEndPoint}`, data);
       const { user, token } = response.data;
-
       localStorage.setItem("user", JSON.stringify(user));
       let alertMsg;
       if (authEndPoint === "signup") {

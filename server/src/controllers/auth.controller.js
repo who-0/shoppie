@@ -17,12 +17,15 @@ const signupController = async (req, res) => {
   }
 
   try {
+    console.log(
+      await User.create({ email, password, name: name }, { new: true })
+    );
     const user = await User.create({ email, password, name: name });
     const token = user.createJWT();
     attachCookie({ res, token });
     return res.status(StatusCodes.OK).json({ user, token });
   } catch (error) {
-    return res.status(StatusCodes.OK).json({ msg: error.message });
+    return res.status(StatusCodes.BAD_REQUEST).json({ msg: error.message });
   }
 };
 
