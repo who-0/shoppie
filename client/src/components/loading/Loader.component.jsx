@@ -1,8 +1,8 @@
 import Wrapper from "./styles.component";
 
-const Loader = () => {
+const Loader = ({ order }) => {
   return (
-    <Wrapper>
+    <Wrapper order={+order}>
       <div className="loading-spinner"></div>
     </Wrapper>
   );

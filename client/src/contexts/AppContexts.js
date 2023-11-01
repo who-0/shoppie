@@ -35,6 +35,7 @@ import {
   CHANGE_PAGE,
   CHANGE_SHOW_IMAGE,
   ADD_TO_CART,
+  ADD_TO_CART_SUCCESS,
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
@@ -301,6 +302,7 @@ const Provider = ({ children }) => {
       localStorage.setItem("cart", JSON.stringify(state.cartItem));
       dispatch({ type: ADD_TO_CART, payload: state.cartItem });
     }
+    dispatch({ type: ADD_TO_CART_SUCCESS, payload: "success to cart" });
   };
 
   const CartOpenorNot = () => {

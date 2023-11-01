@@ -1,23 +1,18 @@
-import ProductBtn from "components/product-btn/ProductBtn.component";
 import ProductCard from "../product-card/ProductCard.component";
 import Wrapper from "./styles.component";
 import { Context } from "contexts/AppContexts";
 import { useContext } from "react";
+import { Loader, ProductDetail } from "components";
 
 const ProductsContainer = ({ products }) => {
-  const { skip, limit, total, changePage, acitvePage } = useContext(Context);
+  const { loading, showProduct } = useContext(Context);
+  if (loading) return <Loader order={false} />;
   return (
     <Wrapper>
       {products.map((product) => (
         <ProductCard product={product} key={product.id} />
       ))}
-      <ProductBtn
-        skip={skip}
-        limit={limit}
-        total={total}
-        changePage={changePage}
-        acitvePage={acitvePage}
-      />
+      {showProduct && <ProductDetail />}
     </Wrapper>
   );
 };

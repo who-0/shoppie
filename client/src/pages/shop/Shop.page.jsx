@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "contexts/AppContexts";
 import colors from "colors";
 import { SHOP } from "contexts/actions";
-import { ProductsContainer, Search, ProductDetail } from "components";
+import { ProductsContainer, Search } from "components";
 import Wrapper from "./styles.page.jsx";
+import ProductBtn from "components/product-btn/ProductBtn.component.jsx";
 const body = document.body;
 
 const Shop = () => {
@@ -15,10 +16,13 @@ const Shop = () => {
     products,
     getAllProducts,
     searchProduct,
-    showProduct,
     categories,
     skip,
     isCartOpen,
+    limit,
+    total,
+    changePage,
+    acitvePage,
   } = useContext(Context);
 
   useEffect(() => {
@@ -55,7 +59,13 @@ const Shop = () => {
         isCartOpen={isCartOpen}
       />
       <ProductsContainer products={products} />
-      {showProduct && <ProductDetail />}
+      <ProductBtn
+        skip={skip}
+        limit={limit}
+        total={total}
+        changePage={changePage}
+        acitvePage={acitvePage}
+      />
     </Wrapper>
   );
 };

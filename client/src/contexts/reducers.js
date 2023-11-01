@@ -35,6 +35,7 @@ import {
   CHANGE_PAGE,
   CHANGE_SHOW_IMAGE,
   ADD_TO_CART,
+  ADD_TO_CART_SUCCESS,
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
@@ -271,7 +272,18 @@ const reducer = (state, action) => {
         showImage: action.payload,
       };
     case ADD_TO_CART:
-      return { ...state, isCartOpen: false, cartItem: action.payload };
+      return {
+        ...state,
+        isCartOpen: false,
+        cartItem: action.payload,
+      };
+    case ADD_TO_CART_SUCCESS:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload,
+        alert_type: "success",
+      };
     case IS_CART_OPEN:
       return { ...state, isCartOpen: !state.isCartOpen };
     case ADD_QUANTITY:
@@ -279,7 +291,6 @@ const reducer = (state, action) => {
     case REMOVE_QUANTITY:
       return { ...state, cartItem: action.payload };
     case CHECK_INFO:
-
       return {
         ...state,
         order: !state.order,

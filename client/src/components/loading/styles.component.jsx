@@ -2,21 +2,20 @@ import { styled } from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
-  position: fixed;
+  height: ${(props) => (props.order ? "100%" : "77vh")};
   z-index: 999;
-  background-color: blue;
+  background-color: #a4d792;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0%;
-  padding: 0;
+  padding: 5%;
 
   .loading-spinner {
     width: 50px;
     height: 50px;
-    border: 10px solid #f3f3f3; /* Light grey */
-    border-top: 10px solid #383636; /* Black */
+    border: 7px solid #f3f3f3;
+    border-top: 7px solid #383636;
     border-radius: 50%;
     animation: spinner 1.5s linear infinite;
   }

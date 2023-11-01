@@ -51,6 +51,15 @@ const Wrapper = styled.div`
     }
   }
 
+  .message {
+    position: absolute;
+    top: 319px;
+    right: -5px;
+    /* background-color: black; */
+    width: 41%;
+    height: 35px;
+  }
+
   .close_btn {
     position: absolute;
     top: -33px;
