@@ -9,6 +9,7 @@ import {
   SUBMIT_AUTH_START,
   SUBMIT_AUTH_ERROR,
   DISPLAY_ERROR,
+  DISPLAY_SUCCESS,
   CLEAR_ERROR,
   UPDATE_PROFILE,
   CANCEL_UPDATE_PROFILE,
@@ -157,8 +158,8 @@ const Provider = ({ children }) => {
     });
   };
 
-  const displayAlert = (msg) => {
-    dispatch({ type: DISPLAY_ERROR, payload: msg });
+  const displayAlert = (type, msg) => {
+    dispatch({ type, payload: msg });
     clearAlert();
   };
 
@@ -302,7 +303,7 @@ const Provider = ({ children }) => {
       localStorage.setItem("cart", JSON.stringify(state.cartItem));
       dispatch({ type: ADD_TO_CART, payload: state.cartItem });
     }
-    dispatch({ type: ADD_TO_CART_SUCCESS, payload: "success to cart" });
+    displayAlert(DISPLAY_SUCCESS, "success to cart");
   };
 
   const CartOpenorNot = () => {

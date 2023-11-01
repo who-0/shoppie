@@ -4,7 +4,7 @@ import { Context } from "contexts/AppContexts";
 import { useNavigate } from "react-router-dom";
 import { Form } from "components";
 import LoginCS from "./styles.page";
-import { AUTH } from "contexts/actions";
+import { AUTH, DISPLAY_ERROR, DISPLAY_SUCCESS } from "contexts/actions";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const body = document.body;
@@ -38,12 +38,16 @@ const Auth = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { password, cpassword, email, name } = formField;
-    if (!email || !password) return displayAlert("please all input required!");
+    if (!email || !password)
+      return displayAlert(DISPLAY_ERROR, "please all input required!");
     if (signup) {
       if (password !== cpassword) {
-        return displayAlert("password doesn't match. please try again.");
+        return displayAlert(
+          DISPLAY_ERROR,
+          "password doesn't match. please try again."
+        );
       } else if (!name) {
-        return displayAlert("Username is require.");
+        return displayAlert(DISPLAY_ERROR, "Username is require.");
       }
       submitAuth({ name, email, password });
     } else {
@@ -59,13 +63,12 @@ const Auth = () => {
   return (
     <LoginCS>
       <h2 className="title">{signup ? "signup" : "login"}</h2>
-      
-        <Form
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          formField={formField}
-        />
-     
+
+      <Form
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        formField={formField}
+      />
     </LoginCS>
   );
 };

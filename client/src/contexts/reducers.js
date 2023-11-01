@@ -7,6 +7,7 @@ import {
   USER_SIGNUP,
   OPEN_MENU,
   DISPLAY_ERROR,
+  DISPLAY_SUCCESS,
   CLEAR_ERROR,
   SUBMIT_AUTH_SUCCESS,
   SUBMIT_AUTH_START,
@@ -35,7 +36,6 @@ import {
   CHANGE_PAGE,
   CHANGE_SHOW_IMAGE,
   ADD_TO_CART,
-  ADD_TO_CART_SUCCESS,
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
@@ -55,6 +55,13 @@ const reducer = (state, action) => {
         alert: true,
         alert_msg: action.payload,
         alert_type: "error",
+      };
+    case DISPLAY_SUCCESS:
+      return {
+        ...state,
+        alert: true,
+        alert_msg: action.payload,
+        alert_type: "success",
       };
     case CLEAR_ERROR:
       return { ...state, alert: false, alert_msg: "", alert_type: "" };
@@ -276,13 +283,6 @@ const reducer = (state, action) => {
         ...state,
         isCartOpen: false,
         cartItem: action.payload,
-      };
-    case ADD_TO_CART_SUCCESS:
-      return {
-        ...state,
-        alert: true,
-        alert_msg: action.payload,
-        alert_type: "success",
       };
     case IS_CART_OPEN:
       return { ...state, isCartOpen: !state.isCartOpen };

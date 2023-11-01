@@ -19,16 +19,9 @@ const ProductInfo = ({ singleProduct }) => {
           <Alert />
         </div>
       )}
-
       <button onClick={() => addToCart(singleProduct)}>add to cart</button>
       <FiX className="close_btn" onClick={closeProductInfo} />
     </Wrapper>
   );
 };
 export default ProductInfo;
-{
-  /* <div className="message"> */
-}
-{
-  /* </div> */
-}
