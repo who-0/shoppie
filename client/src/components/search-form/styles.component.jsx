@@ -31,5 +31,18 @@ const Wrapper = styled.form`
     width: 2%;
     cursor: pointer;
   }
+
+  
+  @media screen and (max-width: 1025px) {
+    input{
+      width: 35%;
+    height: 35px;
+    }
+
+    .search_icon{
+    font-size: 1.2rem;
+    right: 45%;
+    }
+  }
 `;
 export default Wrapper;
