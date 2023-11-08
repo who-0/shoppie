@@ -44,11 +44,16 @@ const Wrapper = styled.div`
             cursor: pointer;
             font-size: 2rem;
           }
+          @media screen and (max-width: 426px) {
+            font-size: 1rem;
+  }
         `;
       default:
         return;
     }
   }}
+
+ 
 `;
 export default Wrapper;
 

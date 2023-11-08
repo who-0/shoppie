@@ -52,6 +52,35 @@ const Wrapper = styled.form`
 }
     }
   
+    @media screen and (max-width: 425px) {
+      justify-content: start;
+
+      .search_icon{
+        right: 70%;
+      }
+    }
+    
+  @media screen and (max-width: 376px) {
+    justify-content: space-around;
+
+    input{
+      font-size: .8rem;
+    }
+  }
+
+  @media screen and (max-width: 321px) {
+    /* justify-content: space-around; */
+
+    input{
+      font-size: .8rem;
+      width: 40%;
+    height: 30px;
+    }
+
+    .search_icon{
+        right: 65%;
+      }
+  }
 
 `;
 export default Wrapper;

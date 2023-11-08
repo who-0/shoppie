@@ -43,6 +43,46 @@ const Wrapper = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 426px) {
+    img{
+      width: 179px;
+    height: 179px;
+    }
+  }
+
+  @media screen and (max-width: 376px) {
+    img{
+    width: 155px;
+    height: 156px;
+    }
+    .product_info{
+      p{
+      font-size: 1rem;
+    }
+
+    button{
+      font-size: .8rem;
+    }
+    }
+  }
+
+  @media screen and (max-width: 321px) {
+    img{
+    width: 129px;
+    height: 129px;
+    }
+
+    .product_info{
+      p{
+      font-size: .9rem;
+    }
+
+    button{
+      font-size: .7rem;
+    }
+    }
+  }
 `;
 
 export default Wrapper;

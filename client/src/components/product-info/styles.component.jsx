@@ -67,6 +67,25 @@ const Wrapper = styled.div`
     font-size: 2rem;
     cursor: pointer;
   }
+
+  @media screen and (max-width:426px) {
+    width: 96%;
+    height: 400px;
+
+    h1 {
+      margin-top: 10px;
+    font-size: 1.3rem;
+    }
+
+    .close_btn{
+      top: -270px;
+      right: 0px;
+    }
+
+    button{
+      font-size: 1rem;
+    }
+  }
 `;
 
 export default Wrapper;

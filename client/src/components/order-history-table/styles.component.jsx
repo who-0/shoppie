@@ -50,6 +50,18 @@ const Wrapper = styled.table`
       background-color: #52d17a;
     }
   }
+
+  @media screen and (max-width: 426px) {
+    .order_header{
+      font-size: 1.2rem;
+    }
+    .table_header {
+    th {
+      font-size: 1rem;
+      
+    }
+  }
+  }
 `;
 
 export default Wrapper;

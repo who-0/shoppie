@@ -81,6 +81,25 @@ const Wrapper = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    form{
+      width: 60%;
+
+    }
+  }
+
+  @media screen and (max-width: 426px) {
+    form{
+      width: 90%;
+    }
+  }
+
+  @media screen and (max-width: 376px) {
+    form{
+      width: 95%;
+    }
+  }
 `;
 
 export default Wrapper;

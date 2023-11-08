@@ -9,6 +9,8 @@ const Wrapper = styled.div`
   border-radius: 5px;
   position: relative;
 
+  overflow-x: scroll;
+
   img {
     height: 75%;
     /* width: 100%; */
@@ -36,6 +38,16 @@ const Wrapper = styled.div`
   .next_btn {
     top: 23%;
     right: -14px;
+  }
+
+  @media screen and (max-width: 769px) {
+    width: 94%;
+    height: 16%;
+  }
+
+  @media screen and (max-width: 426px) {
+    width: 100%;
+    height: 56%;
   }
 `;
 

@@ -49,6 +49,23 @@ const Wrapper = styled.div`
       cursor: pointer;
     }
   }
+
+  @media screen and (max-width: 1025px) {
+    width: 30%;
+  }
+
+  @media screen and (max-width: 769px) {
+    width: 40%;
+  }
+
+  @media screen and (max-width: 426px) {
+    width: 70%;
+    right: 46px;
+  }
+
+  @media screen and (max-width: 376px) {
+    width: 80%;
+  }
 `;
 
 export default Wrapper;

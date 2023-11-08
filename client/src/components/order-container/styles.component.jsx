@@ -62,6 +62,36 @@ const Wrapper = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 769px) {
+    .order_title {
+    h1{
+      font-size: 3.5rem;
+    }
+  }
+
+  .total_price{
+    padding: 6px 20px;
+  }
+  }
+
+  @media screen and (max-width: 426px) {
+    .order_title {
+    h1{
+      font-size: 3rem;
+    }
+  }
+
+  .total_price{
+    padding: 6px 20px;
+    margin: 10px;
+    font-size: 1rem;
+
+    h3{
+      margin-right: 5px;
+    }
+  }
+  }
 `;
 
 export default Wrapper;

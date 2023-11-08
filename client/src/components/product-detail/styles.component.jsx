@@ -23,5 +23,20 @@ const Wrapper = styled.div`
     align-items: center;
     padding: 2% 0;
   }
+
+  @media screen and (max-width: 1025px) {
+    .product_info_container {
+    width: 93%;
+    }
+}
+
+@media screen and (max-width: 426px) {
+  padding: 2px;
+
+  .product_info_container {
+    height: 100%;
+  flex-direction: column;
+  }
+}
 `;
 export default Wrapper;

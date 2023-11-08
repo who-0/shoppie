@@ -6,5 +6,9 @@ const Wrapper = styled.div`
   padding: 20px;
   overflow: auto;
   position: relative;
+
+  @media screen and (max-width: 376px) {
+    padding: 0px;
+  }
 `;
 export default Wrapper;

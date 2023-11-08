@@ -43,6 +43,22 @@ const Wrapper = styled.div`
       font-size: .8rem;
     }
   }
+
+  @media screen and (max-width: 426px) {
+    width: 52%;
+  }
+
+  @media screen and (max-width: 376px) {
+    label{
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 376px) {
+    select{
+      font-size: .7rem;
+    }
+  }
 `;
 
 export default Wrapper;

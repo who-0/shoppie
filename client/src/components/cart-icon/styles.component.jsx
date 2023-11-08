@@ -4,8 +4,8 @@ const Wrapper = styled.div`
   background-color: white;
   font-size: 2.3rem;
   width: 50px;
-  border-radius: 100%;
   height: 50px;
+  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,9 +33,35 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: 1025px) {
     span{
-
       left: 40px;
-padding: 1px 4px;
+      padding: 1px 4px;
+    }
+  }
+
+  @media screen and (max-width: 426px) {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    top: -1px;
+    right: 2px;
+
+    span{
+      top: -4px;
+    left: 25px;
+    }
+  }
+
+  
+  @media screen and (max-width: 321px) {
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
+    top: -1px;
+    right: 2px;
+
+    span{
+      top: -4px;
+    left: 25px;
     }
   }
 `;

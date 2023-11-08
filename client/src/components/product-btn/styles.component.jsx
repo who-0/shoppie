@@ -26,5 +26,20 @@ const Wrapper = styled.div`
     background-color: white;
     color: rgba(56, 104, 39, 37%);
   }
+
+  @media screen and (max-width: 426px) {
+    button{
+    font-size: .8rem;
+
+      margin: auto 2px;
+    }
+  }
+  @media screen and (max-width: 321px) {
+    button{
+    font-size: .7rem;
+
+      margin: auto 1px;
+    }
+  }
 `;
 export default Wrapper;
