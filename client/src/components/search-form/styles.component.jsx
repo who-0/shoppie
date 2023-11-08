@@ -41,8 +41,17 @@ const Wrapper = styled.form`
 
     .search_icon{
     font-size: 1.2rem;
-    right: 45%;
+    right: 48%;
     }
   }
+
+  @media screen and (max-width: 769px) {
+    .search_icon{
+      font-size: 1.1rem;
+    right: 50%;
+}
+    }
+  
+
 `;
 export default Wrapper;

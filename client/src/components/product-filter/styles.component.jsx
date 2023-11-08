@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 const Wrapper = styled.div`
   width: 20%;
   margin-left: 3%;
-  /* background-color: red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +11,7 @@ const Wrapper = styled.div`
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     text-transform: capitalize;
-    /* margin-right: 1%; */
+
   }
 
   select {
@@ -27,6 +26,21 @@ const Wrapper = styled.div`
     option {
       margin: 10px 0;
       color: green;
+    }
+  }
+
+  @media screen and (max-width: 1025px) {
+    width: 27%;
+    margin-left: 2%;
+  }
+
+  @media screen and (max-width:769px) {
+    width: 30%;
+    margin-left: 1%;
+    font-size: .8rem;
+
+    select{
+      font-size: .8rem;
     }
   }
 `;

@@ -30,6 +30,14 @@ const Wrapper = styled.div`
     padding: 0px 4px;
     border-radius: 50px;
   }
+
+  @media screen and (max-width: 1025px) {
+    span{
+
+      left: 40px;
+padding: 1px 4px;
+    }
+  }
 `;
 
 export default Wrapper;
