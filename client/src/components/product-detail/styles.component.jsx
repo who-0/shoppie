@@ -32,10 +32,12 @@ const Wrapper = styled.div`
 
 @media screen and (max-width: 426px) {
   padding: 2px;
+  top: 72px;
 
   .product_info_container {
-    height: 100%;
-  flex-direction: column;
+    height: 90%;
+    flex-direction: column;
+    /* margin-bottom: 30%; */
   }
 }
 `;

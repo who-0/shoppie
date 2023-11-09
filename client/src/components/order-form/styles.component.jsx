@@ -92,12 +92,32 @@ const Wrapper = styled.div`
   @media screen and (max-width: 426px) {
     form{
       width: 90%;
+
+      h1{
+        font-size: 1.5rem;
+      }
+
+      .order_btn {
+      .btn {
+        font-size: 1rem;
+      }
+    }
     }
   }
 
   @media screen and (max-width: 376px) {
     form{
       width: 95%;
+
+      h1{
+        font-size: 1.3rem;
+      }
+
+      .order_btn {
+      .btn {
+        font-size: .8rem;
+      }
+    }
     }
   }
 `;

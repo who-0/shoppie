@@ -17,10 +17,13 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 426px) {
+    height: 82vh;
+
     .user_container {
       flex-direction: column;
-      height: 85%;
-      margin-bottom: 15%;
+    height: 97%;
+    margin-bottom: 15%;
+    margin-top: 20%;
     }
   }
 

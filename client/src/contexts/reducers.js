@@ -295,6 +295,7 @@ const reducer = (state, action) => {
         ...state,
         order: !state.order,
         totalPrice: action.payload,
+        isCartOpen: false,
       };
     case ORDER_START:
       return { ...state, loading: true };

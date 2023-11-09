@@ -70,7 +70,7 @@ const Wrapper = styled.div`
 
   @media screen and (max-width:426px) {
     width: 96%;
-    height: 400px;
+    height: 30%;
 
     h1 {
       margin-top: 10px;
@@ -78,8 +78,8 @@ const Wrapper = styled.div`
     }
 
     .close_btn{
-      top: -270px;
-      right: 0px;
+      top: -350px;
+    right: -5px;
     }
 
     button{

@@ -6,9 +6,8 @@ const Filter = ({ caterogires }) => {
   const { getCategoryByName, getAllProducts } = useContext(Context);
   const filteProduct = async (e) => {
     const filterName = e.target.value;
-    if (filterName === "default") getAllProducts();
-    console.count("filtername");
-    await getCategoryByName(filterName);
+    console.log(filterName);
+    if (filterName === "default") {await getAllProducts()}else await getCategoryByName(filterName);
   };
   return (
     <Wrapper>

@@ -55,10 +55,27 @@ const Wrapper = styled.table`
     .order_header{
       font-size: 1.2rem;
     }
+
     .table_header {
     th {
       font-size: 1rem;
-      
+    
+    }
+  }
+  }
+
+  @media screen and (max-width: 376px){
+    tbody {
+      tr{
+        td{
+          font-size: .8rem;
+        }
+      }
+    }
+
+    tfoot {
+    .totalprice {
+      font-size: 1rem;
     }
   }
   }
