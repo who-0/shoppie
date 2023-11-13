@@ -2,7 +2,6 @@ import styled from "styled-components";
 import colors from "colors";
 
 const Nav = styled.div`
-  /* width: 100%; */
   background-color: ${colors.nav_color};
   border-radius: 10px;
   margin: 10px 5px;
