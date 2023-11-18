@@ -46,7 +46,12 @@ const Navigation = () => {
             path="/shop"
           />
           {user ? (
-              <NavUser user={user} />
+              <NavUser user={user}  name={Navs[3].name}
+              action={Navs[3].action}
+              changeColor={changeColor}
+              active={profile_active}
+              path="/user/profile"
+              profile="profile" />
           ) : (
             <NavLink
               name={Navs[2].name}
