@@ -9,6 +9,7 @@ import Loader from "./loading/Loader.component";
 import Logo from "./logo/Logo.component";
 import MenuIcon from "./menuIcon/MenuIcon.component";
 import NavLink from "./nav-link/Navlink";
+import NavUser from "./nav-user/Navuser.component";
 import OrderContainer from "./order-container/OrderContainer.component";
 import OrderFrom from "./order-form/OrderForm.component";
 import OrderHistory from "./order-history/OrderHistory.component";
@@ -40,4 +41,5 @@ export {
   OrderContainer,
   OrderFrom,
   OrderHistory,
+  NavUser
 };
