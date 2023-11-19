@@ -38,8 +38,8 @@ const Menu = styled.div`
      position: absolute;
     background: white;
     border-radius: 5px;
-    top: 50px;
-    right: 10px;
+    top: 55px;
+    right: 8px;
     padding: 5px;
 
     display: flex;
@@ -59,8 +59,29 @@ const Menu = styled.div`
       font-weight: 600;
       padding: 6px 20px;
       border-radius: 4px;
-      color: red;
       margin-top: 5px;
+      transition: all .2s;
+    }
+
+    .nav-logout{
+      color: red;
+
+      &:hover{
+        cursor: pointer;
+        background-color: red;
+        color: white;
+      }
+    }
+
+    .nav-dashboard{
+      color: #3f9ae7;
+
+      
+      &:hover{
+        cursor: pointer;
+        background-color:  #3f9ae7;
+        color: white;
+      }
     }
 
 `

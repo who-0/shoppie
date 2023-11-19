@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   Home,
@@ -18,8 +18,15 @@ import {
   AdminUsers,
   AdminShareLayout,
 } from "pages/admin";
+import { Context } from "contexts/AppContexts";
+
+let isAdmin
 
 const App = () => {
+  const {user} = useContext(Context);
+  if(user) { isAdmin = user.role === 'admin' ? user.role : null;}
+  else isAdmin = 'noraml';
+
   return (
     <BrowserRouter>
       <Routes>
@@ -38,6 +45,7 @@ const App = () => {
             <Route path="profile" element={<Profile />} />
             <Route path="orders" element={<Orders />} />
           </Route>
+        {isAdmin === 'admin' && (
           <Route
             path="admin"
             element={
@@ -51,6 +59,7 @@ const App = () => {
             <Route path="products" element={<AdminProducts />} />
             <Route path="users" element={<AdminUsers />} />
           </Route>
+        )}
           <Route path="*" element={<div>Error</div>} />
         </Route>
       </Routes>
