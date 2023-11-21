@@ -5,6 +5,7 @@ import axios from "axios";
 import {
   USER_SIGNUP,
   OPEN_MENU,
+  OPEN_SUB_MENU,
   SUBMIT_AUTH_SUCCESS,
   SUBMIT_AUTH_START,
   SUBMIT_AUTH_ERROR,
@@ -62,7 +63,9 @@ const initialState = {
   shop_active: false,
   auth_active: false,
   profile_active: false,
+  admin_active:false,
   menu_open: false,
+  sub_menu_open:false,
   signup: false,
   isLogined: false,
   alert: false,
@@ -101,6 +104,10 @@ const Provider = ({ children }) => {
   const menuOpen = () => {
     dispatch({ type: OPEN_MENU });
   };
+
+  const subMenuOpen = () => {
+    dispatch({type:OPEN_SUB_MENU })
+  }
 
   const signUpUser = () => {
     dispatch({ type: USER_SIGNUP });
@@ -378,6 +385,7 @@ const Provider = ({ children }) => {
         ...state,
         changeColor,
         menuOpen,
+        subMenuOpen,
         signUpUser,
         submitAuth,
         displayAlert,
@@ -402,6 +410,7 @@ const Provider = ({ children }) => {
         confirmeOrder,
         updatePhone,
         getAllUserOrders,
+        
       }}
     >
       {children}

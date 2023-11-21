@@ -5,13 +5,14 @@ import { Context } from "contexts/AppContexts";
 import { MenuIcon } from "components";
 import Nav from "./Navigation.styles";
 
-import { HOME, SHOP, AUTH, PROFILE } from "contexts/actions";
+import { HOME, SHOP, AUTH, PROFILE,ADMIN_DASHBOARD } from "contexts/actions";
 
 const Navs = [
   { id: 1, name: "home", action: HOME },
   { id: 2, name: "shop", action: SHOP },
   { id: 3, name: "login", action: AUTH },
   { id: 4, name: "profile", action: PROFILE },
+  { id: 5, name: "dashborad", action: ADMIN_DASHBOARD  },
 ];
 
 const Navigation = () => {
@@ -22,7 +23,6 @@ const Navigation = () => {
     home_active,
     shop_active,
     auth_active,
-    profile_active,
     menu_open,
   } = useContext(Context);
 
@@ -46,12 +46,17 @@ const Navigation = () => {
             path="/shop"
           />
           {user ? (
-              <NavUser user={user}  name={Navs[3].name}
-              action={Navs[3].action}
+              <NavUser 
+              user={user} 
+              navs={Navs}
+              // name={Navs[3].name}
+              // action={Navs[3].action}
               changeColor={changeColor}
-              active={profile_active}
-              path="/user/profile"
-              profile="profile" />
+              // active={profile_active}
+              // path="/user/profile"
+              // profile="profile" 
+
+              />
           ) : (
             <NavLink
               name={Navs[2].name}

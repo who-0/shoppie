@@ -7,10 +7,11 @@ const Wrapper = styled.div`
   font-weight: 600;
   padding: 3px 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   border-radius: 4px;
   cursor: pointer;
+  user-select: none;
   transition: all .2s;
 
   &:hover{
@@ -32,6 +33,24 @@ const Wrapper = styled.div`
   .nav-dropdown{
     margin-top: 5px;
   }
+
+  @media screen and (max-width: 426px) {
+    width: 399px;
+    height: 50px;
+    /* letter-spacing: 1px; */
+    font-size: 1.3rem;
+    margin: 7px 0;
+    background-color: lightblue;
+    border-radius: 50px;
+    color: white;
+
+  }
+  @media screen and (max-width: 376px) {
+    width: 350px;
+  }
+  @media screen and (max-width: 321px) {
+    width: 295px;
+  }
 `
 
 const Menu = styled.div`
@@ -43,7 +62,7 @@ const Menu = styled.div`
     padding: 5px;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 
@@ -60,6 +79,7 @@ const Menu = styled.div`
       padding: 6px 20px;
       border-radius: 4px;
       margin-top: 5px;
+      user-select: none;
       transition: all .2s;
     }
 
@@ -84,6 +104,35 @@ const Menu = styled.div`
       }
     }
 
+    @media screen and (max-width: 426px) {
+      top: 197px;
+      right: 0px;
+      border-radius: 10px;
+
+      div{
+        width: 399px;
+    height: 50px;
+    /* letter-spacing: 1px; */
+    font-size: 1.3rem;
+    margin: 7px 0;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      }
+  }
+  @media screen and (max-width: 376px) {
+    div{
+
+      width: 350px;
+    }
+  }
+  @media screen and (max-width: 321px) {
+    div{
+
+      width: 295px;
+    }
+  }
 `
 
 export  {Wrapper,Menu};

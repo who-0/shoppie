@@ -10,6 +10,7 @@ const NavLink = ({ name, action, changeColor, active, path, ...others }) => {
       onClick={() => changeColor(action)}
       color={color}
       isactive={+active} //+ sign is solve the error false non boolean value
+      name={name}
     >
       {name}
     </Navlink>

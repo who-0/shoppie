@@ -12,12 +12,15 @@ const Navlink = styled(Link)`
   font-weight: 600;
   padding: 6px 20px;
   border-radius: 4px;
+  margin: 5px 0px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto 5px;
+  margin:  ${(props) => (props.name === 'profile'  || props.name === 'dashboard' ? "5px" : 'auto ')} 5px;
   user-select: none;
+  transition: all .2s;
+
   &:hover {
     background-color: ${(props) => props.color};
     color: white;

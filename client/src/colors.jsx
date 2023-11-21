@@ -3,6 +3,7 @@ const colors = {
   home_color: "#727d71",
   shop_color: "#A4D792",
   login_color: "#70A1D7",
+  admin_color: "#F47C7C",
   login_header_color: " #003249",
   btn_color: "#003249",
   content_btn: "#abc4ab",

@@ -46,6 +46,8 @@ import {
   GET_ALL_USER_ORDERS_START,
   GET_ALL_USER_ORDERS_SUCCESS,
   GET_ALL_USER_ORDERS_ERROR,
+  ADMIN_DASHBOARD,
+  OPEN_SUB_MENU,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -74,7 +76,9 @@ const reducer = (state, action) => {
         shop_active: false,
         auth_active: false,
         profile_active: false,
+        admin_active:false,
         menu_open: false,
+        sub_menu_open:false,
         alert: false,
         alert_msg: "",
         alert_type: "",
@@ -88,7 +92,9 @@ const reducer = (state, action) => {
         shop_active: true,
         auth_active: false,
         profile_active: false,
+        admin_active:false,
         menu_open: false,
+        sub_menu_open:false,
         alert: false,
         alert_msg: "",
         alert_type: "",
@@ -102,7 +108,9 @@ const reducer = (state, action) => {
         shop_active: false,
         auth_active: true,
         profile_active: false,
+        admin_active:false,
         menu_open: false,
+        sub_menu_open:false,
         alert: false,
         alert_msg: "",
         alert_type: "",
@@ -116,17 +124,37 @@ const reducer = (state, action) => {
         shop_active: false,
         auth_active: false,
         profile_active: true,
+        admin_active:false,
         menu_open: false,
+        sub_menu_open:false,
         alert: false,
         alert_msg: "",
         alert_type: "",
       };
+      case ADMIN_DASHBOARD:
+        return {
+          ...state,
+          color: colors.admin_color,
+          logo: "logo_4",
+          home_active: false,
+          shop_active: false,
+          auth_active: false,
+          profile_active: false,
+          admin_active:true,
+          menu_open: false,
+          sub_menu_open:false,
+          alert: false,
+          alert_msg: "",
+          alert_type: "",
+        };
     case USER_SIGNUP:
       return { ...state, signup: !state.signup };
     case OPEN_MENU:
-      return { ...state, menu_open: !state.menu_open };
+      return { ...state, menu_open: !state.menu_open, sub_menu_open:false };
+    case  OPEN_SUB_MENU:
+      return { ...state, sub_menu_open: !state.sub_menu_open };
     case SUBMIT_AUTH_START:
-      return { ...state, loading: true };
+      return { ...state, loading: true  };
     case SUBMIT_AUTH_SUCCESS:
       return {
         ...state,

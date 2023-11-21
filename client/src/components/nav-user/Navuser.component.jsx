@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AiFillCaretDown,AiFillCaretUp  } from "react-icons/ai";
 import {Wrapper,Menu} from './styles.components';
 import { Usericon } from "assets";
@@ -8,42 +8,45 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const NavUser = ({user,name,action,changeColor,active,path,profile}) => {
-    const {logoutUser} = useContext(Context)
+const NavUser = ({user,changeColor,navs}) => {
+    const {logoutUser , sub_menu_open,subMenuOpen,profile_active, admin_active} = useContext(Context)
     const naviage = useNavigate();
-    const [isOpen,setIsOpen] = useState(false);
-    
-   console.log(user);
-   const openMenu = () => {
-    setIsOpen(!isOpen);
-   };
 
    const logOut = () => {
     logoutUser();
-    naviage("/auth")
+    naviage("/auth");
+    subMenuOpen();
    };
 
-   console.log(user);
 
     return (
        <>
-         <Wrapper onClick={openMenu}>
+         <Wrapper onClick={subMenuOpen}>
         <Usericon className='nav-user-icon'/>
             <p>{user.name}</p>
-            {isOpen ? <AiFillCaretUp className='nav-dropdown'/> : <AiFillCaretDown className='nav-dropdown' />}
+            {sub_menu_open ? <AiFillCaretUp className='nav-dropdown'/> : <AiFillCaretDown className='nav-dropdown' />}
         </Wrapper>
-        {isOpen && (
+        {sub_menu_open && (
             <Menu>
             <NavLink
-                name={name}
-                action={action}
+                name={navs[3].name}
+                action={navs[3].action}
                 changeColor={changeColor}
-                active={active}
-                path={path}
-                profile={profile}
+                active={profile_active}
+                path="/user/profile"
+                profile="profile" 
                 />
-            {user.role === 'admin' && (<div className='nav-dashboard' onClick={_=>naviage("/admin")}>dashboard</div>)}
-            <div className='nav-logout' onClick={logOut} >logout</div>
+            {/* {user.role === 'admin' && (<div className='nav-dashboard' onClick={_=>naviage("/admin")}>dashboard</div>)} */}
+            {user.role === 'admin' && (
+                <NavLink
+                name={navs[4].name}
+                action={navs[4].action}
+                changeColor={changeColor}
+                active={admin_active}
+                path="/admin"
+                />
+            )}
+            <div className='nav-logout' onClick={logOut}>logout</div>
         </Menu>
         )}
        </>
