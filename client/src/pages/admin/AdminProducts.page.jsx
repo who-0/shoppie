@@ -1,6 +1,9 @@
+import { Products } from "./styles.admin"
+
+
 const AdminProducts = () => {
   return (
-    <div>AdminProducts</div>
+    <Products>AdminProducts</Products>
   )
 }
 export default AdminProducts

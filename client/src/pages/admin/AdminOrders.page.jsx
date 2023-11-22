@@ -1,4 +1,7 @@
+import { Orders } from "./styles.admin";
+
+
 const AdminOrders = () => {
-  return <div>AdminOrders</div>;
+  return <Orders>AdminOrders</Orders>;
 };
 export default AdminOrders;

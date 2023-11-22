@@ -1,4 +1,7 @@
+import { Users } from "./styles.admin";
+
+
 const AdminUsers = () => {
-  return <div>AdminUsers</div>;
+  return <Users>AdminUsers</Users>;
 };
 export default AdminUsers;

@@ -1,5 +1,6 @@
 const { User } = require("../models");
 const checkPermissions = require("../utils/checkPermission");
+const moment = require('moment')
 
 const updateUserController = async (req, res) => {
   const { name, email, password, _id, phone } = req.body;
@@ -22,4 +23,32 @@ const updateUserController = async (req, res) => {
   }
 };
 
-module.exports = updateUserController;
+const usersStatus = async (req,res) => {
+
+  let status = await User.aggregate([
+    {$match:{role:'normal'}},
+    {
+      $group:{
+        _id:{
+          day:{$dayOfMonth:"$createdAt"},
+          month: { $month: "$createdAt" },
+        },
+          count:{$sum:1}
+        }
+      },
+    {$sort:{"_id.day":-1,"_id.month":-1}}
+  ])
+
+  status = status.map(item=>{
+    const {_id:{day,month},count} = item;
+ 
+    const date = moment({day,month:month-1}).format('MMM DD');
+    return {date,count};
+  }).reverse();
+
+
+
+  res.status(200).json(status)
+}
+
+module.exports = {updateUserController,usersStatus};

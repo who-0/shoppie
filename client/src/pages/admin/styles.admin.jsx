@@ -8,6 +8,35 @@ const AdminLayout = styled.div`
     align-items: center;
 `
 
+const Dashboard = styled.div`
+    width: 100%;
+    background-color:white ;
+    height: 85vh;
+    margin-right: 15px;
+    border-radius: 10px;
+`
 
+const Products = styled.div`
+  width: 100%;
+    background-color:white ;
+    height: 85vh;
+    margin-right: 15px;
+    border-radius: 10px;
+`
 
-export {AdminLayout}
+const Users = styled.div`
+  width: 100%;
+    background-color:white ;
+    height: 85vh;
+    margin-right: 15px;
+    border-radius: 10px;
+`
+const Orders = styled.div`
+  width: 100%;
+    background-color:white ;
+    height: 85vh;
+    margin-right: 15px;
+    border-radius:10px;
+`
+
+export {AdminLayout,Dashboard,Products,Users,Orders}

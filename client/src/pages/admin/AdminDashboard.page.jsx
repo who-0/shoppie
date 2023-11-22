@@ -1,7 +1,8 @@
+import { Dashboard } from "./styles.admin";
 
 
 const AdminDashboard = () => {
 
-  return <div>AdminDashboard</div>;
+  return <Dashboard>AdminDashboard</Dashboard>;
 };
 export default AdminDashboard;

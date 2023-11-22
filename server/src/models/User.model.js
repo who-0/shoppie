@@ -40,12 +40,14 @@ const UserSchema = new mongoose.Schema({
     enum: ["normal", "admin", "test"],
     default: "normal",
   },
-});
+  
+},{timestamps:true});
 
 UserSchema.pre("save", async function () {
   if (!this.isModified("password")) return;
   this.password = await encryptPassword(this.password);
 });
+
 UserSchema.pre("findOneAndUpdate", async function () {
   const password = this._update.password;
   if (!password) return;

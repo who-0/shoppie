@@ -4,7 +4,7 @@ const {
   GoogleController,
 } = require("./auth.controller");
 const { postOrder, getAllOrder } = require("./orders.contoller");
-const updateUserController = require("./users.controller");
+const {updateUserController,usersStatus} = require("./users.controller");
 
 module.exports = {
   signupController,
@@ -13,4 +13,5 @@ module.exports = {
   GoogleController,
   postOrder,
   getAllOrder,
+  usersStatus,
 };

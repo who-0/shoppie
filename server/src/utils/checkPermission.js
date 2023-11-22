@@ -5,4 +5,5 @@ const checkPermissions = (requestUser, rescourceId) => {
   throw new UnAuthenticatedError("Not authorized to access this route.");
 };
 
+
 module.exports = checkPermissions;
