@@ -1,3 +1,4 @@
+import AdminMenu from "./admin-menu/AdminMenu.component";
 import Alert from "./alert/Alert.component";
 import Btn from "./btn/styles.component";
 import CartProduct from "./cart-products/CartProduct.component";
@@ -41,5 +42,6 @@ export {
   OrderContainer,
   OrderFrom,
   OrderHistory,
-  NavUser
+  NavUser,
+  AdminMenu
 };

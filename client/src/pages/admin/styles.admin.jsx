@@ -8,8 +8,6 @@ const AdminLayout = styled.div`
     align-items: center;
 `
 
-const AdminMenu = styled.div`
 
-`
 
-export {AdminLayout,AdminMenu}
+export {AdminLayout}

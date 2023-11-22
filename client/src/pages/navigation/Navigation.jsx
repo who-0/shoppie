@@ -49,13 +49,7 @@ const Navigation = () => {
               <NavUser 
               user={user} 
               navs={Navs}
-              // name={Navs[3].name}
-              // action={Navs[3].action}
               changeColor={changeColor}
-              // active={profile_active}
-              // path="/user/profile"
-              // profile="profile" 
-
               />
           ) : (
             <NavLink

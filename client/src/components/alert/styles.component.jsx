@@ -25,7 +25,9 @@ const Wrapper = styled.div`
       default:
         return;
     }
-  }}/* &[${(props) => props.alert_type}] {
+  }}
+  
+  /* &[${(props) => props.alert_type}] {
    
   }
 

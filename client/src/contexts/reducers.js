@@ -48,6 +48,9 @@ import {
   GET_ALL_USER_ORDERS_ERROR,
   ADMIN_DASHBOARD,
   OPEN_SUB_MENU,
+  ADMIN_PRODUCTS,
+  ADMIN_USERS,
+  ADMIN_ORDERS,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -141,12 +144,46 @@ const reducer = (state, action) => {
           auth_active: false,
           profile_active: false,
           admin_active:true,
+          admin_status:true,
+          admin_products:false,
+          admin_users:false,
+          admin_orders:false,
           menu_open: false,
           sub_menu_open:false,
           alert: false,
           alert_msg: "",
           alert_type: "",
         };
+    case ADMIN_PRODUCTS:
+      return {
+        ...state,
+        admin_status:false,
+        admin_products:true,
+        admin_users:false,
+        admin_orders:false,
+        menu_open: false,
+        sub_menu_open:false,
+      }
+    case ADMIN_USERS:
+      return {
+        ...state,
+        admin_status:false,
+        admin_products:false,
+        admin_users:true,
+        admin_orders:false,
+        menu_open: false,
+        sub_menu_open:false,
+      }
+      case ADMIN_ORDERS:
+        return {
+          ...state,
+          admin_status:false,
+          admin_products:false,
+          admin_users:false,
+          admin_orders:true,
+          menu_open: false,
+          sub_menu_open:false,
+        }
     case USER_SIGNUP:
       return { ...state, signup: !state.signup };
     case OPEN_MENU:
