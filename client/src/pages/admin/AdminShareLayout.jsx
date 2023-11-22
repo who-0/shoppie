@@ -1,10 +1,16 @@
 import { Outlet } from "react-router-dom";
+import { AdminLayout,AdminMenu } from "./styles.admin";
+import { NavLink } from "components";
+
 
 const AdminShareLayout = () => {
   return (
-    <div>
+    <AdminLayout>
+      <AdminMenu>
+        <NavLink />
+      </AdminMenu>
       <Outlet />
-    </div>
+    </AdminLayout>
   );
 };
 export default AdminShareLayout;
