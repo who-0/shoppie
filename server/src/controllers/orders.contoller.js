@@ -40,4 +40,40 @@ const getAllOrder = async (req, res) => {
   }
 };
 
-module.exports = { postOrder, getAllOrder };
+const ordersStatus = async () => {
+    let orders = await Order.aggregate([
+      {$group:{_id:"$orderProducts",count:{$sum:1}}}
+    ]);
+  
+    
+    // orders = orders.reduce((acc,curr) => {
+    //   const {_id:title,count} = curr;
+      
+    //   const status = title.forEach(item=>{
+    //     // return item.status;
+    //     acc[item.status] = acc[count] ;
+    //   });
+   
+      
+    //   return acc;
+    // },{});
+    const orderStatus = []
+    orders.map(items => {
+      const {_id:title,count} = items;
+      title.forEach(item => {
+        const haveOrNot = orderStatus.filter(order => order.status === item.status)
+        orderStatus.push({status:item.status,count});
+        console.log(haveOrNot);
+      });
+   
+    });
+        console.log(orderStatus);
+    
+    // orders = orders.map(order=>{
+    //   const acc = []
+    //   acc[order.status] = order
+    //   console.log(order);
+    // })
+}
+
+module.exports = { postOrder, getAllOrder,ordersStatus };

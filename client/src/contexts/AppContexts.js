@@ -49,6 +49,7 @@ import {
   GET_ALL_USER_ORDERS_SUCCESS,
   GET_ALL_USER_ORDERS_ERROR,
 } from "./actions";
+import { useCookies } from "react-cookie";
 
 const data = localStorage.getItem("user");
 const dataCart = localStorage.getItem("cart");
@@ -187,10 +188,10 @@ const Provider = ({ children }) => {
     dispatch({ type: CANCEL_UPDATE_PROFILE });
   };
 
-  const logoutUser = () => {
+  const logoutUser = async () => {
     localStorage.removeItem("user");
     localStorage.removeItem("cart");
-    dispatch({ type: LOGOUT_USER_SUCCESS });
+  dispatch({ type: LOGOUT_USER_SUCCESS });
   };
 
   const updateUser = async (user) => {

@@ -3,12 +3,14 @@ const passport = require("passport");
 const {
   signupController,
   loginController,
+  logoutController,
   GoogleController,
 } = require("../controllers");
 const authRouter = express.Router();
 
 authRouter.route("/signup").post(signupController);
 authRouter.route("/login").post(loginController);
+authRouter.route("/logout").get(logoutController);
 
 //?Google Auth
 authRouter

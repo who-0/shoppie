@@ -56,6 +56,14 @@ const loginController = async (req, res) => {
   res.status(StatusCodes.OK).json({ user, token });
 };
 
+const logoutController = (req, res) => {
+  // console.log('logout start');
+  // res.clearCookie("token")
+  // console.log('logout end');
+  // res.status(200);
+};
+
+
 const GoogleController = (req, res) => {
   const user = req.user;
   console.log(user);
@@ -66,4 +74,4 @@ const GoogleController = (req, res) => {
   res.status(StatusCodes.OK).json({ user, token });
 };
 
-module.exports = { signupController, loginController, GoogleController };
+module.exports = { signupController, loginController,logoutController, GoogleController };

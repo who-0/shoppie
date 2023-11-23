@@ -25,30 +25,33 @@ const updateUserController = async (req, res) => {
 
 const usersStatus = async (req,res) => {
 
-  let status = await User.aggregate([
-    {$match:{role:'normal'}},
-    {
-      $group:{
-        _id:{
-          day:{$dayOfMonth:"$createdAt"},
-          month: { $month: "$createdAt" },
+  try {
+    let status = await User.aggregate([
+      {$match:{role:'normal'}},
+      {
+        $group:{
+          _id:{
+            day:{$dayOfMonth:"$createdAt"},
+            month: { $month: "$createdAt" },
+          },
+            count:{$sum:1}
+          }
         },
-          count:{$sum:1}
-        }
-      },
-    {$sort:{"_id.day":-1,"_id.month":-1}}
-  ])
-
-  status = status.map(item=>{
-    const {_id:{day,month},count} = item;
- 
-    const date = moment({day,month:month-1}).format('MMM DD');
-    return {date,count};
-  }).reverse();
-
-
-
-  res.status(200).json(status)
+      {$sort:{"_id.day":-1,"_id.month":-1}}
+    ])
+    console.log(status);
+    status = status.map(item=>{
+      const {_id:{day,month},count} = item;
+   
+      const date = moment({day,month:month-1}).format('MMM DD');
+      return {date,count};
+    }).reverse();
+    
+    res.status(200).json(status);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({error:error.messsage})
+  }
 }
 
 module.exports = {updateUserController,usersStatus};

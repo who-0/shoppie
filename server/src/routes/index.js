@@ -11,6 +11,8 @@ api.use("/user",
 //  checkAuth, 
  userRouter);
 api.use("/products", productRouter);
-api.use("/order", checkAuth, OrderRouter);
+api.use("/order", 
+// checkAuth,
+ OrderRouter);
 
 module.exports = api;
