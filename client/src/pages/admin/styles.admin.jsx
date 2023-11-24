@@ -14,6 +14,9 @@ const Dashboard = styled.div`
     height: 85vh;
     margin-right: 15px;
     border-radius: 10px;
+
+   display: flex;
+   flex-direction: column;
 `
 
 const Products = styled.div`

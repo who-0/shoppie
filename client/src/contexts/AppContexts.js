@@ -48,9 +48,11 @@ import {
   GET_ALL_USER_ORDERS_START,
   GET_ALL_USER_ORDERS_SUCCESS,
   GET_ALL_USER_ORDERS_ERROR,
-  GET_STATUS_USER_START,
+  GET_STATUS_START,
+  GET_STATUS_SUCCESS,
+  GET_STATUS_ERROR,
 } from "./actions";
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie";
 
 const data = localStorage.getItem("user");
 const dataCart = localStorage.getItem("cart");
@@ -95,6 +97,9 @@ const initialState = {
   totalPrice: 0,
   orderHistoryStart: false,
   userOrders: [],
+  orderStatus:{},
+  userStatus:[],
+  orderTimes:[],
 };
 const Context = createContext();
 
@@ -387,14 +392,14 @@ const Provider = ({ children }) => {
   };
   
   const getStatusUser = async () => {
-    dispatch({ type: GET_STATUS_USER_START });
+    dispatch({ type: GET_STATUS_START });
     try {
       const userResponse = await API.get('/user/status');
       const orderResponse = await API.get('/order/status');
-      console.log('user response', userResponse);
-      console.log('order response', orderResponse);
+      dispatch({type:GET_STATUS_SUCCESS,payload:{order:orderResponse.data.orders,orderTime:orderResponse.data.orderTime, user:userResponse.data}});
     } catch (error) {
-      
+      console.log(error);
+      dispatch({type:GET_STATUS_ERROR,payload:{msg:error.message}});
     }
   }
 

@@ -51,6 +51,9 @@ import {
   ADMIN_PRODUCTS,
   ADMIN_USERS,
   ADMIN_ORDERS,
+  GET_STATUS_ERROR,
+  GET_STATUS_SUCCESS,
+  GET_STATUS_START,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -400,6 +403,19 @@ const reducer = (state, action) => {
         alert_msg: action.payload.msg,
         alert_type: "danger",
       };
+    case GET_STATUS_START:
+      return {
+        ...state,
+        loading:true,
+      }
+    case GET_STATUS_SUCCESS:
+        return {
+          ...state,
+          loading:false,
+          orderStatus:action.payload.order,
+          userStatus:action.payload.user,
+          orderTimes:action.payload.orderTime,
+        }
     default:
       return state;
   }

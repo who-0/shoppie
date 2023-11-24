@@ -1,3 +1,4 @@
+import ActivityContainer from "./activity-container/ActivityContainer.component";
 import AdminMenu from "./admin-menu/AdminMenu.component";
 import Alert from "./alert/Alert.component";
 import Btn from "./btn/styles.component";
@@ -20,6 +21,7 @@ import ProductsContainer from "./products-container/ProductsContainer.component"
 import ProfileForm from "./profile-form/ProfileForm.component";
 import ProfileIcon from "./profile-icon/ProfileIcon.component";
 import Search from "./search-form/Search.component";
+import StatusContainer from "./status-container/StatusContainer.component";
 
 export {
   Logo,
@@ -43,5 +45,7 @@ export {
   OrderFrom,
   OrderHistory,
   NavUser,
-  AdminMenu
+  AdminMenu,
+  StatusContainer,
+  ActivityContainer
 };
