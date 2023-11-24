@@ -41,7 +41,7 @@ const getAllOrder = async (req, res) => {
 };
 
 const ordersStatus = async (req,res) => {
-
+  // checkPermissions(userId, req.user.userId);
    try {
     let orders = await Order.aggregate([
       {

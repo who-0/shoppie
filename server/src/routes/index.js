@@ -8,11 +8,11 @@ const OrderRouter = require("./orders.router");
 
 api.use("/auth", authRouter);
 api.use("/user",
-//  checkAuth, 
+ checkAuth, 
  userRouter);
 api.use("/products", productRouter);
 api.use("/order", 
-// checkAuth,
+checkAuth,
  OrderRouter);
 
 module.exports = api;

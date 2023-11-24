@@ -24,7 +24,8 @@ const updateUserController = async (req, res) => {
 };
 
 const usersStatus = async (req,res) => {
-
+  // const { userId } = req.user;
+  // checkPermissions(_id, userId);
   try {
     let status = await User.aggregate([
       {$match:{role:'normal'}},

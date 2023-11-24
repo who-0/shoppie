@@ -48,6 +48,7 @@ import {
   GET_ALL_USER_ORDERS_START,
   GET_ALL_USER_ORDERS_SUCCESS,
   GET_ALL_USER_ORDERS_ERROR,
+  GET_STATUS_USER_START,
 } from "./actions";
 import { useCookies } from "react-cookie";
 
@@ -209,6 +210,7 @@ const Provider = ({ children }) => {
         ...updatedInfo,
         _id: state.user._id,
       });
+
       await localStorage.setItem("user", JSON.stringify(response.data));
       dispatch({
         type: UPDATE_USER_SUCCESS,
@@ -383,6 +385,18 @@ const Provider = ({ children }) => {
       });
     }
   };
+  
+  const getStatusUser = async () => {
+    dispatch({ type: GET_STATUS_USER_START });
+    try {
+      const userResponse = await API.get('/user/status');
+      const orderResponse = await API.get('/order/status');
+      console.log('user response', userResponse);
+      console.log('order response', orderResponse);
+    } catch (error) {
+      
+    }
+  }
 
   return (
     <Context.Provider
@@ -415,7 +429,7 @@ const Provider = ({ children }) => {
         confirmeOrder,
         updatePhone,
         getAllUserOrders,
-        
+        getStatusUser,
       }}
     >
       {children}
