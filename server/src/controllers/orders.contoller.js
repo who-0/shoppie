@@ -1,6 +1,6 @@
 const { Order } = require("../models");
 const checkPermissions = require("../utils/checkPermission");
-
+const moment = require('moment');
 const postOrder = async (req, res) => {
   const { userOrder, totalPrice, userId } = req.body;
   const newOrder = [];
@@ -40,40 +40,47 @@ const getAllOrder = async (req, res) => {
   }
 };
 
-const ordersStatus = async () => {
+const ordersStatus = async (req,res) => {
+
+   try {
     let orders = await Order.aggregate([
-      {$group:{_id:"$orderProducts",count:{$sum:1}}}
+      {
+        $unwind: "$orderProducts",
+      },
+      {$group:{_id:"$orderProducts.status",count:{$sum:1}}}
     ]);
-  
-    
-    // orders = orders.reduce((acc,curr) => {
-    //   const {_id:title,count} = curr;
-      
-    //   const status = title.forEach(item=>{
-    //     // return item.status;
-    //     acc[item.status] = acc[count] ;
-    //   });
+
+    orders = orders.reduce((acc,curr) => {
+      const {_id:title,count} = curr;
+      acc[title] = count;
+      return acc;
+    },{});
+
+    let orderTime = await Order.aggregate([
+      {
+        $group:{
+          _id:{
+            day:{$dayOfMonth:"$createdAt"},
+            month: { $month: "$createdAt" },
+          },
+          count:{$sum:1} 
+        }
+      },
+      {$sort:{"_id.day":-1,"_id.month":-1}}
+    ])
+
+    orderTime = orderTime.map(item=>{
+      const {_id:{day,month},count} = item;
    
-      
-    //   return acc;
-    // },{});
-    const orderStatus = []
-    orders.map(items => {
-      const {_id:title,count} = items;
-      title.forEach(item => {
-        const haveOrNot = orderStatus.filter(order => order.status === item.status)
-        orderStatus.push({status:item.status,count});
-        console.log(haveOrNot);
-      });
-   
-    });
-        console.log(orderStatus);
-    
-    // orders = orders.map(order=>{
-    //   const acc = []
-    //   acc[order.status] = order
-    //   console.log(order);
-    // })
+      const date = moment({day,month:month-1}).format('MMM DD');
+      return {date,count};
+    }).reverse();
+
+    res.status(200).json({orders,orderTime});
+   } catch (error) {
+    res.status(500).json({error:error.message})
+   }
+
 }
 
 module.exports = { postOrder, getAllOrder,ordersStatus };

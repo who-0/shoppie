@@ -39,7 +39,7 @@ const usersStatus = async (req,res) => {
         },
       {$sort:{"_id.day":-1,"_id.month":-1}}
     ])
-    console.log(status);
+    
     status = status.map(item=>{
       const {_id:{day,month},count} = item;
    
