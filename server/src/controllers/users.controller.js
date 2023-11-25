@@ -52,7 +52,7 @@ const usersStatus = async (req,res) => {
       {$group:{
         _id:{
           time:"$createdAt",
-          userId:"$_id"
+          name:"$name"
         }
       }}
     ])

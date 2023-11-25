@@ -1,12 +1,13 @@
 import React from "react";
 import Item from "./styles.component";
 
-const ActivityItem = () => {
+const ActivityItem = ({name,order=false,user=false,time}) => {
     return (
         <Item>
-            <td>paing sett kayw</td>
-            <td>created</td>
-            <td>22 nov 2023</td>
+            <td>{name}</td>
+            {order && (<td>order</td>)}
+            {user && (<td>created</td>)}
+            <td>{time}</td>
         </Item>
     )
 }

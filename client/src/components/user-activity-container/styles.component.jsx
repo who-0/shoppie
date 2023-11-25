@@ -36,7 +36,7 @@ const Activity = styled.div`
             height: 32px;
             background-color: white;
            position: sticky;
-           top: 44px;
+           top: 42px;
 
             tr td{
                 text-align: center;
