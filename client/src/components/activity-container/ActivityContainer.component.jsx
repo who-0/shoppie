@@ -3,11 +3,11 @@ import UserActivityContainer from 'components/user-activity-container/UserActivi
 import React from 'react'
 import Activity from './styles.component'
 
-const ActivityContainer = ({orderTimes,userStatus}) => {
+const ActivityContainer = ({orderTimes,userStatus,orderCreatedTime,userCreatedTime}) => {
   return (
     <Activity>
         <ChartContainer orderTimes={orderTimes} userStatus={userStatus} />
-        <UserActivityContainer />
+        <UserActivityContainer orderCreatedTime={orderCreatedTime}  userCreatedTime={userCreatedTime}/>
     </Activity>
   )
 }

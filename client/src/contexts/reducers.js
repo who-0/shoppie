@@ -415,6 +415,8 @@ const reducer = (state, action) => {
           orderStatus:action.payload.order,
           userStatus:action.payload.user,
           orderTimes:action.payload.orderTime,
+          orderCreatedTime:action.payload.orderCreatedTime,
+          userCreatedTime:action.payload.userStatusTime
         }
     default:
       return state;

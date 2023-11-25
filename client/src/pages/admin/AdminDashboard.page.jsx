@@ -5,7 +5,7 @@ import { ActivityContainer, StatusContainer } from "components";
 
 
 const AdminDashboard = () => {
-  const {getStatusUser,orderTimes,userStatus} = useContext(Context);
+  const {getStatusUser,orderTimes,userStatus,orderCreatedTime,userCreatedTime} = useContext(Context);
   // console.log(orderTimes,userStatus);
   useEffect(()=>{
     getStatusUser();
@@ -13,7 +13,12 @@ const AdminDashboard = () => {
 
   return <Dashboard>
    <StatusContainer />
-   <ActivityContainer orderTimes={orderTimes} userStatus={userStatus} />
+   <ActivityContainer 
+    orderTimes={orderTimes} 
+    userStatus={userStatus} 
+    orderCreatedTime={orderCreatedTime} 
+    userCreatedTime={userCreatedTime}
+   />
   </Dashboard>;
 };
 export default AdminDashboard;

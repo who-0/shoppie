@@ -1,6 +1,7 @@
 const { Order } = require("../models");
 const checkPermissions = require("../utils/checkPermission");
 const moment = require('moment');
+const {  findAllUser } = require("./users.controller");
 const postOrder = async (req, res) => {
   const { userOrder, totalPrice, userId } = req.body;
   const newOrder = [];
@@ -76,11 +77,38 @@ const ordersStatus = async (req,res) => {
       return {date,count};
     }).reverse();
 
-    res.status(200).json({orders,orderTime});
+    // let orderCreatedTime = await Order.aggregate([
+    //   {
+    //     $group:{
+    //       _id:{
+    //         time:"$createdAt",
+    //         orderId:"$_id",
+    //         orderBy:"$orderBy"
+    //       }
+    //     },
+     
+    //   }
+    // ])
+    const createTime = []
+    const orderCreatedTime = await Order.find({});
+    const allUsers = await findAllUser();
+
+    orderCreatedTime.map(order => {
+      allUsers.map(user => {
+        
+        if(user.id === order.orderBy.toString()){
+          createTime.push({name:user.name,createdAt:order.createdAt})
+        }
+      })
+    })
+
+
+    res.status(200).json({orders,orderTime,createTime});
    } catch (error) {
     res.status(500).json({error:error.message})
    }
-
 }
+
+
 
 module.exports = { postOrder, getAllOrder,ordersStatus };

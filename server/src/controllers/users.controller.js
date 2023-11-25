@@ -47,12 +47,28 @@ const usersStatus = async (req,res) => {
       const date = moment({day,month:month-1}).format('MMM DD');
       return {date,count};
     }).reverse();
+
+    let statusTime = await User.aggregate([
+      {$group:{
+        _id:{
+          time:"$createdAt",
+          userId:"$_id"
+        }
+      }}
+    ])
+
+
     
-    res.status(200).json(status);
+
+    
+    res.status(200).json({status,statusTime});
   } catch (error) {
     console.log(error);
     res.status(500).json({error:error.messsage})
   }
 }
 
-module.exports = {updateUserController,usersStatus};
+const findAllUser = async () =>  await User.find();;
+
+
+module.exports = {updateUserController,usersStatus,findAllUser};

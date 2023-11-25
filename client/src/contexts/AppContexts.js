@@ -100,6 +100,8 @@ const initialState = {
   orderStatus:{},
   userStatus:[],
   orderTimes:[],
+  orderCreatedTime:[],
+  userCreatedTime:[],
 };
 const Context = createContext();
 
@@ -396,7 +398,14 @@ const Provider = ({ children }) => {
     try {
       const userResponse = await API.get('/user/status');
       const orderResponse = await API.get('/order/status');
-      dispatch({type:GET_STATUS_SUCCESS,payload:{order:orderResponse.data.orders,orderTime:orderResponse.data.orderTime, user:userResponse.data}});
+      dispatch({type:GET_STATUS_SUCCESS,
+        payload:{
+          order:orderResponse.data.orders,
+          orderTime:orderResponse.data.orderTime, 
+          orderCreatedTime:orderResponse.data.createTime,
+          user:userResponse.data.status,
+          userStatusTime:userResponse.data.statusTime,
+        }});
     } catch (error) {
       console.log(error);
       dispatch({type:GET_STATUS_ERROR,payload:{msg:error.message}});
