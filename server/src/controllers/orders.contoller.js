@@ -90,8 +90,8 @@ const ordersStatus = async (req,res) => {
     //   }
     // ])
     const createTime = []
-    const orderCreatedTime = await Order.find({});
-    const allUsers = await findAllUser();
+    const orderCreatedTime = await Order.find({}).sort("-createdAt");
+    const allUsers = (await findAllUser());
 
     orderCreatedTime.map(order => {
       allUsers.map(user => {

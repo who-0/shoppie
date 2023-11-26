@@ -54,7 +54,8 @@ const usersStatus = async (req,res) => {
           time:"$createdAt",
           name:"$name"
         }
-      }}
+      }},
+      {$sort:{"_id.time":-1}}
     ])
 
 
