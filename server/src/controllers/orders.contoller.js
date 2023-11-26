@@ -95,9 +95,8 @@ const ordersStatus = async (req,res) => {
 
     orderCreatedTime.map(order => {
       allUsers.map(user => {
-        
         if(user.id === order.orderBy.toString()){
-          createTime.push({name:user.name,createdAt:order.createdAt})
+          createTime.push({name:user.name,createdAt:order.createdAt,action:"ordered"})
         }
       })
     })

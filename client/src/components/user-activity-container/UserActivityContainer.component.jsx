@@ -3,7 +3,14 @@ import Activity from './styles.component'
 import ActivityItem from 'components/user-activity-item/ActivityItem.component'
 import moment from 'moment';
 const UserActivityContainer = ({orderCreatedTime,userCreatedTime}) => {
-  console.log(userCreatedTime);
+  const activityArray = [...orderCreatedTime,...userCreatedTime]
+  const newArray = activityArray.sort((a,b)=>{
+    let c = new Date(a.createdAt);
+    let d = new Date(b.createdAt);
+    return d - c;
+  })
+
+  console.log('newArray',newArray);
   return (
     <Activity>
       <h1>User Activity</h1>
@@ -16,16 +23,11 @@ const UserActivityContainer = ({orderCreatedTime,userCreatedTime}) => {
             </tr>
           </thead>
           <tbody>
-           {orderCreatedTime.map(order => (
-      
-            <ActivityItem name={order.name} order={true} time={moment(order.createdAt).format('L h:mm a')} />
-           ))}
-
-           {
-            userCreatedTime.map(user => (
-              <ActivityItem name={user._id.name} user={true} time={moment(user._id.time).format('L h:mm a')} />
-            ))
-           }
+            {
+              newArray.map(activity =>(
+                <ActivityItem name={activity.name} action={activity.action} time={moment(activity.createdAt).format('L h:mm a')} />
+              ))
+            }
           </tbody>
         </table>
     </Activity>
