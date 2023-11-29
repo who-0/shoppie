@@ -21,7 +21,9 @@ import ProductsContainer from "./products-container/ProductsContainer.component"
 import ProfileForm from "./profile-form/ProfileForm.component";
 import ProfileIcon from "./profile-icon/ProfileIcon.component";
 import Search from "./search-form/Search.component";
+import SearchUser from "./search-user/SearchUser.component";
 import StatusContainer from "./status-container/StatusContainer.component";
+import UserDisplay from "./user-dispaly/UserDisplay.component";
 
 export {
   Logo,
@@ -47,5 +49,7 @@ export {
   NavUser,
   AdminMenu,
   StatusContainer,
-  ActivityContainer
+  ActivityContainer,
+  SearchUser,
+  UserDisplay
 };

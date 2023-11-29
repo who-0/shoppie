@@ -54,6 +54,9 @@ import {
   GET_STATUS_ERROR,
   GET_STATUS_SUCCESS,
   GET_STATUS_START,
+  GET_USER_DATA_ERROR,
+  GET_USER_DATA_START,
+  GET_USER_DATA_SUCCESS,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -418,6 +421,17 @@ const reducer = (state, action) => {
           orderCreatedTime:action.payload.orderCreatedTime,
           userCreatedTime:action.payload.userStatusTime
         }
+    case GET_USER_DATA_START:
+      return {
+        ...state,
+        loading:true,
+      }
+    case GET_USER_DATA_SUCCESS:
+      return {
+        ...state,
+        loading:false,
+        usersData:[action.payload],
+      }
     default:
       return state;
   }

@@ -72,7 +72,23 @@ const usersStatus = async (req,res) => {
   }
 }
 
-const findAllUser = async () =>  await User.find();;
+const findAllUser = async () =>  await User.find();
+
+const findSingleUser = async (req,res) => {
+  const {check,data} = req.body.data;
+  let response;
+  try {
+    if(check === 'name'){
+       response = await User.findOne({name:data});
+     }else if(check === 'email'){
+       response = await User.findOne({email:data});
+     }
+
+     res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({err:error.message})
+  }
+};
 
 
-module.exports = {updateUserController,usersStatus,findAllUser};
+module.exports = {updateUserController,usersStatus,findAllUser,findSingleUser};

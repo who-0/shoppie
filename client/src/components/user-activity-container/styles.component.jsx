@@ -42,6 +42,7 @@ const Activity = styled.div`
                 text-align: center;
                 text-transform: capitalize;
                 font-size: 1rem;
+                
             }
         }
 

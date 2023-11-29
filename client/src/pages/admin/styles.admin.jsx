@@ -33,6 +33,11 @@ const Users = styled.div`
     height: 85vh;
     margin-right: 15px;
     border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 `
 const Orders = styled.div`
   width: 100%;

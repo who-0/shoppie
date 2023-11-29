@@ -51,6 +51,9 @@ import {
   GET_STATUS_START,
   GET_STATUS_SUCCESS,
   GET_STATUS_ERROR,
+  GET_USER_DATA_START,
+  GET_USER_DATA_SUCCESS,
+  GET_USER_DATA_ERROR,
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -102,6 +105,7 @@ const initialState = {
   orderTimes:[],
   orderCreatedTime:[],
   userCreatedTime:[],
+  usersData:[],
 };
 const Context = createContext();
 
@@ -412,6 +416,17 @@ const Provider = ({ children }) => {
     }
   }
 
+  const getSingleUserData = async (check,data) => {
+    dispatch({type:GET_USER_DATA_START});
+    try {
+      const response = await API.post('/user/data',{data:{check,data}});
+      dispatch({type:GET_USER_DATA_SUCCESS,payload:response.data});
+    } catch (error) {
+      console.log(error);
+      dispatch({type:GET_USER_DATA_ERROR,payload:{msg:error.message}})
+    }
+  }
+
   return (
     <Context.Provider
       value={{
@@ -444,6 +459,7 @@ const Provider = ({ children }) => {
         updatePhone,
         getAllUserOrders,
         getStatusUser,
+        getSingleUserData
       }}
     >
       {children}

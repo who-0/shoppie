@@ -1,7 +1,12 @@
+import { SearchUser, UserDisplay } from "components";
 import { Users } from "./styles.admin";
 
 
 const AdminUsers = () => {
-  return <Users>AdminUsers</Users>;
+  return (
+  <Users>
+    <SearchUser />
+    <UserDisplay /> 
+  </Users>);
 };
 export default AdminUsers;
