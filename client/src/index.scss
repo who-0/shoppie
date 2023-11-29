@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&family=Orbitron:wght@600&family=MuseoModerno&family=Anton&display=swap");
+$home-color: #f7fdb6;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgb(133, 133, 133);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(122, 230, 122);
+  border-radius: 50px;
+}
