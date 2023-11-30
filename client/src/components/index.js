@@ -23,6 +23,7 @@ import ProfileIcon from "./profile-icon/ProfileIcon.component";
 import Search from "./search-form/Search.component";
 import SearchUser from "./search-user/SearchUser.component";
 import StatusContainer from "./status-container/StatusContainer.component";
+import UserData from "./user-data/UserData.component";
 import UserDisplay from "./user-dispaly/UserDisplay.component";
 
 export {
@@ -51,5 +52,6 @@ export {
   StatusContainer,
   ActivityContainer,
   SearchUser,
-  UserDisplay
+  UserDisplay,
+  UserData
 };

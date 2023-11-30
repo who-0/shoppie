@@ -48,17 +48,8 @@ const usersStatus = async (req,res) => {
       return {date,count};
     }).reverse();
 
-    // let statusTime = await User.aggregate([
-    //   {$group:{
-        
-    //       createdAt:"$createdAt",
-    //       name:"$name"
-        
-    //   }},
-    //   {$sort:{"_id.time":-1}}
-    // ])
     let statusTime = [];
-    const users = await findAllUser();
+    const users = await User.find();
     users.map(user => {
       statusTime.push({name:user.name,createdAt:user.createdAt,action:"created"})
     })
@@ -72,7 +63,14 @@ const usersStatus = async (req,res) => {
   }
 }
 
-const findAllUser = async () =>  await User.find();
+const findAllUser = async (req,res) =>  {
+  try {
+    const allUsers = await User.find();
+  res.status(200).json(allUsers)
+  } catch (error) {
+    res.status(400).json({err:error.message})
+  }
+} ;
 
 const findSingleUser = async (req,res) => {
   const {check,data} = req.body.data;

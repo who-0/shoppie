@@ -57,6 +57,9 @@ import {
   GET_USER_DATA_ERROR,
   GET_USER_DATA_START,
   GET_USER_DATA_SUCCESS,
+  GET_ALL_USERS_START,
+  GET_ALL_USERS_SUCCESS,
+  GET_ALL_USERS_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -431,6 +434,17 @@ const reducer = (state, action) => {
         ...state,
         loading:false,
         usersData:[action.payload],
+      }
+    case GET_ALL_USERS_START:
+      return {
+        ...state,
+        loading:true,
+      }
+    case GET_ALL_USERS_SUCCESS:
+      return {
+        ...state,
+        loading:false,
+        usersData:action.payload,
       }
     default:
       return state;

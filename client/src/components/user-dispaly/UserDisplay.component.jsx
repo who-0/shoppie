@@ -1,13 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Display from './styles.component';
 import { Context } from 'contexts/AppContexts';
+import { UserData } from 'components';
 
 const UserDisplay = () => {
-    const {usersData} = useContext(Context)
+    const {usersData,getAllUsers} = useContext(Context);
+    
+
+    useEffect(()=>{
+      getAllUsers();
+    },[])
+
     console.log(usersData);
   return (
     <Display>
-        serdatau
+      <UserData />
     </Display>
   )
 }

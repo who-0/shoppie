@@ -5,7 +5,7 @@ const {
   GoogleController,
 } = require("./auth.controller");
 const { postOrder, getAllOrder,ordersStatus } = require("./orders.contoller");
-const {updateUserController,usersStatus, findSingleUser} = require("./users.controller");
+const {updateUserController,usersStatus, findSingleUser, findAllUser} = require("./users.controller");
 
 module.exports = {
   signupController,
@@ -17,5 +17,6 @@ module.exports = {
   getAllOrder,
   usersStatus,
   ordersStatus,
-  findSingleUser
+  findSingleUser,
+  findAllUser
 };

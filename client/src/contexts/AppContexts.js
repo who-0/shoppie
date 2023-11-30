@@ -54,6 +54,9 @@ import {
   GET_USER_DATA_START,
   GET_USER_DATA_SUCCESS,
   GET_USER_DATA_ERROR,
+  GET_ALL_USERS_START,
+  GET_ALL_USERS_SUCCESS,
+  GET_ALL_USERS_ERROR
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -427,6 +430,16 @@ const Provider = ({ children }) => {
     }
   }
 
+  const getAllUsers = async () => {
+    dispatch({type:GET_ALL_USERS_START})
+    try {
+      const allUser = await API.get('/user/all');
+      dispatch({type:GET_ALL_USERS_SUCCESS,payload:allUser.data})
+    } catch (error) {
+      dispatch({type:GET_ALL_USERS_ERROR,payload:{msg:error.message}})
+    }
+  }
+
   return (
     <Context.Provider
       value={{
@@ -459,7 +472,8 @@ const Provider = ({ children }) => {
         updatePhone,
         getAllUserOrders,
         getStatusUser,
-        getSingleUserData
+        getSingleUserData,
+        getAllUsers
       }}
     >
       {children}
