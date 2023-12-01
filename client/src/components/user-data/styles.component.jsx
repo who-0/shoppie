@@ -4,7 +4,7 @@ import {css, styled} from 'styled-components'
 const User = styled.div`
         background-color: white;
         border-radius: 10px;
-        margin-top: 2%;
+        margin: 2%;
         box-shadow: 4px 4px 5px 2px #706f6f73;
 
         ${props => {
@@ -17,15 +17,10 @@ const User = styled.div`
                     gap: 5px;
                     align-content: flex-start;
                     div{
-                        /* display: inline; */
-                        /* background-color: red;   */
-                        
                         width: 49%;
                         height: 25%;
-                        /* margin: 2%; */
                         padding: 10px;
                         
-
                         label{
                             font-size: 1.1rem;
                             text-transform: capitalize;
@@ -57,7 +52,6 @@ const User = styled.div`
                         }
 
                         &:last-child{
-                            /* background-color: red; */
                             text-align: center;
 
                             button{
@@ -129,6 +123,15 @@ const User = styled.div`
         .icon{
             cursor: pointer;
             margin: 0 10px;
+            transition:all .2s;
+
+            &:first-child:hover{
+                color:blue;
+            }
+
+            &:last-child:hover{
+                color:red;
+            }
         }
 
         

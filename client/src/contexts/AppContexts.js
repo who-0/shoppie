@@ -56,7 +56,9 @@ import {
   GET_USER_DATA_ERROR,
   GET_ALL_USERS_START,
   GET_ALL_USERS_SUCCESS,
-  GET_ALL_USERS_ERROR
+  GET_ALL_USERS_ERROR,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_ERROR
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -440,6 +442,17 @@ const Provider = ({ children }) => {
     }
   }
 
+  const deleteUser = async (id) =>{
+   try {
+    await API.delete(`/user/${id}`);
+    await getAllUsers()
+    dispatch({type:DELETE_USER_SUCCESS});
+   } catch (error) {
+    console.log(error);
+    dispatch({type:DELETE_USER_ERROR,payload:{msg:error.message}})
+   }
+  }
+
   return (
     <Context.Provider
       value={{
@@ -473,7 +486,8 @@ const Provider = ({ children }) => {
         getAllUserOrders,
         getStatusUser,
         getSingleUserData,
-        getAllUsers
+        getAllUsers,
+        deleteUser
       }}
     >
       {children}

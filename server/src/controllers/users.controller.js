@@ -65,7 +65,7 @@ const usersStatus = async (req,res) => {
 
 const findAllUser = async (req,res) =>  {
   try {
-    const allUsers = await User.find();
+    const allUsers = await User.find().sort('name');
   res.status(200).json(allUsers)
   } catch (error) {
     res.status(400).json({err:error.message})
@@ -81,12 +81,21 @@ const findSingleUser = async (req,res) => {
      }else if(check === 'email'){
        response = await User.findOne({email:data});
      }
-
      res.status(200).json(response);
   } catch (error) {
     res.status(400).json({err:error.message})
   }
 };
 
+const deleteSingleUser = async (req,res) => {
+ try {
+  const id = req.params.id;
+  await User.findByIdAndDelete(id);
+  res.status(200).json({msg:'successful delete.'});
+ } catch (error) {
+  res.status(500).json({err:error.message});
+ }
+}
 
-module.exports = {updateUserController,usersStatus,findAllUser,findSingleUser};
+
+module.exports = {updateUserController,usersStatus,findAllUser,findSingleUser,deleteSingleUser};

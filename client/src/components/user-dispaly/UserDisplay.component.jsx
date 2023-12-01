@@ -5,16 +5,20 @@ import { UserData } from 'components';
 
 const UserDisplay = () => {
     const {usersData,getAllUsers} = useContext(Context);
-    
 
     useEffect(()=>{
       getAllUsers();
     },[])
 
-    console.log(usersData);
+    // console.log(usersData);
   return (
     <Display>
-      <UserData />
+    {
+      usersData.map(user=>(
+        <UserData key={user._id} user={user} />
+      ))
+    }
+     
     </Display>
   )
 }

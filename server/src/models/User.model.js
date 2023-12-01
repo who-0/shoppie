@@ -31,12 +31,12 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     minLength: 6,
-    select: false,
+    // select: false,
   },
   role: {
     type: String,
     required: true,
-    select: false,
+    // select: false,
     enum: ["normal", "admin", "test"],
     default: "normal",
   },

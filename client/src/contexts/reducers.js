@@ -60,6 +60,7 @@ import {
   GET_ALL_USERS_START,
   GET_ALL_USERS_SUCCESS,
   GET_ALL_USERS_ERROR,
+  DELETE_USER_SUCCESS,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -445,6 +446,10 @@ const reducer = (state, action) => {
         ...state,
         loading:false,
         usersData:action.payload,
+      }
+    case DELETE_USER_SUCCESS:
+      return {
+        ...state,
       }
     default:
       return state;
