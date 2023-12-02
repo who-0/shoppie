@@ -10,7 +10,7 @@ const UserActivityContainer = ({orderCreatedTime,userCreatedTime}) => {
     return d - c;
   })
 
-  console.log('newArray',newArray);
+
   return (
     <Activity>
       <h1>User Activity</h1>
@@ -25,7 +25,7 @@ const UserActivityContainer = ({orderCreatedTime,userCreatedTime}) => {
           <tbody>
             {
               newArray.map(activity =>(
-                <ActivityItem name={activity.name} action={activity.action} time={moment(activity.createdAt).format('L h:mm a')} />
+                <ActivityItem key={activity.createdAt} name={activity.name} action={activity.action} time={moment(activity.createdAt).format('L h:mm a')} />
               ))
             }
           </tbody>

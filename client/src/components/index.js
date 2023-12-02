@@ -14,7 +14,9 @@ import NavLink from "./nav-link/Navlink";
 import NavUser from "./nav-user/Navuser.component";
 import OrderContainer from "./order-container/OrderContainer.component";
 import OrderFrom from "./order-form/OrderForm.component";
+import OrderHeader from "./order-header/OrderHeader.component";
 import OrderHistory from "./order-history/OrderHistory.component";
+import OrderInfoContainer from "./order-info-container/OrderInfoContainer.component";
 import ProductCard from "./product-card/ProductCard.component";
 import ProductDetail from "./product-detail/ProductDetail.component";
 import ProductsContainer from "./products-container/ProductsContainer.component";
@@ -53,5 +55,7 @@ export {
   ActivityContainer,
   SearchUser,
   UserDisplay,
-  UserData
+  UserData,
+  OrderHeader,
+  OrderInfoContainer
 };

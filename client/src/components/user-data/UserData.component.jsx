@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { Context } from 'contexts/AppContexts';
 
 const UserData = ({user}) => {
-    const {deleteUser} = useContext(Context);
+    const {deleteUser,adminUpdateUser} = useContext(Context);
     const {name,email,phone,createdAt,updatedAt,role,_id,password} = user;
     
     const cTime = moment(createdAt).format('YYYY-MM-DD');
@@ -30,7 +30,7 @@ const UserData = ({user}) => {
     const [userInfo,setUserInfo] = useState(defaultState);
 
     const handleChange = e => {
-        setUserInfo({...userInfo,[e.target.name]:[e.target.value]})
+        setUserInfo({...userInfo,[e.target.name]:e.target.value})
     }
 
     const deleteBtn = async () => {
@@ -40,6 +40,18 @@ const UserData = ({user}) => {
     const cancelBtn = () => {
         setIsEdit(false);
         setUserInfo(defaultState)
+    }
+
+    const updateUser = async () => {
+        const data = {
+            name:userInfo.name,
+            email:userInfo.email,
+            phone:userInfo.phone,
+            role:userInfo.role
+        };
+
+        if(password.slice(1,10) !== userInfo.pwd) data.password = userInfo.pwd;
+        await adminUpdateUser(_id,data);
     }
   return (
     <User $edit={+isEdit}>
@@ -55,7 +67,7 @@ const UserData = ({user}) => {
         
         <div>
             {isEdit && (<label htmlFor={userInfo.pwd}>password:</label>)}
-            <input type='password' value={userInfo.pwd}  name='pwd' id={userInfo.pwd} disabled={isEdit ? false : true} onChange={handleChange}/>
+            <input type='password' value={userInfo.pwd}  name='pwd' id={userInfo.pwd} min={6} disabled={isEdit ? false : true} onChange={handleChange}/>
         </div>
 
        {isEdit && (
@@ -73,16 +85,16 @@ const UserData = ({user}) => {
             </div>
             <div>
                 <label htmlFor='ctime'>create time:</label>
-                <input type='date' value={userInfo.cTime}  name='cTime' id='cTime' disabled={isEdit ? false : true} onChange={handleChange}/>
+                <input type='date' value={userInfo.cTime}  name='cTime' id='cTime' disabled onChange={handleChange}/>
             </div>
 
             <div>
                 <label htmlFor='utime'>update time:</label>
-                <input type='date' value={userInfo.uTime}  name='uTime' id='utime' disabled={isEdit ? false : true} onChange={handleChange}/>
+                <input type='date' value={userInfo.uTime}  name='uTime' id='utime' disabled onChange={handleChange}/>
             </div>
             <div>
                 <button type='button' onClick={cancelBtn}>cancel</button>
-                <button type='button'>update</button>
+                <button type='button' onClick={updateUser} >update</button>
             </div>
         </>
        )}

@@ -14,7 +14,7 @@ const Item = styled.div`
 
         h1,p{
           font-family: 'Orbitron', sans-serif;
-          color:${props => props.textcolor};
+          color:${props => props.$textcolor};
           /* opacity: 1; */
         }
 

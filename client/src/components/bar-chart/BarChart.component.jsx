@@ -3,7 +3,7 @@ import React from 'react'
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
 const BarChartComponent = ({data}) => {
-    console.log(data);
+
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data} margin={{ top: 50 }}>

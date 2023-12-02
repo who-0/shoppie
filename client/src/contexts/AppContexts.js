@@ -58,7 +58,10 @@ import {
   GET_ALL_USERS_SUCCESS,
   GET_ALL_USERS_ERROR,
   DELETE_USER_SUCCESS,
-  DELETE_USER_ERROR
+  DELETE_USER_ERROR,
+  ADMIN_UPDATE_USER_START,
+  ADMIN_UPDATE_USER_SUCCESS,
+  ADMIN_UPDATE_USER_ERROR
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -453,6 +456,18 @@ const Provider = ({ children }) => {
    }
   }
 
+  const adminUpdateUser = async (id,data) => {
+    dispatch({type:ADMIN_UPDATE_USER_START})
+    try {
+      await API.post(`/user/${id}`,data);
+      await getAllUsers();
+    dispatch({type:ADMIN_UPDATE_USER_SUCCESS})
+    } catch (error) {
+      console.log(error);
+      dispatch({type:ADMIN_UPDATE_USER_ERROR,payload:{msg:error.message}})
+    }
+  }
+
   return (
     <Context.Provider
       value={{
@@ -487,7 +502,8 @@ const Provider = ({ children }) => {
         getStatusUser,
         getSingleUserData,
         getAllUsers,
-        deleteUser
+        deleteUser,
+        adminUpdateUser
       }}
     >
       {children}

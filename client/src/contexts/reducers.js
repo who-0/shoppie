@@ -61,6 +61,8 @@ import {
   GET_ALL_USERS_SUCCESS,
   GET_ALL_USERS_ERROR,
   DELETE_USER_SUCCESS,
+  ADMIN_UPDATE_USER_START,
+  ADMIN_UPDATE_USER_SUCCESS,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -450,6 +452,16 @@ const reducer = (state, action) => {
     case DELETE_USER_SUCCESS:
       return {
         ...state,
+      }
+    case ADMIN_UPDATE_USER_START:
+      return {
+        ...state,
+        loading:true,
+      }
+    case ADMIN_UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        loading:false,
       }
     default:
       return state;

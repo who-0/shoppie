@@ -97,5 +97,24 @@ const deleteSingleUser = async (req,res) => {
  }
 }
 
+const adminUpdateUser = async (req,res) => {
+  const id = req.params.id;
+  const data = {
+    name : req.body.name || null ,
+    email:req.body.email || null,
+    phone:req.body.phone || null,
+    role:req.body.role || null,
+  }
 
-module.exports = {updateUserController,usersStatus,findAllUser,findSingleUser,deleteSingleUser};
+  if(req.body.password) data.password = req.body.password
+  
+ try {
+  await User.findByIdAndUpdate(id,data,{runValidators:true});
+  res.status(200).json({msg:'Sussfully updated!'})
+ } catch (error) {
+  console.log(error);
+  res.status(500).json({err:error.message})
+ }
+}
+
+module.exports = {updateUserController,usersStatus,findAllUser,findSingleUser,deleteSingleUser,adminUpdateUser};
