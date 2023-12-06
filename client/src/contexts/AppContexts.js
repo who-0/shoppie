@@ -64,7 +64,8 @@ import {
   ADMIN_UPDATE_USER_ERROR,
   GET_ALL_ORDERS_ADMIN_START,
   GET_ALL_ORDERS_ADMIN_SUCCESS,
-  GET_ALL_ORDERS_ADMIN_ERROR
+  GET_ALL_ORDERS_ADMIN_ERROR,
+  SET_ORDER_INFO
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -118,6 +119,7 @@ const initialState = {
   userCreatedTime:[],
   usersData:[],
   allOrders:[],
+  orderInfo:{},
 };
 const Context = createContext();
 
@@ -483,6 +485,9 @@ const Provider = ({ children }) => {
       dispatch({type:GET_ALL_ORDERS_ADMIN_ERROR,payload:{msg:error.message}})
     }
   }
+
+  const setOrderInfo = data => dispatch({type:SET_ORDER_INFO,payload:data})
+
   return (
     <Context.Provider
       value={{
@@ -519,7 +524,8 @@ const Provider = ({ children }) => {
         getAllUsers,
         deleteUser,
         adminUpdateUser,
-        allOrderByAdmin
+        allOrderByAdmin,
+        setOrderInfo
       }}
     >
       {children}

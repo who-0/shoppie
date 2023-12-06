@@ -1,15 +1,65 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Check from './styles.component';
+import { Context } from 'contexts/AppContexts';
+
 
 const OrderCheck = () => {
+  const {orderInfo} = useContext(Context);
+  const {order={},product={}} = orderInfo;
+  const Info = [
+    {
+      id: 1,
+      customerId:order.customerId || '',
+    },
+    {
+      id:2,
+      name:order.name || '',
+    },
+    {
+      id:3,
+      email:order.email || '',
+    },
+    {
+      id:4,
+      phone:order.phone || 0,
+    },
+    {
+      id:5,
+      orderId:order.orderId || 0,
+    },
+    {
+      id:6,
+      orderName:product.title || '',
+    },
+    {
+      id:7,
+      orderQuantity:product.quantity || 0,
+    },
+    {
+      id:8,
+      price:product.singlePrice || 0,
+    },
+    {
+      id:9,
+      totalPrice:product.singlePrice * product.quantity || 0,
+    }
+  ]
+
+
+
   return (
     <Check>
-        <div>
-        <p>customerID</p>
-        <p>123456</p>
+      {
+        Info.map(i =>(
+          <div key={i.id} className='info'>
+            <p>{Object.keys(i)[1]}</p>
+            <p>{Object.values(i)[1]}</p>
         </div>
+        ))
+      }
+     
 
-        <div>
+        {/* <div>
         <p>Name</p>
         <p>kaung kaung</p>
         </div>
@@ -47,15 +97,16 @@ const OrderCheck = () => {
         <div>
         <p>total price</p>
         <p>$57.9</p>
-        </div>
+        </div> */}
 
-        <div>
-        <textarea rows='5' cols='50' placeholder="comments">
+        <div className='comment'>
+        <textarea  placeholder="comments">
         </textarea>
-        <div>
+        
+        </div>
+        <div className='btn_gp'>
             <button type="button" >cancel</button>
             <button type="button" >submit</button>
-        </div>
         </div>
   </Check>
   )

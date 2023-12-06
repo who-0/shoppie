@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { LuChevronRightCircle } from "react-icons/lu";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { FcCancel } from "react-icons/fc";
 import Lists from './styles.component';
+import { Context } from 'contexts/AppContexts';
+
 
 const OrderLists = ({orderLists}) => {
-  console.log(orderLists);
+
+  const {setOrderInfo} = useContext(Context)
+
   const icon = {
     pending: <IoCheckmarkCircleOutline className='icon check' />,
     success: <LuChevronRightCircle className='icon right' />,
@@ -13,7 +17,8 @@ const OrderLists = ({orderLists}) => {
   };
 
   const checkDetailOrder = (...others) => {
-    console.log(others);
+    others = others[0];
+    setOrderInfo(others)
   }
 
   return (
@@ -21,8 +26,12 @@ const OrderLists = ({orderLists}) => {
     {
       orderLists.map((order,index) => (
         order.products.map((product) => (
-          <div key={product.orderId} onClick={ _ => checkDetailOrder(order.customerId
-,order.orderId,product,order)} >
+          <div key={product.orderId} onClick={ _ => checkDetailOrder({
+            customerId:order.customerId,
+            orderId:order.orderId,
+            product,
+            order,
+            })} >
             <p>{index+1}</p>
             <p>{order.name}</p>
             {icon[product.status]}

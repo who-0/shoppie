@@ -2,7 +2,7 @@ import colors from 'colors';
 import {styled} from 'styled-components'
 
 const Lists = styled.div`
-    background-color: lightgray;
+    background-color: #fff2f2;
     width: 30%;
     height: 416px;
     margin-left: 3%;

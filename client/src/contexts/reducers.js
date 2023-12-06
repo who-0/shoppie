@@ -65,6 +65,7 @@ import {
   ADMIN_UPDATE_USER_SUCCESS,
   GET_ALL_ORDERS_ADMIN_START,
   GET_ALL_ORDERS_ADMIN_SUCCESS,
+  SET_ORDER_INFO,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -475,6 +476,11 @@ const reducer = (state, action) => {
         ...state,
         loading:false,
         allOrders:action.payload,
+      }
+    case SET_ORDER_INFO:
+      return {
+        ...state,
+        orderInfo:action.payload,
       }
     default:
       return state;

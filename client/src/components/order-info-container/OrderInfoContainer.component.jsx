@@ -11,7 +11,10 @@ const OrderInfoContainer = ({allOrders}) => {
       name:order.name,
       products:order.products,
       orderId:order.orderId,
-      customerId:order.customerId})
+      customerId:order.customerId,
+      email:order.email,
+      phone:order.phone
+    })
   })
 
 
