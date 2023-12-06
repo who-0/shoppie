@@ -63,6 +63,8 @@ import {
   DELETE_USER_SUCCESS,
   ADMIN_UPDATE_USER_START,
   ADMIN_UPDATE_USER_SUCCESS,
+  GET_ALL_ORDERS_ADMIN_START,
+  GET_ALL_ORDERS_ADMIN_SUCCESS,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -462,6 +464,17 @@ const reducer = (state, action) => {
       return {
         ...state,
         loading:false,
+      }
+    case GET_ALL_ORDERS_ADMIN_START:
+      return {
+        ...state,
+        loading:true,
+      }
+    case GET_ALL_ORDERS_ADMIN_SUCCESS:
+      return {
+        ...state,
+        loading:false,
+        allOrders:action.payload,
       }
     default:
       return state;

@@ -9,7 +9,7 @@ const body = document.body;
 
 
 const AdminOrders = () => {
-  const { color, changeColor,orderStatus } = useContext(Context);
+  const { color, changeColor,orderStatus,allOrders,getStatusUser,allOrderByAdmin } = useContext(Context);
 
   useEffect(() => {
     if (color !== colors.home_color) {
@@ -17,12 +17,16 @@ const AdminOrders = () => {
     } else {
       body.style.background = color;
     }
+
+    getStatusUser();
+    allOrderByAdmin();
     // eslint-disable-next-line
   }, [color]);
 
+
   return <Orders>
     <OrderHeader orderStatus={orderStatus} />
-   <OrderInfoContainer />
+   <OrderInfoContainer allOrders={allOrders} />
   </Orders>;
 };
 export default AdminOrders;

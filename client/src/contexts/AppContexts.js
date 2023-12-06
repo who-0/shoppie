@@ -61,7 +61,10 @@ import {
   DELETE_USER_ERROR,
   ADMIN_UPDATE_USER_START,
   ADMIN_UPDATE_USER_SUCCESS,
-  ADMIN_UPDATE_USER_ERROR
+  ADMIN_UPDATE_USER_ERROR,
+  GET_ALL_ORDERS_ADMIN_START,
+  GET_ALL_ORDERS_ADMIN_SUCCESS,
+  GET_ALL_ORDERS_ADMIN_ERROR
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -114,6 +117,7 @@ const initialState = {
   orderCreatedTime:[],
   userCreatedTime:[],
   usersData:[],
+  allOrders:[],
 };
 const Context = createContext();
 
@@ -468,6 +472,17 @@ const Provider = ({ children }) => {
     }
   }
 
+  const allOrderByAdmin = async () => {
+    dispatch({type:GET_ALL_ORDERS_ADMIN_START})
+    try {
+      const response = await API.get("/order/all")
+      
+      dispatch({type:GET_ALL_ORDERS_ADMIN_SUCCESS,payload:response.data})
+    } catch (error) {
+      console.log(error);
+      dispatch({type:GET_ALL_ORDERS_ADMIN_ERROR,payload:{msg:error.message}})
+    }
+  }
   return (
     <Context.Provider
       value={{
@@ -503,7 +518,8 @@ const Provider = ({ children }) => {
         getSingleUserData,
         getAllUsers,
         deleteUser,
-        adminUpdateUser
+        adminUpdateUser,
+        allOrderByAdmin
       }}
     >
       {children}

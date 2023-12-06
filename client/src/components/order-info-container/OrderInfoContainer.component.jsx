@@ -3,10 +3,21 @@ import OrderLists from 'components/order-lists/OrderLists.component';
 import React from 'react'
 import InfoContainer from './styles.component';
 
-const OrderInfoContainer = () => {
+const OrderInfoContainer = ({allOrders}) => {
+  const orderLists = [];
+
+  allOrders.forEach(order => {
+    orderLists.push({
+      name:order.name,
+      products:order.products,
+      orderId:order.orderId,
+      customerId:order.customerId})
+  })
+
+
   return (
     <InfoContainer>
-    <OrderLists />
+    <OrderLists orderLists={orderLists}  />
     <OrderCheck />
   </InfoContainer>
   )

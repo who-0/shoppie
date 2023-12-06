@@ -117,4 +117,12 @@ const adminUpdateUser = async (req,res) => {
  }
 }
 
-module.exports = {updateUserController,usersStatus,findAllUser,findSingleUser,deleteSingleUser,adminUpdateUser};
+
+const findUserById = async (id) => {
+  try {
+    return await User.findById({id})
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = {updateUserController,usersStatus,findAllUser,findSingleUser,deleteSingleUser,adminUpdateUser,findUserById};

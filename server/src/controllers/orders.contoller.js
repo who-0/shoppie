@@ -1,6 +1,7 @@
 const { Order,User } = require("../models");
 const checkPermissions = require("../utils/checkPermission");
 const moment = require('moment');
+const { findUserById } = require("./users.controller");
 
 const postOrder = async (req, res) => {
   const { userOrder, totalPrice, userId } = req.body;
@@ -96,6 +97,42 @@ const ordersStatus = async (req,res) => {
    }
 }
 
+const getAllOrderByAdmin = async (req,res) => {
+  const orderBy = [];
+  try {
+ 
+    const users = await User.find();
+     const orders = await Order.find();
+
+     orders.forEach(order => {
+      users.forEach(user => {
+  
+        if(order.orderBy.toString() === user._id.toString()) {
+          orderBy.push(
+            {
+              customerId:user._id,
+              name:user.name,
+              email:user.email,
+              phone:user.phone,
+              orderId:order._id,
+              products:order.orderProducts,
+              totalPrice:order.totalPrice,
+            }
+          )
+        }
+      })
+     })
 
 
-module.exports = { postOrder, getAllOrder,ordersStatus };
+
+    res.status(200).json(orderBy);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({err:error.message});
+  }
+}
+
+
+
+
+module.exports = { postOrder, getAllOrder,ordersStatus,getAllOrderByAdmin };

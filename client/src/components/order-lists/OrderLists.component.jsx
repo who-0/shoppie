@@ -4,26 +4,32 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { FcCancel } from "react-icons/fc";
 import Lists from './styles.component';
 
-const OrderLists = () => {
+const OrderLists = ({orderLists}) => {
+  console.log(orderLists);
+  const icon = {
+    pending: <IoCheckmarkCircleOutline className='icon check' />,
+    success: <LuChevronRightCircle className='icon right' />,
+    cancel: <FcCancel className='icon cancel' />
+  };
+
+  const checkDetailOrder = (...others) => {
+    console.log(others);
+  }
+
   return (
     <Lists>
-        <div>
-            <p>1</p>
-            <p>kaung kaung</p>
-            <LuChevronRightCircle className='icon right' />
-        </div>
-
-        <div>
-            <p>2</p>
-            <p>maung kaung</p>
-            <IoCheckmarkCircleOutline className='icon check' />
-        </div>
-
-        <div>
-            <p>3</p>
-            <p>aung kaung</p>
-            <FcCancel className='icon cancel' />
-        </div>
+    {
+      orderLists.map((order,index) => (
+        order.products.map((product) => (
+          <div key={product.orderId} onClick={ _ => checkDetailOrder(order.customerId
+,order.orderId,product,order)} >
+            <p>{index+1}</p>
+            <p>{order.name}</p>
+            {icon[product.status]}
+          </div>
+        ))
+      ))
+    }
     </Lists>
   )
 }
