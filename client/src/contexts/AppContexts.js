@@ -478,7 +478,7 @@ const Provider = ({ children }) => {
     dispatch({type:GET_ALL_ORDERS_ADMIN_START})
     try {
       const response = await API.get("/order/all")
-      
+      console.log(response.data);
       dispatch({type:GET_ALL_ORDERS_ADMIN_SUCCESS,payload:response.data})
     } catch (error) {
       console.log(error);

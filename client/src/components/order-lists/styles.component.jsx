@@ -18,7 +18,8 @@ const Lists = styled.div`
         padding: 1%;
         border-radius: 5px;
         transition: all .2s;
-        /* background-color: green; */
+        z-index: 10;
+        background-color: ${props => props.active ? 'red' : 'green'};
 
         p{
             font-size: 1.3rem;

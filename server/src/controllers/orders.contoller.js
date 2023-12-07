@@ -51,12 +51,16 @@ const ordersStatus = async (req,res) => {
       },
       {$group:{_id:"$orderProducts.status",count:{$sum:1}}}
     ]);
+
+   
+   
     
     orders = orders.reduce((acc,curr) => {
       const {_id:title,count} = curr;
       acc[title] = count;
       return acc;
     },{});
+
 
     let orderTime = await Order.aggregate([
       {
@@ -103,7 +107,7 @@ const getAllOrderByAdmin = async (req,res) => {
  
     const users = await User.find();
      const orders = await Order.find();
-
+    console.log(orders.length);
      orders.forEach(order => {
       users.forEach(user => {
   
