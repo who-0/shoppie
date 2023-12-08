@@ -7,7 +7,7 @@ import { Context } from 'contexts/AppContexts';
 
 
 const OrderLists = ({orderLists}) => {
-  const [active,setActive] = useState(false);
+  const [active,setActive] = useState('');
   const {setOrderInfo} = useContext(Context)
   let indexNo = 0;
   const icon = {
@@ -34,7 +34,7 @@ const OrderLists = ({orderLists}) => {
     const {product,id} = others[0];
     console.log(id);
     console.log(product);
-    setActive(true)
+    setActive(id)
     setOrderInfo(product);
   }
  
@@ -46,10 +46,11 @@ const OrderLists = ({orderLists}) => {
     <Lists>
     {
     
-      productCollection.map((product) => (
+      productCollection.map((product,index) => (
         
           <div key={product._id} 
-          active={+active}
+          active={+(active === product._id)}
+          index={+index}
           onClick={ _ => checkDetailOrder({product,id:product._id})}>
               <p>{indexNo+=1}</p>
               <p>{product.name}</p>

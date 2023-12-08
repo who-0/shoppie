@@ -1,5 +1,5 @@
 import colors from 'colors';
-import {styled} from 'styled-components'
+import {css, styled} from 'styled-components'
 
 const Lists = styled.div`
     background-color: #fff2f2;
@@ -19,7 +19,7 @@ const Lists = styled.div`
         border-radius: 5px;
         transition: all .2s;
         z-index: 10;
-        background-color: ${props => props.active ? 'red' : 'green'};
+      
 
         p{
             font-size: 1.3rem;
