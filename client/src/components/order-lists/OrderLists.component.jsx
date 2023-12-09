@@ -4,6 +4,7 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { FcCancel } from "react-icons/fc";
 import Lists from './styles.component';
 import { Context } from 'contexts/AppContexts';
+import colors from 'colors';
 
 
 const OrderLists = ({orderLists}) => {
@@ -20,9 +21,10 @@ const OrderLists = ({orderLists}) => {
   const productCollection = [];
 
   orderLists.map((order) => {
-    const {customerId,email,name,orderId,} = order;
+    const {customerId,email,name,orderId,phone} = order;
+
     order.products.map((product) => {
-      productCollection.push({...product,customerId,email,name,orderId})
+      productCollection.push({...product,customerId,email,name,orderId,phone})
     })
   })
   // console.log(orderCollection);
@@ -32,10 +34,9 @@ const OrderLists = ({orderLists}) => {
  
   const checkDetailOrder = (...others) => {
     const {product,id} = others[0];
-    console.log(id);
-    console.log(product);
     setActive(id)
-    setOrderInfo(product);
+    setOrderInfo(product)
+
   }
  
 
@@ -49,7 +50,10 @@ const OrderLists = ({orderLists}) => {
       productCollection.map((product,index) => (
         
           <div key={product._id} 
-          active={+(active === product._id)}
+          style={{
+            backgroundColor:`${active === product._id ? colors.admin_color : 'transparent'}`,
+            color:`${active === product._id ? 'white' : colors.admin_color}`
+            }}
           index={+index}
           onClick={ _ => checkDetailOrder({product,id:product._id})}>
               <p>{indexNo+=1}</p>

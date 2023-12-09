@@ -1,5 +1,5 @@
-import colors from 'colors';
-import {css, styled} from 'styled-components'
+
+import {styled} from 'styled-components'
 
 const Lists = styled.div`
     background-color: #fff2f2;
@@ -10,6 +10,7 @@ const Lists = styled.div`
     overflow-y: scroll;
     border-radius: 10px;
 
+
     div{
         display: flex;
         justify-content: space-between;
@@ -19,12 +20,13 @@ const Lists = styled.div`
         border-radius: 5px;
         transition: all .2s;
         z-index: 10;
-      
+       
+     
 
         p{
             font-size: 1.3rem;
             text-transform: capitalize;
-            color: ${colors.admin_color};
+    
             transition: all .2s;
 
             &:nth-child(2){

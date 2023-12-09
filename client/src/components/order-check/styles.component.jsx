@@ -36,7 +36,7 @@ const Check = styled.div`
         }
         /* height: 0 ; */
         &:nth-child(9){
-            /* background-color: red; */
+      
             width: 20%;
         }
      
