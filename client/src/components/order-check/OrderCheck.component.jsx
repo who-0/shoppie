@@ -5,7 +5,7 @@ import { Context } from 'contexts/AppContexts';
 
 const OrderCheck = () => {
   const {orderInfo} = useContext(Context);
-  const {customerId,email,name,phone,quantity,singlePrice,status,title} = orderInfo
+  const {customerId,email,name,phone,quantity,singlePrice,status,title} = orderInfo;
   const defaultInfo = {
     customerId,
     email,
@@ -17,10 +17,9 @@ const OrderCheck = () => {
     status ,
     title,
   }
-  console.log(defaultInfo);
+  const [a,b] = useState(orderInfo);
+  console.log(a);
 
-  const [defaultState,setDefaultState] = useState(defaultInfo);
-  // console.log(defaultState);
 
   const Info = [
     {
@@ -62,13 +61,10 @@ const OrderCheck = () => {
   ]
 
 
-
-
-
   return (
     <Check>
       {
-        Info.map(i =>(
+        Info.map(i => (
    
           <div key={i.id} className='info'>
             <p>{Object.keys(i)[1]}</p>
@@ -78,22 +74,31 @@ const OrderCheck = () => {
 
         ))
       }
-        <div className='comment'>
+    
+       <div className='comment'>
           <textarea  placeholder="comments">
           </textarea>
         </div>
         <div>
-          <select defaultValue={orderInfo.status}>
-            <option value="success">success</option>  
-            <option value="pending">pending</option>  
-            <option value="cancel">cancel</option>  
-          </select>
+              <label class="container">pending
+                <input type="radio" checked={orderInfo.status === 'pending' ? "true" : "false"} name="radio"/>
+                  <span class="checkmark"></span>
+            </label>
+            <label class="container">success
+              <input type="radio" checked={orderInfo.status === 'success' ? "true" : "false"} name="radio"/>
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">cancel
+              <input type="radio" checked={orderInfo.status === 'cancel' ? "true" : "false"} name="radio"/>
+              <span class="checkmark"></span>
+            </label>
         </div>
        
         <div className='btn_gp'>
             <button type="button" >cancel</button>
             <button type="button" >submit</button>
         </div>
+     
   </Check>
   )
 }

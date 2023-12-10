@@ -41,7 +41,7 @@ const Check = styled.div`
         }
      
     }
-    .comment{
+ .comment{
             width: 75%;
             background-color: rd;
 
