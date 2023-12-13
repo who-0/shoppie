@@ -136,7 +136,13 @@ const getAllOrderByAdmin = async (req,res) => {
   }
 }
 
+const postOrderByAdmin = async (req,res) => {
+    const {comment,changeStatus,orderId:_id} = req.body;
+    console.log(comment,changeStatus);
+    const data = await Order.findById({orderProducts:_id})
+    res.status(200).json(data);
+}
 
 
 
-module.exports = { postOrder, getAllOrder,ordersStatus,getAllOrderByAdmin };
+module.exports = { postOrder, getAllOrder,ordersStatus,getAllOrderByAdmin,postOrderByAdmin };

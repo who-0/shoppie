@@ -36,6 +36,9 @@ const OrderSchema = new mongoose.Schema(
       type: Number,
       require: [true, "Total price is required"],
     },
+    comment:{
+      type :String,
+    }
   },
   { timestamps: true }
 );

@@ -78,6 +78,33 @@ const Check = styled.div`
             }
         }
        }
+
+    .status{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding: 0 20px;
+
+        label{
+            font-size: 1rem;
+            text-transform: capitalize;
+
+            &[name='status']{
+                color: ${colors.admin_color};
+            }
+        }
+
+        select{
+            width: 50%;
+            outline: none;
+            border: none;
+            background-color: ${colors.admin_color};
+            color: white;
+            font-size: 1rem;
+            padding: 1% 2% 1% 0;
+        }
+    }
 `
 
 export default Check;

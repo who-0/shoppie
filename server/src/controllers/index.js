@@ -4,7 +4,7 @@ const {
   logoutController,
   GoogleController,
 } = require("./auth.controller");
-const { postOrder, getAllOrder,ordersStatus,getAllOrderByAdmin } = require("./orders.contoller");
+const { postOrder, getAllOrder,ordersStatus,getAllOrderByAdmin,postOrderByAdmin } = require("./orders.contoller");
 const {updateUserController,usersStatus, findSingleUser, findAllUser,deleteSingleUser, adminUpdateUser} = require("./users.controller");
 
 module.exports = {
@@ -21,5 +21,6 @@ module.exports = {
   findAllUser,
   deleteSingleUser,
   adminUpdateUser,
-  getAllOrderByAdmin
+  getAllOrderByAdmin,
+  postOrderByAdmin
 };

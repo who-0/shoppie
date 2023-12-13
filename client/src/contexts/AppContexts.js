@@ -488,6 +488,12 @@ const Provider = ({ children }) => {
 
   const setOrderInfo = data => dispatch({type:SET_ORDER_INFO,payload:data})
 
+  const submitOrder = async (order) =>{
+    const response = await API.post('/order/all',order);
+
+ 
+  }
+
   return (
     <Context.Provider
       value={{
@@ -525,7 +531,8 @@ const Provider = ({ children }) => {
         deleteUser,
         adminUpdateUser,
         allOrderByAdmin,
-        setOrderInfo
+        setOrderInfo,
+        submitOrder
       }}
     >
       {children}
