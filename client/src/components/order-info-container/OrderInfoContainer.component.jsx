@@ -5,7 +5,7 @@ import InfoContainer from './styles.component';
 
 const OrderInfoContainer = ({allOrders}) => {
   const orderLists = [];
-  
+ 
   allOrders.forEach(order => {
     orderLists.push({
       name:order.name,

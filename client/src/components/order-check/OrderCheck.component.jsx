@@ -5,7 +5,7 @@ import { Context } from 'contexts/AppContexts';
 
 const OrderCheck = () => {
   const {orderInfo,submitOrder} = useContext(Context);
-  const {customerId,email,name,phone,quantity,singlePrice,status,title,orderId} = orderInfo;
+  const {customerId,email,name,phone,quantity,singlePrice,status,title,orderId,_id} = orderInfo;
 
   const defaultValue = {
     comment:'',
@@ -62,7 +62,7 @@ const OrderCheck = () => {
   }
 
   const submitHandler = _ => {
-    submitOrder({...defaultState,orderId})
+    submitOrder({...defaultState,orderId,_id})
   }
 
 

@@ -1,7 +1,7 @@
 const { Order,User } = require("../models");
 const checkPermissions = require("../utils/checkPermission");
 const moment = require('moment');
-const { findUserById } = require("./users.controller");
+
 
 const postOrder = async (req, res) => {
   const { userOrder, totalPrice, userId } = req.body;
@@ -137,10 +137,36 @@ const getAllOrderByAdmin = async (req,res) => {
 }
 
 const postOrderByAdmin = async (req,res) => {
-    const {comment,changeStatus,orderId:_id} = req.body;
-    console.log(comment,changeStatus);
-    const data = await Order.findById({orderProducts:_id})
+    const {comment,changeStatus,orderId,_id:productId} = req.body;
+    try {
+      // checkPermissions(userId, req.user.userId);
+      let data = await Order.findOneAndReplace({
+        _id:orderId,
+        orderProducts:{"$elemMatch":{'_id':productId}}},
+        {
+          $set:{
+          "orderProducts.$[outer].orderProducts.$[inner].comment":comment,
+          "orderProducts.$[outer].orderProducts.$[inner].status":changeStatus,
+        }},{
+          arrayFilters:[
+          {"outer._id":productId},
+          {"inner._id":productId},
+        ]})
+      // .then(data => data.orderProducts.filter(order => {
+      //   if(order._id.toString() === productId){
+      //     order.status = changeStatus;
+      //     order.comment = comment;
+      //     return order;
+      //   }
+      // }))
+    //  data[0].status = changeStatus;
+    //  data[0].comment = comment;
+    //  await data[0].save({ suppressWarning: true });
     res.status(200).json(data);
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({msg:error.message})
+    }
 }
 
 
