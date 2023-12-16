@@ -76,6 +76,13 @@ const Check = styled.div`
                 background-color: blue;
                 color: white;
             }
+
+            &:hover{
+                cursor: pointer;
+            }
+            &:active{
+                transform: translateY(5px);
+            }
         }
        }
 

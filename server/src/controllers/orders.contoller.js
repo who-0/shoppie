@@ -107,7 +107,7 @@ const getAllOrderByAdmin = async (req,res) => {
  
     const users = await User.find();
      const orders = await Order.find();
-    console.log(orders.length);
+   
      orders.forEach(order => {
       users.forEach(user => {
   
@@ -137,31 +137,28 @@ const getAllOrderByAdmin = async (req,res) => {
 }
 
 const postOrderByAdmin = async (req,res) => {
-    const {comment,changeStatus,orderId,_id:productId} = req.body;
+    const {comment,changeStatus,orderId,_id:productId,userId} = req.body;
     try {
-      // checkPermissions(userId, req.user.userId);
-      let data = await Order.findOneAndReplace({
-        _id:orderId,
-        orderProducts:{"$elemMatch":{'_id':productId}}},
+      checkPermissions(userId, req.user.userId);
+      let data = await Order.findByIdAndUpdate(
         {
-          $set:{
-          "orderProducts.$[outer].orderProducts.$[inner].comment":comment,
-          "orderProducts.$[outer].orderProducts.$[inner].status":changeStatus,
-        }},{
-          arrayFilters:[
-          {"outer._id":productId},
-          {"inner._id":productId},
-        ]})
-      // .then(data => data.orderProducts.filter(order => {
-      //   if(order._id.toString() === productId){
-      //     order.status = changeStatus;
-      //     order.comment = comment;
-      //     return order;
-      //   }
-      // }))
-    //  data[0].status = changeStatus;
-    //  data[0].comment = comment;
-    //  await data[0].save({ suppressWarning: true });
+          _id:orderId
+        },
+        {
+          "$set":{
+            "orderProducts.$[elemX].status":changeStatus,
+            "orderProducts.$[elemX].comment":comment
+          }
+        },
+        {
+          "arrayFilters":[
+            {
+              "elemX._id":productId
+            }
+          ]
+        }
+      )
+
     res.status(200).json(data);
     } catch (error) {
       console.log(error)

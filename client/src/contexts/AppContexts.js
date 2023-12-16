@@ -65,7 +65,10 @@ import {
   GET_ALL_ORDERS_ADMIN_START,
   GET_ALL_ORDERS_ADMIN_SUCCESS,
   GET_ALL_ORDERS_ADMIN_ERROR,
-  SET_ORDER_INFO
+  SET_ORDER_INFO,
+  UPDATE_ORDER_BY_ADMIN_START,
+  UPDATE_ORDER_BY_ADMIN_SUCCESS,
+  UPDATE_ORDER_BY_ADMIN_ERROR,
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -120,6 +123,7 @@ const initialState = {
   usersData:[],
   allOrders:[],
   orderInfo:{},
+  updateOrder:false,
 };
 const Context = createContext();
 
@@ -489,7 +493,15 @@ const Provider = ({ children }) => {
   const setOrderInfo = data => dispatch({type:SET_ORDER_INFO,payload:data})
 
   const submitOrder = async (order) =>{
-    const response = await API.post('/order/all',order);
+    dispatch({type:UPDATE_ORDER_BY_ADMIN_START})
+    try {
+      await API.post('/order/all',{...order,userId: state.user._id});
+      // await allOrderByAdmin();
+      // await getStatusUser();
+      dispatch({type:UPDATE_ORDER_BY_ADMIN_SUCCESS})
+    } catch (error) {
+      dispatch({type:UPDATE_ORDER_BY_ADMIN_ERROR})
+    }
 
  
   }

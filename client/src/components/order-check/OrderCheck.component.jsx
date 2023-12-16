@@ -1,18 +1,19 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Check from './styles.component';
 import { Context } from 'contexts/AppContexts';
 
 
 const OrderCheck = () => {
   const {orderInfo,submitOrder} = useContext(Context);
-  const {customerId,email,name,phone,quantity,singlePrice,status,title,orderId,_id} = orderInfo;
-
+  const {customerId,email,name,phone,quantity,singlePrice,status,title,orderId,_id,comment} = orderInfo;
   const defaultValue = {
-    comment:'',
-    changeStatus:'',
+    comment:comment,
+    changeStatus:status,
   }
-
   const [defaultState,setDefaultState] = useState(defaultValue);
+  useEffect(()=>{
+    setDefaultState({comment,changeStatus:status})
+  },[comment,status])
 
 
 
@@ -57,12 +58,12 @@ const OrderCheck = () => {
 
  
   const changeHandler = e => {
-   
     setDefaultState({...defaultState,[e.target.name]:e.target.value}) 
   }
 
   const submitHandler = _ => {
     submitOrder({...defaultState,orderId,_id})
+
   }
 
 
@@ -86,7 +87,7 @@ const OrderCheck = () => {
           <label name='status'>{status}</label>
 
           <select onChange={changeHandler} name='changeStatus' value={defaultState.changeStatus}>
-          <option value="" disabled >select status</option>
+          <option value="" disabled autoFocus >select status</option>
           {
             status === 'pending' ? (<option value="success">success</option>):(<option value="pending">pending</option>)
           }
