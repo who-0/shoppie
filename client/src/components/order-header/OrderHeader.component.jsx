@@ -7,7 +7,7 @@ const OrderHeader = ({orderStatus}) => {
     <h1>orders</h1>
     <div>
       <p>total pending orders - </p>
-      <p>{orderStatus.pending}</p>
+      <p>{orderStatus.pending || 0}</p>
     </div>
  </Header>
   )

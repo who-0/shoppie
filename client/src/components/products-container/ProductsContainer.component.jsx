@@ -1,8 +1,8 @@
-import ProductCard from "../product-card/ProductCard.component";
+// import ProductCard from "../product-card/ProductCard.component";
 import Wrapper from "./styles.component";
 import { Context } from "contexts/AppContexts";
 import { useContext } from "react";
-import { Loader, ProductDetail } from "components";
+import { Loader, ProductDetail,ProductCard } from "components";
 
 const ProductsContainer = ({ products }) => {
   const { loading, showProduct } = useContext(Context);

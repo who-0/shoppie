@@ -1,5 +1,6 @@
 import ActivityContainer from "./activity-container/ActivityContainer.component";
 import AdminMenu from "./admin-menu/AdminMenu.component";
+import AdminProductsHeader from "./admin-products-header/AdminProductsHeader.component";
 import Alert from "./alert/Alert.component";
 import Btn from "./btn/styles.component";
 import CartProduct from "./cart-products/CartProduct.component";
@@ -57,5 +58,6 @@ export {
   UserDisplay,
   UserData,
   OrderHeader,
-  OrderInfoContainer
+  OrderInfoContainer,
+  AdminProductsHeader
 };

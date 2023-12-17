@@ -3,6 +3,10 @@ import { Products } from "./styles.admin"
 import { Context } from "contexts/AppContexts";
 import colors from "colors";
 import { ADMIN_PRODUCTS } from "contexts/actions";
+import { AdminProductsHeader } from "components";
+
+
+
 const body = document.body;
 
 const AdminProducts = () => {
@@ -17,7 +21,9 @@ const AdminProducts = () => {
     // eslint-disable-next-line
   }, [color]);
   return (
-    <Products>AdminProducts</Products>
+    <Products>
+      <AdminProductsHeader />
+    </Products>
   )
 }
 export default AdminProducts
