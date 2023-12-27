@@ -68,7 +68,8 @@ import {
   SET_ORDER_INFO,
   UPDATE_ORDER_BY_ADMIN_ERROR,
   UPDATE_ORDER_BY_ADMIN_START,
-  UPDATE_ORDER_BY_ADMIN_SUCCESS
+  UPDATE_ORDER_BY_ADMIN_SUCCESS,
+  CHANGE_PAGE_BY_ADMIN
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -495,6 +496,11 @@ const reducer = (state, action) => {
           ...state,
           loading:false,
           updateOrder:!state.updateOrder,
+        }
+      case CHANGE_PAGE_BY_ADMIN:
+        return {
+          ...state,
+          skip:action.payload
         }
     default:
       return state;

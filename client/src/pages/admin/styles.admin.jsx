@@ -25,6 +25,35 @@ const Products = styled.div`
     height: 85vh;
     margin-right: 15px;
     border-radius: 10px;
+
+    overflow-y: scroll;
+    padding: 0 0 1% 1% ;
+
+    .icon{
+        /* background-color: red; */
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 1%;
+
+        div{
+          font-size: 2rem;
+          background-color: lightgray;
+          margin: 0 1.5%;
+          font-weight: bolder;
+          padding: 5px 10px;
+          border-radius:5px;
+          transition: all .2s;
+          cursor: pointer;
+          user-select: none;
+
+          &:hover{
+            background-color: gray;
+            color: white;
+          }
+        }
+    }
 `
 
 const Users = styled.div`

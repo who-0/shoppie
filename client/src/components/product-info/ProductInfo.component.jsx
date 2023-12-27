@@ -20,6 +20,7 @@ const ProductInfo = ({ singleProduct }) => {
         </div>
       )}
       <button onClick={() => addToCart(singleProduct)}>add to cart</button>
+      <button>delete</button>
       <FiX className="close_btn" onClick={closeProductInfo} />
     </Wrapper>
   );

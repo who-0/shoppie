@@ -31,6 +31,11 @@ const Wrapper = styled.div`
     color: white;
     transition: all 0.2s;
 
+    &:nth-child(1){
+     right: 10%;
+     background-color: green;
+    }
+
     &:hover {
       background-color: #5290eb;
       cursor: pointer;
@@ -39,6 +44,8 @@ const Wrapper = styled.div`
     &:active {
       background-color: lightgreen;
     }
+
+   
   }
 
   h3 {

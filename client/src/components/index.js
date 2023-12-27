@@ -18,6 +18,7 @@ import OrderFrom from "./order-form/OrderForm.component";
 import OrderHeader from "./order-header/OrderHeader.component";
 import OrderHistory from "./order-history/OrderHistory.component";
 import OrderInfoContainer from "./order-info-container/OrderInfoContainer.component";
+import ProductBtn from "./product-btn/ProductBtn.component";
 import ProductCard from "./product-card/ProductCard.component";
 import ProductDetail from "./product-detail/ProductDetail.component";
 import ProductsContainer from "./products-container/ProductsContainer.component";
@@ -59,5 +60,6 @@ export {
   UserData,
   OrderHeader,
   OrderInfoContainer,
-  AdminProductsHeader
+  AdminProductsHeader,
+  ProductBtn
 };

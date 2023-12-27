@@ -69,6 +69,7 @@ import {
   UPDATE_ORDER_BY_ADMIN_START,
   UPDATE_ORDER_BY_ADMIN_SUCCESS,
   UPDATE_ORDER_BY_ADMIN_ERROR,
+  CHANGE_PAGE_BY_ADMIN
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -333,6 +334,8 @@ const Provider = ({ children }) => {
     dispatch({ type: CHANGE_PAGE, payload: { number, changeSkip } });
   };
 
+  const changePageByAdmin = (number) => dispatch({type:CHANGE_PAGE_BY_ADMIN,payload:number})
+
   const changeShowImage = (img) => {
     dispatch({ type: CHANGE_SHOW_IMAGE, payload: img });
   };
@@ -544,7 +547,8 @@ const Provider = ({ children }) => {
         adminUpdateUser,
         allOrderByAdmin,
         setOrderInfo,
-        submitOrder
+        submitOrder,
+        changePageByAdmin
       }}
     >
       {children}
