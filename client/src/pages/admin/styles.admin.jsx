@@ -28,10 +28,9 @@ const Products = styled.div`
 
     overflow-y: scroll;
     padding: 0 0 1% 1% ;
+    position: relative;
 
     .icon{
-        /* background-color: red; */
-
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -54,6 +53,8 @@ const Products = styled.div`
           }
         }
     }
+
+    
 `
 
 const Users = styled.div`

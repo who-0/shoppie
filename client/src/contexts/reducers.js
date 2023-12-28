@@ -69,7 +69,8 @@ import {
   UPDATE_ORDER_BY_ADMIN_ERROR,
   UPDATE_ORDER_BY_ADMIN_START,
   UPDATE_ORDER_BY_ADMIN_SUCCESS,
-  CHANGE_PAGE_BY_ADMIN
+  CHANGE_PAGE_BY_ADMIN,
+  OPEN_UPDATE_PRODUCT_ADMIN
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -501,6 +502,12 @@ const reducer = (state, action) => {
         return {
           ...state,
           skip:action.payload
+        }
+      case OPEN_UPDATE_PRODUCT_ADMIN:
+        return {
+          ...state,
+          isUpdateProduct:true,
+          updateProduct:action.payload,
         }
     default:
       return state;

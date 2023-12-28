@@ -4,24 +4,47 @@ import { Context } from "contexts/AppContexts";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ product }) => {
-  const { showProductInfo, user } = useContext(Context);
+const ProductCard = ({ product, role }) => {
+  const { showProductInfo, user,updateProductByAdmin,deleteProductByAdmin } = useContext(Context);
   const navigate = useNavigate();
   const showInfo = () => {
     if (!user) return navigate("/auth");
     showProductInfo(product.id);
   };
+
+  const deleteHandler = () => deleteProductByAdmin(product.id);
+  const updateHandler = () => updateProductByAdmin(product)
+ 
+
   return (
-    <Wrapper>
+    <Wrapper role={role}>
       <img src={product.thumbnail} alt={product.title} />
       <div className="product_info">
-        <p>
-          <AiFillStar style={{ color: "yellow" }} />
-          {product.rating}
-        </p>
-        <button type="button" onClick={showInfo}>
-          see more
-        </button>
+        {role === "admin" ? (
+          <>
+            <div className="info_admin">
+              <p>
+                <AiFillStar style={{ color: "yellow" }} />
+                {product.rating}
+              </p>
+              <p>${product.price}</p>
+            </div>
+            <div className="btn_admin">
+              <button type="button" onClick={deleteHandler}>delete</button>
+              <button type="button" onClick={updateHandler}>update</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p>
+              <AiFillStar style={{ color: "yellow" }} />
+              {product.rating}
+            </p>
+            <button type="button" onClick={showInfo}>
+              see more
+            </button>
+          </>
+        )}
       </div>
     </Wrapper>
   );

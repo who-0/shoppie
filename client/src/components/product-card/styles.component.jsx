@@ -1,4 +1,5 @@
-import { styled } from "styled-components";
+import colors from "colors";
+import { css, styled } from "styled-components";
 
 const Wrapper = styled.div`
   border: 2px solid white;
@@ -44,43 +45,74 @@ const Wrapper = styled.div`
     }
   }
 
+  ${(props) => {
+    if (props.role === "admin") {
+      return css`
+        .product_info {
+          flex-direction: column;
+
+          .info_admin,
+          .btn_admin {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2%;
+            /* background-color: red; */
+          }
+
+          .btn_admin {
+            button {
+              &:first-child {
+                background-color: red;
+                &:hover {
+                  background-color: ${colors.admin_color};
+                }
+              }
+            }
+          }
+        }
+      `;
+    }
+  }}
+
   @media screen and (max-width: 426px) {
-    img{
+    img {
       width: 179px;
-    height: 179px;
+      height: 179px;
     }
   }
 
   @media screen and (max-width: 376px) {
-    img{
-    width: 155px;
-    height: 156px;
+    img {
+      width: 155px;
+      height: 156px;
     }
-    .product_info{
-      p{
-      font-size: 1rem;
-    }
+    .product_info {
+      p {
+        font-size: 1rem;
+      }
 
-    button{
-      font-size: .8rem;
-    }
+      button {
+        font-size: 0.8rem;
+      }
     }
   }
 
   @media screen and (max-width: 321px) {
-    img{
-    width: 129px;
-    height: 129px;
+    img {
+      width: 129px;
+      height: 129px;
     }
 
-    .product_info{
-      p{
-      font-size: .9rem;
-    }
+    .product_info {
+      p {
+        font-size: 0.9rem;
+      }
 
-    button{
-      font-size: .7rem;
-    }
+      button {
+        font-size: 0.7rem;
+      }
     }
   }
 `;

@@ -1,4 +1,5 @@
-import { styled } from "styled-components";
+import colors from "colors";
+import { css, styled } from "styled-components";
 
 const Wrapper = styled.form`
   display: flex;
@@ -6,6 +7,8 @@ const Wrapper = styled.form`
   align-items: center;
   margin-bottom: 20px;
   position: relative;
+
+
 
   input {
     width: 40%;
@@ -32,7 +35,23 @@ const Wrapper = styled.form`
     cursor: pointer;
   }
 
-  
+  ${props => {
+    if(props.role === 'admin'){
+      return css`
+      margin-top: 3%;
+
+      input {
+        border: 1px solid ${colors.admin_color};
+        &:focus {
+      outline: none;
+    }
+        
+    
+      }
+      `
+    }
+  }}
+
   @media screen and (max-width: 1025px) {
     input{
       width: 35%;

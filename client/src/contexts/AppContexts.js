@@ -69,7 +69,10 @@ import {
   UPDATE_ORDER_BY_ADMIN_START,
   UPDATE_ORDER_BY_ADMIN_SUCCESS,
   UPDATE_ORDER_BY_ADMIN_ERROR,
-  CHANGE_PAGE_BY_ADMIN
+  CHANGE_PAGE_BY_ADMIN,
+  OPEN_UPDATE_PRODUCT_ADMIN,
+  DELETE_PRODUCT_ADMIN_START,
+  DELETE_PRODUCT_ADMIN_SUCCESS
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -125,6 +128,8 @@ const initialState = {
   allOrders:[],
   orderInfo:{},
   updateOrder:false,
+  isUpdateProduct:false,
+  updateProduct:{},
 };
 const Context = createContext();
 
@@ -505,10 +510,14 @@ const Provider = ({ children }) => {
     } catch (error) {
       dispatch({type:UPDATE_ORDER_BY_ADMIN_ERROR})
     }
-
- 
   }
 
+  const updateProductByAdmin = (product) => dispatch({type:OPEN_UPDATE_PRODUCT_ADMIN,payload:product});
+  const deleteProductByAdmin = (id) => {
+    dispatch({type:DELETE_PRODUCT_ADMIN_START});
+    console.log(id);
+    dispatch({type:DELETE_PRODUCT_ADMIN_SUCCESS})
+  }
   return (
     <Context.Provider
       value={{
@@ -548,7 +557,9 @@ const Provider = ({ children }) => {
         allOrderByAdmin,
         setOrderInfo,
         submitOrder,
-        changePageByAdmin
+        changePageByAdmin,
+        updateProductByAdmin,
+        deleteProductByAdmin
       }}
     >
       {children}

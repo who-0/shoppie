@@ -1,6 +1,5 @@
 import ActivityContainer from "./activity-container/ActivityContainer.component";
 import AdminMenu from "./admin-menu/AdminMenu.component";
-import AdminProductsHeader from "./admin-products-header/AdminProductsHeader.component";
 import Alert from "./alert/Alert.component";
 import Btn from "./btn/styles.component";
 import CartProduct from "./cart-products/CartProduct.component";
@@ -21,6 +20,7 @@ import OrderInfoContainer from "./order-info-container/OrderInfoContainer.compon
 import ProductBtn from "./product-btn/ProductBtn.component";
 import ProductCard from "./product-card/ProductCard.component";
 import ProductDetail from "./product-detail/ProductDetail.component";
+import ProductUpdate from "./product-update/ProductUpdate.component";
 import ProductsContainer from "./products-container/ProductsContainer.component";
 import ProfileForm from "./profile-form/ProfileForm.component";
 import ProfileIcon from "./profile-icon/ProfileIcon.component";
@@ -60,6 +60,6 @@ export {
   UserData,
   OrderHeader,
   OrderInfoContainer,
-  AdminProductsHeader,
+  ProductUpdate,
   ProductBtn
 };
