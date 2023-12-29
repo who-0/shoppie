@@ -9,7 +9,7 @@ import {
   SUBMIT_AUTH_SUCCESS,
   SUBMIT_AUTH_START,
   SUBMIT_AUTH_ERROR,
-  DISPLAY_ERROR,
+  // DISPLAY_ERROR,
   DISPLAY_SUCCESS,
   CLEAR_ERROR,
   UPDATE_PROFILE,
@@ -37,7 +37,7 @@ import {
   CHANGE_PAGE,
   CHANGE_SHOW_IMAGE,
   ADD_TO_CART,
-  ADD_TO_CART_SUCCESS,
+  // ADD_TO_CART_SUCCESS,
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
@@ -72,7 +72,12 @@ import {
   CHANGE_PAGE_BY_ADMIN,
   OPEN_UPDATE_PRODUCT_ADMIN,
   DELETE_PRODUCT_ADMIN_START,
-  DELETE_PRODUCT_ADMIN_SUCCESS
+  DELETE_PRODUCT_ADMIN_SUCCESS,
+  CLOSE_UPDATE_PRODUCT,
+  DELETE_PRODUCT_ADMIN_ERROR,
+  UPDATE_PRODUCT_ADMIN_START,
+  UPDATE_PRODUCT_ADMIN_SUCCESS,
+  UPDATE_PRODUCT_ADMIN_ERROR,
 } from "./actions";
 // import { useCookies } from "react-cookie";
 
@@ -90,12 +95,12 @@ const initialState = {
   auth_active: false,
   profile_active: false,
   menu_open: false,
-  sub_menu_open:false,
-  admin_active:false,
-  admin_status:false,
-  admin_products:false,
-  admin_users:false,
-  admin_orders:false,
+  sub_menu_open: false,
+  admin_active: false,
+  admin_status: false,
+  admin_products: false,
+  admin_users: false,
+  admin_orders: false,
   signup: false,
   isLogined: false,
   alert: false,
@@ -119,17 +124,17 @@ const initialState = {
   totalPrice: 0,
   orderHistoryStart: false,
   userOrders: [],
-  orderStatus:{},
-  userStatus:[],
-  orderTimes:[],
-  orderCreatedTime:[],
-  userCreatedTime:[],
-  usersData:[],
-  allOrders:[],
-  orderInfo:{},
-  updateOrder:false,
-  isUpdateProduct:false,
-  updateProduct:{},
+  orderStatus: {},
+  userStatus: [],
+  orderTimes: [],
+  orderCreatedTime: [],
+  userCreatedTime: [],
+  usersData: [],
+  allOrders: [],
+  orderInfo: {},
+  updateOrder: false,
+  isUpdateProduct: false,
+  updateProduct: {},
 };
 const Context = createContext();
 
@@ -147,8 +152,8 @@ const Provider = ({ children }) => {
   };
 
   const subMenuOpen = () => {
-    dispatch({type:OPEN_SUB_MENU })
-  }
+    dispatch({ type: OPEN_SUB_MENU });
+  };
 
   const signUpUser = () => {
     dispatch({ type: USER_SIGNUP });
@@ -227,7 +232,7 @@ const Provider = ({ children }) => {
   const logoutUser = async () => {
     localStorage.removeItem("user");
     localStorage.removeItem("cart");
-  dispatch({ type: LOGOUT_USER_SUCCESS });
+    dispatch({ type: LOGOUT_USER_SUCCESS });
   };
 
   const updateUser = async (user) => {
@@ -339,7 +344,8 @@ const Provider = ({ children }) => {
     dispatch({ type: CHANGE_PAGE, payload: { number, changeSkip } });
   };
 
-  const changePageByAdmin = (number) => dispatch({type:CHANGE_PAGE_BY_ADMIN,payload:number})
+  const changePageByAdmin = (number) =>
+    dispatch({ type: CHANGE_PAGE_BY_ADMIN, payload: number });
 
   const changeShowImage = (img) => {
     dispatch({ type: CHANGE_SHOW_IMAGE, payload: img });
@@ -404,7 +410,7 @@ const Provider = ({ children }) => {
       console.log(error);
       dispatch({ type: ORDER_ERROR, payload: { msg: error.message } });
     }
-    // console.log(response.data);
+
   };
 
   const updatePhone = async (phone) => await updateUser({ phone });
@@ -422,102 +428,131 @@ const Provider = ({ children }) => {
       });
     }
   };
-  
+
   const getStatusUser = async () => {
     dispatch({ type: GET_STATUS_START });
     try {
-      const userResponse = await API.get('/user/status');
-      const orderResponse = await API.get('/order/status');
-      dispatch({type:GET_STATUS_SUCCESS,
-        payload:{
-          order:orderResponse.data.orders,
-          orderTime:orderResponse.data.orderTime, 
-          orderCreatedTime:orderResponse.data.createTime,
-          user:userResponse.data.status,
-          userStatusTime:userResponse.data.statusTime,
-        }});
+      const userResponse = await API.get("/user/status");
+      const orderResponse = await API.get("/order/status");
+      dispatch({
+        type: GET_STATUS_SUCCESS,
+        payload: {
+          order: orderResponse.data.orders,
+          orderTime: orderResponse.data.orderTime,
+          orderCreatedTime: orderResponse.data.createTime,
+          user: userResponse.data.status,
+          userStatusTime: userResponse.data.statusTime,
+        },
+      });
     } catch (error) {
       console.log(error);
-      dispatch({type:GET_STATUS_ERROR,payload:{msg:error.message}});
+      dispatch({ type: GET_STATUS_ERROR, payload: { msg: error.message } });
     }
-  }
+  };
 
-  const getSingleUserData = async (check,data) => {
-    dispatch({type:GET_USER_DATA_START});
+  const getSingleUserData = async (check, data) => {
+    dispatch({ type: GET_USER_DATA_START });
     try {
-      const response = await API.post('/user/data',{data:{check,data}});
-      dispatch({type:GET_USER_DATA_SUCCESS,payload:response.data});
+      const response = await API.post("/user/data", { data: { check, data } });
+      dispatch({ type: GET_USER_DATA_SUCCESS, payload: response.data });
     } catch (error) {
       console.log(error);
-      dispatch({type:GET_USER_DATA_ERROR,payload:{msg:error.message}})
+      dispatch({ type: GET_USER_DATA_ERROR, payload: { msg: error.message } });
     }
-  }
+  };
 
   const getAllUsers = async () => {
-    dispatch({type:GET_ALL_USERS_START})
+    dispatch({ type: GET_ALL_USERS_START });
     try {
-      const allUser = await API.get('/user/all');
-      dispatch({type:GET_ALL_USERS_SUCCESS,payload:allUser.data})
+      const allUser = await API.get("/user/all");
+      dispatch({ type: GET_ALL_USERS_SUCCESS, payload: allUser.data });
     } catch (error) {
-      dispatch({type:GET_ALL_USERS_ERROR,payload:{msg:error.message}})
+      dispatch({ type: GET_ALL_USERS_ERROR, payload: { msg: error.message } });
     }
-  }
+  };
 
-  const deleteUser = async (id) =>{
-   try {
-    await API.delete(`/user/${id}`);
-    await getAllUsers()
-    dispatch({type:DELETE_USER_SUCCESS});
-   } catch (error) {
-    console.log(error);
-    dispatch({type:DELETE_USER_ERROR,payload:{msg:error.message}})
-   }
-  }
-
-  const adminUpdateUser = async (id,data) => {
-    dispatch({type:ADMIN_UPDATE_USER_START})
+  const deleteUser = async (id) => {
     try {
-      await API.post(`/user/${id}`,data);
+      await API.delete(`/user/${id}`);
       await getAllUsers();
-    dispatch({type:ADMIN_UPDATE_USER_SUCCESS})
+      dispatch({ type: DELETE_USER_SUCCESS });
     } catch (error) {
       console.log(error);
-      dispatch({type:ADMIN_UPDATE_USER_ERROR,payload:{msg:error.message}})
+      dispatch({ type: DELETE_USER_ERROR, payload: { msg: error.message } });
     }
-  }
+  };
+
+  const adminUpdateUser = async (id, data) => {
+    dispatch({ type: ADMIN_UPDATE_USER_START });
+    try {
+      await API.post(`/user/${id}`, data);
+      await getAllUsers();
+      dispatch({ type: ADMIN_UPDATE_USER_SUCCESS });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: ADMIN_UPDATE_USER_ERROR,
+        payload: { msg: error.message },
+      });
+    }
+  };
 
   const allOrderByAdmin = async () => {
-    dispatch({type:GET_ALL_ORDERS_ADMIN_START})
+    dispatch({ type: GET_ALL_ORDERS_ADMIN_START });
     try {
-      const response = await API.get("/order/all")
+      const response = await API.get("/order/all");
 
-      dispatch({type:GET_ALL_ORDERS_ADMIN_SUCCESS,payload:response.data})
+      dispatch({ type: GET_ALL_ORDERS_ADMIN_SUCCESS, payload: response.data });
     } catch (error) {
       console.log(error);
-      dispatch({type:GET_ALL_ORDERS_ADMIN_ERROR,payload:{msg:error.message}})
+      dispatch({
+        type: GET_ALL_ORDERS_ADMIN_ERROR,
+        payload: { msg: error.message },
+      });
     }
-  }
+  };
 
-  const setOrderInfo = data => dispatch({type:SET_ORDER_INFO,payload:data})
+  const setOrderInfo = (data) =>
+    dispatch({ type: SET_ORDER_INFO, payload: data });
 
-  const submitOrder = async (order) =>{
-    dispatch({type:UPDATE_ORDER_BY_ADMIN_START})
+  const submitOrder = async (order) => {
+    dispatch({ type: UPDATE_ORDER_BY_ADMIN_START });
     try {
-      await API.post('/order/all',{...order,userId: state.user._id});
+      await API.post("/order/all", { ...order, userId: state.user._id });
       // await allOrderByAdmin();
       // await getStatusUser();
-      dispatch({type:UPDATE_ORDER_BY_ADMIN_SUCCESS})
+      dispatch({ type: UPDATE_ORDER_BY_ADMIN_SUCCESS });
     } catch (error) {
-      dispatch({type:UPDATE_ORDER_BY_ADMIN_ERROR})
+      dispatch({ type: UPDATE_ORDER_BY_ADMIN_ERROR });
     }
-  }
+  };
 
-  const updateProductByAdmin = (product) => dispatch({type:OPEN_UPDATE_PRODUCT_ADMIN,payload:product});
+  const openUpdate = (product) =>
+    dispatch({ type: OPEN_UPDATE_PRODUCT_ADMIN, payload: product });
+  const closeUpdate = (_) => dispatch({ type: CLOSE_UPDATE_PRODUCT });
   const deleteProductByAdmin = (id) => {
-    dispatch({type:DELETE_PRODUCT_ADMIN_START});
-    console.log(id);
-    dispatch({type:DELETE_PRODUCT_ADMIN_SUCCESS})
-  }
+    dispatch({ type: DELETE_PRODUCT_ADMIN_START });
+    try {
+      API.delete(`/products/${id}`);
+      dispatch({ type: DELETE_PRODUCT_ADMIN_SUCCESS });
+    } catch (error) {
+      dispatch({
+        type: DELETE_PRODUCT_ADMIN_ERROR,
+        payload: { msg: error.message },
+      });
+    }
+  };
+
+  const updateProductByAdmin = (id, data) => {
+    dispatch({ type: UPDATE_PRODUCT_ADMIN_START });
+    try {
+      API.patch(`/products/${id}`, data);
+      dispatch({ type: UPDATE_PRODUCT_ADMIN_SUCCESS });
+    } catch (error) {
+      console.log(error.message);
+      dispatch({ type: UPDATE_PRODUCT_ADMIN_ERROR });
+    }
+  };
   return (
     <Context.Provider
       value={{
@@ -558,8 +593,10 @@ const Provider = ({ children }) => {
         setOrderInfo,
         submitOrder,
         changePageByAdmin,
+        openUpdate,
+        deleteProductByAdmin,
+        closeUpdate,
         updateProductByAdmin,
-        deleteProductByAdmin
       }}
     >
       {children}

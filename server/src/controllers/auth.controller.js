@@ -17,9 +17,7 @@ const signupController = async (req, res) => {
   }
 
   try {
-    // console.log(
-    //   await User.create({ email, password, name }, { new: true })
-    // );
+ 
     const user = await User.create({ name, email,password  });
     const token = user.createJWT();
     attachCookie({ res, token });

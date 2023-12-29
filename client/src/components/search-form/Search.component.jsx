@@ -9,12 +9,10 @@ const Search = ({
   handleSubmit,
   productName,
   caterogires,
-  user,
   isCartOpen,
   cartItem,
-  role='normal'
+  role = "normal",
 }) => {
-  console.log(role);
   return (
     <Wrapper onSubmit={handleSubmit} role={role}>
       <input
@@ -29,7 +27,7 @@ const Search = ({
         <TfiSearch />
       </button>
       <Filter caterogires={caterogires} />
-      {role === 'normal' && <CartIcon />}
+      {role === "normal" && <CartIcon />}
       {isCartOpen && <CartInfo cartItem={cartItem} />}
     </Wrapper>
   );

@@ -3,22 +3,30 @@ import { Dashboard } from "./styles.admin";
 import { Context } from "contexts/AppContexts";
 import { ActivityContainer, StatusContainer } from "components";
 
-
 const AdminDashboard = () => {
-  const {getStatusUser,orderTimes,userStatus,orderCreatedTime,userCreatedTime} = useContext(Context);
-  // console.log(orderTimes,userStatus);
-  useEffect(()=>{
-    getStatusUser();
-  },[])
+  const {
+    getStatusUser,
+    orderTimes,
+    userStatus,
+    orderCreatedTime,
+    userCreatedTime,
+  } = useContext(Context);
 
-  return <Dashboard>
-   <StatusContainer />
-   <ActivityContainer 
-    orderTimes={orderTimes} 
-    userStatus={userStatus} 
-    orderCreatedTime={orderCreatedTime} 
-    userCreatedTime={userCreatedTime}
-   />
-  </Dashboard>;
+  useEffect(() => {
+    getStatusUser();
+    // eslint-disable-next-line
+  }, []);
+
+  return (
+    <Dashboard>
+      <StatusContainer />
+      <ActivityContainer
+        orderTimes={orderTimes}
+        userStatus={userStatus}
+        orderCreatedTime={orderCreatedTime}
+        userCreatedTime={userCreatedTime}
+      />
+    </Dashboard>
+  );
 };
 export default AdminDashboard;

@@ -4,11 +4,17 @@ const {
   getProductById,
   getAllCategories,
   getCategoryByName,
-} = require("../controllers/products.controller");
+  updateProductByAdmin,
+  deleteProductByAdmin,
+} = require("../controllers");
 const productRouter = express.Router();
 
 productRouter.get("/", getAllProducts);
-productRouter.get("/:id", getProductById);
+productRouter
+  .route("/:id")
+  .get(getProductById)
+  .patch(updateProductByAdmin)
+  .delete(deleteProductByAdmin);
 productRouter.get("/categories", getAllCategories);
 productRouter.get("/categories/:name", getCategoryByName);
 

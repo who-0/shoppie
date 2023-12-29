@@ -1,35 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import Update from "./styles.component";
 import { AiFillStar } from "react-icons/ai";
 import { IoClose } from "react-icons/io5";
-const ProductUpdate = ({ updateProduct }) => {
+const ProductUpdate = ({ updateProduct,closeUpdate,updateProductByAdmin }) => {
+  const defaultValue = {
+    rating:updateProduct.rating,
+    price:updateProduct.price,
+    title:updateProduct.title,
+    description:updateProduct.description
+  }
+  const [defaultState,setDefaultState] = useState(defaultValue);
+
+  const changeHandler = e => setDefaultState({ ...defaultState, [e.target.name]: e.target.value });
+  
+  const clearButton = _ => setDefaultState({rating:'',price:'',title:'',description:''});
+
+  const submitHandler = e => {
+    e.preventDefault();
+    updateProductByAdmin(updateProduct.id,defaultState)
+  }
   return (
     <Update>
       <div>
         <img
           src={updateProduct.images[0]}
-          alt={updateProduct.title}
+          alt={defaultState.title}
           width="200px"
         />
         <label>
           <AiFillStar style={{ color: "yellow" }} />
-          <input value={updateProduct.rating} />
+          <input name="rating" value={defaultState.rating} onChange={changeHandler} />
         </label>
 
         <label>
           $
-          <input value={updateProduct.price} />
+          <input name="price" value={defaultState.price}  onChange={changeHandler}/>
         </label>
       </div>
 
       <div>
-        <input value={updateProduct.title} />
-        <input value={updateProduct.description} />
+        <input name="title" type="text" value={defaultState.title} onChange={changeHandler} />
+        <textarea name="description" type='text' value={defaultState.description} onChange={changeHandler} />
         <div>
-          <button>clear</button>
-          <button>save</button>
+          <button type="button" onClick={clearButton}>clear</button>
+          <button type="button" onClick={submitHandler}>save</button>
         </div>
-        <IoClose />
+        <IoClose className="close_btn" onClick={closeUpdate} />
       </div>
     </Update>
   );

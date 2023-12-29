@@ -1,26 +1,23 @@
-import React, { useContext, useEffect } from 'react'
-import Display from './styles.component';
-import { Context } from 'contexts/AppContexts';
-import { UserData } from 'components';
+import React, { useContext, useEffect } from "react";
+import Display from "./styles.component";
+import { Context } from "contexts/AppContexts";
+import { UserData } from "components";
 
 const UserDisplay = () => {
-    const {usersData,getAllUsers} = useContext(Context);
+  const { usersData, getAllUsers } = useContext(Context);
 
-    useEffect(()=>{
-      getAllUsers();
-    },[])
+  useEffect(() => {
+    getAllUsers();
+    // eslint-disable-next-line
+  }, []);
 
-    // console.log(usersData);
   return (
     <Display>
-    {
-      usersData.map(user=>(
+      {usersData.map((user) => (
         <UserData key={user._id} user={user} />
-      ))
-    }
-     
+      ))}
     </Display>
-  )
-}
+  );
+};
 
 export default UserDisplay;

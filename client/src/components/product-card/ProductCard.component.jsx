@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product, role }) => {
-  const { showProductInfo, user,updateProductByAdmin,deleteProductByAdmin } = useContext(Context);
+  const { showProductInfo, user,openUpdate,deleteProductByAdmin } = useContext(Context);
   const navigate = useNavigate();
   const showInfo = () => {
     if (!user) return navigate("/auth");
@@ -13,7 +13,7 @@ const ProductCard = ({ product, role }) => {
   };
 
   const deleteHandler = () => deleteProductByAdmin(product.id);
-  const updateHandler = () => updateProductByAdmin(product)
+  const updateHandler = () => openUpdate(product)
  
 
   return (

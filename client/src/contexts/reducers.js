@@ -51,26 +51,27 @@ import {
   ADMIN_PRODUCTS,
   ADMIN_USERS,
   ADMIN_ORDERS,
-  GET_STATUS_ERROR,
+  // GET_STATUS_ERROR,
   GET_STATUS_SUCCESS,
   GET_STATUS_START,
-  GET_USER_DATA_ERROR,
+  // GET_USER_DATA_ERROR,
   GET_USER_DATA_START,
   GET_USER_DATA_SUCCESS,
   GET_ALL_USERS_START,
   GET_ALL_USERS_SUCCESS,
-  GET_ALL_USERS_ERROR,
+  // GET_ALL_USERS_ERROR,
   DELETE_USER_SUCCESS,
   ADMIN_UPDATE_USER_START,
   ADMIN_UPDATE_USER_SUCCESS,
   GET_ALL_ORDERS_ADMIN_START,
   GET_ALL_ORDERS_ADMIN_SUCCESS,
   SET_ORDER_INFO,
-  UPDATE_ORDER_BY_ADMIN_ERROR,
+  // UPDATE_ORDER_BY_ADMIN_ERROR,
   UPDATE_ORDER_BY_ADMIN_START,
   UPDATE_ORDER_BY_ADMIN_SUCCESS,
   CHANGE_PAGE_BY_ADMIN,
-  OPEN_UPDATE_PRODUCT_ADMIN
+  OPEN_UPDATE_PRODUCT_ADMIN,
+  CLOSE_UPDATE_PRODUCT
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -509,6 +510,12 @@ const reducer = (state, action) => {
           isUpdateProduct:true,
           updateProduct:action.payload,
         }
+      case CLOSE_UPDATE_PRODUCT:
+      return {
+        ...state,
+        isUpdateProduct:false,
+        updateProduct:''
+      }
     default:
       return state;
   }

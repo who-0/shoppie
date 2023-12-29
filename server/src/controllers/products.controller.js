@@ -60,9 +60,33 @@ const getCategoryByName = async (req, res) => {
   }
 };
 
+const updateProductByAdmin = async (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+  try {
+    await axios.patch(`${API}/${id}`, data);
+    res.OK;
+  } catch (error) {
+    res.status(500).json({ err: error.message });
+  }
+};
+
+const deleteProductByAdmin = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const response = await axios.delete(`${API}/${id}`);
+    res.OK;
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ err: error.message });
+  }
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   getAllCategories,
   getCategoryByName,
+  updateProductByAdmin,
+  deleteProductByAdmin,
 };

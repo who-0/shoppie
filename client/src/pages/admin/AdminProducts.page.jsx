@@ -1,17 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { AiFillStar } from "react-icons/ai";
-
 import { Products } from "./styles.admin";
 import { Context } from "contexts/AppContexts";
 import colors from "colors";
 import { ADMIN_PRODUCTS } from "contexts/actions";
-import {
-  AdminProductsHeader,
-  ProductsContainer,
-  ProductBtn,
-  Search,
-  ProductUpdate,
-} from "components";
+import { ProductsContainer, Search, ProductUpdate } from "components";
 
 const body = document.body;
 
@@ -30,6 +22,8 @@ const AdminProducts = () => {
     changePageByAdmin,
     isUpdateProduct,
     updateProduct,
+    closeUpdate,
+    updateProductByAdmin,
   } = useContext(Context);
   const [productName, setProductName] = useState("");
 
@@ -47,16 +41,12 @@ const AdminProducts = () => {
     if (skip !== 0) {
       const page = skip - limit;
       changePageByAdmin(page);
-    } else {
-      console.log("back end");
     }
   };
   const nextHandle = () => {
     if (skip !== 80) {
       const page = skip + limit;
       changePageByAdmin(page);
-    } else {
-      console.log("next end");
     }
   };
   const handleChange = (e) => {
@@ -72,12 +62,14 @@ const AdminProducts = () => {
     searchProduct(productName);
   };
 
-  console.log(isUpdateProduct, updateProduct);
-
   return (
     <Products>
       {isUpdateProduct ? (
-        <ProductUpdate  updateProduct={updateProduct} />
+        <ProductUpdate
+          updateProduct={updateProduct}
+          closeUpdate={closeUpdate}
+          updateProductByAdmin={updateProductByAdmin}
+        />
       ) : (
         <>
           <Search
