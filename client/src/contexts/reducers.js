@@ -71,7 +71,7 @@ import {
   UPDATE_ORDER_BY_ADMIN_SUCCESS,
   CHANGE_PAGE_BY_ADMIN,
   OPEN_UPDATE_PRODUCT_ADMIN,
-  CLOSE_UPDATE_PRODUCT
+  CLOSE_UPDATE_PRODUCT,
 } from "./actions";
 const reducer = (state, action) => {
   switch (action.type) {
@@ -100,9 +100,9 @@ const reducer = (state, action) => {
         shop_active: false,
         auth_active: false,
         profile_active: false,
-        admin_active:false,
+        admin_active: false,
         menu_open: false,
-        sub_menu_open:false,
+        sub_menu_open: false,
         alert: false,
         alert_msg: "",
         alert_type: "",
@@ -116,9 +116,9 @@ const reducer = (state, action) => {
         shop_active: true,
         auth_active: false,
         profile_active: false,
-        admin_active:false,
+        admin_active: false,
         menu_open: false,
-        sub_menu_open:false,
+        sub_menu_open: false,
         alert: false,
         alert_msg: "",
         alert_type: "",
@@ -132,9 +132,9 @@ const reducer = (state, action) => {
         shop_active: false,
         auth_active: true,
         profile_active: false,
-        admin_active:false,
+        admin_active: false,
         menu_open: false,
-        sub_menu_open:false,
+        sub_menu_open: false,
         alert: false,
         alert_msg: "",
         alert_type: "",
@@ -148,71 +148,71 @@ const reducer = (state, action) => {
         shop_active: false,
         auth_active: false,
         profile_active: true,
-        admin_active:false,
+        admin_active: false,
         menu_open: false,
-        sub_menu_open:false,
+        sub_menu_open: false,
         alert: false,
         alert_msg: "",
         alert_type: "",
       };
-      case ADMIN_DASHBOARD:
-        return {
-          ...state,
-          color: colors.admin_color,
-          logo: "logo_4",
-          home_active: false,
-          shop_active: false,
-          auth_active: false,
-          profile_active: false,
-          admin_active:true,
-          admin_status:true,
-          admin_products:false,
-          admin_users:false,
-          admin_orders:false,
-          menu_open: false,
-          sub_menu_open:false,
-          alert: false,
-          alert_msg: "",
-          alert_type: "",
-        };
+    case ADMIN_DASHBOARD:
+      return {
+        ...state,
+        color: colors.admin_color,
+        logo: "logo_4",
+        home_active: false,
+        shop_active: false,
+        auth_active: false,
+        profile_active: false,
+        admin_active: true,
+        admin_status: true,
+        admin_products: false,
+        admin_users: false,
+        admin_orders: false,
+        menu_open: false,
+        sub_menu_open: false,
+        alert: false,
+        alert_msg: "",
+        alert_type: "",
+      };
     case ADMIN_PRODUCTS:
       return {
         ...state,
-        admin_status:false,
-        admin_products:true,
-        admin_users:false,
-        admin_orders:false,
+        admin_status: false,
+        admin_products: true,
+        admin_users: false,
+        admin_orders: false,
         menu_open: false,
-        sub_menu_open:false,
-      }
+        sub_menu_open: false,
+      };
     case ADMIN_USERS:
       return {
         ...state,
-        admin_status:false,
-        admin_products:false,
-        admin_users:true,
-        admin_orders:false,
+        admin_status: false,
+        admin_products: false,
+        admin_users: true,
+        admin_orders: false,
         menu_open: false,
-        sub_menu_open:false,
-      }
-      case ADMIN_ORDERS:
-        return {
-          ...state,
-          admin_status:false,
-          admin_products:false,
-          admin_users:false,
-          admin_orders:true,
-          menu_open: false,
-          sub_menu_open:false,
-        }
+        sub_menu_open: false,
+      };
+    case ADMIN_ORDERS:
+      return {
+        ...state,
+        admin_status: false,
+        admin_products: false,
+        admin_users: false,
+        admin_orders: true,
+        menu_open: false,
+        sub_menu_open: false,
+      };
     case USER_SIGNUP:
       return { ...state, signup: !state.signup };
     case OPEN_MENU:
-      return { ...state, menu_open: !state.menu_open, sub_menu_open:false };
-    case  OPEN_SUB_MENU:
+      return { ...state, menu_open: !state.menu_open, sub_menu_open: false };
+    case OPEN_SUB_MENU:
       return { ...state, sub_menu_open: !state.sub_menu_open };
     case SUBMIT_AUTH_START:
-      return { ...state, loading: true  };
+      return { ...state, loading: true };
     case SUBMIT_AUTH_SUCCESS:
       return {
         ...state,
@@ -424,98 +424,98 @@ const reducer = (state, action) => {
     case GET_STATUS_START:
       return {
         ...state,
-        loading:true,
-      }
+        loading: true,
+      };
     case GET_STATUS_SUCCESS:
-        return {
-          ...state,
-          loading:false,
-          orderStatus:action.payload.order,
-          userStatus:action.payload.user,
-          orderTimes:action.payload.orderTime,
-          orderCreatedTime:action.payload.orderCreatedTime,
-          userCreatedTime:action.payload.userStatusTime
-        }
+      return {
+        ...state,
+        loading: false,
+        orderStatus: action.payload.order,
+        userStatus: action.payload.user,
+        orderTimes: action.payload.orderTime,
+        orderCreatedTime: action.payload.orderCreatedTime,
+        userCreatedTime: action.payload.userStatusTime,
+      };
     case GET_USER_DATA_START:
       return {
         ...state,
-        loading:true,
-      }
+        loading: true,
+      };
     case GET_USER_DATA_SUCCESS:
       return {
         ...state,
-        loading:false,
-        usersData:[action.payload],
-      }
+        loading: false,
+        usersData: [action.payload],
+      };
     case GET_ALL_USERS_START:
       return {
         ...state,
-        loading:true,
-      }
+        loading: true,
+      };
     case GET_ALL_USERS_SUCCESS:
       return {
         ...state,
-        loading:false,
-        usersData:action.payload,
-      }
+        loading: false,
+        usersData: action.payload,
+      };
     case DELETE_USER_SUCCESS:
       return {
         ...state,
-      }
+      };
     case ADMIN_UPDATE_USER_START:
       return {
         ...state,
-        loading:true,
-      }
+        loading: true,
+      };
     case ADMIN_UPDATE_USER_SUCCESS:
       return {
         ...state,
-        loading:false,
-      }
+        loading: false,
+      };
     case GET_ALL_ORDERS_ADMIN_START:
       return {
         ...state,
-        loading:true,
-      }
+        loading: true,
+      };
     case GET_ALL_ORDERS_ADMIN_SUCCESS:
       return {
         ...state,
-        loading:false,
-        allOrders:action.payload,
-      }
+        loading: false,
+        allOrders: action.payload,
+      };
     case SET_ORDER_INFO:
       return {
         ...state,
-        orderInfo:action.payload,
-      }
-    case  UPDATE_ORDER_BY_ADMIN_START:
+        orderInfo: action.payload,
+      };
+    case UPDATE_ORDER_BY_ADMIN_START:
       return {
         ...state,
-        loading:true
-      }
-      case  UPDATE_ORDER_BY_ADMIN_SUCCESS:
-        return {
-          ...state,
-          loading:false,
-          updateOrder:!state.updateOrder,
-        }
-      case CHANGE_PAGE_BY_ADMIN:
-        return {
-          ...state,
-          skip:action.payload
-        }
-      case OPEN_UPDATE_PRODUCT_ADMIN:
-        return {
-          ...state,
-          isUpdateProduct:true,
-          updateProduct:action.payload,
-        }
-      case CLOSE_UPDATE_PRODUCT:
+        loading: true,
+      };
+    case UPDATE_ORDER_BY_ADMIN_SUCCESS:
       return {
         ...state,
-        isUpdateProduct:false,
-        updateProduct:''
-      }
+        loading: false,
+        updateOrder: !state.updateOrder,
+      };
+    case CHANGE_PAGE_BY_ADMIN:
+      return {
+        ...state,
+        skip: action.payload,
+      };
+    case OPEN_UPDATE_PRODUCT_ADMIN:
+      return {
+        ...state,
+        isUpdateProduct: true,
+        updateProduct: action.payload,
+      };
+    case CLOSE_UPDATE_PRODUCT:
+      return {
+        ...state,
+        isUpdateProduct: false,
+        updateProduct: "",
+      };
     default:
       return state;
   }

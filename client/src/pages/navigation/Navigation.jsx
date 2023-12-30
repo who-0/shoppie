@@ -1,18 +1,18 @@
 import { Outlet } from "react-router-dom";
-import { Logo, NavLink,NavUser } from "components";
+import { Logo, NavLink, NavUser } from "components";
 import { useContext } from "react";
 import { Context } from "contexts/AppContexts";
 import { MenuIcon } from "components";
 import Nav from "./Navigation.styles";
 
-import { HOME, SHOP, AUTH, PROFILE,ADMIN_DASHBOARD } from "contexts/actions";
+import { HOME, SHOP, AUTH, PROFILE, ADMIN_DASHBOARD } from "contexts/actions";
 
 const Navs = [
   { id: 1, name: "home", action: HOME },
   { id: 2, name: "shop", action: SHOP },
   { id: 3, name: "login", action: AUTH },
   { id: 4, name: "profile", action: PROFILE },
-  { id: 5, name: "dashborad", action: ADMIN_DASHBOARD  },
+  { id: 5, name: "dashborad", action: ADMIN_DASHBOARD },
 ];
 
 const Navigation = () => {
@@ -46,11 +46,7 @@ const Navigation = () => {
             path="/shop"
           />
           {user ? (
-              <NavUser 
-              user={user} 
-              navs={Navs}
-              changeColor={changeColor}
-              />
+            <NavUser user={user} navs={Navs} changeColor={changeColor} />
           ) : (
             <NavLink
               name={Navs[2].name}
@@ -69,14 +65,3 @@ const Navigation = () => {
 };
 export default Navigation;
 
-
-/*
-       <NavLink
-              name={Navs[3].name}
-              action={Navs[3].action}
-              changeColor={changeColor}
-              active={profile_active}
-              path="/user/profile"
-              profile="profile"
-            />
-*/

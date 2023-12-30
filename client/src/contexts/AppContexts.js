@@ -410,7 +410,6 @@ const Provider = ({ children }) => {
       console.log(error);
       dispatch({ type: ORDER_ERROR, payload: { msg: error.message } });
     }
-
   };
 
   const updatePhone = async (phone) => await updateUser({ phone });

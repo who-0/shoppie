@@ -18,7 +18,6 @@ const Wrapper = styled.div`
     flex-direction: column;
     background-color: white;
     width: 40%;
-    /* height: 40%; */
     padding: 20px;
     box-shadow: 11px 6px 20px 2px #00000099;
 
@@ -83,41 +82,40 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    form{
+    form {
       width: 60%;
-
     }
   }
 
   @media screen and (max-width: 426px) {
-    form{
+    form {
       width: 90%;
 
-      h1{
+      h1 {
         font-size: 1.5rem;
       }
 
       .order_btn {
-      .btn {
-        font-size: 1rem;
+        .btn {
+          font-size: 1rem;
+        }
       }
-    }
     }
   }
 
   @media screen and (max-width: 376px) {
-    form{
+    form {
       width: 95%;
 
-      h1{
+      h1 {
         font-size: 1.3rem;
       }
 
       .order_btn {
-      .btn {
-        font-size: .8rem;
+        .btn {
+          font-size: 0.8rem;
+        }
       }
-    }
     }
   }
 `;

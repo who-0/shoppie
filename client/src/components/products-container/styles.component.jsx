@@ -11,12 +11,12 @@ const Wrapper = styled.div`
     gap: 30px;
   }
 
-  @media screen and (max-width: 769px){
+  @media screen and (max-width: 769px) {
     padding-bottom: 7%;
   }
 
-  @media screen and (max-width: 426px){
-    gap:7px;
+  @media screen and (max-width: 426px) {
+    gap: 7px;
     padding-bottom: 10%;
   }
 

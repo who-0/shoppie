@@ -61,5 +61,5 @@ export {
   OrderHeader,
   OrderInfoContainer,
   ProductUpdate,
-  ProductBtn
+  ProductBtn,
 };

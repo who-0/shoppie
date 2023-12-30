@@ -1,9 +1,16 @@
-import colors from 'colors';
-import React from 'react'
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import colors from "colors";
+import React from "react";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
-const BarChartComponent = ({data}) => {
-
+const BarChartComponent = ({ data }) => {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data} margin={{ top: 50 }}>
@@ -14,7 +21,7 @@ const BarChartComponent = ({data}) => {
         <Bar dataKey="count" fill={colors.admin_color} barSize={75} />
       </BarChart>
     </ResponsiveContainer>
-  )
-}
+  );
+};
 
 export default BarChartComponent;

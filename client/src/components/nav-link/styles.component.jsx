@@ -7,7 +7,7 @@ const Navlink = styled(Link)`
   color: ${(props) => (props.isactive ? "white" : colors.nav_color)};
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 1rem;  
+  font-size: 1rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
   padding: 6px 20px;
@@ -18,10 +18,9 @@ const Navlink = styled(Link)`
   justify-content: center;
   align-items: center;
   user-select: none;
-  transition: all .2s;
-  /* margin:  ${(props) => (props.name === 'profile'  || props.name === 'dashboard' ? "5px" : 'auto ')} 5px; */
+  transition: all 0.2s;
 
-  ${props => {
+  ${(props) => {
     switch (props.name) {
       case "profile":
       case "dashboard":
@@ -34,20 +33,21 @@ const Navlink = styled(Link)`
       case "users":
         return css`
           margin: 15px 5px;
-          background-color: ${(props) => (props.isactive ? props.color : '#424141')};
+          background-color: ${(props) =>
+            props.isactive ? props.color : "#424141"};
           color: ${(props) => (props.isactive ? "white" : colors.admin_color)};
-          border-radius: ${props => props.isopen ? "50px":"5px"};
-          font-size: 1.2rem;  
+          border-radius: ${(props) => (props.isopen ? "50px" : "5px")};
+          font-size: 1.2rem;
           padding: 10px 15px;
 
-          .admin_icon{
+          .admin_icon {
             font-size: 1.6rem;
           }
-        `
+        `;
       default:
-       return css`
-        margin: auto 5px;
-       `;
+        return css`
+          margin: auto 5px;
+        `;
     }
   }}
 

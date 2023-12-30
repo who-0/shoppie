@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 1025px) {
-    span{
+    span {
       left: 40px;
       padding: 1px 4px;
     }
@@ -45,13 +45,12 @@ const Wrapper = styled.div`
     top: -1px;
     right: 2px;
 
-    span{
+    span {
       top: -4px;
-    left: 25px;
+      left: 25px;
     }
   }
 
-  
   @media screen and (max-width: 321px) {
     font-size: 1.5rem;
     width: 35px;
@@ -59,9 +58,9 @@ const Wrapper = styled.div`
     top: -1px;
     right: 2px;
 
-    span{
+    span {
       top: -4px;
-    left: 25px;
+      left: 25px;
     }
   }
 `;

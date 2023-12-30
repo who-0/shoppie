@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 
 const Wrapper = styled.table`
   width: 100%;
-  /* background-color: green; */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 2% 0;
 
@@ -52,32 +51,31 @@ const Wrapper = styled.table`
   }
 
   @media screen and (max-width: 426px) {
-    .order_header{
+    .order_header {
       font-size: 1.2rem;
     }
 
     .table_header {
-    th {
-      font-size: 1rem;
-    
+      th {
+        font-size: 1rem;
+      }
     }
   }
-  }
 
-  @media screen and (max-width: 376px){
+  @media screen and (max-width: 376px) {
     tbody {
-      tr{
-        td{
-          font-size: .8rem;
+      tr {
+        td {
+          font-size: 0.8rem;
         }
       }
     }
 
     tfoot {
-    .totalprice {
-      font-size: 1rem;
+      .totalprice {
+        font-size: 1rem;
+      }
     }
-  }
   }
 `;
 

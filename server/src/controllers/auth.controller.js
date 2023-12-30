@@ -17,8 +17,7 @@ const signupController = async (req, res) => {
   }
 
   try {
- 
-    const user = await User.create({ name, email,password  });
+    const user = await User.create({ name, email, password });
     const token = user.createJWT();
     attachCookie({ res, token });
     return res.status(StatusCodes.OK).json({ user, token });
@@ -61,7 +60,6 @@ const logoutController = (req, res) => {
   // res.status(200);
 };
 
-
 const GoogleController = (req, res) => {
   const user = req.user;
   console.log(user);
@@ -72,4 +70,9 @@ const GoogleController = (req, res) => {
   res.status(StatusCodes.OK).json({ user, token });
 };
 
-module.exports = { signupController, loginController,logoutController, GoogleController };
+module.exports = {
+  signupController,
+  loginController,
+  logoutController,
+  GoogleController,
+};

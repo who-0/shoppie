@@ -13,7 +13,6 @@ const Wrapper = styled.div`
 
   img {
     height: 75%;
-    /* width: 100%; */
     margin: auto 3px;
     border-radius: 5px;
     cursor: pointer;

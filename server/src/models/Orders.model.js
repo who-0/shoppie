@@ -25,9 +25,9 @@ const OrderSchema = new mongoose.Schema(
           enum: ["pending", "success", "cancel"],
           default: "pending",
         },
-        comment:{
-          type :String,
-        }
+        comment: {
+          type: String,
+        },
       },
     ],
     orderBy: {

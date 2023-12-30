@@ -28,7 +28,6 @@ const Orders = () => {
     body.style.background = color;
     // eslint-disable-next-line
   }, [color]);
-  // getAllUserOrders();
 
   return (
     <Wrapper>

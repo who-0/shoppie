@@ -2,9 +2,9 @@
 import Wrapper from "./styles.component";
 import { Context } from "contexts/AppContexts";
 import { useContext } from "react";
-import { Loader, ProductDetail,ProductCard } from "components";
+import { Loader, ProductDetail, ProductCard } from "components";
 
-const ProductsContainer = ({ products,role='normal' }) => {
+const ProductsContainer = ({ products, role = "normal" }) => {
   const { loading, showProduct } = useContext(Context);
   if (loading) return <Loader order={false} />;
   return (

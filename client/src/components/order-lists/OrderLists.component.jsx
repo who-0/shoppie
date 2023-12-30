@@ -21,7 +21,7 @@ const OrderLists = ({ orderLists }) => {
   // eslint-disable-next-line array-callback-return
   orderLists.map((order) => {
     const { customerId, email, name, orderId, phone } = order;
-  // eslint-disable-next-line array-callback-return
+    // eslint-disable-next-line array-callback-return
     order.products.map((product) => {
       productCollection.push({
         ...product,

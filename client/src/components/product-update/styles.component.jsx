@@ -13,7 +13,6 @@ const Update = styled.form`
   div {
     padding: 5%;
     &:first-child {
-      /* background-color: green; */
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -48,7 +47,6 @@ const Update = styled.form`
     }
     &:last-child {
       width: 60%;
-      /* background-color: blue; */
       display: flex;
       justify-content: center;
       align-items: start;

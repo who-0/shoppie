@@ -11,7 +11,6 @@ const Wrapper = styled.div`
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     text-transform: capitalize;
-
   }
 
   select {
@@ -34,13 +33,13 @@ const Wrapper = styled.div`
     margin-left: 2%;
   }
 
-  @media screen and (max-width:769px) {
+  @media screen and (max-width: 769px) {
     width: 30%;
     margin-left: 1%;
-    font-size: .8rem;
+    font-size: 0.8rem;
 
-    select{
-      font-size: .8rem;
+    select {
+      font-size: 0.8rem;
     }
   }
 
@@ -49,14 +48,14 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 376px) {
-    label{
+    label {
       display: none;
     }
   }
 
   @media screen and (max-width: 376px) {
-    select{
-      font-size: .7rem;
+    select {
+      font-size: 0.7rem;
     }
   }
 `;

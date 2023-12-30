@@ -58,7 +58,6 @@ const Wrapper = styled.div`
             justify-content: space-between;
             align-items: center;
             margin: 2%;
-            /* background-color: red; */
           }
 
           .btn_admin {

@@ -26,13 +26,5 @@ const Wrapper = styled.div`
         return;
     }
   }}
-  
-  /* &[${(props) => props.alert_type}] {
-   
-  }
-
-  &[${(props) => props.alert_type}] {
-  
-  } */
 `;
 export default Wrapper;

@@ -26,19 +26,18 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: 1025px) {
     .product_info_container {
-    width: 93%;
+      width: 93%;
     }
-}
-
-@media screen and (max-width: 426px) {
-  padding: 2px;
-  top: 72px;
-
-  .product_info_container {
-    height: 90%;
-    flex-direction: column;
-    /* margin-bottom: 30%; */
   }
-}
+
+  @media screen and (max-width: 426px) {
+    padding: 2px;
+    top: 72px;
+
+    .product_info_container {
+      height: 90%;
+      flex-direction: column;
+    }
+  }
 `;
 export default Wrapper;

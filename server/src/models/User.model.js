@@ -5,43 +5,45 @@ const bcrypt = require("bcrypt");
 
 const key = process.env.SECRET_KEY;
 
-const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Please Provide Username"],
-    minLength: 3,
-    maxLength: 20,
-    trim: true,
-  },
-  email: {
-    type: String,
-    required: [true, "Please Provide Email"],
-    validate: {
-      validator: validator.isEmail,
-      message: "Please provide a valid email",
+const UserSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Please Provide Username"],
+      minLength: 3,
+      maxLength: 20,
+      trim: true,
     },
-    unique: true,
+    email: {
+      type: String,
+      required: [true, "Please Provide Email"],
+      validate: {
+        validator: validator.isEmail,
+        message: "Please provide a valid email",
+      },
+      unique: true,
+    },
+    phone: {
+      type: Number,
+      default: 9,
+      minLength: 1,
+      maxLength: 10,
+    },
+    password: {
+      type: String,
+      minLength: 6,
+      // select: false,
+    },
+    role: {
+      type: String,
+      required: true,
+      // select: false,
+      enum: ["normal", "admin", "test"],
+      default: "normal",
+    },
   },
-  phone: {
-    type: Number,
-    default: 9,
-    minLength: 1,
-    maxLength: 10,
-  },
-  password: {
-    type: String,
-    minLength: 6,
-    // select: false,
-  },
-  role: {
-    type: String,
-    required: true,
-    // select: false,
-    enum: ["normal", "admin", "test"],
-    default: "normal",
-  },
-  
-},{timestamps:true});
+  { timestamps: true }
+);
 
 UserSchema.pre("save", async function () {
   if (!this.isModified("password")) return;

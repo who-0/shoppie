@@ -8,7 +8,6 @@ const Wrapper = styled.div`
   h1 {
     font-family: "Orbitron", sans-serif;
     font-size: 1.5;
-    /* margin-bottom: 2%; */
   }
 
   p {
@@ -31,9 +30,9 @@ const Wrapper = styled.div`
     color: white;
     transition: all 0.2s;
 
-    &:nth-child(1){
-     right: 10%;
-     background-color: green;
+    &:nth-child(1) {
+      right: 10%;
+      background-color: green;
     }
 
     &:hover {
@@ -44,8 +43,6 @@ const Wrapper = styled.div`
     &:active {
       background-color: lightgreen;
     }
-
-   
   }
 
   h3 {
@@ -62,7 +59,6 @@ const Wrapper = styled.div`
     position: absolute;
     top: 319px;
     right: -5px;
-    /* background-color: black; */
     width: 41%;
     height: 35px;
   }
@@ -75,21 +71,21 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
 
-  @media screen and (max-width:426px) {
+  @media screen and (max-width: 426px) {
     width: 96%;
     height: 30%;
 
     h1 {
       margin-top: 10px;
-    font-size: 1.3rem;
+      font-size: 1.3rem;
     }
 
-    .close_btn{
+    .close_btn {
       top: -350px;
-    right: -5px;
+      right: -5px;
     }
 
-    button{
+    button {
       font-size: 1rem;
     }
   }

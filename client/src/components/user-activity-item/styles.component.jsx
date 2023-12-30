@@ -4,15 +4,14 @@ const Item = styled.tr`
   height: 32px;
   background-color: pink;
 
-
-  td{
-      text-align: start;
-      padding-left: 10px;
+  td {
+    text-align: start;
+    padding-left: 10px;
   }
 
-  td:first{
+  td:first {
     color: green;
- }
-`
+  }
+`;
 
 export default Item;

@@ -28,15 +28,15 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 426px) {
-    button{
-    font-size: .8rem;
+    button {
+      font-size: 0.8rem;
 
       margin: auto 2px;
     }
   }
   @media screen and (max-width: 321px) {
-    button{
-    font-size: .7rem;
+    button {
+      font-size: 0.7rem;
 
       margin: auto 1px;
     }

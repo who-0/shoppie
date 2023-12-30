@@ -21,9 +21,9 @@ const Wrapper = styled.div`
 
     .user_container {
       flex-direction: column;
-    height: 97%;
-    margin-bottom: 15%;
-    margin-top: 20%;
+      height: 97%;
+      margin-bottom: 15%;
+      margin-top: 20%;
     }
   }
 

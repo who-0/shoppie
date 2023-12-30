@@ -18,9 +18,10 @@ const AdminUsers = () => {
     // eslint-disable-next-line
   }, [color]);
   return (
-  <Users>
-    <SearchUser />
-    <UserDisplay /> 
-  </Users>);
+    <Users>
+      <SearchUser />
+      <UserDisplay />
+    </Users>
+  );
 };
 export default AdminUsers;

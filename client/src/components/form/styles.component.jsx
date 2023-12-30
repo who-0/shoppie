@@ -25,7 +25,6 @@ const Wrapper = styled.form`
   .btn_container {
     margin: 4% 0 0 0;
     width: 100%;
-    /* background-color: red; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +52,6 @@ const Wrapper = styled.form`
     width: 70%;
     .btn_container {
       padding: 0 10%;
-      /* justify-content: space-evenly; */
     }
   }
   @media screen and (max-width: 426px) {
@@ -61,7 +59,6 @@ const Wrapper = styled.form`
     margin: 3% 0 30% 0;
     .btn_container {
       padding: 0 5%;
-      /* justify-content: space-evenly; */
     }
     .title {
       font-size: 3.5rem;

@@ -1,113 +1,165 @@
-import React, { useState } from 'react'
-import moment from 'moment';
+import React, { useState } from "react";
+import moment from "moment";
 
 import { FaPencil } from "react-icons/fa6";
 import { BsFillTrash3Fill } from "react-icons/bs";
-import User from './styles.component';
-import { useContext } from 'react';
-import { Context } from 'contexts/AppContexts';
+import User from "./styles.component";
+import { useContext } from "react";
+import { Context } from "contexts/AppContexts";
 
-const UserData = ({user}) => {
-    const {deleteUser,adminUpdateUser} = useContext(Context);
-    const {name,email,phone,createdAt,updatedAt,role,_id,password} = user;
-    
-    const cTime = moment(createdAt).format('YYYY-MM-DD');
-    const uTime = moment(updatedAt).format('YYYY-MM-DD');
-    const pwd = password.slice(1,10);
+const UserData = ({ user }) => {
+  const { deleteUser, adminUpdateUser } = useContext(Context);
+  const { name, email, phone, createdAt, updatedAt, role, _id, password } =
+    user;
 
-    const defaultState = {
-        name,
-        email,
-        pwd,
-        phone,
-        role,
-        cTime,
-        uTime,
-    }
+  const cTime = moment(createdAt).format("YYYY-MM-DD");
+  const uTime = moment(updatedAt).format("YYYY-MM-DD");
+  const pwd = password.slice(1, 10);
 
-    const [isEdit,setIsEdit] = useState(false);
+  const defaultState = {
+    name,
+    email,
+    pwd,
+    phone,
+    role,
+    cTime,
+    uTime,
+  };
 
-    const [userInfo,setUserInfo] = useState(defaultState);
+  const [isEdit, setIsEdit] = useState(false);
 
-    const handleChange = e => {
-        setUserInfo({...userInfo,[e.target.name]:e.target.value})
-    }
+  const [userInfo, setUserInfo] = useState(defaultState);
 
-    const deleteBtn = async () => {
-        await deleteUser(_id);
-    }
+  const handleChange = (e) => {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
 
-    const cancelBtn = () => {
-        setIsEdit(false);
-        setUserInfo(defaultState)
-    }
+  const deleteBtn = async () => {
+    await deleteUser(_id);
+  };
 
-    const updateUser = async () => {
-        const data = {
-            name:userInfo.name,
-            email:userInfo.email,
-            phone:userInfo.phone,
-            role:userInfo.role
-        };
+  const cancelBtn = () => {
+    setIsEdit(false);
+    setUserInfo(defaultState);
+  };
 
-        if(password.slice(1,10) !== userInfo.pwd) data.password = userInfo.pwd;
-        await adminUpdateUser(_id,data);
-    }
+  const updateUser = async () => {
+    const data = {
+      name: userInfo.name,
+      email: userInfo.email,
+      phone: userInfo.phone,
+      role: userInfo.role,
+    };
+
+    if (password.slice(1, 10) !== userInfo.pwd) data.password = userInfo.pwd;
+    await adminUpdateUser(_id, data);
+  };
   return (
     <User $edit={+isEdit}>
-        <div>
-            {isEdit && (<label htmlFor={userInfo.name}>name:</label>)}
-            <input type='text' value={userInfo.name} name='name' id={userInfo.name} disabled={isEdit ? false : true} onChange={handleChange}/>
-        </div>
-        
-        <div>
-            {isEdit && (<label htmlFor={userInfo.email} >email:</label>)}
-            <input type='email' value={userInfo.email}  name='email' id={userInfo.email}  disabled={isEdit ? false : true} onChange={handleChange}/>
-        </div>
-        
-        <div>
-            {isEdit && (<label htmlFor={userInfo.pwd}>password:</label>)}
-            <input type='password' value={userInfo.pwd}  name='pwd' id={userInfo.pwd} min={6} disabled={isEdit ? false : true} onChange={handleChange}/>
-        </div>
+      <div>
+        {isEdit && <label htmlFor={userInfo.name}>name:</label>}
+        <input
+          type="text"
+          value={userInfo.name}
+          name="name"
+          id={userInfo.name}
+          disabled={isEdit ? false : true}
+          onChange={handleChange}
+        />
+      </div>
 
-       {isEdit && (
+      <div>
+        {isEdit && <label htmlFor={userInfo.email}>email:</label>}
+        <input
+          type="email"
+          value={userInfo.email}
+          name="email"
+          id={userInfo.email}
+          disabled={isEdit ? false : true}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        {isEdit && <label htmlFor={userInfo.pwd}>password:</label>}
+        <input
+          type="password"
+          value={userInfo.pwd}
+          name="pwd"
+          id={userInfo.pwd}
+          min={6}
+          disabled={isEdit ? false : true}
+          onChange={handleChange}
+        />
+      </div>
+
+      {isEdit && (
         <>
-            <div>
-                <label htmlFor='phone'>phone:</label>
-                <input type='tel' value={userInfo.phone}  name='phone' id='phone' disabled={isEdit ? false : true} onChange={handleChange}/>
-            </div>
-            <div>
-                <label htmlFor='role'>role:</label>
-                <select defaultValue={userInfo.role}  name='role' id='role' onChange={handleChange}  >
-                    <option value='admin' >admin</option>
-                    <option value='normal' >normal</option>
-                </select>
-            </div>
-            <div>
-                <label htmlFor='ctime'>create time:</label>
-                <input type='date' value={userInfo.cTime}  name='cTime' id='cTime' disabled onChange={handleChange}/>
-            </div>
+          <div>
+            <label htmlFor="phone">phone:</label>
+            <input
+              type="tel"
+              value={userInfo.phone}
+              name="phone"
+              id="phone"
+              disabled={isEdit ? false : true}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="role">role:</label>
+            <select
+              defaultValue={userInfo.role}
+              name="role"
+              id="role"
+              onChange={handleChange}
+            >
+              <option value="admin">admin</option>
+              <option value="normal">normal</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="ctime">create time:</label>
+            <input
+              type="date"
+              value={userInfo.cTime}
+              name="cTime"
+              id="cTime"
+              disabled
+              onChange={handleChange}
+            />
+          </div>
 
-            <div>
-                <label htmlFor='utime'>update time:</label>
-                <input type='date' value={userInfo.uTime}  name='uTime' id='utime' disabled onChange={handleChange}/>
-            </div>
-            <div>
-                <button type='button' onClick={cancelBtn}>cancel</button>
-                <button type='button' onClick={updateUser} >update</button>
-            </div>
+          <div>
+            <label htmlFor="utime">update time:</label>
+            <input
+              type="date"
+              value={userInfo.uTime}
+              name="uTime"
+              id="utime"
+              disabled
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <button type="button" onClick={cancelBtn}>
+              cancel
+            </button>
+            <button type="button" onClick={updateUser}>
+              update
+            </button>
+          </div>
         </>
-       )}
+      )}
 
-        {!isEdit && (
-         <span>
-         <FaPencil className='icon' onClick={_=>setIsEdit(true)} />
-        <BsFillTrash3Fill className='icon' onClick={deleteBtn}/>
-         </span>
-        )}
-        
-  </User>
-  )
-}
+      {!isEdit && (
+        <span>
+          <FaPencil className="icon" onClick={(_) => setIsEdit(true)} />
+          <BsFillTrash3Fill className="icon" onClick={deleteBtn} />
+        </span>
+      )}
+    </User>
+  );
+};
 
 export default UserData;

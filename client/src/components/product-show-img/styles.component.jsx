@@ -11,7 +11,6 @@ const Wrapper = styled.div`
     height: 100%;
   }
 
-
   @media screen and (max-width: 769px) {
     width: 97%;
     height: 72%;

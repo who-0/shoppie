@@ -18,7 +18,6 @@ const ContentContainer = styled.div`
     text-decoration: none;
     background-color: ${colors.content_btn};
     width: 80%;
-    /* font-size: 2.5rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,7 +107,6 @@ const ContentContainer = styled.div`
     font-size: 1.1rem;
     .content_btn_cs {
       width: 80%;
-      /* font-size: 2rem; */
     }
   }
 
@@ -121,7 +119,6 @@ const ContentContainer = styled.div`
   }
 
   @media screen and (max-width: 426px) {
-    /* width: auto; */
     font-size: 0.6rem;
     text-align: center;
 

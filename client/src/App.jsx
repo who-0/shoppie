@@ -20,12 +20,13 @@ import {
 } from "pages/admin";
 import { Context } from "contexts/AppContexts";
 
-let isAdmin
+let isAdmin;
 
 const App = () => {
-  const {user} = useContext(Context);
-  if(user) { isAdmin = user.role === 'admin' ? user.role : null;}
-  else isAdmin = 'noraml';
+  const { user } = useContext(Context);
+  if (user) {
+    isAdmin = user.role === "admin" ? user.role : null;
+  } else isAdmin = "noraml";
 
   return (
     <BrowserRouter>
@@ -45,21 +46,21 @@ const App = () => {
             <Route path="profile" element={<Profile />} />
             <Route path="orders" element={<Orders />} />
           </Route>
-        {isAdmin === 'admin' && (
-          <Route
-            path="admin"
-            element={
-              <ProtectedPage>
-                <AdminShareLayout />
-              </ProtectedPage>
-            }
-          >
-            <Route index element={<AdminDashboard />} />
-            <Route path="products" element={<AdminProducts />} />
-            <Route path="users" element={<AdminUsers />} />
-            <Route path="orders" element={<AdminOrders />} />
-          </Route>
-        )}
+          {isAdmin === "admin" && (
+            <Route
+              path="admin"
+              element={
+                <ProtectedPage>
+                  <AdminShareLayout />
+                </ProtectedPage>
+              }
+            >
+              <Route index element={<AdminDashboard />} />
+              <Route path="products" element={<AdminProducts />} />
+              <Route path="users" element={<AdminUsers />} />
+              <Route path="orders" element={<AdminOrders />} />
+            </Route>
+          )}
           <Route path="*" element={<div>Error</div>} />
         </Route>
       </Routes>

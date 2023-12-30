@@ -8,8 +8,6 @@ const Wrapper = styled.form`
   margin-bottom: 20px;
   position: relative;
 
-
-
   input {
     width: 40%;
     height: 40px;
@@ -35,71 +33,67 @@ const Wrapper = styled.form`
     cursor: pointer;
   }
 
-  ${props => {
-    if(props.role === 'admin'){
+  ${(props) => {
+    if (props.role === "admin") {
       return css`
-      margin-top: 3%;
+        margin-top: 3%;
 
-      input {
-        border: 1px solid ${colors.admin_color};
-        &:focus {
-      outline: none;
-    }
-        
-    
-      }
-      `
+        input {
+          border: 1px solid ${colors.admin_color};
+          &:focus {
+            outline: none;
+          }
+        }
+      `;
     }
   }}
 
   @media screen and (max-width: 1025px) {
-    input{
+    input {
       width: 35%;
-    height: 35px;
+      height: 35px;
     }
 
-    .search_icon{
-    font-size: 1.2rem;
-    right: 48%;
+    .search_icon {
+      font-size: 1.2rem;
+      right: 48%;
     }
   }
 
   @media screen and (max-width: 769px) {
-    .search_icon{
+    .search_icon {
       font-size: 1.1rem;
-    right: 50%;
-}
+      right: 50%;
     }
-  
-    @media screen and (max-width: 425px) {
-      justify-content: start;
+  }
 
-      .search_icon{
-        right: 70%;
-      }
+  @media screen and (max-width: 425px) {
+    justify-content: start;
+
+    .search_icon {
+      right: 70%;
     }
-    
+  }
+
   @media screen and (max-width: 376px) {
     justify-content: space-around;
 
-    input{
-      font-size: .8rem;
+    input {
+      font-size: 0.8rem;
     }
   }
 
   @media screen and (max-width: 321px) {
-    /* justify-content: space-around; */
 
-    input{
-      font-size: .8rem;
+    input {
+      font-size: 0.8rem;
       width: 40%;
-    height: 30px;
+      height: 30px;
     }
 
-    .search_icon{
-        right: 65%;
-      }
+    .search_icon {
+      right: 65%;
+    }
   }
-
 `;
 export default Wrapper;

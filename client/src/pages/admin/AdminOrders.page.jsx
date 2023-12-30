@@ -7,9 +7,16 @@ import { OrderHeader, OrderInfoContainer } from "components";
 
 const body = document.body;
 
-
 const AdminOrders = () => {
-  const { color, changeColor,orderStatus,allOrders,getStatusUser,allOrderByAdmin,updateOrder } = useContext(Context);
+  const {
+    color,
+    changeColor,
+    orderStatus,
+    allOrders,
+    getStatusUser,
+    allOrderByAdmin,
+    updateOrder,
+  } = useContext(Context);
   useEffect(() => {
     if (color !== colors.home_color) {
       changeColor(ADMIN_ORDERS);
@@ -20,11 +27,13 @@ const AdminOrders = () => {
     getStatusUser();
     allOrderByAdmin();
     // eslint-disable-next-line
-  }, [color,updateOrder]);
+  }, [color, updateOrder]);
 
-  return <Orders>
-    <OrderHeader orderStatus={orderStatus} />
-   <OrderInfoContainer allOrders={allOrders} />
-  </Orders>;
+  return (
+    <Orders>
+      <OrderHeader orderStatus={orderStatus} />
+      <OrderInfoContainer allOrders={allOrders} />
+    </Orders>
+  );
 };
 export default AdminOrders;

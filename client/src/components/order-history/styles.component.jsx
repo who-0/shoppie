@@ -12,8 +12,8 @@ const Wrapper = styled.div`
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
 
-  @media screen and (max-width: 426px){
-    h1{
+  @media screen and (max-width: 426px) {
+    h1 {
       font-size: 2rem;
     }
   }
