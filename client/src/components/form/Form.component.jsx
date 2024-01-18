@@ -7,11 +7,8 @@ import { Context } from "contexts/AppContexts";
 import Alert from "components/alert/Alert.component";
 
 const Form = ({ handleSubmit, handleChange, formField }) => {
-  const { signUpUser, signup, alert, googleAuth } = useContext(Context);
+  const { signUpUser, signup, alert } = useContext(Context);
   const { email, password, name, cpassword } = formField;
-  // const googleAuth = () => {
-  //   window.open(`http://localhost:4000/api/v1/auth/google`, "_self");
-  // };
 
   return (
     <Wrapper $signup={+signup} onSubmit={handleSubmit}>
@@ -49,8 +46,6 @@ const Form = ({ handleSubmit, handleChange, formField }) => {
         />
       )}
       <div className="btn_container">
-        {/* <Button type="button" name="google" func={google} /> */}
-        <Button type="button" name="google" func={googleAuth} />
         <Button type="submit" name={`${signup ? "signup" : "login"}`} />
       </div>
 

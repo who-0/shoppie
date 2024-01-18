@@ -4,12 +4,20 @@
   "description": "mini online shop app",
   "main": "index.js",
   "scripts": {
-    "start-server": "npm start --prefix server",
+    "start-server": "npm start --prefix server --ignore client",
     "test-server": "npm test --prefix server",
-    "start-client": "npm start --prefix client",
+    "start-client": "npm start --prefix client --ignore server",
     "test-client": "npm test --prefix client",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "install-server": "cd server && npm install",
+    "setup-production": "npm run install-client && npm run build-client && npm run install-server",
+    "start": "concurrently --kill-others-on-fail \"npm run start-server\" \"npm run start-client\""
   },
   "author": "DaDDy",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }

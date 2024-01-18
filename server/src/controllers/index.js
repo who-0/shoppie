@@ -1,8 +1,6 @@
 const {
   signupController,
   loginController,
-  logoutController,
-  GoogleController,
 } = require("./auth.controller");
 
 const {
@@ -34,9 +32,7 @@ const {
 module.exports = {
   signupController,
   loginController,
-  logoutController,
   updateUserController,
-  GoogleController,
   postOrder,
   getAllOrder,
   usersStatus,

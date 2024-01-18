@@ -9,7 +9,6 @@ import {
   SUBMIT_AUTH_SUCCESS,
   SUBMIT_AUTH_START,
   SUBMIT_AUTH_ERROR,
-  // DISPLAY_ERROR,
   DISPLAY_SUCCESS,
   CLEAR_ERROR,
   UPDATE_PROFILE,
@@ -37,7 +36,6 @@ import {
   CHANGE_PAGE,
   CHANGE_SHOW_IMAGE,
   ADD_TO_CART,
-  // ADD_TO_CART_SUCCESS,
   IS_CART_OPEN,
   ADD_QUANTITY,
   REMOVE_QUANTITY,
@@ -79,7 +77,6 @@ import {
   UPDATE_PRODUCT_ADMIN_SUCCESS,
   UPDATE_PRODUCT_ADMIN_ERROR,
 } from "./actions";
-// import { useCookies } from "react-cookie";
 
 const data = localStorage.getItem("user");
 const dataCart = localStorage.getItem("cart");
@@ -183,32 +180,6 @@ const Provider = ({ children }) => {
       });
       clearAlert();
     }
-  };
-
-  // const googleAuth = useGoogleLogin({
-  //   onSuccess: async (response) => {
-  //     console.log("response", response);
-  //     const userInfo = await API.get("/auth/google", {
-  //       headers: { Authorization: `Bearer ${response.access_token}` },
-  //     });
-  //     console.log(userInfo);
-  //   },
-  //   onError: (error) => console.log(error),
-  // });
-
-  const googleAuth = () => {
-    window.open(`http://localhost:4000/api/v1/auth/google`, "_self");
-  };
-
-  const userGoogle = async () => {
-    const response = await API.get("/auth/success");
-    console.log(response);
-    const { user, token } = response.data;
-    localStorage.setItem("user", JSON.stringify(user));
-    dispatch({
-      type: SUBMIT_AUTH_SUCCESS,
-      payload: { token, user, success: "Successful Login" },
-    });
   };
 
   const displayAlert = (type, msg) => {
@@ -352,7 +323,6 @@ const Provider = ({ children }) => {
   };
 
   const addToCart = (item) => {
-    // if (!state.user) Navigate("/auth");
     const notFoundData = handleQuantity(item.id, "next");
     if (notFoundData) {
       const newData = { ...item, quantity: 1 };
@@ -528,7 +498,9 @@ const Provider = ({ children }) => {
 
   const openUpdate = (product) =>
     dispatch({ type: OPEN_UPDATE_PRODUCT_ADMIN, payload: product });
+    
   const closeUpdate = (_) => dispatch({ type: CLOSE_UPDATE_PRODUCT });
+
   const deleteProductByAdmin = (id) => {
     dispatch({ type: DELETE_PRODUCT_ADMIN_START });
     try {
@@ -566,8 +538,6 @@ const Provider = ({ children }) => {
         cancelEditeProfile,
         logoutUser,
         updateUser,
-        googleAuth,
-        userGoogle,
         getAllProducts,
         searchProduct,
         showProductInfo,

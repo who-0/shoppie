@@ -4,8 +4,7 @@ import { Context } from "contexts/AppContexts";
 import { useNavigate } from "react-router-dom";
 import { Form } from "components";
 import LoginCS from "./styles.page";
-import { AUTH, DISPLAY_ERROR, DISPLAY_SUCCESS } from "contexts/actions";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import { AUTH, DISPLAY_ERROR } from "contexts/actions";
 
 const body = document.body;
 
