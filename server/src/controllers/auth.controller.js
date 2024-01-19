@@ -52,9 +52,6 @@ const loginController = async (req, res) => {
   res.status(StatusCodes.OK).json({ user, token });
 };
 
-
-
-
 module.exports = {
   signupController,
   loginController,
