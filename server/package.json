@@ -4,7 +4,8 @@
   "description": "Project in Action - []()",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "test": "node custom.js && jest",
     "test-auth": "jest auth.test.js",
     "test-user": "jest users.test.js",

@@ -4,8 +4,10 @@ const morgan = require("morgan");
 const cookie = require("cookie-parser");
 const cors = require("cors");
 const helmet = require("helmet");
-const path = require("path");
+const mongoSanitize = require('express-mongo-sanitize')
+const xss = require('xss-purge')
 const api = require("./routes");
+const path = require('path')
 const {
   errorHandlerMiddleware,
   notFoundMiddleware,
@@ -17,7 +19,8 @@ if (process.env.NODE_ENV !== "productions") {
   app.use(morgan("dev"));
 }
 
-//!Function
+//!Function\
+app.use(express.static(path.resolve(__dirname,'..','..','./client/build')))
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -28,6 +31,8 @@ app.use(
 app.use(helmet());
 app.use(express.json());
 app.use(cookie());
+app.use(xss())
+app.use(mongoSanitize());
 
 //!Routes
 app.use("/api/v1", api);
