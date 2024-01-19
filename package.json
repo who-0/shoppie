@@ -2,7 +2,7 @@
   "name": "shoppie",
   "version": "1.0.0",
   "description": "mini online shop app",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "start-server": "npm start --prefix server --ignore client",
     "test-server": "npm test --prefix server",
