@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <Home /> render snapshot Home page 1`] = `
+<div
+  className="sc-ipMvLY dJarSu"
+>
+  <div
+    className="sc-dkjKgF dEHQnd"
+  >
+    <h1
+      data-testid="text-content"
+    >
+      Make every purchase a delightful experience with
+    </h1>
+    <a
+      className="content_btn_cs"
+      href="/shop"
+      onClick={[Function]}
+    >
+      <svg
+        className="btn_logo"
+      >
+        btn_logo.svg
+      </svg>
+    </a>
+  </div>
+  <div
+    className="sc-jSwlEQ oqmQX"
+  >
+    <span
+      className="circle_1_cs"
+    />
+    <span
+      className="circle_2_cs"
+    />
+    <span
+      className="circle_3_cs"
+    />
+    <svg
+      className="img_shoe_cs"
+      data-testid="svg-img"
+    >
+      shoe.svg
+    </svg>
+    <svg
+      className="img_hat_cs"
+      data-testid="svg-img"
+    >
+      hat.svg
+    </svg>
+    <svg
+      className="img_glass_cs"
+      data-testid="svg-img"
+    >
+      glass.svg
+    </svg>
+    <svg
+      className="img_bag_cs"
+      data-testid="svg-img"
+    >
+      side_bag_pack.svg
+    </svg>
+  </div>
+</div>
+`;

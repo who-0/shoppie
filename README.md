@@ -1,8 +1,15 @@
-# React + Vite
+![logo](https://github.com/who-0/shoppie/assets/56252622/bb8a339d-4ce5-4313-a99c-6a198b0e9ef9)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Mini online e shop app
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo
+
+https://shoppie-k32j.onrender.com
+
+
+
+## Authors
+
+- [@DaDDy-chill](https://www.github.com/daddy-chilll)
+
