@@ -417,7 +417,6 @@ const Provider = ({ children }) => {
       const response = await API.get("/order", {
         withCredentials: true,
       });
-      console.log(response);
       dispatch({ type: GET_ALL_USER_ORDERS_SUCCESS, payload: response.data });
     } catch (error) {
       console.log(error);
