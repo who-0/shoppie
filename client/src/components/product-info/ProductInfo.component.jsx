@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { FiX } from "react-icons/fi";
 import Wrapper from "./styles.component";
 import { Context } from "../../contexts/AppContexts";

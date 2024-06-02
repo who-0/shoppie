@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from "react";
 import Activity from "./styles.component";
-import {ActivityItem} from "@components";
+import { ActivityItem } from "@components";
 import moment from "moment";
 const UserActivityContainer = ({ orderCreatedTime, userCreatedTime }) => {
   const activityArray = [...orderCreatedTime, ...userCreatedTime];

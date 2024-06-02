@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useContext, useState } from "react";
 import { LuChevronRightCircle } from "react-icons/lu";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import LogoContainer from "./styles.component";
 import { Logo1, Logo2, Logo3, Logo4 } from "@assets";
 

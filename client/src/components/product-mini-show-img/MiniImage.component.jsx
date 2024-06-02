@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Wrapper from "./styles.component";
 const MiniImage = ({ images, showImage, changeShowImage }) => {
   return (

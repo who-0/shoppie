@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
 import Chart from "./styles.component";
 import { BarChart, AreaChart } from "@components";
-
 
 const ChartContainer = ({ orderTimes, userStatus }) => {
   const [changeChart, setChangeChart] = useState(true);

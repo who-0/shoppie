@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import { GiShoppingCart } from "react-icons/gi";
 import Wrapper from "./styles.component";

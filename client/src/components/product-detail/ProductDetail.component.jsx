@@ -1,6 +1,5 @@
-
 import Wrapper from "./styles.component";
-import {ImageContainer,ProductInfo} from "@components";
+import { ImageContainer, ProductInfo } from "@components";
 import { Context } from "../../contexts/AppContexts";
 import { useContext } from "react";
 

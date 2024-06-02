@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import InputCS from "./styles.component";
 
 const Input = ({ type, name, value, handleChange, text }) => {

@@ -34,6 +34,7 @@ const getAllOrder = async (req, res) => {
       { orderBy: req.user.userId },
       { __v: 0, orderBy: 0, updatedAt: 0 }
     ).sort("-createdAt");
+    console.log(userOrders);
     res.status(200).json(userOrders);
   } catch (error) {
     console.log(error);
@@ -109,7 +110,6 @@ const getAllOrderByAdmin = async (req, res) => {
   try {
     const users = await User.find();
     const orders = await Order.find();
-
     orders.forEach((order) => {
       users.forEach((user) => {
         if (order.orderBy.toString() === user._id.toString()) {
@@ -125,7 +125,6 @@ const getAllOrderByAdmin = async (req, res) => {
         }
       });
     });
-
     res.status(200).json(orderBy);
   } catch (error) {
     console.log(error);

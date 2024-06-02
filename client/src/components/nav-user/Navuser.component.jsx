@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useContext } from "react";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { Wrapper, Menu } from "./styles.components";

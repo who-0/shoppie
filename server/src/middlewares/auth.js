@@ -3,8 +3,8 @@ const { UnAuthenticatedError } = require("../errors");
 const secret = process.env.SECRET_KEY;
 
 const checkAuth = (req, res, next) => {
-  const { token } = req.cooxkies;
-
+  const { token } = req.cookies;
+  console.log(req.cookies);
   if (!token) {
     throw new UnAuthenticatedError("Authentication Invalid");
   }

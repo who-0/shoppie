@@ -84,7 +84,6 @@ const Wrapper = styled.form`
   }
 
   @media screen and (max-width: 321px) {
-
     input {
       font-size: 0.8rem;
       width: 40%;

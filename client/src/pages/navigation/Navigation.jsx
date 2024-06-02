@@ -1,10 +1,16 @@
 import { Outlet } from "react-router-dom";
-import { Logo, NavLink, NavUser,MenuIcon } from "@components";
+import { Logo, NavLink, NavUser, MenuIcon } from "@components";
 import { useContext } from "react";
 import { Context } from "../../contexts/AppContexts";
 import Nav from "./Navigation.styles";
 
-import { HOME, SHOP, AUTH, PROFILE, ADMIN_DASHBOARD } from "../../contexts/actions";
+import {
+  HOME,
+  SHOP,
+  AUTH,
+  PROFILE,
+  ADMIN_DASHBOARD,
+} from "../../contexts/actions";
 
 const Navs = [
   { id: 1, name: "home", action: HOME },
@@ -63,4 +69,3 @@ const Navigation = () => {
   );
 };
 export default Navigation;
-

@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
 import { TfiSearch } from "react-icons/tfi";
 import Wrapper from "./styles.component";
 import { Filter, CartInfo, CartIcon } from "@components";
-
 
 const Search = ({
   handleChange,

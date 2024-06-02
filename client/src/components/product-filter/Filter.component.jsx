@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useContext } from "react";
 import Wrapper from "./styles.component";
 import { Context } from "../../contexts/AppContexts";

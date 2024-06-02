@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { useReducer, createContext } from "react";
 import reducer from "./reducers";
 import axios from "axios";
-
 import {
   USER_SIGNUP,
   OPEN_MENU,
@@ -161,8 +162,9 @@ const Provider = ({ children }) => {
     dispatch({ type: SUBMIT_AUTH_START });
     try {
       const authEndPoint = state.signup ? "signup" : "login";
-      const response = await API.post(`/auth/${authEndPoint}`, data);
-      console.log(response)
+      const response = await API.post(`/auth/${authEndPoint}`, data, {
+        withCredentials: true,
+      });
       const { user, token } = response.data;
       localStorage.setItem("user", JSON.stringify(user));
       let alertMsg;
@@ -219,10 +221,16 @@ const Provider = ({ children }) => {
     }
 
     try {
-      const response = await API.patch("/user", {
-        ...updatedInfo,
-        _id: state.user._id,
-      });
+      const response = await API.patch(
+        "/user",
+        {
+          ...updatedInfo,
+          _id: state.user._id,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
       await localStorage.setItem("user", JSON.stringify(response.data));
       dispatch({
@@ -241,7 +249,10 @@ const Provider = ({ children }) => {
     dispatch({ type: GET_ALL_PRODUCTS_START });
     try {
       const response = await API.get(
-        `/products?limit=${state.limit}&skip=${state.skip}`
+        `/products?limit=${state.limit}&skip=${state.skip}`,
+        {
+          withCredentials: true,
+        }
       );
       const { products, skip, limit, total } = response.data;
       await getAllCategories();
@@ -258,7 +269,9 @@ const Provider = ({ children }) => {
   const searchProduct = async (name) => {
     dispatch({ type: SEARCH_PRODUCT_START });
     try {
-      const response = await API.get(`/products?name=${name}`);
+      const response = await API.get(`/products?name=${name}`, {
+        withCredentials: true,
+      });
       const { products } = response.data;
       dispatch({ type: SEARCH_PRODUCT_SUCCESS, payload: products });
     } catch (error) {
@@ -270,7 +283,9 @@ const Provider = ({ children }) => {
   const showProductInfo = async (id) => {
     dispatch({ type: GET_PRODUCT_INFO_START });
     try {
-      const response = await API.get(`/products/${id}`);
+      const response = await API.get(`/products/${id}`, {
+        withCredentials: true,
+      });
       const { data } = response;
       dispatch({ type: GET_PRODUCT_INFO_SUCCESS, payload: data });
     } catch (error) {
@@ -287,7 +302,9 @@ const Provider = ({ children }) => {
   const getAllCategories = async () => {
     dispatch({ type: GET_ALL_CATEGORIES_START });
     try {
-      const response = await API.get("/products/categories");
+      const response = await API.get("/products/categories", {
+        withCredentials: true,
+      });
       const data = response.data;
       dispatch({ type: GET_ALL_CATEGORIES_SUCCESS, payload: data });
     } catch (error) {
@@ -302,7 +319,9 @@ const Provider = ({ children }) => {
   const getCategoryByName = async (name) => {
     dispatch({ type: GET_CATEGORY_START });
     try {
-      const response = await API.get(`/products/categories/${name}`);
+      const response = await API.get(`/products/categories/${name}`, {
+        withCredentials: true,
+      });
       const { products } = response.data;
 
       dispatch({ type: GET_CATEGORY_SUCCESS, payload: products });
@@ -367,11 +386,17 @@ const Provider = ({ children }) => {
         const { id, title, price, quantity } = item;
         userOrder.push({ id, title, price, quantity });
       });
-      await API.post("/order", {
-        userOrder,
-        totalPrice,
-        userId: state.user._id,
-      });
+      await API.post(
+        "/order",
+        {
+          userOrder,
+          totalPrice,
+          userId: state.user._id,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       dispatch({
         type: ORDER_SUCCESS,
         payload:
@@ -389,8 +414,10 @@ const Provider = ({ children }) => {
   const getAllUserOrders = async () => {
     dispatch({ type: GET_ALL_USER_ORDERS_START });
     try {
-      const response = await API.get("/order");
-      console.log(response)
+      const response = await API.get("/order", {
+        withCredentials: true,
+      });
+      console.log(response);
       dispatch({ type: GET_ALL_USER_ORDERS_SUCCESS, payload: response.data });
     } catch (error) {
       console.log(error);
@@ -404,8 +431,12 @@ const Provider = ({ children }) => {
   const getStatusUser = async () => {
     dispatch({ type: GET_STATUS_START });
     try {
-      const userResponse = await API.get("/user/status");
-      const orderResponse = await API.get("/order/status");
+      const userResponse = await API.get("/user/status", {
+        withCredentials: true,
+      });
+      const orderResponse = await API.get("/order/status", {
+        withCredentials: true,
+      });
       dispatch({
         type: GET_STATUS_SUCCESS,
         payload: {
@@ -425,7 +456,13 @@ const Provider = ({ children }) => {
   const getSingleUserData = async (check, data) => {
     dispatch({ type: GET_USER_DATA_START });
     try {
-      const response = await API.post("/user/data", { data: { check, data } });
+      const response = await API.post(
+        "/user/data",
+        { data: { check, data } },
+        {
+          withCredentials: true,
+        }
+      );
       dispatch({ type: GET_USER_DATA_SUCCESS, payload: response.data });
     } catch (error) {
       console.log(error);
@@ -436,7 +473,9 @@ const Provider = ({ children }) => {
   const getAllUsers = async () => {
     dispatch({ type: GET_ALL_USERS_START });
     try {
-      const allUser = await API.get("/user/all");
+      const allUser = await API.get("/user/all", {
+        withCredentials: true,
+      });
       dispatch({ type: GET_ALL_USERS_SUCCESS, payload: allUser.data });
     } catch (error) {
       dispatch({ type: GET_ALL_USERS_ERROR, payload: { msg: error.message } });
@@ -445,7 +484,9 @@ const Provider = ({ children }) => {
 
   const deleteUser = async (id) => {
     try {
-      await API.delete(`/user/${id}`);
+      await API.delete(`/user/${id}`, {
+        withCredentials: true,
+      });
       await getAllUsers();
       dispatch({ type: DELETE_USER_SUCCESS });
     } catch (error) {
@@ -457,7 +498,9 @@ const Provider = ({ children }) => {
   const adminUpdateUser = async (id, data) => {
     dispatch({ type: ADMIN_UPDATE_USER_START });
     try {
-      await API.post(`/user/${id}`, data);
+      await API.post(`/user/${id}`, data, {
+        withCredentials: true,
+      });
       await getAllUsers();
       dispatch({ type: ADMIN_UPDATE_USER_SUCCESS });
     } catch (error) {
@@ -472,7 +515,9 @@ const Provider = ({ children }) => {
   const allOrderByAdmin = async () => {
     dispatch({ type: GET_ALL_ORDERS_ADMIN_START });
     try {
-      const response = await API.get("/order/all");
+      const response = await API.get("/order/all", {
+        withCredentials: true,
+      });
 
       dispatch({ type: GET_ALL_ORDERS_ADMIN_SUCCESS, payload: response.data });
     } catch (error) {
@@ -490,7 +535,13 @@ const Provider = ({ children }) => {
   const submitOrder = async (order) => {
     dispatch({ type: UPDATE_ORDER_BY_ADMIN_START });
     try {
-      await API.post("/order/all", { ...order, userId: state.user._id });
+      await API.post(
+        "/order/all",
+        { ...order, userId: state.user._id },
+        {
+          withCredentials: true,
+        }
+      );
       // await allOrderByAdmin();
       // await getStatusUser();
       dispatch({ type: UPDATE_ORDER_BY_ADMIN_SUCCESS });
@@ -501,7 +552,7 @@ const Provider = ({ children }) => {
 
   const openUpdate = (product) =>
     dispatch({ type: OPEN_UPDATE_PRODUCT_ADMIN, payload: product });
-    
+
   const closeUpdate = (_) => dispatch({ type: CLOSE_UPDATE_PRODUCT });
 
   const deleteProductByAdmin = (id) => {

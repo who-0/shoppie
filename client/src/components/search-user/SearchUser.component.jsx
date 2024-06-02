@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useState } from "react";
 import { TfiSearch } from "react-icons/tfi";
 import Search from "./styles.component";

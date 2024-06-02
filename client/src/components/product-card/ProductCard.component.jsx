@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { AiFillStar } from "react-icons/ai";
 import Wrapper from "./styles.component";
 import { Context } from "../../contexts/AppContexts";

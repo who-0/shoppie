@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 
-import {OrderCheck,OrderLists} from '@components'
+import { OrderCheck, OrderLists } from "@components";
 import React from "react";
 import InfoContainer from "./styles.component";
 

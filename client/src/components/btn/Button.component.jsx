@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Btn from "./styles.component";
 
 const Button = ({ type, name, func = null }) => {

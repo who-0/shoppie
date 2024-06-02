@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import colors from "@colors";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../contexts/AppContexts";
@@ -5,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Form } from "@components";
 import LoginCS from "./styles.page";
 import { AUTH, DISPLAY_ERROR } from "../../contexts/actions";
+
 
 const body = document.body;
 
@@ -36,6 +38,7 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let token;
     const { password, cpassword, email, name } = formField;
     if (!email || !password)
       return displayAlert(DISPLAY_ERROR, "please all input required!");
@@ -52,6 +55,8 @@ const Auth = () => {
     } else {
       submitAuth({ email, password });
     }
+
+    // setCookie('token',)
   };
 
   const handleChange = (e) => {

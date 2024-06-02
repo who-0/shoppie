@@ -4,7 +4,7 @@ import colors from "@colors";
 import { SHOP } from "../../contexts/actions";
 import { ProductsContainer, Search } from "@components";
 import Wrapper from "./styles.page.jsx";
-import {ProductBtn} from "@components";
+import { ProductBtn } from "@components";
 const body = document.body;
 
 const Shop = () => {

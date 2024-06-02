@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import Wrapper from "./styles.component";
 

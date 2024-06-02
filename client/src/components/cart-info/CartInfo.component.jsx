@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import Wrapper from "./styles.component";
 import CartProduct from "../cart-products/CartProduct.component";

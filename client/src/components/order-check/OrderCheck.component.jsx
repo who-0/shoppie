@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from "react";
 import Check from "./styles.component";
 import { Context } from "../../contexts/AppContexts";

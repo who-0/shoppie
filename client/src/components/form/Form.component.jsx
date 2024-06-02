@@ -1,10 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Button from "../btn/Button.component";
 import Input from "../input/Input.component";
 import Wrapper from "./styles.component";
 import { useContext } from "react";
 import { Context } from "../../contexts/AppContexts";
-import {Alert} from "@components";
+import { Alert } from "@components";
 
 const Form = ({ handleSubmit, handleChange, formField }) => {
   const { signUpUser, signup, alert } = useContext(Context);
