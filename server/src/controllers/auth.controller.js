@@ -19,12 +19,12 @@ const signupController = async (req, res) => {
     const user = await User.create({ name, email, password });
     const token = user.createJWT();
     attachCookie({ res, token });
-    res.header('Content-Type', 'application/json;charset=UTF-8')
-    res.header('Access-Control-Allow-Credentials', true)
+    res.header("Content-Type", "application/json;charset=UTF-8");
+    res.header("Access-Control-Allow-Credentials", true);
     res.header(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept'
-    )
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
     return res.status(StatusCodes.OK).json({ user, token });
   } catch (error) {
     console.log(error);
@@ -54,12 +54,12 @@ const loginController = async (req, res) => {
   user.password = undefined;
   const token = user.createJWT();
   attachCookie({ res, token });
-  res.header('Content-Type', 'application/json;charset=UTF-8')
-  res.header('Access-Control-Allow-Credentials', true)
+  res.header("Content-Type", "application/json;charset=UTF-8");
+  res.header("Access-Control-Allow-Credentials", true);
   res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  )
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   res.status(StatusCodes.OK).json({ user, token });
 };
 
