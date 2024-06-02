@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== "productions") {
 app.use(express.static(path.resolve(__dirname,'..','..','./client/dist')))
 app.use(
   cors({
-    origin: "'https://shoppie-abfx.onrender.com",
+    origin: "http://localhost:5173",
     methods: "GET,POST,PATCH",
     credentials: true,
   })
