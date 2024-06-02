@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Wrapper from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 
 const Alert = () => {
   const { alert_msg, alert_type } = useContext(Context);

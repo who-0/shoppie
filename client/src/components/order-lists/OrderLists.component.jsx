@@ -3,8 +3,8 @@ import { LuChevronRightCircle } from "react-icons/lu";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { FcCancel } from "react-icons/fc";
 import Lists from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
-import colors from "colors";
+import { Context } from "../../contexts/AppContexts";
+import colors from "@colors";
 
 const OrderLists = ({ orderLists }) => {
   const [active, setActive] = useState("");

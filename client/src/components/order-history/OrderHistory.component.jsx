@@ -1,8 +1,7 @@
-import OrderTable from "components/order-history-table/OrderTable.component";
 import Wrapper from "./styles.component";
 import { useContext, useEffect } from "react";
-import { Context } from "../src/contexts/AppConte";
-import { Loader } from "@components";
+import { Context } from "../../contexts/AppContexts";
+import { Loader, OrderTable } from "@components";
 const OrderHistory = () => {
   const { getAllUserOrders, userOrders, orderHistoryStart, loading } =
     useContext(Context);

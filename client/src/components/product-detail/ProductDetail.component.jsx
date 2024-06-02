@@ -1,8 +1,7 @@
-import ProductInfo from "components/product-info/ProductInfo.component";
 
 import Wrapper from "./styles.component";
-import ImageContainer from "components/product-info-img-conatiner/ImageContainer.component";
-import { Context } from "../src/contexts/AppConte";
+import {ImageContainer,ProductInfo} from "@components";
+import { Context } from "../../contexts/AppContexts";
 import { useContext } from "react";
 
 const ProductDetail = () => {

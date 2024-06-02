@@ -1,6 +1,6 @@
 import { AiFillStar } from "react-icons/ai";
 import Wrapper from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 

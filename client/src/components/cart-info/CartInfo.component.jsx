@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Wrapper from "./styles.component";
-import CartProduct from "components/cart-products/CartProduct.component";
+import CartProduct from "../cart-products/CartProduct.component";
 import { Context } from "../../contexts/AppContexts";
 import { useNavigate } from "react-router-dom";
 

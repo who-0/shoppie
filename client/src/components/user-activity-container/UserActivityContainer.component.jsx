@@ -1,6 +1,6 @@
 import React from "react";
 import Activity from "./styles.component";
-import ActivityItem from "components/user-activity-item/ActivityItem.component";
+import {ActivityItem} from "@components";
 import moment from "moment";
 const UserActivityContainer = ({ orderCreatedTime, userCreatedTime }) => {
   const activityArray = [...orderCreatedTime, ...userCreatedTime];

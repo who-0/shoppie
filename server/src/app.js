@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== "productions") {
 app.use(express.static(path.resolve(__dirname,'..','..','./client/build')))
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5173",
     methods: "GET,POST,PATCH",
     credentials: true,
   })

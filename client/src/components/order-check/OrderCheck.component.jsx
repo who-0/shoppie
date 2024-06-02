@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Check from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 
 const OrderCheck = () => {
   const { orderInfo, submitOrder } = useContext(Context);

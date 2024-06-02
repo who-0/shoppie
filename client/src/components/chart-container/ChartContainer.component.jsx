@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import Chart from "./styles.component";
-import BarChart from "components/bar-chart/BarChart.component";
-import AreaChart from "components/area-chart/AreaChart.component";
+import { BarChart, AreaChart } from "@components";
+
 
 const ChartContainer = ({ orderTimes, userStatus }) => {
   const [changeChart, setChangeChart] = useState(true);

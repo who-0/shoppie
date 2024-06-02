@@ -1,4 +1,4 @@
-import colors from "colors";
+import colors from "@colors";
 import { css, styled } from "styled-components";
 
 const Wrapper = styled.form`

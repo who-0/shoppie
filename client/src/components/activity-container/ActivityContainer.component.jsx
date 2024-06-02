@@ -1,5 +1,4 @@
-import ChartContainer from "components/chart-container/ChartContainer.component";
-import UserActivityContainer from "components/user-activity-container/UserActivityContainer.component";
+import { UserActivityContainer, ChartContainer } from "@components";
 import React from "react";
 import Activity from "./styles.component";
 

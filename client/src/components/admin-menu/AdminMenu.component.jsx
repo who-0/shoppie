@@ -5,9 +5,9 @@ import {
   ADMIN_ORDERS,
   ADMIN_PRODUCTS,
   ADMIN_USERS,
-} from "contexts/actions";
+} from "../../contexts/actions";
 import { useContext, useState } from "react";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 
 import { FaChartLine } from "react-icons/fa6";
 import { BsFillBox2Fill } from "react-icons/bs";

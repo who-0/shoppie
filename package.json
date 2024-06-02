@@ -6,7 +6,7 @@
   "scripts": {
     "start-server": "npm start --prefix server --ignore client",
     "test-server": "npm test --prefix server",
-    "start-client": "npm run dev --prefix client --ignore server",
+    "start-client": "npm run dev --prefix client",
     "test-client": "npm test --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-client": "cd client && npm install",

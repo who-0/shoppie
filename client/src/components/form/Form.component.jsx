@@ -3,8 +3,8 @@ import Button from "../btn/Button.component";
 import Input from "../input/Input.component";
 import Wrapper from "./styles.component";
 import { useContext } from "react";
-import { Context } from "../src/contexts/AppConte";
-import Alert from "components/alert/Alert.component";
+import { Context } from "../../contexts/AppContexts";
+import {Alert} from "@components";
 
 const Form = ({ handleSubmit, handleChange, formField }) => {
   const { signUpUser, signup, alert } = useContext(Context);

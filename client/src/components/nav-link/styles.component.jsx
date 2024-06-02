@@ -1,6 +1,6 @@
 import { css, styled } from "styled-components";
 import { Link } from "react-router-dom";
-import colors from "colors";
+import colors from "@colors";
 
 const Navlink = styled(Link)`
   background-color: ${(props) => (props.isactive ? props.color : "white")};

@@ -1,5 +1,5 @@
-import OrderCheck from "components/order-check/OrderCheck.component";
-import OrderLists from "components/order-lists/OrderLists.component";
+
+import {OrderCheck,OrderLists} from '@components'
 import React from "react";
 import InfoContainer from "./styles.component";
 

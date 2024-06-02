@@ -3,7 +3,7 @@ import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { Wrapper, Menu } from "./styles.components";
 import { Usericon } from "@assets";
 import { NavLink } from "@components";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 import { useNavigate } from "react-router-dom";
 
 const NavUser = ({ user, changeColor, navs }) => {

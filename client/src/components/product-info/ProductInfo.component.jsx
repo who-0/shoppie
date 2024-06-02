@@ -1,6 +1,6 @@
 import { FiX } from "react-icons/fi";
 import Wrapper from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 import { useContext } from "react";
 import { Alert } from "@components";
 

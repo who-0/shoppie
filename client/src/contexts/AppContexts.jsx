@@ -134,8 +134,9 @@ const initialState = {
   updateProduct: {},
 };
 const Context = createContext();
-
-const API = axios.create({ baseURL: "/api/v1" });
+const API = axios.create({
+  baseURL: `${import.meta.env.VITE_SERVER_URL}/api/v1`,
+});
 
 const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -161,6 +162,7 @@ const Provider = ({ children }) => {
     try {
       const authEndPoint = state.signup ? "signup" : "login";
       const response = await API.post(`/auth/${authEndPoint}`, data);
+      console.log(response)
       const { user, token } = response.data;
       localStorage.setItem("user", JSON.stringify(user));
       let alertMsg;
@@ -388,6 +390,7 @@ const Provider = ({ children }) => {
     dispatch({ type: GET_ALL_USER_ORDERS_START });
     try {
       const response = await API.get("/order");
+      console.log(response)
       dispatch({ type: GET_ALL_USER_ORDERS_SUCCESS, payload: response.data });
     } catch (error) {
       console.log(error);

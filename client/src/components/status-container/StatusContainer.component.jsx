@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Container from "./styles.component";
-import StatusItem from "components/status-item/StatusItem.component";
+import {StatusItem} from "@components";
 import { Context } from "../../contexts/AppContexts";
 
 const StatusContainer = () => {

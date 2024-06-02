@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Navlink from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 const NavLink = ({ name, action, changeColor, active, path, ...others }) => {
   const { icon, isOpen = true } = others;
   const { color } = useContext(Context);

@@ -1,8 +1,7 @@
 import { TfiSearch } from "react-icons/tfi";
 import Wrapper from "./styles.component";
-import Filter from "components/product-filter/Filter.component";
-import CartIcon from "components/cart-icon/CartIcon.component";
-import CartInfo from "components/cart-info/CartInfo.component";
+import { Filter, CartInfo, CartIcon } from "@components";
+
 
 const Search = ({
   handleChange,

@@ -1,7 +1,6 @@
-import MiniImage from "components/product-mini-show-img/MiniImage.component";
-import ShowImage from "components/product-show-img/ShowImage.component";
+import { ShowImage, MiniImage } from "@components";
 import Wrapper from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 import { useContext } from "react";
 
 const ImageContainer = () => {

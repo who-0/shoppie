@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 // import ProductCard from "../product-card/ProductCard.component";
 import Wrapper from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 import { useContext } from "react";
 import { Loader, ProductDetail, ProductCard } from "@components";
 

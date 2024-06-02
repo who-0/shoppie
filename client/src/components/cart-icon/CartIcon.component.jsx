@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { GiShoppingCart } from "react-icons/gi";
 import Wrapper from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 
 const CartIcon = () => {
   const { cartItem, CartOpenorNot } = useContext(Context);

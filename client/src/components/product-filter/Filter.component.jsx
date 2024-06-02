@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Wrapper from "./styles.component";
-import { Context } from "../src/contexts/AppConte";
+import { Context } from "../../contexts/AppContexts";
 
 const Filter = ({ caterogires }) => {
   const { getCategoryByName, getAllProducts } = useContext(Context);
@@ -11,6 +11,7 @@ const Filter = ({ caterogires }) => {
       await getAllProducts();
     } else await getCategoryByName(filterName);
   };
+
   return (
     <Wrapper>
       <label htmlFor="filter">filter product</label>
@@ -22,8 +23,8 @@ const Filter = ({ caterogires }) => {
       >
         <option value="default">all products</option>
         {caterogires.map((c) => (
-          <option value={c} key={c}>
-            {c}
+          <option value={c.name} key={c.slug}>
+            {c.name}
           </option>
         ))}
       </select>

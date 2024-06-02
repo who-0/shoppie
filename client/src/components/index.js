@@ -34,8 +34,30 @@ import CartIcon from "./cart-icon/CartIcon.component";
 import CartInfo from "./cart-info/CartInfo.component";
 import OrderCheck from "./order-check/OrderCheck.component";
 import OrderLists from "./order-lists/OrderLists.component";
+import UserActivityContainer from "./user-activity-container/UserActivityContainer.component";
+import ChartContainer from "./chart-container/ChartContainer.component";
+import BarChart from "./bar-chart/BarChart.component";
+import AreaChart from "./area-chart/AreaChart.component";
+import OrderTable from "./order-history-table/OrderTable.component";
+import ImageContainer from "./product-info-img-conatiner/ImageContainer.component";
+import ProductInfo from "./product-info/ProductInfo.component";
+import MiniImage from "./product-mini-show-img/MiniImage.component";
+import ShowImage from "./product-show-img/ShowImage.component";
+import StatusItem from "./status-item/StatusItem.component";
+import ActivityItem from "./user-activity-item/ActivityItem.component";
 
 export {
+  ActivityItem,
+  StatusItem,
+  ShowImage,
+  MiniImage,
+  ProductInfo,
+  ImageContainer,
+  OrderTable,
+  ChartContainer,
+  BarChart,
+  AreaChart,
+  UserActivityContainer,
   OrderLists,
   OrderCheck,
   CartInfo,
