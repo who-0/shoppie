@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== "productions") {
 }
 
 //!Function\
-app.use(express.static(path.resolve(__dirname,'..','..','./client/build')))
+app.use(express.static(path.resolve(__dirname,'..','..','./client/dist')))
 app.use(
   cors({
     origin: "http://localhost:5173",
