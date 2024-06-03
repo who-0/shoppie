@@ -23,9 +23,10 @@ if (process.env.NODE_ENV !== "productions") {
 app.use(express.static(path.resolve(__dirname,'..','..','./client/dist')))
 app.use(
   cors({
-    origin: "*",
+    origin: "https://shoppie-edel.onrender.com",
     methods: "GET,POST,PATCH",
     credentials: true,
+    optionSuccessStatus: 200,
   })
 );
 app.use(helmet());
