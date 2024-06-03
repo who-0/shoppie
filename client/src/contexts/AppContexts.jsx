@@ -254,6 +254,7 @@ const Provider = ({ children }) => {
           withCredentials: true,
         }
       );
+      console.log(response);
       const { products, skip, limit, total } = response.data;
       await getAllCategories();
       dispatch({
