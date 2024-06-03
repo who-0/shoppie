@@ -136,7 +136,7 @@ const initialState = {
 };
 const Context = createContext();
 const API = axios.create({
-  baseURL: `${import.meta.env.VITE_SERVER_URL}/api/v1`,
+  baseURL: `/api/v1`,
 });
 
 const Provider = ({ children }) => {
